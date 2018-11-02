@@ -9,4 +9,15 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+ 	<init-param>  
+		<param-name>dbDriver</param-name>  
+		<param-value>com.mysql.jdbc.Driver</param-value>  
+	</init-param>
+	
+	<context-param>  
+	<param-name>dbName</param-name>  
+	<param-value>moviestoredb</param-value>  
+	</context-param> 
+    
 </web-app>
