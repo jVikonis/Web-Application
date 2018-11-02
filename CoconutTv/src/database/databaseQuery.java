@@ -3,7 +3,7 @@ package database;
 import java.sql.*;
 
 public class databaseQuery {
-	private PreparedStatement pstmt;
+	private Statement pstmt;
 
 	public databaseQuery() {
 		initializeJdbc();
@@ -17,16 +17,21 @@ public class databaseQuery {
 			Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/moviestoredb", "root",
 					"sesame");
 			// Create a Statement
-			pstmt = connection.prepareStatement("select * from subscribers");
+			pstmt = connection.createStatement();
 		} catch (Exception ex) {
 			System.out.println(ex);
 		}
 
 	}
+	
+	public void printResult() {
+		pstmt.
+	}
 
 
 public static void main(String[] args) {
 	databaseQuery test = new databaseQuery();
+	
 }
 
 }
