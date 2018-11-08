@@ -1,6 +1,7 @@
 package database;
 
 import java.sql.*;
+import java.sql.Date;
 import java.util.*;
 
 //import the package.(name of the class that is being used)
@@ -15,10 +16,9 @@ public class subscriberDB {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			
-			con = DriveManager.getconnection
-				("jdbc:mysql://localhost/moviestoredb" , "scott", "tiger");
+			con = DriverManager.getConnection("jdbc:mysql://localhost/moviestoredb" , "scott", "tiger");
 	}
-	catch (Exceptioni ex) {
+	catch (Exception ex) {
 		ex.printStackTrace();
 		}
 	}
@@ -32,7 +32,7 @@ public class subscriberDB {
 		String addressInfo = "update subscriber set billAddressLine1 = ?, billAddressLine2 = ?, billCity = ?, billState = ?, billZipCode = ? where accountID = ?";
 		String cardInfo = "update card set creditCardCCV = ?, creditCardNumber = ?, cardHolderFristName = ?, cardHolderLastName = ?, expYear = ?, expMonth = ?, ccType = ? where accountID = ?";
 		
-		dbQuery = con.preparedStatement(personalInfo);
+		dbQuery = con.prepareStatement(personalInfo);
 		
 		dbQuery.setString(1, changedSub.getlevelName());
 		dbQuery.setString(2, changedSub.getFirstName());
@@ -44,7 +44,7 @@ public class subscriberDB {
 		dbQuery.setInt(8, changedSub.getAccountID());
 		dbQuery.executeUpdate();
 		
-		dbQuery = con.preparedStatement(addressInfo);
+		dbQuery = con.prepareStatement(addressInfo);
 		
 		dbQuery.setString(1, changedSub.getBillAddressLine1());
 		dbQuery.setString(2, changedSub.getBillAddressLine2());
@@ -54,12 +54,12 @@ public class subscriberDB {
 		dbQuery.setInt(6, changedSub.getAccountID());
 		dbQuery.executeUpdate();
 		
-		dbQuery = con.preparedStatement(cardInfo);
+		dbQuery = con.prepareStatement(cardInfo);
 		
 		dbQuery.setInt(1, changedSub.getCreditCardCCV());
 		dbQuery.setString(2, changedSub.getCreditCardNumber());
 		dbQuery.setString(3, changedSub.getFirstName());
-		dbQuery.setString(4, changedSub.getLastName();
+		dbQuery.setString(4, changedSub.getLastName());
 		dbQuery.setInt(5, changedSub.getExpYear());
 		dbQuery.setInt(6, changedSub.getExpMonth());
 		dbQuery.setString(7, changedSub.getCCType());
@@ -72,7 +72,8 @@ public class subscriberDB {
 		String subInfo = "Insert into subscriber (levelName, firstName, lastName, billAddressLine1, billAddressLine2, billCity, billState, billZipCode, phoneNumber, emailAddress, memberPassword, accountCreateDate, accountStatus) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		String cardInfo = "Insert into card (accountID, creditCardCCV, creditcardNumber, cardholderfirstname, cardholderlastname, expyear,expmonth, cctype) values (?, ?, ?, ?, ?, ?, ?, ?)";
 		
-		dbQuery = con.preparedStatement(subInfo);
+		dbQuery = con.prepareStatement(subInfo);
+		Date today = (Date) new java.util.Date();
 		
 		dbQuery.setString(1, addedSub.getlevelName());
 		dbQuery.setString(2, addedSub.getFirstName());
@@ -85,17 +86,17 @@ public class subscriberDB {
 		dbQuery.setString(9, addedSub.getPhoneNumber());
 		dbQuery.setString(10, addedSub.getEmailAddress());
 		dbQuery.setString(11, addedSub.getMemberPassword());
-		dbQuery.setDate(12, new java.util.Date());
+		dbQuery.setDate(12, today);
 		dbQuery.setString(13, addedSub.getAccountStatus());
 		dbQuery.executeUpdate();
 		
 		int maxID = 0;
-		dbQuery = con.preparedStatement("select MAX(accointID) from subscriber");
+		dbQuery = con.prepareStatement("select MAX(accointID) from subscriber");
 		ResultSet rset = dbQuery.executeQuery();
 		rset.next();
 		addedSub.setAccountID(rset.getInt(1));
 		
-		dbQuery = con.preparedStatement(cardInfo);
+		dbQuery = con.prepareStatement(cardInfo);
 		
 		dbQuery.setInt(1, addedSub.getAccountID());
 		dbQuery.setInt(2, addedSub.getCreditCardCCV());
