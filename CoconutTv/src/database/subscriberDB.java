@@ -90,8 +90,7 @@ public class subscriberDB {
 		dbQuery.setDate(12, today);
 		dbQuery.setString(13, addedSub.getAccountStatus());
 		dbQuery.executeUpdate();
-		
-		int maxID = 0;
+
 		dbQuery = con.prepareStatement("select MAX(accointID) from subscriber");
 		ResultSet rset = dbQuery.executeQuery();
 		rset.next();
@@ -109,6 +108,22 @@ public class subscriberDB {
 		dbQuery.setString(8, addedSub.getCCType());
 		dbQuery.executeUpdate();	
 		
+	}
+	
+	public void deleteSubsriber(int accountID) throws SQLException {
+		String deleteRow = "Delete from Subscriber where accountID = ?";
+		dbQuery = con.prepareStatement(deleteRow);
+		dbQuery.setInt(1, accountID);
+		dbQuery.executeUpdate();
+		
+	}
+	
+	public void updateStatus(Subscriber statusChange) {
+		String updateStatusStr = "Update subscriber set accountStatus = ? where accountID = ?";
+		dbQuery = con.prepareStatement(updateStatusStr);
+		dbQuery.setString(1,  statusChange.getAccountStatus());
+		dbQuery.setInt(2,  statusChange.getAccountID());
+		dbQuery.executeUpdate();
 	}
 }
 
