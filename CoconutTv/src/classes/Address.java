@@ -1,8 +1,8 @@
 package classes;
 
 public class Address {
-	private String m_line1, m_line2, m_city, m_state;
-	private int m_zip;
+	private String m_line1, m_line2, m_city, m_state, m_zip;
+	
 	public String getLine1() {
 		return m_line1;
 	}
@@ -27,10 +27,10 @@ public class Address {
 	public void setState(String state) {
 		m_state = state;
 	}
-	public int getZip() {
+	public String getZip() {
 		return m_zip;
 	}
-	public void setZip(int zip) {
+	public void setZip(String zip) {
 		m_zip = zip;
 	}
 	
