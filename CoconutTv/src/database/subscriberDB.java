@@ -3,6 +3,7 @@ package database;
 import java.sql.*;
 import java.sql.Date;
 import java.util.*;
+import classes.Subscriber;
 
 //import the package.(name of the class that is being used)
 
@@ -27,7 +28,10 @@ public class subscriberDB {
 	public Connection getConnection() {
 		return con;
 	}
-	
+	public Subscriber getSub() throws SQLException{
+		return null;
+		
+	}
 	public void updateSubscriber(Subscriber changedSub) throws SQLException {
 		String personalInfo = "update subscriber set levelName = ?, firstName = ?, lastName = ?, phoneNumber = ?, emailAddress = ?, memberPassword = ?, accountStatus = ? where accountID = ?";
 		String addressInfo = "update subscriber set billAddressLine1 = ?, billAddressLine2 = ?, billCity = ?, billState = ?, billZipCode = ? where accountID = ?";
@@ -35,7 +39,7 @@ public class subscriberDB {
 		
 		dbQuery = con.prepareStatement(personalInfo);
 		
-		dbQuery.setString(1, changedSub.getlevelName());
+		dbQuery.setString(1, changedSub.getLevelName());
 		dbQuery.setString(2, changedSub.getFirstName());
 		dbQuery.setString(3, changedSub.getLastName());
 		dbQuery.setString(4, changedSub.getPhoneNumber());
