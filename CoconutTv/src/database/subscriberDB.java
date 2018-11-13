@@ -17,7 +17,7 @@ public class subscriberDB {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			
-			con = DriverManager.getConnection("jdbc:mysql://localhost/moviestoredb" , "scott", "tiger");
+			con = DriverManager.getConnection("jdbc:mysql://localhost/moviestoredb" , "root", "sesame");
 	}
 	catch (Exception ex) {
 		ex.printStackTrace();
@@ -43,19 +43,19 @@ public class subscriberDB {
 		dbQuery.setString(2, changedSub.getFirstName());
 		dbQuery.setString(3, changedSub.getLastName());
 		dbQuery.setString(4, changedSub.getPhoneNumber());
-		dbQuery.setString(5, changedSub.getEmailAddress());
-		dbQuery.setString(6, changedSub.getMemberPassword());
-		dbQuery.setString(7, changedSub.getAccountStarus());
+		dbQuery.setString(5, changedSub.getLoginInfo().getEmail());
+		dbQuery.setString(6, changedSub.getLoginInfo().getPassword());
+		dbQuery.setString(7, changedSub.getAccountStatus());
 		dbQuery.setInt(8, changedSub.getAccountID());
 		dbQuery.executeUpdate();
 		
 		dbQuery = con.prepareStatement(addressInfo);
 		
-		dbQuery.setString(1, changedSub.getBillAddressLine1());
-		dbQuery.setString(2, changedSub.getBillAddressLine2());
-		dbQuery.setString(3, changedSub.getBillCity());
-		dbQuery.setString(4, changedSub.getBillState());
-		dbQuery.setString(5, changedSub.getBillZipCode());
+		dbQuery.setString(1, changedSub.getAddress().getLine1());
+		dbQuery.setString(2, changedSub.getAddress().getLine2());
+		dbQuery.setString(3, changedSub.getAddress().getCity());
+		dbQuery.setString(4, changedSub.getAddress().getState());
+		dbQuery.setString(5, changedSub.getAddress().getZip());
 		dbQuery.setInt(6, changedSub.getAccountID());
 		dbQuery.executeUpdate();
 		
@@ -128,6 +128,21 @@ public class subscriberDB {
 		dbQuery.setString(1,  statusChange.getAccountStatus());
 		dbQuery.setInt(2,  statusChange.getAccountID());
 		dbQuery.executeUpdate();
+	}
+	
+	public int loginCheck(String email, String password) throws SQLException {
+		//for testing purposes only		
+		String test = "Select accountID from Subscriber where emailAddress = ? and memberPassword = ?";
+		dbQuery = con.prepareStatement(test);
+		dbQuery.setString(1, email);
+		dbQuery.setString(2, password);
+		
+		ResultSet rset = dbQuery.executeQuery();
+		rset.next();
+		int nunber = rset.getInt(1);
+		return nunber;
+		
+		
 	}
 }
 
