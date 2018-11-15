@@ -3,10 +3,38 @@ package classes;
 import java.util.List;
 
 public class Users {
-	private String m_username;
+	private String m_username, m_favoriteGenre;
 	private int m_accountID;
 	private List<Integer> m_favorites;
+	private List<Integer> m_recents;
+	private Crew m_favoriteCrew;
 	private int m_userID;
+	
+	
+	public String getFavoriteGenre() {
+		return m_favoriteGenre;
+	}
+	
+	public void setFavoriteGenre(String genre) {
+		m_favoriteGenre = genre;
+	}
+	
+	public void setRecents(List<Integer> newList) {
+		m_recents = newList;
+	}
+	
+	public List<Integer> getRecents() {
+		return m_recents;
+	}
+	
+	public void setFavoriteCrew(Crew favorite) {
+		m_favoriteCrew = favorite;
+	}
+	
+	public Crew getFavoriteCrew() {
+		return m_favoriteCrew;
+	}
+	
 	
 	public int getUserID() {
 		return m_userID;
