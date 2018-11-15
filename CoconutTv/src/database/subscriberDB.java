@@ -2,10 +2,13 @@ package database;
 
 import java.sql.*;
 import java.sql.Date;
-import java.util.*;
 import classes.Subscriber;
 
 //import the package.(name of the class that is being used)
+//make sure the Subscriber being passed as the parameter is one of the default values before you call this method
+//Database only accepts one of three values 'silver', 'gold' or 'platinum' for level name default is silver
+//Database only accepts one of three values 'active', 'canceled' or 'trial' for account status default is trial
+
 
 public class subscriberDB {
 
@@ -24,14 +27,14 @@ public class subscriberDB {
 		}
 	}
 
-	
 	public Connection getConnection() {
 		return con;
 	}
+	
 	public Subscriber getSub() throws SQLException{
 		return null;
-		
 	}
+	
 	public void updateSubscriber(Subscriber changedSub) throws SQLException {
 		String personalInfo = "update subscriber set levelName = ?, firstName = ?, lastName = ?, phoneNumber = ?, emailAddress = ?, memberPassword = ?, accountStatus = ? where accountID = ?";
 		String addressInfo = "update subscriber set billAddressLine1 = ?, billAddressLine2 = ?, billCity = ?, billState = ?, billZipCode = ? where accountID = ?";
@@ -61,13 +64,13 @@ public class subscriberDB {
 		
 		dbQuery = con.prepareStatement(cardInfo);
 		
-		dbQuery.setInt(1, changedSub.getCreditCardCCV());
-		dbQuery.setString(2, changedSub.getCreditCardNumber());
-		dbQuery.setString(3, changedSub.getFirstName());
-		dbQuery.setString(4, changedSub.getLastName());
-		dbQuery.setInt(5, changedSub.getExpYear());
-		dbQuery.setInt(6, changedSub.getExpMonth());
-		dbQuery.setString(7, changedSub.getCCType());
+		dbQuery.setInt(1, changedSub.getPaymentInfo().getCCV());
+		dbQuery.setString(2, changedSub.getPaymentInfo().getCCNumber());
+		dbQuery.setString(3, changedSub.getPaymentInfo().getFirstName());
+		dbQuery.setString(4, changedSub.getPaymentInfo().getLastName());
+		dbQuery.setInt(5, changedSub.getPaymentInfo().getExpYear());
+		dbQuery.setInt(6, changedSub.getPaymentInfo().getExpMonth());
+		dbQuery.setString(7, changedSub.getPaymentInfo().getCCType());
 		dbQuery.setInt(8, changedSub.getAccountID());
 		dbQuery.executeUpdate();
 		
@@ -80,22 +83,22 @@ public class subscriberDB {
 		dbQuery = con.prepareStatement(subInfo);
 		Date today = (Date) new java.util.Date();
 		
-		dbQuery.setString(1, addedSub.getlevelName());
+		dbQuery.setString(1, addedSub.getLevelName());
 		dbQuery.setString(2, addedSub.getFirstName());
 		dbQuery.setString(3, addedSub.getLastName());
-		dbQuery.setString(4, addedSub.getBillAddressLine1());
-		dbQuery.setString(5, addedSub.getBillAddressLine2());
-		dbQuery.setString(6, addedSub.getBillCity());
-		dbQuery.setString(7, addedSub.getBillState());
-		dbQuery.setString(8, addedSub.getBillZipCode());
+		dbQuery.setString(4, addedSub.getAddress().getLine1());
+		dbQuery.setString(5, addedSub.getAddress().getLine2());
+		dbQuery.setString(6, addedSub.getAddress().getCity());
+		dbQuery.setString(7, addedSub.getAddress().getState());
+		dbQuery.setString(8, addedSub.getAddress().getZip());
 		dbQuery.setString(9, addedSub.getPhoneNumber());
-		dbQuery.setString(10, addedSub.getEmailAddress());
-		dbQuery.setString(11, addedSub.getMemberPassword());
+		dbQuery.setString(10, addedSub.getLoginInfo().getEmail());
+		dbQuery.setString(11, addedSub.getLoginInfo().getPassword());
 		dbQuery.setDate(12, today);
 		dbQuery.setString(13, addedSub.getAccountStatus());
 		dbQuery.executeUpdate();
 
-		dbQuery = con.prepareStatement("select MAX(accointID) from subscriber");
+		dbQuery = con.prepareStatement("select MAX(accountID) from subscriber");
 		ResultSet rset = dbQuery.executeQuery();
 		rset.next();
 		addedSub.setAccountID(rset.getInt(1));
@@ -103,13 +106,13 @@ public class subscriberDB {
 		dbQuery = con.prepareStatement(cardInfo);
 		
 		dbQuery.setInt(1, addedSub.getAccountID());
-		dbQuery.setInt(2, addedSub.getCreditCardCCV());
-		dbQuery.setString(3, addedSub.getCreditCardNumber());
-		dbQuery.setString(4, addedSub.getFirstName());
-		dbQuery.setString(5, addedSub.getLastName());
-		dbQuery.setInt(6, addedSub.getExpYear());
-		dbQuery.setInt(7, addedSub.getExpMonth());
-		dbQuery.setString(8, addedSub.getCCType());
+		dbQuery.setInt(2, addedSub.getPaymentInfo().getCCV());
+		dbQuery.setString(3, addedSub.getPaymentInfo().getCCNumber());
+		dbQuery.setString(4, addedSub.getPaymentInfo().getFirstName());
+		dbQuery.setString(5, addedSub.getPaymentInfo().getLastName());
+		dbQuery.setInt(6, addedSub.getPaymentInfo().getExpYear());
+		dbQuery.setInt(7, addedSub.getPaymentInfo().getExpMonth());
+		dbQuery.setString(8, addedSub.getPaymentInfo().getCCType());
 		dbQuery.executeUpdate();	
 		
 	}
@@ -122,11 +125,19 @@ public class subscriberDB {
 		
 	}
 	
-	public void updateStatus(Subscriber statusChange) {
+	public void updateStatus(Subscriber statusChange) throws SQLException {
 		String updateStatusStr = "Update subscriber set accountStatus = ? where accountID = ?";
 		dbQuery = con.prepareStatement(updateStatusStr);
 		dbQuery.setString(1,  statusChange.getAccountStatus());
 		dbQuery.setInt(2,  statusChange.getAccountID());
+		dbQuery.executeUpdate();
+	}
+	
+	public void updateLevel (Subscriber levelChange) throws SQLException {
+		String updateLevelStr = "Update subscriber set levelName = ? where accountID = ?";
+		dbQuery = con.prepareStatement(updateLevelStr);
+		dbQuery.setString(1, levelChange.getLevelName());
+		dbQuery.setInt(2,  levelChange.getAccountID());
 		dbQuery.executeUpdate();
 	}
 	
