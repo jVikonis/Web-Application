@@ -6,7 +6,14 @@ public class Users {
 	private String m_username;
 	private int m_accountID;
 	private List<Integer> m_favorites;
+	private int m_userID;
 	
+	public int getUserID() {
+		return m_userID;
+	}
+	public void setUserID(int number) {
+		m_userID = number; 
+	}
 	public String getUsername() {
 		return m_username;
 	}
