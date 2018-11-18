@@ -14,28 +14,21 @@ public class Users {
 	public String getFavoriteGenre() {
 		return m_favoriteGenre;
 	}
-	
 	public void setFavoriteGenre(String genre) {
 		m_favoriteGenre = genre;
 	}
-	
 	public void setRecents(List<Integer> newList) {
 		m_recents = newList;
 	}
-	
 	public List<Integer> getRecents() {
 		return m_recents;
 	}
-	
 	public void setFavoriteCrew(Crew favorite) {
 		m_favoriteCrew = favorite;
 	}
-	
 	public Crew getFavoriteCrew() {
 		return m_favoriteCrew;
 	}
-	
-	
 	public int getUserID() {
 		return m_userID;
 	}
@@ -66,7 +59,6 @@ public class Users {
 			m_favorites.add(movieID);
 		}
 	}
-	
 	public void removeFavorite(int movieID) {
 		if (m_favorites.contains(movieID)) {
 			int index = m_favorites.indexOf(movieID);

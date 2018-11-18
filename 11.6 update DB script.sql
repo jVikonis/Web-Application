@@ -869,3 +869,5 @@ alter table movie add column views int default 0;
 alter table movie add column ratingSum float(2, 1) default 0;
 alter table movie add column ratingCount float(2, 1) default 0;
 alter table movie add column ratingAvg float(2, 1) as (ratingSum /ratingCount);
+
+alter table favorites add column userID int(10) auto_increment unique primary key;
