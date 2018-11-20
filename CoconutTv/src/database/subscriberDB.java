@@ -14,7 +14,7 @@ public class subscriberDB {
 	private Connection con = null;
 	private PreparedStatement dbQuery;
 
-	public void initializaJdbc() {
+	public void initializeJdbc() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 
