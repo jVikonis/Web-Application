@@ -62,5 +62,15 @@ public class userDB {
 		//dbQuery.executeUpdate();
 		
 	}
+	
+	public String getUser(int accountID) throws SQLException{
+		String select= "Select * from users where accountID=?";
+		dbQuery=con.prepareStatement(select);
+		dbQuery.setInt(1, accountID);
+		ResultSet rset = dbQuery.executeQuery();
+		rset.next();
+		String name = rset.getString(1);
+		return name;
+	}
 
 }
