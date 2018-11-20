@@ -1,0 +1,59 @@
+@charset "ISO-8859-1";
+
+.page-header {
+	font-size: 40px; 
+	text-align: center; 
+	margin-top: 50px;
+}
+body {
+	background-color: lightgrey;
+}
+.row {
+	text-align: center; 
+	margin-top: 200px;
+}
+.thumbnail:hover {
+	background-color: red; 
+	color: white; 
+	transition: .5s background-color;
+   -webkit-transition: .5s background-color;
+   -moz-transition: .5s background-color;
+   -o-transition: .5s background-color;
+}
+.thumbnail:hover h1 {
+	color: white; 
+	transition: .5s background-color;
+   -webkit-transition: .5s background-color;
+   -moz-transition: .5s background-color;
+   -o-transition: .5s background-color;
+}
+.thumbnail:hover h3 {
+	color: white;
+	transition: .5s background-color;
+   -webkit-transition: .5s background-color;
+   -moz-transition: .5s background-color;
+   -o-transition: .5s background-color; 
+}
+.btn-danger:hover {
+	background-color: white;
+	background: white; 
+	color: red; 
+	transition: .5s background-color;
+   -webkit-transition: .5s background-color;
+   -moz-transition: .5s background-color;
+   -o-transition: .5s background-color;
+}
+.btn-default:hover {
+	background-color: green; 
+	background: green; 
+	color: white; 
+}
+
+
+
+
+
+
+
+
+
