@@ -34,12 +34,12 @@
 				<h4>Update Payment Info <a href="">Update</a><br><br></h4>
 				<h4>Update Account Info <a href="">Update</a><br><br></h4>
 				
-				<div class="container">
+				
 				
 				<h4>Change the Plan <button type="button" class="btn btn-info btn" data-toggle="modal" data-target="#myModal">Change</button><br><br></h4>
 				
 				
-				</div>
+				
 				
 				<h4>Profile Management<a href="./profileManagement.jsp">Manage</a><br><br><br><br><br><br></h4>
 				
