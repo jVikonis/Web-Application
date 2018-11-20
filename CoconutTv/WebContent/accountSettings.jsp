@@ -31,17 +31,17 @@
  			</div>
   			<div class="col-sm-4">
   				<h4>Next charge (display info)<br><br></h4>
-				<h4>Update Payment Info <a href="">Update</a><br><br></h4>
-				<h4>Update Account Info <a href="">Update</a><br><br></h4>
+				<h4>Update Payment Info <button type="button" action="" class="btn btn-success btn" data-toggle="modal" data-target="#myModal">Update</button><br><br></h4>
+				<h4>Update Account Info <button type="button" action="" class="btn btn-success btn" data-toggle="modal" data-target="#myModal">Update</button><br><br></h4>
 				
 				
 				
-				<h4>Change the Plan <button type="button" class="btn btn-info btn" data-toggle="modal" data-target="#myModal">Change</button><br><br></h4>
+				<h4>Change the Plan <button type="button" class="btn btn-success btn" data-toggle="modal" data-target="#myModal">Change</button><br><br></h4>
 				
 				
 				
 				
-				<h4>Profile Management<a href="./profileManagement.jsp">Manage</a><br><br><br><br><br><br></h4>
+				<h4>Profile Management <a href="./profileManagement.jsp">Manage</a><br><br><br><br><br><br></h4>
 				
 				<h4><a href="./welcome.jsp">Cancel Plan</a> <a href="./startPage.jsp">Go back to Home Page</a></h4>
 				
