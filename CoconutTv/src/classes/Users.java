@@ -9,6 +9,7 @@ public class Users {
 	private List<Integer> m_recents;
 	private Crew m_favoriteCrew;
 	private int m_userID;
+	private String m_ageRestriction; 
 	
 	
 	public String getFavoriteGenre() {
@@ -64,5 +65,13 @@ public class Users {
 			int index = m_favorites.indexOf(movieID);
 			m_favorites.remove(index);
 		}
+	}
+	public String getAgeRestriction()
+	{
+		return m_ageRestriction; 
+	}
+	public void setAgeRestriction(String ageRestriction)
+	{
+		m_ageRestriction = ageRestriction; 
 	}
 }
