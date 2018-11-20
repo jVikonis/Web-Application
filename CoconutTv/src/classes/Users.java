@@ -3,10 +3,39 @@ package classes;
 import java.util.List;
 
 public class Users {
-	private String m_username;
+	private String m_username, m_favoriteGenre;
 	private int m_accountID;
 	private List<Integer> m_favorites;
+	private List<Integer> m_recents;
+	private Crew m_favoriteCrew;
+	private int m_userID;
+	private String m_ageRestriction; 
 	
+	
+	public String getFavoriteGenre() {
+		return m_favoriteGenre;
+	}
+	public void setFavoriteGenre(String genre) {
+		m_favoriteGenre = genre;
+	}
+	public void setRecents(List<Integer> newList) {
+		m_recents = newList;
+	}
+	public List<Integer> getRecents() {
+		return m_recents;
+	}
+	public void setFavoriteCrew(Crew favorite) {
+		m_favoriteCrew = favorite;
+	}
+	public Crew getFavoriteCrew() {
+		return m_favoriteCrew;
+	}
+	public int getUserID() {
+		return m_userID;
+	}
+	public void setUserID(int number) {
+		m_userID = number; 
+	}
 	public String getUsername() {
 		return m_username;
 	}
@@ -31,11 +60,18 @@ public class Users {
 			m_favorites.add(movieID);
 		}
 	}
-	
 	public void removeFavorite(int movieID) {
 		if (m_favorites.contains(movieID)) {
 			int index = m_favorites.indexOf(movieID);
 			m_favorites.remove(index);
 		}
+	}
+	public String getAgeRestriction()
+	{
+		return m_ageRestriction; 
+	}
+	public void setAgeRestriction(String ageRestriction)
+	{
+		m_ageRestriction = ageRestriction; 
 	}
 }

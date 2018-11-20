@@ -849,8 +849,7 @@ CREATE TABLE `favorites` (
     )ENGINE=InnoDB DEFAULT CHARSET=latin1;
     
 INSERT INTO favorites (userName) select user1 from users;
-INSERT INTO favorites (userName) select user2 from users;
-INSERT INTO favorites (userName) select user3 from users;
+
 
 ALTER TABLE subscriber add constraint chk_levelName check (levelName IN ('silver', 'gold', 'platinum'));
 ALTER TABLE subscriber add constraint chk_accountStatus check(accountStatus IN ('active', 'canceled', 'trial'));
@@ -858,7 +857,7 @@ ALTER TABLE favorites add constraint chk_favorites check(favorite1 IN (movie.mov
 ALTER TABLE favorites add constraint chk_favorites check(favorite2 IN (movie.movieID));
 ALTER TABLE favorites add constraint chk_favorites check(favorite3 IN (movie.movieID));
 
-alter table users add column ageRestriction enum('yes', 'no') default 'no';
+alter table favorites add column ageRestriction enum('yes', 'no') default 'no';
 
 alter table favorites add column crewPerson Int(10);
 alter table favorites add column recent1 Int(10);
@@ -869,3 +868,5 @@ alter table movie add column views int default 0;
 alter table movie add column ratingSum float(2, 1) default 0;
 alter table movie add column ratingCount float(2, 1) default 0;
 alter table movie add column ratingAvg float(2, 1) as (ratingSum /ratingCount);
+
+alter table favorites add column userID int(10) auto_increment unique primary key;
