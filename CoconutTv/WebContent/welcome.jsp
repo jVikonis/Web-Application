@@ -52,8 +52,10 @@
     			<div class="col-sm-offset-2 col-sm-8">
       			<button type="submit" value="login" class="btn btn-success">Log In</button>
    				</div>
+   				
   			</div>
-		</form> 		
+		</form> 	
+		<a href="./signUp.jsp" ><button type="submit" value="signUp" class="btn btn-success">Sign Up</button></a>
  		</div>
  		
  		
