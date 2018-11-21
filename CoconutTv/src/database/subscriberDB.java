@@ -29,46 +29,46 @@ public class subscriberDB {
 	}
 
 	public Subscriber getSub(int accountID) throws SQLException {
+		this.initializeJdbc();
 		String subInfo = "select * from subscriber where accountID = ?";
 		String subCardInfo = "select * from card where accountID = ?";
-		String userInfo = "select * from  users where accountID = ?";
 		dbQuery = con.prepareStatement(subInfo);
 		dbQuery.setInt(1, accountID);
-		
+
 		Subscriber sub = new Subscriber();
 		Address subAdd = new Address();
 		CreditCard subCard = new CreditCard();
 		LoginCredentials subLogin = new LoginCredentials();
-				
+
 		ResultSet rset = dbQuery.executeQuery();
 		rset.next();
 		sub.setAccountID(accountID);
 		sub.setLevelName(rset.getString(2));
 		sub.setFirstName(rset.getString(3));
 		sub.setLastName(rset.getString(4));
-		
+
 		subAdd.setLine1(rset.getString(5));
 		subAdd.setLine2(rset.getString(6));
 		subAdd.setCity(rset.getString(7));
 		subAdd.setState(rset.getString(8));
 		subAdd.setZip(rset.getString(9));
-		
+
 		sub.setAddress(subAdd);
 		sub.setPhoneNumber(rset.getString(10));
-		
+
 		subLogin.setEmail(rset.getString(11));
 		subLogin.setPassword(rset.getString(12));
-		
+
 		sub.setLoginInfo(subLogin);
 		sub.setCreateDate(rset.getDate(13));
 		sub.setAccountStatus(rset.getString(14));
-		
+
 		dbQuery = con.prepareStatement(subCardInfo);
 		dbQuery.setInt(1, accountID);
-		
+
 		rset = dbQuery.executeQuery();
 		rset.next();
-		
+
 		subCard.setCardID(rset.getInt(1));
 		subCard.setCCV(rset.getInt(3));
 		subCard.setCCNumber(rset.getString(4));
@@ -77,38 +77,16 @@ public class subscriberDB {
 		subCard.setExpYear(rset.getInt(7));
 		subCard.setExpMonth(rset.getInt(8));
 		subCard.setCCType(rset.getString(9));
-		
+
 		sub.setPaymentInfo(subCard);
 		
-		dbQuery = con.prepareStatement(userInfo);
-		dbQuery.setInt(1, accountID);
+		sub.setUserProfiles(new userDB().getUserList(sub.getAccountID()));
 		
-		rset = dbQuery.executeQuery();
-		rset.next();
-		
-		//Only adding the usernames to the list of users, the rest of the information should be loaded into
-		//the user at the user select screen
-//		List<Users> listUsers = null;
-//		Users subUser = new Users();
-//		subUser.setUsername(rset.getString(2));
-//		listUsers.add(subUser);
-//		
-//		subUser = new Users();
-//		subUser.setUsername(rset.getString(3));
-//		sub.getUserProfiles().add(subUser);
-//		listUsers.add(subUser);
-//		
-//		subUser = new Users();
-//		subUser.setUsername(rset.getString(4));
-//		sub.getUserProfiles().add(subUser);
-//		listUsers.add(subUser);
-//		
-//		sub.setUserProfiles(listUsers);
-//		
 		return sub;
 	}
 
 	public void updateSubscriber(Subscriber changedSub) throws SQLException {
+		this.initializeJdbc();
 		String personalInfo = "update subscriber set levelName = ?, firstName = ?, lastName = ?, phoneNumber = ?, emailAddress = ?, memberPassword = ?, accountStatus = ? where accountID = ?";
 		String addressInfo = "update subscriber set billAddressLine1 = ?, billAddressLine2 = ?, billCity = ?, billState = ?, billZipCode = ? where accountID = ?";
 		String cardInfo = "update card set creditCardCCV = ?, creditCardNumber = ?, cardHolderFristName = ?, cardHolderLastName = ?, expYear = ?, expMonth = ?, ccType = ? where accountID = ?";
@@ -146,10 +124,21 @@ public class subscriberDB {
 		dbQuery.setString(7, changedSub.getPaymentInfo().getCCType());
 		dbQuery.setInt(8, changedSub.getAccountID());
 		dbQuery.executeUpdate();
+		
+		//Updates the user table using the userDB class
+		new userDB().updateUser(changedSub.getUserProfiles());
+		
+		//Updates the favorites table using the favoritesDB class
+		for (int i = 0; i < changedSub.getUserProfiles().size(); i++) {
+			new favoritesDB().updateFavorites(changedSub.getUserProfiles().get(i));
+		}
+		
+		
 
 	}
 
 	public void addSubscriber(Subscriber addedSub) throws SQLException {
+		this.initializeJdbc();
 		String subInfo = "Insert into subscriber (levelName, firstName, lastName, billAddressLine1, billAddressLine2, billCity, billState, billZipCode, phoneNumber, emailAddress, memberPassword, accountCreateDate, accountStatus) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		String cardInfo = "Insert into card (accountID, creditCardCCV, creditcardNumber, cardholderfirstname, cardholderlastname, expyear,expmonth, cctype) values (?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -191,6 +180,7 @@ public class subscriberDB {
 	}
 
 	public void deleteSubsriber(int accountID) throws SQLException {
+		this.initializeJdbc();
 		String deleteRow = "Delete from Subscriber where accountID = ?";
 		dbQuery = con.prepareStatement(deleteRow);
 		dbQuery.setInt(1, accountID);
@@ -199,6 +189,7 @@ public class subscriberDB {
 	}
 
 	public void updateStatus(Subscriber statusChange) throws SQLException {
+		this.initializeJdbc();
 		String updateStatusStr = "Update subscriber set accountStatus = ? where accountID = ?";
 		dbQuery = con.prepareStatement(updateStatusStr);
 		dbQuery.setString(1, statusChange.getAccountStatus());
@@ -207,6 +198,7 @@ public class subscriberDB {
 	}
 
 	public void updateLevel(Subscriber levelChange) throws SQLException {
+		this.initializeJdbc();
 		String updateLevelStr = "Update subscriber set levelName = ? where accountID = ?";
 		dbQuery = con.prepareStatement(updateLevelStr);
 		dbQuery.setString(1, levelChange.getLevelName());
@@ -215,6 +207,7 @@ public class subscriberDB {
 	}
 
 	public int loginCheck(String email, String password) throws SQLException {
+		this.initializeJdbc();
 		String test = "Select accountID from Subscriber where emailAddress = ? and memberPassword = ?";
 		dbQuery = con.prepareStatement(test);
 		dbQuery.setString(1, email);
