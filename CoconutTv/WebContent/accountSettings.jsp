@@ -238,7 +238,7 @@
 				
 				
 				
-<!-- PAYMENT UPDATE MODAL -->
+<!-- PLAN UPDATE MODAL -->
 <div class="modal fade" id="updatePlan" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
@@ -277,7 +277,7 @@
 			</div>
 		</div>
 	</div>
-</div>  <!-- END OF PAYMENT UPDATE MODAL -->				
+</div>  <!-- END OF PLAN UPDATE MODAL -->				
 				
 				
 				
