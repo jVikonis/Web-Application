@@ -277,7 +277,7 @@
 			</div>
 		</div>
 	</div>
-</div>  <!-- END OF PLAN UPDATE MODAL -->				
+</div>  <!-- END OF PLAN UPDATE MODAL  -->				
 				
 				
 				
