@@ -39,74 +39,74 @@
   				<div class="form-group">
     				<label class="control-label col-sm-2" for="m_email">Email:</label>
     				<div class="col-sm-8">
-      				<input type="email" class="form-control" id="m_email" name="m_email" placeholder="e.g. Example@example.com">
+      				<input type="email" class="form-control" id="m_email" name="m_email" placeholder="e.g. Example@example.com" maxlength="45">
     				</div>
   				</div>
   				<div class="form-group">
     				<label class="control-label col-sm-2" for="m_password">Password:</label>
     				<div class="col-sm-8"> 
-      				<input type="password" class="form-control" id="m_password" name="m_password" placeholder="Enter password">
+      				<input type="password" class="form-control" id="m_password" name="m_password" placeholder="Enter password" maxlength="45">
     				</div>
   				</div>
   				<div class="form-group">
     				<label class="control-label col-sm-2" for="m_password1">Re-enter <br> password:</label>
     				<div class="col-sm-8"> 
-      				<input type="password" class="form-control" id="m_password1" name="m_password1" placeholder="Re-enter password">
+      				<input type="password" class="form-control" id="m_password1" name="m_password1" placeholder="Re-enter password" maxlength="45">
     				</div>
   				</div>
 				<div class="form-group">
     				<label class="control-label col-sm-2" for="m_firstName">First Name:</label>
     				<div class="col-sm-8">
-      				<input type="text" class="form-control" id="m_firstName" name="m_firstName" placeholder="Enter first name">
+      				<input type="text" class="form-control" id="m_firstName" name="m_firstName" placeholder="Enter first name" maxlength="45">
     				</div>
   				</div>
 				<div class="form-group">
     				<label class="control-label col-sm-2" for="m_lastName">Last Name:</label>
     				<div class="col-sm-8">
-      				<input type="text" class="form-control" id="m_lastName" name="m_lastName" placeholder="Enter last name">
+      				<input type="text" class="form-control" id="m_lastName" name="m_lastName" placeholder="Enter last name" maxlength="45">
     				</div>
   				</div>
 				
   				<div class="form-group">
     				<label class="control-label col-sm-2" for="dateOfBirth">Date of birth:</label>
     				<div class="col-sm-8"> 
-      				<input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth">
+      				<input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" maxlength="45">
     				</div>
   				</div>
   				<div class="form-group">
     				<label class="control-label col-sm-2" for="m_line1">Address line 1:</label>
     				<div class="col-sm-8">
-      				<input type="text" class="form-control" id="m_line1" name="m_line1" placeholder="e.g. 123 Fake St.">
+      				<input type="text" class="form-control" id="m_line1" name="m_line1" placeholder="e.g. 123 Fake St." maxlength="45">
     				</div>
   				</div>
   				<div class="form-group">
     				<label class="control-label col-sm-2" for="m_line2">Address line 2:</label>
     				<div class="col-sm-8">
-      				<input type="text" class="form-control" id="m_line2" name="m_line2" placeholder=" e.g. Apt.#, Suite #, etc.">
+      				<input type="text" class="form-control" id="m_line2" name="m_line2" placeholder=" e.g. Apt.#, Suite #, etc." maxlength="45">
     				</div>
   				</div>
   				<div class="form-group">
     				<label class="control-label col-sm-2" for="m_city">City:</label>
     				<div class="col-sm-8">
-      				<input type="text" class="form-control" id="m_city" name="m_city" placeholder="e.g. Chicago">
+      				<input type="text" class="form-control" id="m_city" name="m_city" placeholder="e.g. Chicago" maxlength="45">
     				</div>
   				</div>
   				<div class="form-group">
     				<label class="control-label col-sm-2" for="m_state">State:</label>
     				<div class="col-sm-8">
-      				<input type="text" class="form-control" id="m_state" name="m_state" placeholder="e.g. IL">
+      				<input type="text" class="form-control" id="m_state" name="m_state" placeholder="e.g. IL" maxlength="2">
     				</div>
   				</div>
   				<div class="form-group">
     				<label class="control-label col-sm-2" for="m_zip">Zip Code:</label>
     				<div class="col-sm-8">
-      				<input type="text" class="form-control" id="m_zip" name="m_zip" placeholder="e.g. 60007">
+      				<input type="text" class="form-control" id="m_zip" name="m_zip" placeholder="e.g. 60007" maxlength="5">
     				</div>
   				</div>
   				<div class="form-group">
     				<label class="control-label col-sm-2" for="m_phoneNumber">Phone Number:</label>
     				<div class="col-sm-8">
-      				<input type="tel" class="form-control" id="m_phoneNumber" name="m_phoneNumber" placeholder="e.g. (555) 555-0000">
+      				<input type="tel" class="form-control" id="m_phoneNumber" name="m_phoneNumber" placeholder="e.g. (555) 555-0000" maxlength="20">
     				</div>
   				</div>  				
   				<div class="form-group">
@@ -149,42 +149,42 @@
   				<div class="form-group">
     				<label class="control-label col-sm-2" for="cardHolderFirstName">First Name:</label>
     				<div class="col-sm-8">
-      				<input type="text" class="form-control" id="m_firstName" name="m_firstName" placeholder="Card holder first name">
+      				<input type="text" class="form-control" id="m_firstName" name="m_firstName" placeholder="Card holder first name" maxlength="45">
     				</div>
   				</div>
   				<div class="form-group">
     				<label class="control-label col-sm-2" for="cardHolderLastName">Last Name:</label>
     				<div class="col-sm-8">
-      				<input type="text" class="form-control" id="m_lastName" name="m_lastName" placeholder="Card holder last name">
+      				<input type="text" class="form-control" id="m_lastName" name="m_lastName" placeholder="Card holder last name" maxlength="45">
     				</div>
   				</div>
   				<div class="form-group">
     				<label class="control-label col-sm-2" for="m_ccNumber">Credit Card Number:</label>
     				<div class="col-sm-8">
-      				<input type="text" class="form-control" id="m_ccNumber" name="m_ccNumber" placeholder="1234 5678 9000 0000">
+      				<input type="text" class="form-control" id="m_ccNumber" name="m_ccNumber" placeholder="1234 5678 9000 0000" maxlength="16">
     				</div>
   				</div>
   				<div class="form-group">
     				<label class="control-label col-sm-2" for="m_ccType">Credit Card Type:</label>
     				<div class="col-sm-8">
-      				<input type="text" class="form-control" id="m_ccType" name="m_ccType" placeholder="e.g. Visa, Discover, MasterCard ,etc.">
+      				<input type="text" class="form-control" id="m_ccType" name="m_ccType" placeholder="e.g. Visa, Discover, MasterCard ,etc." maxlength="45">
     				</div>
   				</div>
   				<div class="form-group"> 
   				<div class="form-row">
     				<label class="control-label col-sm-2" for="m_ccExpiration">Expiration Month/Year:</label>
     				<div class="col-sm-4">
-      				<input type="text" class="form-control" id="m_expMonth" name="m_expMonth" placeholder="e.g. 9">
+      				<input type="text" class="form-control" id="m_expMonth" name="m_expMonth" placeholder="e.g. 9" maxlength="2">
       				</div>
       				<div class="col-sm-4">
-      				<input type="text" class="form-control" id="m_expYear" name="m_expYear" placeholder="e.g. 2020">
+      				<input type="text" class="form-control" id="m_expYear" name="m_expYear" placeholder="e.g. 2020" maxlength="4">
     				</div>
   				</div>
   				</div>
   				<div class="form-group">
     				<label class="control-label col-sm-2" for="m_ccv">CCV:</label>
     				<div class="col-sm-8">
-      				<input type="text" class="form-control" id="m_ccv" name="m_ccv" placeholder="e.g. 000">
+      				<input type="text" class="form-control" id="m_ccv" name="m_ccv" placeholder="e.g. 000" maxlength="3">
     				</div>
   				</div>
   				

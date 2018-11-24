@@ -32,19 +32,20 @@
   			<div class="form-group">
    				<label class="control-label col-sm-2" for="m_email">Email:</label>
     			<div class="col-sm-8">
-     			<input type="email" class="form-control" id="m_email" name="m_email" placeholder="Enter email">
+     			<input type="email" class="form-control" id="m_email" name="m_email" placeholder="Enter email" maxlength="45">
    				</div>
   			</div>
   			<div class="form-group">
    				<label class="control-label col-sm-2" for="m_password">Password:</label>
     			<div class="col-sm-8"> 
-      			<input type="password" class="form-control" id="m_password" name="m_password" placeholder="Enter password">
+      			<input type="password" class="form-control" id="m_password" name="m_password" placeholder="Enter password" maxlength="45">
     			</div>
   			</div>
   			<div class="form-group"> 
     			<div class="col-sm-offset-2 col-sm-8">
       			<div>
-        		<label><a href="" action="./getPassword.jsp" >Forgot Password? </a></label>
+        		<label><a href="" action="./getPassword.jsp" >Forgot Password? </a></label><br>
+        		<label>Not a Member? <a href="./signUp.jsp">Sign Up!</a></label>
       			</div>
     			</div>
   			</div>
@@ -55,7 +56,6 @@
    				
   			</div>
 		</form> 	
-		<a href="./signUp.jsp" ><button type="submit" value="signUp" class="btn btn-success">Sign Up</button></a>
  		</div>
  		
  		
@@ -100,7 +100,26 @@
   		
   		
 	</div>
+	
+	
+	
+	<footer class="navbar-default navbar-fixed-bottom">
+  		<div class="container-fluid">
+  			<div class="boom">
+    		<a href="./adminLogin.jsp" style="float:right">Admin<span class="glyphicon glyphicon-log-in"></span></a>
+  			</div>
+  		</div>
+	</footer>
+	
 	</div>
 	
+	
+	
+	
+	
+	
+	
 </body>
+
+
 </html>

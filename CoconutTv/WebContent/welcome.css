@@ -43,3 +43,12 @@ body {
    -moz-transition: .5s background-color;
    -o-transition: .5s background-color;
 }
+footer {
+	height: 30px;
+}
+.boom a{
+	margin-right: 10px; 
+	margin-top: 5px;
+	margin-bottom: 5px;
+	
+}

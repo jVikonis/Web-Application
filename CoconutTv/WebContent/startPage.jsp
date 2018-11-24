@@ -76,7 +76,7 @@
   			</div>		
   			<div class="col-sm-4 col-md-4">
     			<a href="./selectedMovie.jsp" class="thumbnail">    				
-      				<img src="./images/21grams.png" alt="movieImage" id="movieImage" name="movieImage">      				
+      				<img src="./images/avengers1.PNG" alt="movieImage" id="movieImage" name="movieImage">      				
     			</a>
   			</div>	
   			<div class="col-sm-4 col-md-4">
