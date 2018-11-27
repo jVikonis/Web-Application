@@ -4,25 +4,11 @@ import java.sql.*;
 import classes.*;
 
 public class movieDB {
-	private Connection con = null;
-	private PreparedStatement dbQuery;
-
-	public void initializeJdbc() {
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-
-			con = DriverManager.getConnection("jdbc:mysql://localhost/moviestoredb", "root", "sesame");
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-	}
-
-	public Connection getConnection() {
-		return con;
-	}
 	
-	public int getViews(int movieID) throws SQLException { // Returns views
-		this.initializeJdbc();
+	public static int getViews(int movieID) throws SQLException { // Returns views
+		Connection con = getConnection();
+		PreparedStatement dbQuery;
+		
 		int views;
 		
 		dbQuery = con.prepareStatement("select views from movie where movieID = ?");
@@ -34,8 +20,9 @@ public class movieDB {
 		return views;
 	}
 	
-	public void setViews(int movieID, int views) throws SQLException {
-		this.initializeJdbc();
+	public static void setViews(int movieID, int views) throws SQLException {
+		Connection con = getConnection();
+		PreparedStatement dbQuery;
 		
 		dbQuery = con.prepareStatement("update movie set views = ? where movieID = ?");
 		dbQuery.setInt(1, views);
@@ -43,8 +30,10 @@ public class movieDB {
 		dbQuery.executeQuery();
 	}
 	
-	public double getRatingAvg(int movieID) throws SQLException {
-		this.initializeJdbc();
+	public static double getRatingAvg(int movieID) throws SQLException {
+		Connection con = getConnection();
+		PreparedStatement dbQuery;
+		
 		double rating;
 		
 		dbQuery = con.prepareStatement("select ratingAvg from movie where movieID = ?");
@@ -57,8 +46,9 @@ public class movieDB {
 		return rating;
 	}
 	
-	public void setRatingAvg(int movieID, double newRatingAvg) throws SQLException {
-		this.initializeJdbc();
+	public static void setRatingAvg(int movieID, double newRatingAvg) throws SQLException {
+		Connection con = getConnection();
+		PreparedStatement dbQuery;
 		
 		dbQuery = con.prepareStatement("update movie set ratingAvg = ? where movieID = ?");
 		dbQuery.setDouble(1, newRatingAvg);
@@ -66,8 +56,10 @@ public class movieDB {
 		dbQuery.executeQuery();
 	}
 	
-	public int getRatingCount(int movieID) throws SQLException {
-		this.initializeJdbc();
+	public static int getRatingCount(int movieID) throws SQLException {
+		Connection con = getConnection();
+		PreparedStatement dbQuery;
+		
 		int ratingCount;
 		
 		dbQuery = con.prepareStatement("select ratingCount from movie where movieID = ?");
@@ -80,8 +72,9 @@ public class movieDB {
 		return ratingCount;
 	}
 	
-	public void setRatingCount(int movieID, int count) throws SQLException {
-		this.initializeJdbc();
+	public static void setRatingCount(int movieID, int count) throws SQLException {
+		Connection con = getConnection();
+		PreparedStatement dbQuery;
 		
 		dbQuery = con.prepareStatement("update movie set ratingCount = ? where movieID = ?");
 		dbQuery.setInt(1, count);
@@ -89,8 +82,10 @@ public class movieDB {
 		dbQuery.executeQuery();
 	}
 	
-	public int getRatingSum(int movieID) throws SQLException {
-		this.initializeJdbc();
+	public static int getRatingSum(int movieID) throws SQLException {
+		Connection con = getConnection();
+		PreparedStatement dbQuery;
+		
 		int ratingSum;
 		
 		dbQuery = con.prepareStatement("select ratingSum from movie where movieID = ?");
@@ -103,8 +98,9 @@ public class movieDB {
 		return ratingSum;
 	}
 	
-	public void setRatingSum(int movieID, int newSum) throws SQLException {
-		this.initializeJdbc();
+	public static void setRatingSum(int movieID, int newSum) throws SQLException {
+		Connection con = getConnection();
+		PreparedStatement dbQuery;
 		
 		dbQuery = con.prepareStatement("update movie set ratingCount = ? where movieID = ?");
 		dbQuery.setInt(1, newSum);
@@ -112,7 +108,7 @@ public class movieDB {
 		dbQuery.executeQuery();
 	}
 	
-	public void addRating(int movieID, int userRating) throws SQLException { // Adds user rating to ratingSum, increments ratingCount,
+	public static void addRating(int movieID, int userRating) throws SQLException { // Adds user rating to ratingSum, increments ratingCount,
 														 // then calculates ratingAvg, stores back in database
 		int ratingCount, ratingSum;
 		double ratingAvg;
@@ -126,10 +122,10 @@ public class movieDB {
 		setRatingAvg(movieID, ratingAvg);
 	}
 	
-	public Movie getMovie(int movieID) throws SQLException {
+	public static Movie getMovie(int movieID) throws SQLException {
 		Movie movie = new Movie();
-		crewDB crew = new crewDB();
-		this.initializeJdbc();
+		Connection con = getConnection();
+		PreparedStatement dbQuery;
 		
 		dbQuery = con.prepareStatement("select * from movie where movieID = ?");
 		dbQuery.setInt(1, movieID);
@@ -144,7 +140,7 @@ public class movieDB {
 		movie.setMovieTrailer(rset.getString(6));
 		movie.setDate(rset.getString(7));
 		movie.setMPAARating(rset.getString(8));
-		movie.setDirector(crew.getCrew(rset.getString(9))); // Gets string containing director name, then sends that to crewDB to retrieve
+		movie.setDirector(crewDB.getCrew(rset.getString(9))); // Gets string containing director name, then sends that to crewDB to retrieve
 															// a crew type object and returns that
 		movie.setActor1(rset.getString(10));
 		movie.setActor2(rset.getString(11));
@@ -156,9 +152,9 @@ public class movieDB {
 		return movie;
 	}
 	
-	public void addMovie(Movie newMovie) throws SQLException {
-		this.initializeJdbc();
-		crewDB newCrewDB = new crewDB();
+	public static void addMovie(Movie newMovie) throws SQLException {
+		Connection con = getConnection();
+		PreparedStatement dbQuery;
 		
 		dbQuery = con.prepareStatement("Insert into crew (movieID, movieGenre, movieTitle, movieDescription, movieImage, movieTrailer,"
 				+ "movieReleaseDate, movieMPAARating, director, actor1, actor2, views, ratingSum, ratingCount, ratingAvg) "
@@ -172,7 +168,7 @@ public class movieDB {
 		dbQuery.setString(7, newMovie.getDate());
 		dbQuery.setString(8, newMovie.getMPAARating());
 		dbQuery.setString(9, newMovie.getDirector().getFirstName() + " " + newMovie.getDirector().getLastName());
-		newCrewDB.addCrew(newMovie.getDirector());
+		crewDB.addCrew(newMovie.getDirector());
 		dbQuery.setString(10, newMovie.getActor1());
 		dbQuery.setString(11, newMovie.getActor2());
 		dbQuery.setInt(12, newMovie.getViews());
@@ -181,5 +177,17 @@ public class movieDB {
 		dbQuery.setDouble(15, newMovie.getRatingAvg());
 		
 		dbQuery.executeQuery();
+	}
+	
+	private static Connection getConnection() {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost/moviestoredb", "root", "sesame");
+			return con;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return null;
 	}
 }

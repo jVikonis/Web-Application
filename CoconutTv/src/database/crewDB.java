@@ -4,25 +4,11 @@ import java.sql.*;
 import classes.*;
 
 public class crewDB {
-	private Connection con = null;
-	private PreparedStatement dbQuery;
-
-	public void initializeJdbc() {
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-
-			con = DriverManager.getConnection("jdbc:mysql://localhost/moviestoredb", "root", "sesame");
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-	}
-
-	public Connection getConnection() {
-		return con;
-	}
 	
-	public Crew getCrew(String name) throws SQLException { // Requires full name, example "Spike Lee"
-		this.initializeJdbc();
+	public static Crew getCrew(String name) throws SQLException { // Requires full name, example "Spike Lee"
+		Connection con = getConnection();
+		PreparedStatement dbQuery;
+		
 		Crew crew = new Crew();
 		
 		String qString = "select * from crew";
@@ -39,12 +25,26 @@ public class crewDB {
 		return crew;
 	}
 	
-	public void addCrew(Crew newCrew) throws SQLException {
+	public static void addCrew(Crew newCrew) throws SQLException {
+		Connection con = getConnection();
+		PreparedStatement dbQuery;
+		
 		String qString = "Insert into crew (crewID, crewFirstName, crewLastName) values (?, ?, ?)";
 		dbQuery = con.prepareStatement(qString);
 		dbQuery.setInt(1, newCrew.getCrewID());
 		dbQuery.setString(2, newCrew.getFirstName());
 		dbQuery.setString(3, newCrew.getLastName());
 		dbQuery.executeQuery();
+	}
+	
+	private static Connection getConnection() {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost/moviestoredb", "root", "sesame");
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return con;
 	}
 }
