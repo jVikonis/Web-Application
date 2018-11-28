@@ -1,30 +1,28 @@
 package database;
 
 import java.sql.*;
-import classes.*;
-
-import java.sql.Date;
 import java.util.*;
 
-import classes.Movie;
+import classes.*;
 
 public class favoritesDB {
 
-	private Connection con = null;
-	private PreparedStatement dbQuery;
+	private static Connection con = null;
+	private static PreparedStatement dbQuery;
 
-	public void initializeJdbc() {
+	private static Connection getConnection() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-
 			con = DriverManager.getConnection("jdbc:mysql://localhost/moviestoredb", "root", "sesame");
+			return con;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
+		return null;
 	}
 
-	public void addFavorite(Users favUser) throws SQLException {
-		this.initializeJdbc();
+	public static void addFavorite(Users favUser) throws SQLException {
+		getConnection();
 		String favInfo = "Insert into favorites(userName, genrePreference, favorite1, favorite2, favorite3, crewPerson, recent1, recent2, recent3) values (?,?,?,?,?,?,?,?,?)";
 		dbQuery = con.prepareStatement(favInfo);
 
@@ -47,16 +45,16 @@ public class favoritesDB {
 
 	}
 
-	public void deleteFavorite(Users favDeleteFromUser) throws SQLException {
-		this.initializeJdbc();
+	public static void deleteFavorite(Users favDeleteFromUser) throws SQLException {
+		getConnection();
 		String deleteRow = "Delete from favorites where userID = ?";
 		dbQuery = con.prepareStatement(deleteRow);
 		dbQuery.setInt(1, favDeleteFromUser.getUserID());
 		dbQuery.executeUpdate();
 	}
 
-	public void updateFavorites(Users updatedUser) throws SQLException {
-		this.initializeJdbc();
+	public static void updateFavorites(Users updatedUser) throws SQLException {
+		getConnection();
 		String updateFav = "update favorites set userName = ?, genrePreference = ?, favorite1 = ?, favorite2 = ?, favorite3 = ?, crewPerson = ?, recent1 = ?, recent2 = ?, recent3 = ?, where userID = ?";
 		dbQuery = con.prepareStatement(updateFav);
 
@@ -75,43 +73,45 @@ public class favoritesDB {
 
 	}
 	
-	public Users getUsersObj(int userID) throws SQLException {
-		this.initializeJdbc();
-		if (userID == -1) {
+	public static Users getUsersObj(int userID) throws SQLException {
+		getConnection();
+		if (userID == 0) {
 			//If there is not user created for that field
 			return null;
 		}
 		Users temp = new Users();
+		List<Integer> tempFav = new ArrayList<Integer>();
+		List<Integer> tempRecent = new ArrayList<Integer>();
+		temp.setFavorites(tempFav);
+		temp.setRecents(tempRecent);
 		Crew tempCrew = new Crew();
 		String select = "select * from favorites where userID = ?";
 		dbQuery = con.prepareStatement(select);
 		dbQuery.setInt(1,  userID);
 		ResultSet rset = dbQuery.executeQuery();
 		rset.next();
-		temp.setUsername(rset.getString(1));
-		temp.setFavoriteGenre(rset.getString(2));
-		temp.getFavorites().add(rset.getInt(3));
-		temp.getFavorites().add(rset.getInt(4));
-		temp.getFavorites().add(rset.getInt(5));
-		temp.setAgeRestriction(rset.getString(6));
-		temp.getRecents().add(rset.getInt(8));
-		temp.getRecents().add(rset.getInt(9));
-		temp.getRecents().add(rset.getInt(10));
+		temp.setUsername(rset.getString("username"));
+		temp.setFavoriteGenre(rset.getString("genrePreference"));
+		temp.getFavorites().add(rset.getInt("favorite1"));
+		temp.getFavorites().add(rset.getInt("favorite2"));
+		temp.getFavorites().add(rset.getInt("favorite3"));
+		temp.setAgeRestriction(rset.getString("agerestriction"));
+		temp.getRecents().add(rset.getInt("recent1"));
+		temp.getRecents().add(rset.getInt("recent2"));
+		temp.getRecents().add(rset.getInt("recent3"));
 		temp.setUserID(userID);
 		
-		rset = dbQuery.executeQuery("select * from crew where crewID = " + rset.getInt(7));
-		rset.next();
-		tempCrew.setCrewID(rset.getInt(1));
-		tempCrew.setFirstName(rset.getString(2));
-		tempCrew.setLastName(rset.getString(3));
-		
-		temp.setFavoriteCrew(tempCrew);
-		
+		rset = dbQuery.executeQuery("select * from crew where crewID = " + rset.getInt("crewPerson"));
+		if (rset.next()) {
+			tempCrew.setCrewID(rset.getInt("crewid"));
+			tempCrew.setFirstName(rset.getString("crewFirstname"));
+			tempCrew.setLastName(rset.getString("crewLastname"));
+			temp.setFavoriteCrew(tempCrew);
+		}
+		else {
+			temp.setFavoriteCrew(null);
+		}		
 		return temp;		
-	}
-
-	public Connection getConnection() {
-		return con;
 	}
 
 }

@@ -831,24 +831,50 @@ INSERT INTO `queue` (`accountID`,`movieID`,`queueSequence`,`movieTitle`) VALUES
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `accountID` int(10) unsigned NOT NULL,
-  `user1` varchar(10) NOT NULL,
-  `user2` varchar(10) default null,
-  `user3` varchar(10) default null,
+  `user1` int(10) default NULL,
+  `user2` int(10) default null,
+  `user3` int(10) default null,
   PRIMARY KEY  USING BTREE (`accountID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-insert into users (accountID, user1) select accountID , firstName from subscriber;
+insert into users (accountID, user1) values 
+(10001, 1), 
+(10002, 2),
+(10003, 3), 
+(10004, 4),
+(10005, 5), 
+(10006, 6),
+(10007, 7), 
+(10008, 8),
+(10009, 9), 
+(10010, 10),
+(10011, 11), 
+(10012, 12),
+(10013, 13), 
+(10014, 14),
+(10015, 15), 
+(10016, 16),
+(10017, 17), 
+(10018, 18),
+(10019, 19), 
+(10020, 20);
 
 DROP TABLE IF EXISTS `favorites`;
 CREATE TABLE `favorites` (
+	`userid` int(10) auto_increment primary key,
 	`userName` varchar(10) NOT NULL,
-    `genrePreference` varchar(45) default NULL,
-    `favorite1` int(10) default NULL,
-    `favorite2` int(10) default NULL,
-    `favorite3` int(10) default NULL
+    `genrePreference` varchar(45) default 'None',
+    `favorite1` int(10) default 0,
+    `favorite2` int(10) default 0,
+    `favorite3` int(10) default 0,
+    `crewPerson` int(10) default 0,
+    `recent1` int(10) default 0,
+    `recent2` int(10) default 0,
+    `recent3` int(10) default 0,
+    `ageRestriction` enum('yes', 'no') default 'no'
     )ENGINE=InnoDB DEFAULT CHARSET=latin1;
     
-INSERT INTO favorites (userName) select user1 from users;
+INSERT INTO favorites (userName) select firstName from subscriber;
 
 
 ALTER TABLE subscriber add constraint chk_levelName check (levelName IN ('silver', 'gold', 'platinum'));
@@ -857,16 +883,15 @@ ALTER TABLE favorites add constraint chk_favorites check(favorite1 IN (movie.mov
 ALTER TABLE favorites add constraint chk_favorites check(favorite2 IN (movie.movieID));
 ALTER TABLE favorites add constraint chk_favorites check(favorite3 IN (movie.movieID));
 
-alter table favorites add column ageRestriction enum('yes', 'no') default 'no';
-
-alter table favorites add column crewPerson Int(10);
-alter table favorites add column recent1 Int(10);
-alter table favorites add column recent2 Int(10);
-alter table favorites add column recent3 Int(10);
-
-alter table movie add column views int default 0;
-alter table movie add column ratingSum float(2, 1) default 0;
-alter table movie add column ratingCount float(2, 1) default 0;
+alter table movie add column views int default 1;
+alter table movie add column ratingSum float(2, 1) default 1;
+alter table movie add column ratingCount float(2, 1) default 1;
 alter table movie add column ratingAvg float(2, 1) as (ratingSum /ratingCount);
 
 alter table favorites add column userID int(10) auto_increment unique primary key;
+
+Drop table if exists `quotes`;
+create table `quotes` (
+`quoteID` int auto_increment primary key,
+`quoteString` text not null,
+`movieTitle` text not null);

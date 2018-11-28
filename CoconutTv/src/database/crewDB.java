@@ -40,11 +40,12 @@ public class crewDB {
 	private static Connection getConnection() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost/moviestoredb", "root", "sesame");
-		} catch (Exception ex) {
+			return con;
+		} 
+		catch (Exception ex) {
 			ex.printStackTrace();
 		}
-		return con;
+		return null;
 	}
 }

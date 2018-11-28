@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<jsp:useBean id="loggedInSub" class = "classes.Subscriber" scope = "session"></jsp:useBean>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -16,9 +17,8 @@
 <link href="./welcome.css" rel="stylesheet" type="text/css">
 <title>Welcome Page</title>
 </head>
-
-
 <body>
+	<input type = "hidden" name = "logincheckFail" value = "false">
 	<div class="container-fluid">
 	<div class="page-header">
 		<h1> Welcome <br> to <br> Gilligan's CoconutTV!</h1>
@@ -26,9 +26,15 @@
 	
 	<div class="row">
  		<div class="col-sm-4">
- 		<h3>Log In / Sign Up<br><br></h3>
+ 		<h3>Log In / Sign Up<br><br>
+ 		<% if(request.getAttribute("loginCheckFail") == "true") {
+ 			//TODO: Can we change this font, color and size to match
+ 			out.println("Invalid Username or Password");
+ 		}%>
+ 		</h3>
  		
- 		<form class="form-horizontal" action="./selectProfile.jsp" method="post">
+ 		
+ 		<form class="form-horizontal" action="Login" method="post">
   			<div class="form-group">
    				<label class="control-label col-sm-2" for="m_email">Email:</label>
     			<div class="col-sm-8">

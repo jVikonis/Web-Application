@@ -4,24 +4,23 @@ import java.sql.*;
 import java.util.*;
 
 public class QueueDB {
-	private Connection con = null;
-	private PreparedStatement dbQuery;
+	private static Connection con = null;
+	private static PreparedStatement dbQuery;
 
-	public void initializeJdbc() {
+	private static Connection getConnection() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 
-			con = DriverManager.getConnection("jdbc:mysql://localhost/moviestoredb", "root", "sesame");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost/moviestoredb", "root", "sesame");
+			return con;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
+		return null;
 	}
-
-	public Connection getConnection() {
-		return con;
-	}
-
-	public int getNumberofRentals(int accountID) throws SQLException {
+	
+	public static int getNumberofRentals(int accountID) throws SQLException {
+		getConnection();
 		String count = "select count(*) as Rentals from queue where accountID = ?";
 		dbQuery = con.prepareStatement(count);
 		dbQuery.setInt(1, accountID);
@@ -34,8 +33,8 @@ public class QueueDB {
 	// Supplied two methods for checking if a movie is already checked out, one by
 	// title and one by movie id.
 
-	public boolean movieCheckedOut(String movieTitle, int accountID) throws SQLException {
-		this.initializeJdbc();
+	public static boolean movieCheckedOut(String movieTitle, int accountID) throws SQLException {
+		getConnection();
 		String movieCheckString = "select movietitle from queue where accountID = ?";
 		dbQuery = con.prepareStatement(movieCheckString);
 		dbQuery.setInt(1, accountID);
@@ -48,8 +47,8 @@ public class QueueDB {
 		return movieTitles.contains(movieTitle);
 	}
 
-	public boolean movieCheckedOut(int movieID, int accountID) throws SQLException {
-		this.initializeJdbc();
+	public static boolean movieCheckedOut(int movieID, int accountID) throws SQLException {
+		getConnection();
 		String movieCheckString = "select movieId from queue where accountID = ?";
 		dbQuery = con.prepareStatement(movieCheckString);
 		dbQuery.setInt(1, accountID);
@@ -67,8 +66,8 @@ public class QueueDB {
 	// This does not check if the rent limit is reached or if the movie is already
 	// rented. This check must be done prior to
 	// executing this method
-	public void rentOutMovie(int movieID, String movieTitle, int accountID) throws SQLException {
-		this.initializeJdbc();
+	public static void rentOutMovie(int movieID, String movieTitle, int accountID) throws SQLException {
+		getConnection();
 		String rentMovie = "insert into queue (accountID, movieID, accountID) values (?,?,?);";
 		dbQuery = con.prepareStatement(rentMovie);
 		dbQuery.setInt(1, accountID);
@@ -77,8 +76,8 @@ public class QueueDB {
 		dbQuery.executeUpdate();
 	}
 
-	public void returnMovie(int accountID, int movieID) throws SQLException {
-		this.initializeJdbc();
+	public static void returnMovie(int accountID, int movieID) throws SQLException {
+		getConnection();
 		String returnMovie = "delete from queue where accountID = ? and movieID = ?";
 		dbQuery = con.prepareStatement(returnMovie);
 		dbQuery.setInt(1, accountID);

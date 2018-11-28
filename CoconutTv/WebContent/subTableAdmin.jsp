@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<jsp:useBean id = "subTable" scope = "session" class = "database.adminDB"></jsp:useBean>
 <%@ page import = "java.sql.*" %>
+<%@ page import = "database.*" %>
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -14,8 +14,8 @@
 	String table = "subscriber";
 	//This should be passed down from the page that collects the parameters
 	String tableName = request.getParameter("tablename");
-	subTable.initializeJdbc();
-	ResultSet rsColumns = subTable.getConnection().getMetaData().getColumns(null, null, table,null);
+	
+	ResultSet rsColumns = adminDB.getConnection().getMetaData().getColumns(null, null, table,null);
 	%>
 	
 	<table border = "1">
@@ -27,7 +27,7 @@
 	</tr>
 
 	<% 
-	ResultSet rs = subTable.getTableData(table);
+	ResultSet rs = adminDB.getTableData(table);
 	
 	// Get column count
 	int columnCount = rs.getMetaData().getColumnCount();

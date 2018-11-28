@@ -11,25 +11,22 @@ import classes.*;
 
 public class subscriberDB {
 
-	private Connection con = null;
-	private PreparedStatement dbQuery;
+	private static Connection con = null;
+	private static PreparedStatement dbQuery;
 
-	public void initializeJdbc() {
+	private static Connection getConnection() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-
 			con = DriverManager.getConnection("jdbc:mysql://localhost/moviestoredb", "root", "sesame");
+			return con;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
+		return null;
 	}
 
-	public Connection getConnection() {
-		return con;
-	}
-
-	public Subscriber getSub(int accountID) throws SQLException {
-		this.initializeJdbc();
+	public static Subscriber getSub(int accountID) throws SQLException {
+		getConnection();
 		String subInfo = "select * from subscriber where accountID = ?";
 		String subCardInfo = "select * from card where accountID = ?";
 		dbQuery = con.prepareStatement(subInfo);
@@ -79,14 +76,14 @@ public class subscriberDB {
 		subCard.setCCType(rset.getString(9));
 
 		sub.setPaymentInfo(subCard);
-		
-		sub.setUserProfiles(new userDB().getUserList(sub.getAccountID()));
-		
+
+		sub.setUserProfiles(userDB.getUserList(sub.getAccountID()));
+
 		return sub;
 	}
 
 	public void updateSubscriber(Subscriber changedSub) throws SQLException {
-		this.initializeJdbc();
+		getConnection();
 		String personalInfo = "update subscriber set levelName = ?, firstName = ?, lastName = ?, phoneNumber = ?, emailAddress = ?, memberPassword = ?, accountStatus = ? where accountID = ?";
 		String addressInfo = "update subscriber set billAddressLine1 = ?, billAddressLine2 = ?, billCity = ?, billState = ?, billZipCode = ? where accountID = ?";
 		String cardInfo = "update card set creditCardCCV = ?, creditCardNumber = ?, cardHolderFristName = ?, cardHolderLastName = ?, expYear = ?, expMonth = ?, ccType = ? where accountID = ?";
@@ -124,21 +121,19 @@ public class subscriberDB {
 		dbQuery.setString(7, changedSub.getPaymentInfo().getCCType());
 		dbQuery.setInt(8, changedSub.getAccountID());
 		dbQuery.executeUpdate();
-		
-		//Updates the user table using the userDB class
-		new userDB().updateUser(changedSub.getUserProfiles());
-		
-		//Updates the favorites table using the favoritesDB class
+
+		// Updates the user table using the userDB class
+		userDB.updateUser(changedSub.getUserProfiles());
+
+		// Updates the favorites table using the favoritesDB class
 		for (int i = 0; i < changedSub.getUserProfiles().size(); i++) {
-			new favoritesDB().updateFavorites(changedSub.getUserProfiles().get(i));
+			favoritesDB.updateFavorites(changedSub.getUserProfiles().get(i));
 		}
-		
-		
 
 	}
 
 	public void addSubscriber(Subscriber addedSub) throws SQLException {
-		this.initializeJdbc();
+		getConnection();
 		String subInfo = "Insert into subscriber (levelName, firstName, lastName, billAddressLine1, billAddressLine2, billCity, billState, billZipCode, phoneNumber, emailAddress, memberPassword, accountCreateDate, accountStatus) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		String cardInfo = "Insert into card (accountID, creditCardCCV, creditcardNumber, cardholderfirstname, cardholderlastname, expyear,expmonth, cctype) values (?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -180,7 +175,7 @@ public class subscriberDB {
 	}
 
 	public void deleteSubsriber(int accountID) throws SQLException {
-		this.initializeJdbc();
+		getConnection();
 		String deleteRow = "Delete from Subscriber where accountID = ?";
 		dbQuery = con.prepareStatement(deleteRow);
 		dbQuery.setInt(1, accountID);
@@ -189,7 +184,7 @@ public class subscriberDB {
 	}
 
 	public void updateStatus(Subscriber statusChange) throws SQLException {
-		this.initializeJdbc();
+		getConnection();
 		String updateStatusStr = "Update subscriber set accountStatus = ? where accountID = ?";
 		dbQuery = con.prepareStatement(updateStatusStr);
 		dbQuery.setString(1, statusChange.getAccountStatus());
@@ -198,7 +193,7 @@ public class subscriberDB {
 	}
 
 	public void updateLevel(Subscriber levelChange) throws SQLException {
-		this.initializeJdbc();
+		getConnection();
 		String updateLevelStr = "Update subscriber set levelName = ? where accountID = ?";
 		dbQuery = con.prepareStatement(updateLevelStr);
 		dbQuery.setString(1, levelChange.getLevelName());
@@ -207,16 +202,17 @@ public class subscriberDB {
 	}
 
 	public int loginCheck(String email, String password) throws SQLException {
-		this.initializeJdbc();
+		getConnection();
 		String test = "Select accountID from Subscriber where emailAddress = ? and memberPassword = ?";
 		dbQuery = con.prepareStatement(test);
 		dbQuery.setString(1, email);
 		dbQuery.setString(2, password);
 
 		ResultSet rset = dbQuery.executeQuery();
-		rset.next();
-		int accountID = rset.getInt(1);
-		return accountID;
-
+		if (rset.next()) {
+			return rset.getInt("accountid");
+		} else {
+			return -1;
+		}
 	}
 }
