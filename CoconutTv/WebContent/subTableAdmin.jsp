@@ -27,7 +27,7 @@
 	</tr>
 
 	<% 
-	ResultSet rs = subTable.getTableData(table, "accountID", "10001");
+	ResultSet rs = subTable.getTableData(table);
 	
 	// Get column count
 	int columnCount = rs.getMetaData().getColumnCount();
