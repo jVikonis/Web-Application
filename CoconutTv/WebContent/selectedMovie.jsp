@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -13,6 +14,12 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 <!-- Latest compiled and minified JavaScript -->
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/js/star-rating.min.js"></script>
+
 <link href="./selectedMovie.css" rel="stylesheet" type="text/css">
 <title>Selected Movie</title>
 </head>
@@ -79,25 +86,88 @@
 			</div>		
 		
   			<div class="col-sm-7">
-   			<div> 	
-  				<h3>Get movie title from db</h3>
-    			<p>Director: </p>
-    			<p>Actors: </p>
-    			<p>Description: <br> INSERT DESCRIPTION HERE </p>
+   			<div  style="max-width: 600px;"> 	
+  				<h3>Get movie title from db</h3><br>
+  				
+    			<h5><b>Director:</b>  Insert names here</h5> 
+    			
+    			<h5><b>Actors:</b> Insert actor names here </h5>
+    			
+    			<h5><b>Description: </b> <br>  INSERT DESCRIPTION HERE </h5>
+    			
+    			
+    			
     			<p><a href="https://www.google.com" >Watch a trailer here!</a>  (need to insert a link from db here)</p>
+    			
+    			<form action="" method="post">
+				<label for="input-1 xs" class="control-label">Rate this movie:</label>
+   				<input id="input-1 xs" name="input-1 xs" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="0" data-size="xs">
+   				<hr>
+   					<button type="submit" class="btn btn-secondary">Submit</button>&nbsp;
+    				<button type="reset" class="btn btn-secondary">Reset</button>
+   				</form>
+    			
     			
     			<p>
     			<br><button type="submit" title="Download" class="downloadBtn"><i class="fa fa-download"></i></button>        
     			
-    			<a href="favoriteList" title="Add to Favorites" class="heartIcon"><i class="fa fa-fw fa-heart"></i></a> 
+    			<a href="favoriteList" title="Add to Favorites" class="heartIcon"><i class="fa fa-fw fa-heart"></i></a>      			
     			(If person is not logged in, download button will not appear)
     			</p>
+    				
+      			
+      			
+				
+				
+				
+				
+				
+<script>
+$(document).on('ready', function(){
+    $('#input-1 xs').rating();
+});
+</script>
     		</div>	    			
   			</div>
 		</div>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
