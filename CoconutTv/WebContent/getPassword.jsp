@@ -23,7 +23,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	crossorigin="anonymous"></script>
-<link href="./welcome.css" rel="stylesheet" type="text/css">
+<link href="./getPassword.css" rel="stylesheet" type="text/css">
 <title>Welcome Page</title>
 </head>
 <body>
@@ -34,7 +34,12 @@
 				Welcome <br> to <br> Gilligan's CoconutTV!
 			</h1>
 		</div>
-
+		
+		<div class="row">
+			<div class="col-sm-3"></div>
+		
+			
+		<div class="col-sm-6">	<br><br>
 		<form class="form-horizontal" action="ResetPassword" method="post">
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="m_email">Email:</label>
@@ -45,13 +50,22 @@
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-8">
-					<button type="submit" value="login" class="btn btn-success">Send
+					<button type="submit" value="resetSent" class="btn btn-success">Send
 						Link</button>
 				</div>
 			</div>
 		</form>
 		
-		<form class="form-horizontal" action="welcome.jsp" method=post>
+		
+		<div class="baboom"> 
+			<h4>
+			<% if(request.getAttribute("resetSent") == "true") {
+ 			//TODO: Can we change this font, color and size to match
+ 			 out.println("Recovery Email has been sent"); }%> 
+ 			</h4>
+		</div>
+		
+		<form class="form-horizontal" action="welcome.jsp" method="post">
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-8">
 					<button type="submit" value="login" class="btn btn-success">Return
@@ -59,12 +73,18 @@
 				</div>
 			</div>
 		</form>
+		
+		
+		
+		</div>
+	
+	
+	<div class="col-sm-3"></div>
 	</div>
-	<% if(request.getAttribute("resetSent") == "true") {
- 			//TODO: Can we change this font, color and size to match
- 			out.println("Recovery Email has been sent");
- 		}%>
-
+	
+	
+	</div>
+	
 </body>
 
 
