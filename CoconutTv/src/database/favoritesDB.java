@@ -6,23 +6,21 @@ import java.util.*;
 import classes.*;
 
 public class favoritesDB {
+	private static Connection con;
 
-	private static Connection con = null;
-	private static PreparedStatement dbQuery;
-
-	private static Connection getConnection() {
+	static {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
+
 			con = DriverManager.getConnection("jdbc:mysql://localhost/moviestoredb", "root", "sesame");
-			return con;
 		} catch (Exception ex) {
 			ex.printStackTrace();
+			System.out.println(ex);
 		}
-		return null;
 	}
 
 	public static void addFavorite(Users favUser) throws SQLException {
-		getConnection();
+		PreparedStatement dbQuery;
 		String favInfo = "Insert into favorites(userName, genrePreference, favorite1, favorite2, favorite3, ageRestriction, crewPerson, recent1, recent2, recent3) values (?,?,?,?,?,?,?,?,?,?)";
 		dbQuery = con.prepareStatement(favInfo);
 
@@ -70,7 +68,7 @@ public class favoritesDB {
 	}
 
 	public static void deleteFavorite(Users favDeleteFromUser) throws SQLException {
-		getConnection();
+		PreparedStatement dbQuery;
 		String deleteRow = "Delete from favorites where userID = ?";
 		dbQuery = con.prepareStatement(deleteRow);
 		dbQuery.setInt(1, favDeleteFromUser.getUserID());
@@ -78,7 +76,7 @@ public class favoritesDB {
 	}
 	
 	public static void deleteFavorite(int userID) throws SQLException {
-		getConnection();
+		PreparedStatement dbQuery;
 		String deleteRow = "Delete from favorites where userID = ?";
 		dbQuery = con.prepareStatement(deleteRow);
 		dbQuery.setInt(1, userID);
@@ -86,7 +84,7 @@ public class favoritesDB {
 	}
 
 	public static void updateFavorites(Users updatedUser) throws SQLException {
-		getConnection();
+		PreparedStatement dbQuery;
 		String updateFav = "update favorites set userName = ?, genrePreference = ?, favorite1 = ?, favorite2 = ?, favorite3 = ?, crewPerson = ?, recent1 = ?, recent2 = ?, recent3 = ?, where userID = ?";
 		dbQuery = con.prepareStatement(updateFav);
 
@@ -106,7 +104,7 @@ public class favoritesDB {
 	}
 	
 	public static Users getUsersObj(int userID) throws SQLException {
-		getConnection();
+		PreparedStatement dbQuery;
 		if (userID == 0) {
 			//If there is not user created for that field
 			return null;

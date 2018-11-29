@@ -7,22 +7,21 @@ import database.favoritesDB;
 
 //import the package.(name of the class that is being used)
 public class userDB {
-	private static Connection con = null;
-	private static PreparedStatement dbQuery;
+	private static Connection con;
 
-	private static Connection getConnection(){
+	static {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
+
 			con = DriverManager.getConnection("jdbc:mysql://localhost/moviestoredb", "root", "sesame");
-			return con;
 		} catch (Exception ex) {
 			ex.printStackTrace();
+			System.out.println(ex);
 		}
-		return null;
 	}
 
 	public static void updateUser(List<Users> changedUser, int accountID) throws SQLException {
-		getConnection();
+		PreparedStatement dbQuery;
 		String userInfo = "update users set user1=?, user2=?, user3=?, where accountID=?";
 
 		dbQuery = con.prepareStatement(userInfo);
@@ -39,7 +38,7 @@ public class userDB {
 	}
 
 	public static void addUser(List<Users> addedUser, int accountID) throws SQLException {
-		getConnection();
+		PreparedStatement dbQuery;
 		//Removed the where clause because this method is used when we are creating a new record in the DB
 		String userInfo= "Insert into Users (user1,user2,user3,accountID) values (?,?,?,?)";
 		dbQuery = con.prepareStatement(userInfo);
@@ -55,8 +54,13 @@ public class userDB {
 	}
 	
 	public static void deleteUser(String userColumn, int accountID) throws SQLException {
-		getConnection();
-		ResultSet rset = dbQuery.executeQuery("select " + userColumn + " from users where accountID = " + accountID);
+		PreparedStatement dbQuery;
+		
+		dbQuery = con.prepareStatement("select ? from users where accountID = ?");
+		dbQuery.setString(1, userColumn);
+		dbQuery.setInt(2, accountID);
+		ResultSet rset = dbQuery.executeQuery();
+		
 		String updateUser = "update users set ? = 0 where accountID = ?";
 		dbQuery = con.prepareStatement(updateUser);
 		dbQuery.setString(1, userColumn);
@@ -68,7 +72,7 @@ public class userDB {
 	}
 	
 	public static String getUserTest(int accountID) throws SQLException{
-		getConnection();
+		PreparedStatement dbQuery;
 		String select= "Select * from users where accountID=?";
 		dbQuery=con.prepareStatement(select);
 		dbQuery.setInt(1, accountID);
@@ -80,7 +84,7 @@ public class userDB {
 	
 	//Changing the database to store the userID's instead of the usernames to make searching for them much easier
 	public static List<Users> getUserList(int accountID) throws SQLException {
-		getConnection();
+		PreparedStatement dbQuery;
 		List<Users> userList = new ArrayList<Users>();
 		String select = "select * from users where accountID = ?";
 		dbQuery = con.prepareStatement(select);

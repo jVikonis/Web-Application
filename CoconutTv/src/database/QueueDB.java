@@ -1,26 +1,23 @@
 package database;
 
 import java.sql.*;
-import java.util.*;
 
 public class QueueDB {
-	private static Connection con = null;
-	private static PreparedStatement dbQuery;
+	private static Connection con;
 
-	private static Connection getConnection() {
+	static {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost/moviestoredb", "root", "sesame");
-			return con;
+			con = DriverManager.getConnection("jdbc:mysql://localhost/moviestoredb", "root", "sesame");
 		} catch (Exception ex) {
 			ex.printStackTrace();
+			System.out.println(ex);
 		}
-		return null;
 	}
 	
 	public static int getNumberofRentals(int accountID) throws SQLException {
-		getConnection();
+		PreparedStatement dbQuery;
 		String count = "select count(*) as Rentals from queue where accountID = ?";
 		dbQuery = con.prepareStatement(count);
 		dbQuery.setInt(1, accountID);
@@ -34,7 +31,7 @@ public class QueueDB {
 	// title and one by movie id.
 
 	public static boolean movieCheckedOut(String movieTitle, int accountID) throws SQLException {
-		getConnection();
+		PreparedStatement dbQuery;
 		String movieCheckString = "select movietitle from queue where accountID = ?";
 		dbQuery = con.prepareStatement(movieCheckString);
 		dbQuery.setInt(1, accountID);
@@ -49,7 +46,7 @@ public class QueueDB {
 	}
 
 	public static boolean movieCheckedOut(int movieID, int accountID) throws SQLException {
-		getConnection();
+		PreparedStatement dbQuery;
 		String movieCheckString = "select movieId from queue where accountID = ?";
 		dbQuery = con.prepareStatement(movieCheckString);
 		dbQuery.setInt(1, accountID);
@@ -68,7 +65,7 @@ public class QueueDB {
 	// rented. This check must be done prior to
 	// executing this method
 	public static void rentOutMovie(int movieID, String movieTitle, int accountID) throws SQLException {
-		getConnection();
+		PreparedStatement dbQuery;
 		String rentMovie = "insert into queue (accountID, movieID, accountID) values (?,?,?);";
 		dbQuery = con.prepareStatement(rentMovie);
 		dbQuery.setInt(1, accountID);
@@ -78,7 +75,7 @@ public class QueueDB {
 	}
 
 	public static void returnMovie(int accountID, int movieID) throws SQLException {
-		getConnection();
+		PreparedStatement dbQuery;
 		String returnMovie = "delete from queue where accountID = ? and movieID = ?";
 		dbQuery = con.prepareStatement(returnMovie);
 		dbQuery.setInt(1, accountID);

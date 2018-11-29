@@ -10,22 +10,21 @@ import classes.*;
 
 public class subscriberDB {
 
-	private static Connection con = null;
-	private static PreparedStatement dbQuery;
+	private static Connection con;
 
-	private static Connection getConnection() {
+	static {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
+
 			con = DriverManager.getConnection("jdbc:mysql://localhost/moviestoredb", "root", "sesame");
-			return con;
 		} catch (Exception ex) {
 			ex.printStackTrace();
+			System.out.println(ex);
 		}
-		return null;
 	}
 
 	public static Subscriber getSub(int accountID) throws SQLException {
-		getConnection();
+		PreparedStatement dbQuery;
 		String subInfo = "select * from subscriber where accountID = ?";
 		String subCardInfo = "select * from card where accountID = ?";
 		dbQuery = con.prepareStatement(subInfo);
@@ -82,7 +81,7 @@ public class subscriberDB {
 	}
 
 	public static void updateSubscriber(Subscriber changedSub) throws SQLException {
-		getConnection();
+		PreparedStatement dbQuery;
 		String personalInfo = "update subscriber set levelName = ?, firstName = ?, lastName = ?, phoneNumber = ?, emailAddress = ?, memberPassword = ?, accountStatus = ? where accountID = ?";
 		String addressInfo = "update subscriber set billAddressLine1 = ?, billAddressLine2 = ?, billCity = ?, billState = ?, billZipCode = ? where accountID = ?";
 		String cardInfo = "update card set creditCardCCV = ?, creditCardNumber = ?, cardHolderFristName = ?, cardHolderLastName = ?, expYear = ?, expMonth = ?, ccType = ? where accountID = ?";
@@ -132,7 +131,7 @@ public class subscriberDB {
 	}
 
 	public static void addSubscriber(Subscriber addedSub) throws SQLException {
-		getConnection();
+		PreparedStatement dbQuery;
 		String subInfo = "Insert into subscriber (levelName, firstName, lastName, billAddressLine1, billAddressLine2, billCity, billState, billZipCode, phoneNumber, emailAddress, memberPassword, accountCreateDate, accountStatus) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		String cardInfo = "Insert into card (accountID, creditCardCCV, creditcardNumber, cardholderfirstname, cardholderlastname, expyear,expmonth, cctype) values (?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -182,7 +181,7 @@ public class subscriberDB {
 	}
 
 	public static void deleteSubsriber(int accountID) throws SQLException {
-		getConnection();
+		PreparedStatement dbQuery;
 		String deleteRow = "Delete from Subscriber where accountID = ?";
 		dbQuery = con.prepareStatement(deleteRow);
 		dbQuery.setInt(1, accountID);
@@ -191,7 +190,7 @@ public class subscriberDB {
 	}
 
 	public static void updateStatus(Subscriber statusChange) throws SQLException {
-		getConnection();
+		PreparedStatement dbQuery;
 		String updateStatusStr = "Update subscriber set accountStatus = ? where accountID = ?";
 		dbQuery = con.prepareStatement(updateStatusStr);
 		dbQuery.setString(1, statusChange.getAccountStatus());
@@ -200,7 +199,7 @@ public class subscriberDB {
 	}
 
 	public static void updateLevel(Subscriber levelChange) throws SQLException {
-		getConnection();
+		PreparedStatement dbQuery;
 		String updateLevelStr = "Update subscriber set levelName = ? where accountID = ?";
 		dbQuery = con.prepareStatement(updateLevelStr);
 		dbQuery.setString(1, levelChange.getLevelName());
@@ -209,7 +208,7 @@ public class subscriberDB {
 	}
 
 	public static int loginCheck(String email, String password) throws SQLException {
-		getConnection();
+		PreparedStatement dbQuery;
 		String test = "Select accountID from Subscriber where emailAddress = ? and memberPassword = ?";
 		dbQuery = con.prepareStatement(test);
 		dbQuery.setString(1, email);
