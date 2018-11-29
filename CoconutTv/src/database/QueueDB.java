@@ -39,12 +39,13 @@ public class QueueDB {
 		dbQuery = con.prepareStatement(movieCheckString);
 		dbQuery.setInt(1, accountID);
 		ResultSet rset = dbQuery.executeQuery();
-		List<String> movieTitles = new ArrayList<String>();
 		rset.next();
 		while (rset.next()) {
-			movieTitles.add(rset.getString(1));
+			if (rset.getString(1).equals(movieTitle)) {
+				return true;
+			}
 		}
-		return movieTitles.contains(movieTitle);
+		return false;
 	}
 
 	public static boolean movieCheckedOut(int movieID, int accountID) throws SQLException {
@@ -54,13 +55,13 @@ public class QueueDB {
 		dbQuery.setInt(1, accountID);
 		ResultSet rset = dbQuery.executeQuery();
 
-		List<Integer> movieTitles = new ArrayList<Integer>();
-
 		rset.next();
 		while (rset.next()) {
-			movieTitles.add(rset.getInt(1));
+			if (rset.getInt(1) == movieID) {
+				return true;
+			}
 		}
-		return movieTitles.contains(movieID);
+		return false;
 	}
 
 	// This does not check if the rent limit is reached or if the movie is already

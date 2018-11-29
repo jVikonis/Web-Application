@@ -13,20 +13,32 @@
 </head>
 <body>
 
-<% 
-
-	crewDB testCrewDB = new crewDB();
-	Crew testCrew = testCrewDB.getCrew("Spike Lee");
-	/*
-	test1.initializeJdbc();
-	testSub1.initializeJdbc();
-	int accountID = test1.loginCheck("tstevens@yahoo.com", "sesame");
-	testSub = test1.getSub(accountID);
-	*/
+	<% 
+	Movie testMovie;
+	for(int i = 1; i < 54; i++) {
+		 testMovie = movieDB.getMovie(53);
+		 %>
+		 <%= testMovie.getMovieID() + " " +
+				 testMovie.getGenre() + " " +
+				 testMovie.getTitle() + " " +
+				 testMovie.getDescription() + " " +
+				 testMovie.getMovieImage() + " " +
+				 testMovie.getMovieTrailer() + " " +
+				 testMovie.getDate() + " " +
+				 testMovie.getMPAARating() + " " +
+				 testMovie.getActor1() + " " +
+				 testMovie.getActor2() + " " +
+				 testMovie.getViews() + " " +
+				 testMovie.getRatingSum() + " " +
+				 testMovie.getRatingCount()
+		 %>
+		 <br>
+		 <%
+	}
 	%>
 
 
-	<%= testCrew.getCrewID() + testCrew.getFirstName() + testCrew.getLastName()%>
+	
 
 
 </body>
