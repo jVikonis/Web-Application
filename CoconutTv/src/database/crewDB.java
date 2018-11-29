@@ -5,22 +5,21 @@ import classes.*;
 
 public class crewDB {
 	
-	private static Connection con = null;
-	private static PreparedStatement dbQuery;
+	private static Connection con;
 
-	private static Connection getConnection() {
+	static {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
+
 			con = DriverManager.getConnection("jdbc:mysql://localhost/moviestoredb", "root", "sesame");
-			return con;
 		} catch (Exception ex) {
 			ex.printStackTrace();
+			System.out.println(ex);
 		}
-		return null;
 	}
 	
 	public static Crew getCrew(String name) throws SQLException { // Requires full name, example "Spike Lee"
-		getConnection();
+		PreparedStatement dbQuery;
 		
 		Crew crew = new Crew();
 		
@@ -39,7 +38,7 @@ public class crewDB {
 	}
 	
 	public static void addCrew(Crew newCrew) throws SQLException {
-		getConnection();
+		PreparedStatement dbQuery;
 		
 		String qString = "Insert into crew (crewID, crewFirstName, crewLastName) values (?, ?, ?)";
 		dbQuery = con.prepareStatement(qString);
@@ -48,17 +47,4 @@ public class crewDB {
 		dbQuery.setString(3, newCrew.getLastName());
 		dbQuery.executeQuery();
 	}
-	/*
-	private static Connection getConnection() {
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost/moviestoredb", "root", "sesame");
-			return con;
-		} 
-		catch (Exception ex) {
-			ex.printStackTrace();
-		}
-		return null;
-	}
-	*/
 }

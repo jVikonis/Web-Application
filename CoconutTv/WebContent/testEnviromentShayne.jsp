@@ -15,8 +15,8 @@
 
 	<% 
 	Movie testMovie;
-	for(int i = 1; i < 2000; i++) {
-		 testMovie = movieDB.getMovie(7);
+	for(int i = 1; i < 54; i++) {
+		 testMovie = movieDB.getMovie(i);
 		 %>
 		 <%= testMovie.getMovieID() + " " +
 				 testMovie.getGenre() + " " +

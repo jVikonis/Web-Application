@@ -5,22 +5,21 @@ import classes.*;
 
 public class movieDB {
 	
-	private static Connection con = null;
-	private static PreparedStatement dbQuery;
+	private static Connection con;
 
-	private static Connection getConnection() {
+	static {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
+
 			con = DriverManager.getConnection("jdbc:mysql://localhost/moviestoredb", "root", "sesame");
-			return con;
 		} catch (Exception ex) {
 			ex.printStackTrace();
+			System.out.println(ex);
 		}
-		return null;
 	}
 	
 	public static int getViews(int movieID) throws SQLException { // Returns views
-		getConnection();
+		PreparedStatement dbQuery;
 		
 		int views;
 		
@@ -34,7 +33,7 @@ public class movieDB {
 	}
 	
 	public static void setViews(int movieID, int views) throws SQLException {
-		getConnection();
+		PreparedStatement dbQuery;
 		
 		dbQuery = con.prepareStatement("update movie set views = ? where movieID = ?");
 		dbQuery.setInt(1, views);
@@ -43,7 +42,7 @@ public class movieDB {
 	}
 	
 	public static double getRatingAvg(int movieID) throws SQLException {
-		getConnection();
+		PreparedStatement dbQuery;
 		
 		double rating;
 		
@@ -58,7 +57,7 @@ public class movieDB {
 	}
 	
 	public static void setRatingAvg(int movieID, double newRatingAvg) throws SQLException {
-		getConnection();
+		PreparedStatement dbQuery;
 		
 		dbQuery = con.prepareStatement("update movie set ratingAvg = ? where movieID = ?");
 		dbQuery.setDouble(1, newRatingAvg);
@@ -67,7 +66,7 @@ public class movieDB {
 	}
 	
 	public static int getRatingCount(int movieID) throws SQLException {
-		getConnection();
+		PreparedStatement dbQuery;
 		
 		int ratingCount;
 		
@@ -82,7 +81,7 @@ public class movieDB {
 	}
 	
 	public static void setRatingCount(int movieID, int count) throws SQLException {
-		getConnection();
+		PreparedStatement dbQuery;
 		
 		dbQuery = con.prepareStatement("update movie set ratingCount = ? where movieID = ?");
 		dbQuery.setInt(1, count);
@@ -91,7 +90,7 @@ public class movieDB {
 	}
 	
 	public static int getRatingSum(int movieID) throws SQLException {
-		getConnection();
+		PreparedStatement dbQuery;
 		
 		int ratingSum;
 		
@@ -106,7 +105,7 @@ public class movieDB {
 	}
 	
 	public static void setRatingSum(int movieID, int newSum) throws SQLException {
-		getConnection();
+		PreparedStatement dbQuery;
 		
 		dbQuery = con.prepareStatement("update movie set ratingCount = ? where movieID = ?");
 		dbQuery.setInt(1, newSum);
@@ -130,8 +129,11 @@ public class movieDB {
 	
 	public static Movie getMovie(int movieID) throws SQLException {
 		Movie movie = new Movie();
-		getConnection();
-		
+		//
+		PreparedStatement dbQuery;
+		while (con == null) {
+			//
+		}
 		dbQuery = con.prepareStatement("select * from movie where movieID = ?");
 		dbQuery.setInt(1, movieID);
 		ResultSet rset = dbQuery.executeQuery();
@@ -158,7 +160,8 @@ public class movieDB {
 	}
 	
 	public static void addMovie(Movie newMovie) throws SQLException {
-		getConnection();
+		//
+		PreparedStatement dbQuery;
 		
 		dbQuery = con.prepareStatement("Insert into crew (movieID, movieGenre, movieTitle, movieDescription, movieImage, movieTrailer,"
 				+ "movieReleaseDate, movieMPAARating, director, actor1, actor2, views, ratingSum, ratingCount, ratingAvg) "
@@ -182,18 +185,4 @@ public class movieDB {
 		
 		dbQuery.executeQuery();
 	}
-	
-	/*
-	private static Connection getConnection() {
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost/moviestoredb", "root", "sesame");
-			return con;
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-		return null;
-	}
-	*/
 }
