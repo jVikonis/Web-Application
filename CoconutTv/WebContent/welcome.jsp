@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -50,7 +51,7 @@
   			<div class="form-group"> 
     			<div class="col-sm-offset-2 col-sm-8">
       			<div>
-        		<label><a href="" action="./getPassword.jsp" >Forgot Password? </a></label><br>
+        		<label><a href="./getPassword.jsp">Forgot Password? </a></label><br>
         		<label>Not a Member? <a href="./signUp.jsp">Sign Up!</a></label>
       			</div>
     			</div>
@@ -126,6 +127,4 @@
 	
 	
 </body>
-
-
 </html>

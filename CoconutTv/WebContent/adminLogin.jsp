@@ -31,7 +31,7 @@
  			
  			
   			<div class="col-sm-4 col-md-4">
- 				<form class="form-horizontal" action="" method="post">
+ 				<form class="form-horizontal" action="subTableAdmin.jsp" method="post">
   					<div class="form-group">
    						<label class="control-label col-sm-2" for="m_email"></label>
     					<div class="col-sm-8">

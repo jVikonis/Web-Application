@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -15,60 +14,14 @@
 <!-- Latest compiled and minified JavaScript -->
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <link href="./profileManagement.css" rel="stylesheet" type="text/css">
-<title>Profile Management</title>
+<title>Verify Password</title>
 </head>
 <body>
 
-<div class="container">
-		<div class="page-header">
-			<h1> Manage Your Profiles<br><br></h1>
-		</div>
+	<div class="header">
 	
-		<div class="row">
- 			<div class="col-sm-4 col-md-4">
-    			<div class="thumbnail">
-      				<h1>Profile 1</h1>
-      				<div class="caption">
-        				<h3>John</h3>
-        			<p>
-        				<a href="./verifyPassword.jsp" class="btn btn-danger" role="button">Delete</a> 
-        				<a href="./updateProfile.jsp" class="btn btn-default" role="button">Update Info</a>
-        			</p>
-      				</div>
-    			</div>
-  			</div>
- 			
-  			<div class="col-sm-4 col-md-4">
-    			<div class="thumbnail">
-      				<h1>Profile 2</h1>
-      				<div class="caption">
-        			<h3>Peter</h3>
-        			<p>
-        				<a href="./verifyPassword.jsp" class="btn btn-danger" role="button">Delete</a> 
-        				<a href="./updateProfile.jsp" class="btn btn-default" role="button">Update Info</a>
-        			</p>
-      				</div>
-    			</div>
-  			</div>
-  			
-  			<div class="col-sm-4 col-md-4">
-  				<div class="thumbnail">
-  					<p><br><br> </p>
-  					<a href=""><h1><i class="glyphicon glyphicon-plus"></i></h1>
-  					<h3>Add</h3>
-  					</a>
-  					<p><br> </p>
-  				</div>
-  			</div>
-		</div>
-	
-	
-	
-	
-	
-	
+		<h1> Password verification will be added.</h1>
 	</div>
-
 
 
 

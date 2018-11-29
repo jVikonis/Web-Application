@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -71,17 +72,17 @@
 			
  			<div class="col-sm-4 col-md-4">
     			<a href="./selectedMovie.jsp" class="thumbnail">    				
-      				<img src="./images/21grams.png" alt="movieImage" id="movieImage" name="movieImage">      				
+      				<img src="./images/21grams.png" alt="movieImage" id="movieImage" name="movieImage" class="hover-shadow">      				
     			</a>
   			</div>		
   			<div class="col-sm-4 col-md-4">
     			<a href="./selectedMovie.jsp" class="thumbnail">    				
-      				<img src="./images/avengers1.PNG" alt="movieImage" id="movieImage" name="movieImage">      				
+      				<img src="./images/avengers1.PNG" alt="movieImage" id="movieImage" name="movieImage" class="hover-shadow">      				
     			</a>
   			</div>	
   			<div class="col-sm-4 col-md-4">
     			<a href="./selectedMovie.jsp" class="thumbnail">    				
-      				<img src="./images/21grams.png" alt="movieImage" id="movieImage" name="movieImage">      				
+      				<img src="./images/21grams.png" alt="movieImage" id="movieImage" name="movieImage" class="hover-shadow">      				
     			</a>
   			</div>	
   			
@@ -90,17 +91,17 @@
   			<div><h2>Display Top 3 Recently Viewed Movies<br><br></h2></div>
   			<div class="col-sm-4 col-md-4">
     			<a href="./selectedMovie.jsp" class="thumbnail">    				
-      				<img src="./images/21grams.png" alt="movieImage" id="movieImage" name="movieImage">      				
+      				<img src="./images/21grams.png" alt="movieImage" id="movieImage" name="movieImage" class="hover-shadow">      				
     			</a>
   			</div>		
   			<div class="col-sm-4 col-md-4">
     			<a href="./selectedMovie.jsp" class="thumbnail">    				
-      				<img src="./images/21grams.png" alt="movieImage" id="movieImage" name="movieImage">      				
+      				<img src="./images/21grams.png" alt="movieImage" id="movieImage" name="movieImage" class="hover-shadow">      				
     			</a>
   			</div>	
   			<div class="col-sm-4 col-md-4">
     			<a href="./selectedMovie.jsp" class="thumbnail">    				
-      				<img src="./images/21grams.png" alt="movieImage" id="movieImage" name="movieImage">      				
+      				<img src="./images/21grams.png" alt="movieImage" id="movieImage" name="movieImage" class="hover-shadow">      				
     			</a>
   			</div>	
 	</div>
