@@ -27,9 +27,8 @@ if(request.getSession().getAttribute("signUpFlag") == "true") {
 	subscriberDB.addSubscriber(newSub);
 }
 %>
-
-<%= newSub.getAccountID()%>
-<%= newSub.getUserProfiles().get(0).getUserID()%>
+<!-- This should be removed before  -->
+<%newSub = subscriberDB.getSub(10001); %>
 <body>
 
 	<div class="container">
@@ -39,29 +38,44 @@ if(request.getSession().getAttribute("signUpFlag") == "true") {
 	
 		<div class="row">
  			<div class="col-sm-4 col-md-4">
- 				<a href="./startPage.jsp" class="thumbnail">
+ 				<a href="./startPage.jsp?value=0" class="thumbnail">
  				<h1>Profile 1</h1>
  				<h3><%=newSub.getUserProfiles().get(0).getUsername() %></h3>
  				
  				</a>
  
  			</div>
+ 			
   			<div class="col-sm-4 col-md-4">
- 				<a href="./startPage.jsp" class="thumbnail">
+ 				<a href="./startPage.jsp?value=1" class="thumbnail">
  				<h1>Profile 2</h1>
- 				<h3>           </h3>
+ 				<h3><%
+ 					if(newSub.getUserProfiles().get(1) != null) {
+ 						out.print(newSub.getUserProfiles().get(1).getUsername());
+ 					}
+ 					else
+ 						out.print("Empty");
  					
- 				
+ 					%></h3>
+
  				</a>
  				<br><br><br><br> 
  				<a href="./profileManagement.jsp">Manage your profiles </a> <br>
  				<a href="./accountSettings.jsp">Manage your account </a>
  				
  			</div>
+ 			
   			<div class="col-sm-4 col-md-4">
- 				<a href="" class="thumbnail">
+ 				<a href="./startPage.jsp?value=1" class="thumbnail">
  				<h1>Profile 3</h1>
- 				<h3>        </h3>
+ 				<h3><%
+ 					if(newSub.getUserProfiles().get(2) != null) {
+ 						out.print(newSub.getUserProfiles().get(2).getUsername());
+ 					}
+ 					else
+ 						out.print("Empty");
+ 					
+ 					%></h3>
  				</a>
  			</div>
 		</div>
