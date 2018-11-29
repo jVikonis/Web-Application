@@ -65,7 +65,7 @@ public class SignUp extends HttpServlet {
 		newAddress.setLine1(request.getParameter("m_line1"));
 		newAddress.setLine2(request.getParameter("m_line2"));
 		newAddress.setCity(request.getParameter("m_city"));
-		newAddress.setState(request.getParameter("m_city"));
+		newAddress.setState(request.getParameter("m_state"));
 		newAddress.setZip(request.getParameter("m_zip"));
 		newSub.setAddress(newAddress);
 		
