@@ -101,7 +101,7 @@
     			
     			<form action="" method="post">
 				<label for="input-1 xs" class="control-label">Rate this movie:</label>
-   				<input id="input-1 xs" name="input-1 xs" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="0" data-size="xs">
+   				<input id="input-1 xs" name="input-1 xs" class="rating rating-loading" data-min="0" data-max="5" data-step="1" value="0" data-size="xs">
    				<hr>
    					<button type="submit" class="btn btn-secondary">Submit</button>&nbsp;
     				<button type="reset" class="btn btn-secondary">Reset</button>
