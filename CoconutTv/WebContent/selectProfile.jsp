@@ -42,23 +42,27 @@ if(request.getSession().getAttribute("signUpFlag") == "true") {
  				<a href="./startPage.jsp" class="thumbnail">
  				<h1>Profile 1</h1>
  				<h3><%=newSub.getUserProfiles().get(0).getUsername() %></h3>
+ 				
  				</a>
- 				<a href="./profileManagement.jsp">Manage your profiles </a>
+ 
  			</div>
   			<div class="col-sm-4 col-md-4">
  				<a href="./startPage.jsp" class="thumbnail">
  				<h1>Profile 2</h1>
- 				<h3>
- 				</h3>
+ 				<h3>           </h3>
+ 					
+ 				
  				</a>
- 				<a href="./profileManagement.jsp">Manage your profiles </a>
+ 				<br><br><br><br> 
+ 				<a href="./profileManagement.jsp">Manage your profiles </a> <br>
+ 				<a href="./accountSettings.jsp">Manage your account </a>
+ 				
  			</div>
   			<div class="col-sm-4 col-md-4">
  				<a href="" class="thumbnail">
  				<h1>Profile 3</h1>
- 				<h3>Empty</h3>
+ 				<h3>        </h3>
  				</a>
- 				<a href="./profileManagement.jsp">Manage your profiles </a>
  			</div>
 		</div>
 	

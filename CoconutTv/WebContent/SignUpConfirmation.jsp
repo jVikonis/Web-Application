@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -27,7 +28,7 @@
 <!-- can we make this look prettier -->
 	<div class="page-header">
 		<h1><center>Thank you for Signing Up <%=newSub.getFirstName() %>!</center></h1>
-		<h2><center>You are now a <%=newSub.getLevelName() %>!</center></h2>
+		<h2><center>You are now a <%=newSub.getLevelName() %> member!</center></h2>
 	</div>
 <center>You will be redirected in <div id="counter">5</center></div>
     <script>
@@ -41,6 +42,5 @@
         }, 1000);
     </script> </body>
 </html>
-
 
 
