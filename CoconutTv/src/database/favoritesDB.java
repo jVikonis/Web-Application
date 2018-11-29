@@ -23,20 +23,44 @@ public class favoritesDB {
 
 	public static void addFavorite(Users favUser) throws SQLException {
 		getConnection();
-		String favInfo = "Insert into favorites(userName, genrePreference, favorite1, favorite2, favorite3, crewPerson, recent1, recent2, recent3) values (?,?,?,?,?,?,?,?,?)";
+		String favInfo = "Insert into favorites(userName, genrePreference, favorite1, favorite2, favorite3, ageRestriction, crewPerson, recent1, recent2, recent3) values (?,?,?,?,?,?,?,?,?,?)";
 		dbQuery = con.prepareStatement(favInfo);
 
 		dbQuery.setString(1, favUser.getUsername());
 		dbQuery.setString(2, favUser.getFavoriteGenre());
-		dbQuery.setInt(3, favUser.getFavorites().get(0));
-		dbQuery.setInt(4, favUser.getFavorites().get(1));
-		dbQuery.setInt(5, favUser.getFavorites().get(2));
+		
+		if (favUser.getFavorites() != null) {
+			dbQuery.setInt(3, favUser.getFavorites().get(0));
+			dbQuery.setInt(4, favUser.getFavorites().get(1));
+			dbQuery.setInt(5, favUser.getFavorites().get(2));
+		}
+		else {
+			dbQuery.setInt(3, 0);
+			dbQuery.setInt(4, 0);
+			dbQuery.setInt(5, 0);
+		}
+		
 		dbQuery.setString(6, favUser.getAgeRestriction());
-		dbQuery.setInt(7, favUser.getFavoriteCrew().getCrewID());
-		dbQuery.setInt(8, favUser.getRecents().get(0));
-		dbQuery.setInt(9, favUser.getRecents().get(1));
-		dbQuery.setInt(10, favUser.getRecents().get(2));
-
+		
+		if (favUser.getFavoriteCrew() != null) {
+			dbQuery.setInt(7, favUser.getFavoriteCrew().getCrewID());
+		}
+		else {
+			dbQuery.setInt(7, 0);
+		}
+		if (favUser.getRecents() != null) {
+			dbQuery.setInt(8, favUser.getRecents().get(0));
+			dbQuery.setInt(9, favUser.getRecents().get(1));
+			dbQuery.setInt(10, favUser.getRecents().get(2));
+		}
+		else {
+			dbQuery.setInt(8, 0);
+			dbQuery.setInt(9, 0);
+			dbQuery.setInt(10, 0);
+		}
+		
+		dbQuery.executeUpdate();
+		
 		dbQuery = con.prepareStatement("select MAX(userID) from favorites");
 		ResultSet rset = dbQuery.executeQuery();
 		rset.next();
@@ -50,6 +74,14 @@ public class favoritesDB {
 		String deleteRow = "Delete from favorites where userID = ?";
 		dbQuery = con.prepareStatement(deleteRow);
 		dbQuery.setInt(1, favDeleteFromUser.getUserID());
+		dbQuery.executeUpdate();
+	}
+	
+	public static void deleteFavorite(int userID) throws SQLException {
+		getConnection();
+		String deleteRow = "Delete from favorites where userID = ?";
+		dbQuery = con.prepareStatement(deleteRow);
+		dbQuery.setInt(1, userID);
 		dbQuery.executeUpdate();
 	}
 

@@ -831,9 +831,9 @@ INSERT INTO `queue` (`accountID`,`movieID`,`queueSequence`,`movieTitle`) VALUES
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `accountID` int(10) unsigned NOT NULL,
-  `user1` int(10) default NULL,
-  `user2` int(10) default null,
-  `user3` int(10) default null,
+  `user1` int(10) default 0,
+  `user2` int(10) default 0,
+  `user3` int(10) default 0,
   PRIMARY KEY  USING BTREE (`accountID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -887,8 +887,6 @@ alter table movie add column views int default 1;
 alter table movie add column ratingSum float(2, 1) default 1;
 alter table movie add column ratingCount float(2, 1) default 1;
 alter table movie add column ratingAvg float(2, 1) as (ratingSum /ratingCount);
-
-alter table favorites add column userID int(10) auto_increment unique primary key;
 
 Drop table if exists `quotes`;
 create table `quotes` (

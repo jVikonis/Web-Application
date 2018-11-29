@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page import="database.*" %>
+<%@ page import="classes.*" %>
+<jsp:useBean id="newSub" class="classes.Subscriber" scope="session"></jsp:useBean>
+<jsp:setProperty name = "newSub" property = "*" />
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -14,4 +19,28 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <link href="./signUp.css" rel="stylesheet" type="text/css">
+</head>
+
+
+
+<body>
+<!-- can we make this look prettier -->
+	<div class="page-header">
+		<h1><center>Thank you for Signing Up <%=newSub.getFirstName() %>!</center></h1>
+		<h2><center>You are now a <%=newSub.getLevelName() %>!</center></h2>
+	</div>
+<center>You will be redirected in <div id="counter">5</center></div>
+    <script>
+        setInterval(function() {
+            var div = document.querySelector("#counter");
+            var count = div.textContent * 1 - 1;
+            div.textContent = count;
+            if (count <= 0) {
+                window.location.replace("selectProfile.jsp");
+            }
+        }, 1000);
+    </script> </body>
+</html>
+
+
 

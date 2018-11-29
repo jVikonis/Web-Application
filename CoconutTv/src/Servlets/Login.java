@@ -42,9 +42,8 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 		int accountid = -1;
-		subscriberDB subAccount = new subscriberDB();
 		try {
-		accountid = subAccount.loginCheck(request.getParameter("m_email"), request.getParameter("m_password"));
+		accountid = subscriberDB.loginCheck(request.getParameter("m_email"), request.getParameter("m_password"));
 		}
 		catch (Exception ex) {
 			ex.printStackTrace();
@@ -65,7 +64,7 @@ public class Login extends HttpServlet {
 			}
 			
 			HttpSession session = request.getSession();
-			session.setAttribute("loggedInSub", newSub);
+			session.setAttribute("newSub", newSub);
 			response.sendRedirect("selectProfile.jsp");
 		}
 		

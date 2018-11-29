@@ -21,7 +21,7 @@ public class userDB {
 		return null;
 	}
 
-	public static void updateUser(List<Users> changedUser) throws SQLException {
+	public static void updateUser(List<Users> changedUser, int accountID) throws SQLException {
 		getConnection();
 		String userInfo = "update users set user1=?, user2=?, user3=?, where accountID=?";
 
@@ -30,38 +30,41 @@ public class userDB {
 		dbQuery.setString(1, changedUser.get(0).getUsername());
 		dbQuery.setString(2, changedUser.get(1).getUsername());
 		dbQuery.setString(3, changedUser.get(2).getUsername());
-		dbQuery.setInt(4, changedUser.get(0).getAccountID());
+		dbQuery.setInt(4, accountID);
 		dbQuery.executeUpdate();
+		
+		for (int i = 0; i < changedUser.size(); i++) {
+			favoritesDB.updateFavorites(changedUser.get(i));
+		}
 	}
 
-	public static void addUser(List<Users> addedUser) throws SQLException {
+	public static void addUser(List<Users> addedUser, int accountID) throws SQLException {
 		getConnection();
-		String userInfo= "Insert into Users (user1,user2,user3) values (?,?,?), where accountID=?";
-				
+		//Removed the where clause because this method is used when we are creating a new record in the DB
+		String userInfo= "Insert into Users (user1,user2,user3,accountID) values (?,?,?,?)";
 		dbQuery = con.prepareStatement(userInfo);
-		
-		dbQuery.setString(1, addedUser.get(0).getUsername());
-		dbQuery.setString(2, addedUser.get(1).getUsername());
-		dbQuery.setString(3, addedUser.get(2).getUsername());
-		dbQuery.setInt(4, addedUser.get(0).getAccountID());
-		dbQuery.executeUpdate();
-		
-		
+		int[] user = new int[]{0, 0, 0};
+		for (int i = 0; i < addedUser.size(); i++) {
+			user[i] = addedUser.get(i).getUserID();
+		}		
+		dbQuery.setInt(1, user[0]);
+		dbQuery.setInt(2, user[1]);
+		dbQuery.setInt(3, user[2]);
+		dbQuery.setInt(4, accountID);
+		dbQuery.executeUpdate();	
 	}
 	
 	public static void deleteUser(String userColumn, int accountID) throws SQLException {
 		getConnection();
-		String deleteUser = "Delete from ? where accountID = ?";
-		dbQuery = con.prepareStatement(deleteUser);
+		ResultSet rset = dbQuery.executeQuery("select " + userColumn + " from users where accountID = " + accountID);
+		String updateUser = "update users set ? = 0 where accountID = ?";
+		dbQuery = con.prepareStatement(updateUser);
 		dbQuery.setString(1, userColumn);
 		dbQuery.setInt(2, accountID);
 		dbQuery.executeUpdate();
 		
-		//String deleteFavorites= "Delete from favorites where userID = ?";
-		//dbQuery = con.prepareStatement(deleteFavorites);
-		//dbQuery.setString(1,user );
-		//dbQuery.executeUpdate();
-		
+		if(rset.next())
+			favoritesDB.deleteFavorite(rset.getInt("userid"));
 	}
 	
 	public static String getUserTest(int accountID) throws SQLException{

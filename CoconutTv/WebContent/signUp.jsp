@@ -57,7 +57,8 @@
 				booleanValue = false;
 			}
 		}
-		alert(popUpString);
+		if(popUpString != "")
+			alert(popUpString);
 		return booleanValue;		
 	}
 </script>
@@ -191,16 +192,16 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="control-label col-sm-2" for="genre">Favorite
+						<label class="control-label col-sm-2" for="m_favoriteGenre">Favorite
 							Genre:</label>
 						<div class="col-sm-8">
-							<select class="form-control" id="genre" name="m_favoriteGenre">
+							<select class="form-control" id="m_favoriteGenre" name="m_favoriteGenre">
 								<option>Choose one..</option>
-								<option value="1" id="action" name="action">Action</option>
-								<option value="2" id="comedy" name="comedy">Comedy</option>
-								<option value="3" id="drama" name="drama">Drama</option>
-								<option value="4" id="horror" name="horror">Horror</option>
-								<option value="5" id="scifi" name="scifi">Sci-Fi</option>
+								<option value="action" id="action" name="action">Action</option>
+								<option value="comedy" id="comedy" name="comedy">Comedy</option>
+								<option value="drama" id="drama" name="drama">Drama</option>
+								<option value="horror" id="horror" name="horror">Horror</option>
+								<option value="scifi" id="scifi" name="scifi">Sci-Fi</option>
 							</select>
 						</div>
 					</div>
@@ -211,9 +212,9 @@
 							<select class="form-control" id="m_levelName" name="m_levelName"
 								required>
 								<option>Choose one..</option>
-								<option value="1" id="Silver" name="Silver">Silver</option>
-								<option value="2" id="Gold" name="Gold">Gold</option>
-								<option value="3" id="Platinum" name="Platinum">Platinum
+								<option value="silver" id="Silver" name="Silver">Silver</option>
+								<option value="gold" id="Gold" name="Gold">Gold</option>
+								<option value="platinum" id="Platinum" name="Platinum">Platinum
 								</option>
 							</select>
 						</div>
@@ -238,7 +239,7 @@
 						<label class="control-label col-sm-2" for="cardHolderFirstName">First
 							Name:</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="m_firstName"
+							<input type="text" class="form-control" id="m_cfirstName"
 								name="m_firstName" placeholder="Card holder first name"
 								maxlength="45" required>
 						</div>
@@ -247,7 +248,7 @@
 						<label class="control-label col-sm-2" for="cardHolderLastName">Last
 							Name:</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="m_lastName"
+							<input type="text" class="form-control" id="m_clastName"
 								name="m_lastName" placeholder="Card holder last name"
 								maxlength="45" required>
 						</div>
@@ -301,7 +302,7 @@
 
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-8">
-							<button type="submit" value="submit" class="btn btn-success">Submit</button>
+							<button type="submit" name="submit" value="submit" class="btn btn-success">Submit</button>
 						</div>
 					</div>
 				</form>

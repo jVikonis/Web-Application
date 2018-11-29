@@ -1,7 +1,6 @@
 package database;
 
 import java.sql.*;
-import java.sql.Date;
 import classes.*;
 
 //import the package.(name of the class that is being used)
@@ -82,7 +81,7 @@ public class subscriberDB {
 		return sub;
 	}
 
-	public void updateSubscriber(Subscriber changedSub) throws SQLException {
+	public static void updateSubscriber(Subscriber changedSub) throws SQLException {
 		getConnection();
 		String personalInfo = "update subscriber set levelName = ?, firstName = ?, lastName = ?, phoneNumber = ?, emailAddress = ?, memberPassword = ?, accountStatus = ? where accountID = ?";
 		String addressInfo = "update subscriber set billAddressLine1 = ?, billAddressLine2 = ?, billCity = ?, billState = ?, billZipCode = ? where accountID = ?";
@@ -123,7 +122,7 @@ public class subscriberDB {
 		dbQuery.executeUpdate();
 
 		// Updates the user table using the userDB class
-		userDB.updateUser(changedSub.getUserProfiles());
+		userDB.updateUser(changedSub.getUserProfiles(), changedSub.getAccountID());
 
 		// Updates the favorites table using the favoritesDB class
 		for (int i = 0; i < changedSub.getUserProfiles().size(); i++) {
@@ -132,13 +131,13 @@ public class subscriberDB {
 
 	}
 
-	public void addSubscriber(Subscriber addedSub) throws SQLException {
+	public static void addSubscriber(Subscriber addedSub) throws SQLException {
 		getConnection();
 		String subInfo = "Insert into subscriber (levelName, firstName, lastName, billAddressLine1, billAddressLine2, billCity, billState, billZipCode, phoneNumber, emailAddress, memberPassword, accountCreateDate, accountStatus) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		String cardInfo = "Insert into card (accountID, creditCardCCV, creditcardNumber, cardholderfirstname, cardholderlastname, expyear,expmonth, cctype) values (?, ?, ?, ?, ?, ?, ?, ?)";
 
 		dbQuery = con.prepareStatement(subInfo);
-		Date today = (Date) new java.util.Date();
+		java.util.Date today = new java.util.Date();
 
 		dbQuery.setString(1, addedSub.getLevelName());
 		dbQuery.setString(2, addedSub.getFirstName());
@@ -151,7 +150,7 @@ public class subscriberDB {
 		dbQuery.setString(9, addedSub.getPhoneNumber());
 		dbQuery.setString(10, addedSub.getLoginInfo().getEmail());
 		dbQuery.setString(11, addedSub.getLoginInfo().getPassword());
-		dbQuery.setDate(12, today);
+		dbQuery.setDate(12, new java.sql.Date(today.getTime()));
 		dbQuery.setString(13, addedSub.getAccountStatus());
 		dbQuery.executeUpdate();
 
@@ -171,10 +170,18 @@ public class subscriberDB {
 		dbQuery.setInt(7, addedSub.getPaymentInfo().getExpMonth());
 		dbQuery.setString(8, addedSub.getPaymentInfo().getCCType());
 		dbQuery.executeUpdate();
+		
+		for(int i = 0; i < addedSub.getUserProfiles().size();i++) {
+			if(addedSub.getUserProfiles().get(i) != null) {
+				favoritesDB.addFavorite(addedSub.getUserProfiles().get(i));	
+			}
+		}
+		
+		userDB.addUser(addedSub.getUserProfiles(), addedSub.getAccountID());
 
 	}
 
-	public void deleteSubsriber(int accountID) throws SQLException {
+	public static void deleteSubsriber(int accountID) throws SQLException {
 		getConnection();
 		String deleteRow = "Delete from Subscriber where accountID = ?";
 		dbQuery = con.prepareStatement(deleteRow);
@@ -183,7 +190,7 @@ public class subscriberDB {
 
 	}
 
-	public void updateStatus(Subscriber statusChange) throws SQLException {
+	public static void updateStatus(Subscriber statusChange) throws SQLException {
 		getConnection();
 		String updateStatusStr = "Update subscriber set accountStatus = ? where accountID = ?";
 		dbQuery = con.prepareStatement(updateStatusStr);
@@ -192,7 +199,7 @@ public class subscriberDB {
 		dbQuery.executeUpdate();
 	}
 
-	public void updateLevel(Subscriber levelChange) throws SQLException {
+	public static void updateLevel(Subscriber levelChange) throws SQLException {
 		getConnection();
 		String updateLevelStr = "Update subscriber set levelName = ? where accountID = ?";
 		dbQuery = con.prepareStatement(updateLevelStr);
@@ -201,7 +208,7 @@ public class subscriberDB {
 		dbQuery.executeUpdate();
 	}
 
-	public int loginCheck(String email, String password) throws SQLException {
+	public static int loginCheck(String email, String password) throws SQLException {
 		getConnection();
 		String test = "Select accountID from Subscriber where emailAddress = ? and memberPassword = ?";
 		dbQuery = con.prepareStatement(test);
