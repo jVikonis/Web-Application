@@ -115,4 +115,5 @@ public class Movie {
 	public void setRatingAvg(double ratingAvg) {
 		m_ratingAvg = ratingAvg;
 	}
+	
 }

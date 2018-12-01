@@ -2,8 +2,17 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<jsp:useBean id="selectedMovie" class="classes.Movie" scope="session"></jsp:useBean>
+
+<%@ page import= "database.*"%>
+<%@ page import = "classes.*" %>
+<%@ page session="true" %>
 <html>
 <head>
+
+
+
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="">
@@ -80,24 +89,25 @@
 	
 		<div class="row">		
 			<div class="col-sm-5">  			
-   				 <img src="./images/21grams.png" alt="Movie Pic" id="movieImage" name="movieImage">
+   				 <img src="./images/21grams.png" alt= <% selectedMovie.getMovieImage(); %> id="movieImage" name="movieImage">
     				<h4>INSERT MOVIE PICTURE<br> HERE</h4>
    					<p>Optional text</p> 			
 			</div>		
 		
   			<div class="col-sm-7">
    			<div  style="max-width: 600px;"> 	
-  				<h3>Get movie title from db</h3><br>
+  				<h3><%selectedMovie.getTitle(); %>
+  				</h3><br>
   				
-    			<h5><b>Director:</b>  Insert names here</h5> 
+    			<h5><b>Director:</b><% selectedMovie.getDirector(); %></h5> 
     			
-    			<h5><b>Actors:</b> Insert actor names here </h5>
+    			<h5><b>Actors:</b> <% selectedMovie.getActor1(); %> , <% selectedMovie.getActor2(); %> </h5>
     			
-    			<h5><b>Description: </b> <br>  INSERT DESCRIPTION HERE </h5>
+    			<h5><b>Description: </b> <br>  <% selectedMovie.getDescription(); %> </h5>
     			
     			
     			
-    			<p><a href="https://www.google.com" >Watch a trailer here!</a>  (need to insert a link from db here)</p>
+    			<p><a href= <% selectedMovie.getMovieTrailer(); %> >Watch a trailer here!</a> </p>
     			
     			<form action="" method="post">
 				<label for="input-1 xs" class="control-label">Rate this movie:</label>
