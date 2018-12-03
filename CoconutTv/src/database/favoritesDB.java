@@ -109,6 +109,12 @@ public class favoritesDB {
 			//If there is not user created for that field
 			return null;
 		}
+		dbQuery = con.prepareStatement("select username from favorites where userID = " + userID);
+		ResultSet checkAvailable = dbQuery.executeQuery();
+		if (!checkAvailable.next()) {
+			return null;
+		}
+		
 		Users temp = new Users();
 		List<Integer> tempFav = new ArrayList<Integer>();
 		List<Integer> tempRecent = new ArrayList<Integer>();
