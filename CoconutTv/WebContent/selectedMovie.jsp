@@ -3,7 +3,8 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <jsp:useBean id="selectedMovie" class="classes.Movie" scope="session"></jsp:useBean>
-
+<jsp:useBean id="selectedUser" class="classes.Users" scope="session"></jsp:useBean>
+<% selectedUser=  subscriberDB.getSub(10001).getUserProfiles().get(1); %>
 <%@ page import= "database.*"%>
 <%@ page import = "classes.*" %>
 <%@ page session="true" %>
@@ -121,7 +122,14 @@
     			<p>
     			<br><button type="submit" title="Download" class="downloadBtn"><i class="fa fa-download"></i></button>        
     			
-    			<a href="favoriteList" title="Add to Favorites" class="heartIcon"><i class="fa fa-fw fa-heart"></i></a>      			
+    			<a href="selectedMovie.jsp" onClick= <% if(selectedUser.getFavorites().size() <= 2)
+    				{
+    				   selectedUser.addFavorite(selectedMovie.getMovieID());
+    				favoritesDB.updateFavorites(selectedUser);
+    				}
+    			else 
+    			{out.print("Too many Favorites already");}
+    				%> title="Add to Favorites" class="heartIcon"><i class="fa fa-fw fa-heart"></i></a>      			
     			(If person is not logged in, download button will not appear)
     			</p>
     				
