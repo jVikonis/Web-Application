@@ -3,8 +3,7 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <jsp:useBean id="selectedMovie" class="classes.Movie" scope="session"></jsp:useBean>
-<jsp:useBean id="selectedUser" class="classes.Users" scope="session"></jsp:useBean>
-<% selectedUser=  subscriberDB.getSub(10001).getUserProfiles().get(1); %>
+<jsp:useBean id="selectedProfile" class="classes.Users" scope="session"></jsp:useBean>
 <%@ page import= "database.*"%>
 <%@ page import = "classes.*" %>
 <%@ page session="true" %>
@@ -35,6 +34,10 @@
 </head>
 	
 <body>
+<% 	selectedProfile = (Users) session.getAttribute("selectedProfile");
+	int movieID = Integer.parseInt(request.getParameter("value"));
+	selectedMovie = movieDB.getMovie(movieID);
+	%>
 	<div class="logo">
 		<a href="./startPage.jsp"><img src="logo.png" alt="CoconutTvLogo" id="logo"></a>
 	</div>	
@@ -90,7 +93,7 @@
 	
 		<div class="row">		
 			<div class="col-sm-5">  			
-   				 <img src="./images/21grams.png" alt= <% selectedMovie.getMovieImage(); %> id="movieImage" name="movieImage">
+   				 <img src="./MoviePosters/<%=selectedMovie.getMovieImage()%>" alt= "movieimage" id="movieImage" name="movieImage">
     				<h4>INSERT MOVIE PICTURE<br> HERE</h4>
    					<p>Optional text</p> 			
 			</div>		
@@ -122,14 +125,7 @@
     			<p>
     			<br><button type="submit" title="Download" class="downloadBtn"><i class="fa fa-download"></i></button>        
     			
-    			<a href="selectedMovie.jsp" onClick= <% if(selectedUser.getFavorites().size() <= 2)
-    				{
-    				   selectedUser.addFavorite(selectedMovie.getMovieID());
-    				favoritesDB.updateFavorites(selectedUser);
-    				}
-    			else 
-    			{out.print("Too many Favorites already");}
-    				%> title="Add to Favorites" class="heartIcon"><i class="fa fa-fw fa-heart"></i></a>      			
+    			<a href="selectedMovie.jsp"  title="Add to Favorites" class="heartIcon"><i class="fa fa-fw fa-heart"></i></a>      			
     			(If person is not logged in, download button will not appear)
     			</p>
     				

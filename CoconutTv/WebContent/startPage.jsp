@@ -2,6 +2,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page import = "database.*" %>
+<%@ page import = "classes.*" %>
+<%@ page session="true" %>
+<jsp:useBean id="newSub" class="classes.Subscriber" scope="session"></jsp:useBean>
+<jsp:useBean id="selectedProfile" class="classes.Users" scope="session"></jsp:useBean>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -17,10 +22,29 @@
 <link href="./startPage.css" rel="stylesheet" type="text/css">
 <title>Start Page</title>
 </head>
+<%	
+	int userNumber = Integer.parseInt(request.getParameter("value"));
+	selectedProfile = newSub.getUserProfiles().get(userNumber);
+	
+	if(selectedProfile == null) {
+		response.sendRedirect("selectProfile.jsp");
+	}
+%>
+
+<%
+	Movie m1 = movieDB.getMovie(selectedProfile.getFavorites().get(0));
+	Movie m2 = movieDB.getMovie(selectedProfile.getFavorites().get(1));
+	Movie m3 = movieDB.getMovie(selectedProfile.getFavorites().get(2));
+	Movie m4 = movieDB.getMovie(selectedProfile.getRecents().get(0));
+	Movie m5 = movieDB.getMovie(selectedProfile.getRecents().get(1));
+	Movie m6 = movieDB.getMovie(selectedProfile.getRecents().get(2));
+%>
+
+
 <body>
 
 	<div class="logo">
-		<a href="./startPage.jsp"><img src="logo.png" alt="CoconutTvLogo" id="logo"></a>
+		<a href="./startPage.jsp"><img src="./WebImages/logo.png" alt="CoconutTvLogo" id="logo"></a>
 	</div>	
 	
 	
@@ -68,40 +92,40 @@
 		
 <div class="container">	
 	<div class="row">
-			<div><h2>Display Top 3 Favorite Movies<br><br></h2></div>
+			<div><h2>Display Your 3 Favorite Movies<br><br></h2></div>
 			
  			<div class="col-sm-4 col-md-4">
-    			<a href="./selectedMovie.jsp" class="thumbnail">    				
-      				<img src="./images/21grams.png" alt="movieImage" id="movieImage" name="movieImage" class="hover-shadow">      				
+    			<a href="./selectedMovie.jsp?value=<%=m1.getMovieID()%>" class="thumbnail">    				
+      				<img src="./MoviePosters/<%=m1.getMovieImage()%>" alt="movieImage" id="movieImage" name="movieImage" class="hover-shadow">      				
     			</a>
   			</div>		
   			<div class="col-sm-4 col-md-4">
-    			<a href="./selectedMovie.jsp" class="thumbnail">    				
-      				<img src="./images/avengers1.PNG" alt="movieImage" id="movieImage" name="movieImage" class="hover-shadow">      				
+    			<a href="./selectedMovie.jsp?value=<%=m2.getMovieID()%>" class="thumbnail">    				
+      				<img src="./MoviePosters/<%=m2.getMovieImage()%>" alt="movieImage" id="movieImage" name="movieImage" class="hover-shadow">      				
     			</a>
   			</div>	
   			<div class="col-sm-4 col-md-4">
-    			<a href="./selectedMovie.jsp" class="thumbnail">    				
-      				<img src="./images/21grams.png" alt="movieImage" id="movieImage" name="movieImage" class="hover-shadow">      				
+    			<a href="./selectedMovie.jsp?value=<%=m3.getMovieID()%>" class="thumbnail" onclick=<%session.setAttribute("selectedMovie", m3);%>>    				
+      				<img src="./MoviePosters/<%=m3.getMovieImage()%>" alt="movieImage" id="movieImage" name="movieImage" class="hover-shadow">      				
     			</a>
   			</div>	
   			
   		</div>
   		<div class="row">	
-  			<div><h2>Display Top 3 Recently Viewed Movies<br><br></h2></div>
+  			<div><h2>Display Your 3 Recently Viewed Movies<br><br></h2></div>
   			<div class="col-sm-4 col-md-4">
-    			<a href="./selectedMovie.jsp" class="thumbnail">    				
-      				<img src="./images/21grams.png" alt="movieImage" id="movieImage" name="movieImage" class="hover-shadow">      				
+    			<a href="./selectedMovie.jsp?value=<%=m4.getMovieID()%>" class="thumbnail">    				
+      				<img src="./MoviePosters/<%=m4.getMovieImage()%>" alt="movieImage" id="movieImage" name="movieImage" class="hover-shadow">      				
     			</a>
   			</div>		
   			<div class="col-sm-4 col-md-4">
-    			<a href="./selectedMovie.jsp" class="thumbnail">    				
-      				<img src="./images/21grams.png" alt="movieImage" id="movieImage" name="movieImage" class="hover-shadow">      				
+    			<a href="./selectedMovie.jsp?value=<%=m5.getMovieID()%>" class="thumbnail">    				
+      				<img src="./MoviePosters/<%=m5.getMovieImage()%>" alt="movieImage" id="movieImage" name="movieImage" class="hover-shadow">      				
     			</a>
   			</div>	
   			<div class="col-sm-4 col-md-4">
-    			<a href="./selectedMovie.jsp" class="thumbnail">    				
-      				<img src="./images/21grams.png" alt="movieImage" id="movieImage" name="movieImage" class="hover-shadow">      				
+    			<a href="./selectedMovie.jsp?value=<%=m6.getMovieID()%>" class="thumbnail">    				
+      				<img src="./MoviePosters/<%=m6.getMovieImage()%>" alt="movieImage" id="movieImage" name="movieImage" class="hover-shadow">      				
     			</a>
   			</div>	
 	</div>

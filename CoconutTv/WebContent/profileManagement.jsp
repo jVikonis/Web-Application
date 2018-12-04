@@ -2,6 +2,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<%@ page import = "database.*" %>
+<%@ page import = "classes.*" %>
+<%@ page session="true" %>
+<jsp:useBean id="newSub" class="classes.Subscriber" scope="session"></jsp:useBean>
+<jsp:useBean id="selectedProfile" class="classes.Users" scope="session"></jsp:useBean>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -17,6 +24,10 @@
 <link href="./profileManagement.css" rel="stylesheet" type="text/css">
 <title>Profile Management</title>
 </head>
+<%	newSub = subscriberDB.getSub(10001);
+	selectedProfile = newSub.getUserProfiles().get(0);
+%>
+
 <body>
 
 <div class="container">
@@ -25,52 +36,116 @@
 		</div>
 	
 		<div class="row">
- 			<div class="col-sm-4 col-md-4">
+		<%if (newSub.getUserProfiles().get(0) != null) {
+		%><div class="col-sm-4 col-md-4">
     			<div class="thumbnail">
       				<h1>Profile 1</h1>
       				<div class="caption">
-        				<h3>John</h3>
+        			<h3><%
+ 					if(newSub.getUserProfiles().get(0) != null) {
+ 						out.print(newSub.getUserProfiles().get(0).getUsername());
+ 					}
+ 					else
+ 						out.print("Add");
+ 					%></h3>
         			<p>
-        				<a href="./verifyPassword.jsp" class="btn btn-danger" role="button">Delete</a> 
-        				<a href="./updateProfile.jsp" class="btn btn-default" role="button">Update Info</a>
+        				<a href="./verifyPassword.jsp?value=0" class="btn btn-danger" role="button">Delete</a> 
+        				<a href="./updateProfile.jsp?value=0" class="btn btn-default" role="button">Update Info</a>
         			</p>
       				</div>
     			</div>
   			</div>
- 			
-  			<div class="col-sm-4 col-md-4">
-    			<div class="thumbnail">
-      				<h1>Profile 2</h1>
-      				<div class="caption">
-        			<h3>Peter</h3>
-        			<p>
-        				<a href="./verifyPassword.jsp" class="btn btn-danger" role="button">Delete</a> 
-        				<a href="./updateProfile.jsp" class="btn btn-default" role="button">Update Info</a>
-        			</p>
-      				</div>
-    			</div>
-  			</div>
-  			
-  			<div class="col-sm-4 col-md-4">
+<%
+}
+else {
+%>
+	<div class="col-sm-4 col-md-4">
   				<div class="thumbnail">
   					<p><br><br> </p>
-  					<a href=""><h1><i class="glyphicon glyphicon-plus"></i></h1>
+  					<a href="./updateProfile.jsp?value=0"><h1><i class="glyphicon glyphicon-plus"></i></h1>
   					<h3>Add</h3>
   					</a>
   					<p><br> </p>
   				</div>
   			</div>
-		</div>
-	
-	
-	
-	
-	
-	
-	</div>
-
-
-
-
+<%
+}
+%>
+ 			
+<%
+		if (newSub.getUserProfiles().get(1) != null) {
+		%><div class="col-sm-4 col-md-4">
+    			<div class="thumbnail">
+      				<h1>Profile 2</h1>
+      				<div class="caption">
+        			<h3><%
+ 					if(newSub.getUserProfiles().get(1) != null) {
+ 						out.print(newSub.getUserProfiles().get(1).getUsername());
+ 					}
+ 					else
+ 						out.print("Add");
+ 					%></h3>
+        			<p>
+        				<a href="./verifyPassword.jsp?value=1" class="btn btn-danger" role="button">Delete</a> 
+        				<a href="./updateProfile.jsp?value=1" class="btn btn-default" role="button">Update Info</a>
+        			</p>
+      				</div>
+    			</div>
+  			</div>
+<%
+}
+else {
+%>
+	<div class="col-sm-4 col-md-4">
+  				<div class="thumbnail">
+  					<p><br><br> </p>
+  					<a href="./updateProfile.jsp?value=1"><h1><i class="glyphicon glyphicon-plus"></i></h1>
+  					<h3>Add</h3>
+  					</a>
+  					<p><br> </p>
+  				</div>
+  			</div>
+<%
+}
+%>
+  			
+<%
+		if (newSub.getUserProfiles().get(2) != null) {
+		%><div class="col-sm-4 col-md-4">
+    			<div class="thumbnail">
+      				<h1>Profile 3</h1>
+      				<div class="caption">
+        			<h3><%
+ 					if(newSub.getUserProfiles().get(2) != null) {
+ 						out.print(newSub.getUserProfiles().get(2).getUsername());
+ 					}
+ 					else
+ 						out.print("Add");
+ 					%></h3>
+        			<p>
+        				<a href="./verifyPassword.jsp?value=2" class="btn btn-danger" role="button">Delete</a> 
+        				<a href="./updateProfile.jsp?value=2" class="btn btn-default" role="button">Update Info</a>
+        			</p>
+      				</div>
+    			</div>
+  			</div>
+<%
+}
+else {
+%>
+	<div class="col-sm-4 col-md-4">
+  				<div class="thumbnail">
+  					<p><br><br> </p>
+  					<a href="./updateProfile.jsp?value=2"><h1><i class="glyphicon glyphicon-plus"></i></h1>
+  					<h3>Add</h3>
+  					</a>
+  					<p><br> </p>
+  				</div>
+  			</div>
+<%
+}
+%>
+</div>
+</div>
 </body>
 </html>

@@ -53,22 +53,27 @@ public class userDB {
 		dbQuery.executeUpdate();	
 	}
 	
-	public static void deleteUser(String userColumn, int accountID) throws SQLException {
+	public static void deleteUser(int accountID, int userID) throws SQLException {
 		PreparedStatement dbQuery;
+		int userClmn = 0;
+		String[] columnNames = {"user1", "user2", "user3"};
 		
-		dbQuery = con.prepareStatement("select ? from users where accountID = ?");
-		dbQuery.setString(1, userColumn);
-		dbQuery.setInt(2, accountID);
+		dbQuery = con.prepareStatement("select user1, user2, user3 from users where accountID = ?");
+		dbQuery.setInt(1, accountID);
 		ResultSet rset = dbQuery.executeQuery();
-		
+		rset.next();
+		for (int i = 1; i <= 3; i++) {
+			if (rset.getInt(i) == userID) {
+				userClmn = i - 1;
+			}
+		}		
 		String updateUser = "update users set ? = 0 where accountID = ?";
 		dbQuery = con.prepareStatement(updateUser);
-		dbQuery.setString(1, userColumn);
+		dbQuery.setString(1,  columnNames[userClmn]);
 		dbQuery.setInt(2, accountID);
 		dbQuery.executeUpdate();
 		
-		if(rset.next())
-			favoritesDB.deleteFavorite(rset.getInt("userid"));
+		favoritesDB.deleteFavorite(userID);
 	}
 	
 	public static String getUserTest(int accountID) throws SQLException{

@@ -28,5 +28,8 @@ public class adminDB {
 		return dbQuery.executeQuery();
 	}
 	
+	public static Connection getConnection() {
+		return con;
+	}
 	
 }

@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page import = "database.*" %>
+<%@ page import = "classes.*" %>
+<%@ page session="true" %>
+<jsp:useBean id="newSub" class="classes.Subscriber" scope="session"></jsp:useBean>
+<jsp:useBean id="selectedProfile" class="classes.Users" scope="session"></jsp:useBean>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -16,11 +21,33 @@
 <link href="./profileManagement.css" rel="stylesheet" type="text/css">
 <title>Verify Password</title>
 </head>
+<!-- Delete this line of code -->
+<%newSub = subscriberDB.getSub(10001);
+selectedProfile = newSub.getUserProfiles().get(0);%>
 <body>
-
 	<div class="header">
-	
-		<h1> Password verification will be added.</h1>
+	<div class="row">
+ 		<div class="col-sm-4">
+ 		<h3><center>Enter Password</center><br><br>
+ 		<% if(request.getAttribute("verifyFail") == "true") {
+ 			//TODO: Can we change this font, color and size to match
+ 			out.println("<center>Invalid Username or Password</center>");
+ 		}%>
+ 		</h3>
+ 		</div>
+ 		</div>
+ 		
+	<form class="form-horizontal" action="VerifyPassword" method="post">
+	<input type = "hidden" name = "verifyPassword" id = "verifyPassword" value="<%=newSub.getLoginInfo().getPassword()%>">
+	<input type = "hidden" name = "userIDDel" id = "userIDDel" value = "<%=selectedProfile.getUserID()%>">
+	<input type = "hidden" name = "accountID" id = "accountID" value = "<%=newSub.getAccountID()%>">
+		<div class="form-group">
+   				<label class="control-label col-sm-2" for="m_password">Password:</label>
+    			<div class="col-sm-8"> 
+      			<input type="password" class="form-control" id="m_verify_password" name="m_verify_password" placeholder="Verify Password" maxlength="45">
+    			</div>
+  			</div>
+  			</form>
 	</div>
 
 

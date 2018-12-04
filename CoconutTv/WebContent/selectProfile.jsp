@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- Imports and java beans for the session -->
 <%@ page import = "database.*" %>
 <%@ page import = "classes.*" %>
 <%@ page session="true" %>
@@ -27,8 +28,7 @@ if(request.getSession().getAttribute("signUpFlag") == "true") {
 	subscriberDB.addSubscriber(newSub);
 }
 %>
-<!-- This should be removed before  -->
-<%newSub = subscriberDB.getSub(10001); %>
+
 <body>
 
 	<div class="container">
@@ -38,16 +38,32 @@ if(request.getSession().getAttribute("signUpFlag") == "true") {
 	
 		<div class="row">
  			<div class="col-sm-4 col-md-4">
- 				<a href="./startPage.jsp?value=0" class="thumbnail">
+ 			<%
+ 				if (newSub.getUserProfiles().get(0) != null) {
+ 				%><a href="./startPage.jsp?value=0" class="thumbnail"><%
+ 				}
+ 				else {
+ 					%><a href="./profileManagement.jsp" class="thumbnail"><%
+ 				}
+ 				%>
  				<h1>Profile 1</h1>
- 				<h3><%=newSub.getUserProfiles().get(0).getUsername() %></h3>
- 				
+ 				<h3><%if (newSub.getUserProfiles().get(0) != null) {
+ 					out.print(newSub.getUserProfiles().get(0).getUsername());
+ 				}
+ 				else {
+ 					out.print("Empty");
+ 				}%></h3>
  				</a>
- 
  			</div>
- 			
   			<div class="col-sm-4 col-md-4">
- 				<a href="./startPage.jsp?value=1" class="thumbnail">
+ 				<%
+ 				if (newSub.getUserProfiles().get(1) != null) {
+ 				%><a href="./startPage.jsp?value=1" class="thumbnail"><%
+ 				}
+ 				else {
+ 					%><a href="./profileManagement.jsp" class="thumbnail"><%
+ 				}
+ 				%>
  				<h1>Profile 2</h1>
  				<h3><%
  					if(newSub.getUserProfiles().get(1) != null) {
@@ -55,9 +71,7 @@ if(request.getSession().getAttribute("signUpFlag") == "true") {
  					}
  					else
  						out.print("Empty");
- 					
  					%></h3>
-
  				</a>
  				<br><br><br><br> 
  				<a href="./profileManagement.jsp">Manage your profiles </a> <br>
@@ -66,7 +80,14 @@ if(request.getSession().getAttribute("signUpFlag") == "true") {
  			</div>
  			
   			<div class="col-sm-4 col-md-4">
- 				<a href="./startPage.jsp?value=1" class="thumbnail">
+ 				<%
+ 				if (newSub.getUserProfiles().get(2) != null) {
+ 				%><a href="./startPage.jsp?value=2" class="thumbnail" ><%
+ 				}
+ 				else {
+ 					%><a href="./profileManagement.jsp" class="thumbnail"><%
+ 				}
+ 				%>
  				<h1>Profile 3</h1>
  				<h3><%
  					if(newSub.getUserProfiles().get(2) != null) {

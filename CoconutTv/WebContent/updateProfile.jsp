@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page import = "database.*" %>
+<%@ page import = "classes.*" %>
+<%@ page session="true" %>
+<jsp:useBean id="newSub" class="classes.Subscriber" scope="session"></jsp:useBean>
+<jsp:useBean id="selectedProfile" class="classes.Users" scope="session"></jsp:useBean>
+
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -22,6 +29,12 @@
 
 <title>Update Profile Info</title>
 </head>
+<%	newSub = subscriberDB.getSub(10001);
+	int userNumber = Integer.parseInt(request.getParameter("value"));
+	selectedProfile = newSub.getUserProfiles().get(userNumber);
+	session.setAttribute("newSub", newSub);
+%>
+
 <body>
 
 <div class="container-fluid">
@@ -50,12 +63,17 @@
 				<h3 class="modal-title" id="modalLabel">Update Username</h3>
 			</div>
 			<div class="modal-body">				
-				<form class="form-horizontal" action="" method="post">
+				<form class="form-horizontal" action="UpdateProfile" method="post" >
 					
 					<div class="form-group">
     					<label class="control-label col-sm-2" for="userName">First Name:</label>
     					<div class="col-sm-8">
-      					<input type="text" class="form-control" id="userName" name="userName" placeholder="Enter User Name" maxlength="10">
+      					<input type="text" class="form-control" id="userName" name="userName" placeholder="<%if(selectedProfile.getUsername() != null){
+      						out.print(selectedProfile.getUsername());
+      						}
+      						else {
+      						out.print("Username");
+      						}%>" maxlength="10">
     					</div>
   					</div>
   				
@@ -87,18 +105,18 @@
 				<h3 class="modal-title" id="modalLabel">Update Genre</h3>
 			</div>
 			<div class="modal-body">				
-				<form class="form-horizontal" action="" method="post">
+				<form class="form-horizontal" action="UpdateProfile" method="post">
 					
 					<div class="form-group">
   					<label class="control-label col-sm-2" for="genrePreference">Favorite Genre:</label>
   					<div class="col-sm-8">
-  					<select class="form-control" id="genrePreference" name="">
+  					<select class="form-control" id="genrePreference" name="genrePreference">
   						<option>Choose one..</option>
-    					<option value="action" id="action" name="action">Action</option>
-    					<option value="comedy" id="comedy" name="comedy">Comedy</option>
-    					<option value="drama" id="drama" name="drama">Drama</option>
-    					<option value="horror" id="horror" name="horror">Horror</option>
-    					<option value="scifi" id="scifi" name="scifi">Sci-Fi</option>
+    					<option value="Action" id="Action" name="action">Action</option>
+    					<option value="Comedy" id="Comedy" name="comedy">Comedy</option>
+    					<option value="Drama" id="Dama" name="drama">Drama</option>
+    					<option value="horror" id="Horror" name="horror">Horror</option>
+    					<option value="Sci-Fi" id="Sci-Fi" name="scifi">Sci-Fi</option>
   					</select>
   					</div>
 				</div>  
@@ -132,12 +150,12 @@
 				<h3 class="modal-title" id="modalLabel">Update Age Restriction</h3>
 			</div>
 			<div class="modal-body">				
-				<form class="form-horizontal" action="" method="post">
+				<form class="form-horizontal" action="UpdateProfile" method="post">
 					
 					<div class="form-group">
   					<label class="control-label col-sm-2" for="ageRestriction">Age Restriction:</label>
   					<div class="col-sm-8">
-  					<select class="form-control" id="ageRestriction" name="">
+  					<select class="form-control" id="ageRestriction" name="ageRestriction">
   						<option>Choose one..</option>
     					<option value="yes" id="yes" name="yes">Yes</option>
     					<option value="no" id="no" name="no">No</option>

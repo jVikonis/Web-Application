@@ -5,8 +5,6 @@
 <%@ page import="database.*" %>
 <%@ page import="classes.*" %>
 <jsp:useBean id="newSub" class="classes.Subscriber" scope="session"></jsp:useBean>
-<jsp:setProperty name = "newSub" property = "*" />
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -30,7 +28,7 @@
 		<h1><center>Thank you for Signing Up <%=newSub.getFirstName() %>!</center></h1>
 		<h2><center>You are now a <%=newSub.getLevelName() %> member!</center></h2>
 	</div>
-<center>You will be redirected in <div id="counter">5</center></div>
+<center>You will be redirected in <div id="counter">3</center></div>
     <script>
         setInterval(function() {
             var div = document.querySelector("#counter");

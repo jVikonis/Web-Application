@@ -14,8 +14,22 @@
 <!-- Latest compiled and minified JavaScript -->
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <link href="./adminLogin.css" rel="stylesheet" type="text/css">
+<script>
+function checkAdmin() {
+	var booleanValue = false;
+	if(documents.forms["adminlogin"]["m_email"].value == "root@gctv.edu") {
+		if(documents.forms["adminlogin"]["m_password"].value == "root") {
+			booleanValue = true;
+		}
+	}
+	if(!booleanValue)
+		alert("Invalid Login");
+	return booleanValue;
+}
+</script>
 <title>Administrator Login</title>
 </head>
+
 <body>
 
 
@@ -31,7 +45,7 @@
  			
  			
   			<div class="col-sm-4 col-md-4">
- 				<form class="form-horizontal" action="subTableAdmin.jsp" method="post">
+ 				<form name="adminlogin" class="form-horizontal" action="adminOptions.jsp" method="post" onsubmit="return checkAdmin()">
   					<div class="form-group">
    						<label class="control-label col-sm-2" for="m_email"></label>
     					<div class="col-sm-8">
@@ -47,7 +61,7 @@
   			
  					<div class="form-group"> 
     					<div class="col-sm-offset-2 col-sm-8">
-      					<button type="submit" value="adminLogin" class="btn btn-success">Log In</button>
+      					<button type="submit" value="submit" class="btn btn-success">Log In</button>
    						</div>
   					</div>
 				</form>

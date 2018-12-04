@@ -185,4 +185,10 @@ public class movieDB {
 		
 		dbQuery.executeQuery();
 	}
+	
+	public static void deleteMovie(int movieID) throws SQLException {
+		PreparedStatement dbQuery = con.prepareStatement("delete from table movies where movieID = ?");
+		dbQuery.setInt(1, movieID);
+		dbQuery.executeUpdate();
+	}
 }
