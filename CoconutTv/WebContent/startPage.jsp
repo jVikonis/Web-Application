@@ -29,6 +29,7 @@
 	if(selectedProfile == null) {
 		response.sendRedirect("selectProfile.jsp");
 	}
+	session.setAttribute("selectedProfile", selectedProfile);
 %>
 
 <%
@@ -44,7 +45,7 @@
 <body>
 
 	<div class="logo">
-		<a href="./startPage.jsp"><img src="./WebImages/logo.png" alt="CoconutTvLogo" id="logo"></a>
+	<img src="./WebImages/logo.png" alt="CoconutTvLogo" id="logo"></a>
 	</div>	
 	
 	
@@ -54,7 +55,18 @@
      		<span class="navbar-brand">GCTV</span>
     	</div>			 
 		<ul class="nav navbar-nav">
-     		<li class="nav navbar-nav navbar-left"><a href="./startPage.jsp" title="Home Page"><span class="fa fa-fw fa-home"></span></a></li>
+     		<li class="nav navbar-nav navbar-left"><a href=<%
+     		if (newSub != null) {
+				if (selectedProfile != null) {
+				out.print("./startPage.jsp?value=" + userNumber);
+				}
+				else {
+					out.print("./selectProfile.jsp");
+				}
+     		}
+			else {
+				out.print("./welcome.jsp");
+			}%> title="Home Page"><span class="fa fa-fw fa-home"></span></a></li>
      			<li class="dropdown">
       				<a class="dropdown-toggle" data-toggle="dropdown" href="#" title="Movies">
       				  <span class="fa fa-fw fa-tv"></span>
@@ -62,11 +74,11 @@
 					 </a>
 					 
         			<ul class="dropdown-menu">
-          				<li><a href="./movieBrowser.jsp" title="Action">Action</a></li>
-         				<li><a href="./movieBrowser.jsp" title="Comedy">Comedy</a></li>
-          				<li><a href="./movieBrowser.jsp" title="Drama">Drama</a></li>
-          				<li><a href="./movieBrowser.jsp" title="Horror">Horror</a></li>
-         				<li><a href="./movieBrowser.jsp" title="Sci-Fi">Sci-Fi</a></li>
+          				<li><a href="./movieBrowser.jsp?value=Action" title="Action">Action</a></li>
+         				<li><a href="./movieBrowser.jsp?value=Comedy" title="Comedy">Comedy</a></li>
+          				<li><a href="./movieBrowser.jsp?value=Drama" title="Drama">Drama</a></li>
+          				<li><a href="./movieBrowser.jsp?value=Horror" title="Horror">Horror</a></li>
+         				<li><a href="./movieBrowser.jsp?value=Sci-Fi" title="Sci-Fi">Sci-Fi</a></li>
         			</ul>
       			</li>
       	</ul>
@@ -95,18 +107,18 @@
 			<div><h2>Display Your 3 Favorite Movies<br><br></h2></div>
 			
  			<div class="col-sm-4 col-md-4">
-    			<a href="./selectedMovie.jsp?value=<%=m1.getMovieID()%>" class="thumbnail">    				
-      				<img src="./MoviePosters/<%=m1.getMovieImage()%>" alt="movieImage" id="movieImage" name="movieImage" class="hover-shadow">      				
+    			<a href=<%if(m1 != null){ out.print("./selectedMovie.jsp?value=" + m1.getMovieID());} else {out.print("./startPage.jsp?value=" + userNumber);}%> class="thumbnail">    				
+      				<img src=<%if(m1 != null)out.print("./MoviePosters/" + m1.getMovieImage()); else out.print("./WebImages/defaultPoster.png");%> alt="./WebImages/defaultPoster.png" id="movieImage" name="movieImage" class="hover-shadow">      				
     			</a>
   			</div>		
   			<div class="col-sm-4 col-md-4">
-    			<a href="./selectedMovie.jsp?value=<%=m2.getMovieID()%>" class="thumbnail">    				
-      				<img src="./MoviePosters/<%=m2.getMovieImage()%>" alt="movieImage" id="movieImage" name="movieImage" class="hover-shadow">      				
+    			<a href=<%if(m2 != null){out.print("./selectedMovie.jsp?value=" + m2.getMovieID());} else {out.print("./startPage.jsp?value=" + userNumber);}%> class="thumbnail">    				
+      				<img src=<%if(m2 != null)out.print("./MoviePosters/" + m2.getMovieImage()); else out.print("./WebImages/defaultPoster.png");%> alt="./WebImages/defaultPoster.png" id="movieImage" name="movieImage" class="hover-shadow">      				
     			</a>
   			</div>	
   			<div class="col-sm-4 col-md-4">
-    			<a href="./selectedMovie.jsp?value=<%=m3.getMovieID()%>" class="thumbnail">    				
-      				<img src="./MoviePosters/<%=m3.getMovieImage()%>" alt="movieImage" id="movieImage" name="movieImage" class="hover-shadow">      				
+    			<a href=<%if(m3 != null){out.print("./selectedMovie.jsp?value=" + m3.getMovieID());} else {out.print("./startPage.jsp?value=" + userNumber);}%> class="thumbnail">    				
+      				<img src=<%if(m3 != null)out.print("./MoviePosters/" + m3.getMovieImage()); else out.print("./WebImages/defaultPoster.png");%> alt="./WebImages/defaultPoster.png" id="movieImage" name="movieImage" class="hover-shadow">      				
     			</a>
   			</div>	
   			
@@ -114,18 +126,18 @@
   		<div class="row">	
   			<div><h2>Display Your 3 Recently Viewed Movies<br><br></h2></div>
   			<div class="col-sm-4 col-md-4">
-    			<a href="./selectedMovie.jsp?value=<%=m4.getMovieID()%>" class="thumbnail">    				
-      				<img src="./MoviePosters/<%=m4.getMovieImage()%>" alt="movieImage" id="movieImage" name="movieImage" class="hover-shadow">      				
+    			<a href=<%if(m4 != null){out.print("./selectedMovie.jsp?value=" + m4.getMovieID());} else {out.print("./startPage.jsp?value=" + userNumber);}%> class="thumbnail">    				
+      				<img src=<%if(m4 != null)out.print("./MoviePosters/" + m4.getMovieImage()); else out.print("./WebImages/defaultPoster.png");%> alt="./WebImages/defaultPoster.png" id="movieImage" name="movieImage" class="hover-shadow">      				
     			</a>
   			</div>		
   			<div class="col-sm-4 col-md-4">
-    			<a href="./selectedMovie.jsp?value=<%=m5.getMovieID()%>" class="thumbnail">    				
-      				<img src="./MoviePosters/<%=m5.getMovieImage()%>" alt="movieImage" id="movieImage" name="movieImage" class="hover-shadow">      				
+    			<a href=<%if(m5 != null){out.print("./selectedMovie.jsp?value=" + m5.getMovieID());} else {out.print("./startPage.jsp?value=" + userNumber);}%> class="thumbnail">    				
+      				<img src=<%if(m5 != null)out.print("./MoviePosters/" + m5.getMovieImage()); else out.print("./WebImages/defaultPoster.png");%> alt="./WebImages/defaultPoster.png" id="movieImage" name="movieImage" class="hover-shadow">      				
     			</a>
   			</div>	
   			<div class="col-sm-4 col-md-4">
-    			<a href="./selectedMovie.jsp?value=<%=m6.getMovieID()%>" class="thumbnail">    				
-      				<img src="./MoviePosters/<%=m6.getMovieImage()%>" alt="movieImage" id="movieImage" name="movieImage" class="hover-shadow">      				
+    			<a href=<%if(m6 != null){out.print("./selectedMovie.jsp?value=" + m6.getMovieID());} else {out.print("./startPage.jsp?value=" + userNumber);}%> class="thumbnail">    				
+      				<img src=<%if(m6 != null)out.print("./MoviePosters/" + m6.getMovieImage()); else out.print("./WebImages/defaultPoster.png");%> alt="./WebImages/defaultPoster.png" id="movieImage" name="movieImage" class="hover-shadow">      				
     			</a>
   			</div>	
 	</div>

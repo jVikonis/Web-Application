@@ -134,6 +134,9 @@ public class movieDB {
 		while (con == null) {
 			//
 		}
+		if(movieID == 0) {
+			return null;
+		}
 		dbQuery = con.prepareStatement("select * from movie where movieID = ?");
 		dbQuery.setInt(1, movieID);
 		ResultSet rset = dbQuery.executeQuery();
