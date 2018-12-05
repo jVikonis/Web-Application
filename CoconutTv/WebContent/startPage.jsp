@@ -85,7 +85,7 @@
 			 </form>
       	 
      	 <li><a href="./selectProfile.jsp" title="Switch Profile"><span class="glyphicon glyphicon-user"></span></a></li>
-    	 <li><a href="./welcome.jsp" title="Log Out"><span class="glyphicon glyphicon-log-out"></span></a></li>
+    	 <li><a href="LogOut" title="Log Out"><span class="glyphicon glyphicon-log-out"></span></a></li>
 		</ul>
 	</div>
 </nav>
@@ -105,7 +105,7 @@
     			</a>
   			</div>	
   			<div class="col-sm-4 col-md-4">
-    			<a href="./selectedMovie.jsp?value=<%=m3.getMovieID()%>" class="thumbnail" onclick=<%session.setAttribute("selectedMovie", m3);%>>    				
+    			<a href="./selectedMovie.jsp?value=<%=m3.getMovieID()%>" class="thumbnail">    				
       				<img src="./MoviePosters/<%=m3.getMovieImage()%>" alt="movieImage" id="movieImage" name="movieImage" class="hover-shadow">      				
     			</a>
   			</div>	
@@ -130,22 +130,5 @@
   			</div>	
 	</div>
 </div>	
-	
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
 </html>
