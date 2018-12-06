@@ -98,7 +98,7 @@
 		
   			<div class="col-sm-7">
    			<div  style="max-width: 575px;"> 	
-  				<h3><%selectedMovie.getTitle(); %>
+  				<h3><%=selectedMovie.getTitle() %>
   				</h3><br>
   				
     			<h5><b>Director:</b><%=selectedMovie.getDirector() %></h5> 
