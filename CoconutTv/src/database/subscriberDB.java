@@ -169,7 +169,7 @@ public class subscriberDB {
 		dbQuery.setInt(7, addedSub.getPaymentInfo().getExpMonth());
 		dbQuery.setString(8, addedSub.getPaymentInfo().getCCType());
 		dbQuery.executeUpdate();
-		
+		//Have to populate the profile with size of 3
 		for(int i = 0; i < addedSub.getUserProfiles().size();i++) {
 			if(addedSub.getUserProfiles().get(i) != null) {
 				favoritesDB.addFavorite(addedSub.getUserProfiles().get(i));	

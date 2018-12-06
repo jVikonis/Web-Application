@@ -26,6 +26,8 @@
 <%
 if(request.getSession().getAttribute("signUpFlag") == "true") {
 	subscriberDB.addSubscriber(newSub);
+	newSub = subscriberDB.getSub(newSub.getAccountID());
+	request.getSession().setAttribute("signUpFlag", "false");
 }
 %>
 

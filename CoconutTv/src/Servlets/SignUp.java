@@ -39,9 +39,6 @@ public class SignUp extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-		//request.getRequestDispatcher("welcome.jsp").forward(request, response);
 		
 		Subscriber newSub = new Subscriber();
 		newSub.setAccountStatus("active");
@@ -75,6 +72,8 @@ public class SignUp extends HttpServlet {
 		newUsers.setAgeRestriction("no");
 		List<Users> newListUsers = new ArrayList<Users>();
 		newListUsers.add(newUsers);
+		newListUsers.add(new Users());
+		newListUsers.add(new Users());
 		newSub.setUserProfiles(newListUsers);
 		
 		LoginCredentials newLogin = new LoginCredentials();

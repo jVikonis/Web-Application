@@ -100,7 +100,7 @@ CREATE TABLE `subscriber` (
   `accountCreateDate` date default NULL,
   `accountStatus` varchar(6) default 'trial',
   PRIMARY KEY  (`accountID`)
-) ENGINE=InnoDB AUTO_INCREMENT=10043 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10021 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `member`
@@ -725,26 +725,26 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 insert into users (accountID, user1, user2, user3) values 
-(10001, 1, 21, 22), 
-(10002, 2, 23, 24),
-(10003, 3, 25, 26), 
-(10004, 4, 27, 28),
-(10005, 5, 29, 30), 
-(10006, 6, 31, 32),
-(10007, 7, 33, 0), 
-(10008, 8, 34, 35),
-(10009, 9, 36, 0), 
+(10001, 1, 0, 0), 
+(10002, 2, 0, 0),
+(10003, 3, 0, 0), 
+(10004, 4, 0, 0),
+(10005, 5, 0, 0), 
+(10006, 6, 0, 0),
+(10007, 7, 0, 0), 
+(10008, 8, 0, 0),
+(10009, 9, 0, 0), 
 (10010, 10, 0, 0),
 (10011, 11, 0, 0), 
-(10012, 12, 37, 38),
-(10013, 13, 39, 40), 
+(10012, 12, 0, 0),
+(10013, 13, 0, 0), 
 (10014, 14, 0, 0),
 (10015, 15, 0, 0), 
-(10016, 16, 41, 0),
-(10017, 17, 42, 43), 
-(10018, 18, 44, 0),
-(10019, 19, 45, 0), 
-(10020, 20, 46, 0);
+(10016, 16, 0, 0),
+(10017, 17, 0, 0), 
+(10018, 18, 0, 0),
+(10019, 19, 0, 0), 
+(10020, 20, 0, 0);
 
 DROP TABLE IF EXISTS `favorites`;
 CREATE TABLE `favorites` (

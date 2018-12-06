@@ -20,6 +20,9 @@ public class favoritesDB {
 	}
 
 	public static void addFavorite(Users favUser) throws SQLException {
+		if (favUser.getUsername() == null) {
+			return;
+		}
 		PreparedStatement dbQuery;
 		String favInfo = "Insert into favorites(userName, genrePreference, favorite1, favorite2, favorite3, ageRestriction, crewPerson, recent1, recent2, recent3) values (?,?,?,?,?,?,?,?,?,?)";
 		dbQuery = con.prepareStatement(favInfo);

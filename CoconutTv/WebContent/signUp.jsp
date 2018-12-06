@@ -219,16 +219,6 @@
 							</select>
 						</div>
 					</div>
-
-
-					<!--   		place in the member profile creation		<div class="form-group">  -->
-					<!--     				<div class="col-sm-offset-2 col-sm-8"> -->
-					<!--       				<div class="checkbox"> -->
-					<!--         			<label><input type="checkbox" id="ageRestriction" name="ageRestriction"> Age Restriction?</label> -->
-					<!--       				</div> -->
-					<!--     				</div> -->
-					<!--   				</div> -->
-
 					<div class="row">
 						<h3>
 							Payment Info <br>
