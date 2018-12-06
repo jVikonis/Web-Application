@@ -16,3 +16,6 @@ option:hover {
 	background-color: green; 
 
 }
+#grad {
+  background-image: linear-gradient(to bottom right, red, white);
+}

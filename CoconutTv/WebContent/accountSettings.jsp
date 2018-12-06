@@ -38,24 +38,9 @@
  			</div>
   			<div class="col-sm-4">
   				<h4>Next charge (display info)<br><br></h4>
-				<h4>Update Payment Info <button type="button" action="" class="btn btn-success btn" data-toggle="modal" data-target="#updatePayment">Update</button><br><br></h4>
-				<h4>Update Account Info <button type="button" action="" class="btn btn-success btn" data-toggle="modal" data-target="#updateAccount">Update</button><br><br></h4>
-				<h4>Change the Plan <button type="button" class="btn btn-success btn" data-toggle="modal" data-target="#updatePlan">Change</button><br><br></h4>		
-			
-		
-
-<!-- PAYMENT UPDATE MODAL -->
-<div class="modal fade" id="updatePayment" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-				</button>
-				<h3 class="modal-title" id="modalLabel">Update Payment Info</h3>
-			</div>
-			<div class="modal-body">				
-				<form class="form-horizontal" action="" method="post">
+  				
+  				<center><h3>Update Payment Info</h3></center>
+  				<form name="updateCardInfo" class="form-horizontal" action="" method="post" onsubmit="">
 					<div class="form-group">
     				<label class="control-label col-sm-2" for="cardHolderFirstName">First Name:</label>
     				<div class="col-sm-8">
@@ -104,153 +89,109 @@
     				</div>
   				</div>				
 				
-				</form>
-			</div>
-			<div class="modal-footer">
-				
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-			</div>
-		</div>
-	</div>
-</div>  <!-- END OF PAYMENT UPDATE MODAL -->
-
-	
-				
-				
- 
-
- <!-- MODAL FOR ACCOUNT INFO UPDATE -->
- <div class="modal fade" id="updateAccount" role="dialog">
- <div class="modal-dialog">
-
- <!-- Modal content-->
- <div class="modal-content">
- 	<div class="modal-header">
- 		<button type="button" class="close" data-dismiss="modal">&times;</button>
- 		<h3 class="modal-title">Update Account Info</h3>
- 	</div>
- 	<div class="modal-body">
- 		<form class="form-horizontal" action="" method="post">
-  			
-  			<div class="form-group">
-    				<label class="control-label col-sm-2" for="m_email">Email:</label>
-    				<div class="col-sm-8">
-      				<input type="email" class="form-control" id="m_email" name="m_email" placeholder="e.g. Example@example.com" maxlength="45">
-    				</div>
-  				</div>
-  				<div class="form-group">
-    				<label class="control-label col-sm-2" for="m_password">Password:</label>
-    				<div class="col-sm-8"> 
-      				<input type="password" class="form-control" id="m_password" name="m_password" placeholder="Enter password" maxlength="45">
-    				</div>
-  				</div>
-  				<div class="form-group">
-    				<label class="control-label col-sm-2" for="m_password1">Re-enter <br> password:</label>
-    				<div class="col-sm-8"> 
-      				<input type="password" class="form-control" id="m_password1" name="m_password1" placeholder="Re-enter password" maxlength="45">
-    				</div>
-  				</div>
-				<div class="form-group">
-    				<label class="control-label col-sm-2" for="m_firstName">First Name:</label>
-    				<div class="col-sm-8">
-      				<input type="text" class="form-control" id="m_firstName" name="m_firstName" placeholder="Enter first name" maxlength="45">
-    				</div>
-  				</div>
-				<div class="form-group">
-    				<label class="control-label col-sm-2" for="m_lastName">Last Name:</label>
-    				<div class="col-sm-8">
-      				<input type="text" class="form-control" id="m_lastName" name="m_lastName" placeholder="Enter last name" maxlength="45">
-    				</div>
-  				</div>
-				
-  				<div class="form-group">
-    				<label class="control-label col-sm-2" for="dateOfBirth">Date of birth:</label>
-    				<div class="col-sm-8"> 
-      				<input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth">
-    				</div>
-  				</div>
-  				<div class="form-group">
-    				<label class="control-label col-sm-2" for="m_line1">Address line 1:</label>
-    				<div class="col-sm-8">
-      				<input type="text" class="form-control" id="m_line1" name="m_line1" placeholder="e.g. 123 Fake St." maxlength="45">
-    				</div>
-  				</div>
-  				<div class="form-group">
-    				<label class="control-label col-sm-2" for="m_line2">Address line 2:</label>
-    				<div class="col-sm-8">
-      				<input type="text" class="form-control" id="m_line2" name="m_line2" placeholder=" e.g. Apt.#, Suite #, etc." maxlength="45">
-    				</div>
-  				</div>
-  				<div class="form-group">
-    				<label class="control-label col-sm-2" for="m_city">City:</label>
-    				<div class="col-sm-8">
-      				<input type="text" class="form-control" id="m_city" name="m_city" placeholder="e.g. Chicago" maxlength="45">
-    				</div>
-  				</div>
-  				<div class="form-group">
-    				<label class="control-label col-sm-2" for="m_state">State:</label>
-    				<div class="col-sm-8">
-      				<input type="text" class="form-control" id="m_state" name="m_state" placeholder="e.g. IL" maxlength="2">
-    				</div>
-  				</div>
-  				<div class="form-group">
-    				<label class="control-label col-sm-2" for="m_zip">Zip Code:</label>
-    				<div class="col-sm-8">
-      				<input type="text" class="form-control" id="m_zip" name="m_zip" placeholder="e.g. 60007" maxlength="5">
-    				</div>
-  				</div>
-  				<div class="form-group">
-    				<label class="control-label col-sm-2" for="m_phoneNumber">Phone Number:</label>
-    				<div class="col-sm-8">
-      				<input type="tel" class="form-control" id="m_phoneNumber" name="m_phoneNumber" placeholder="e.g. (555) 555-0000" maxlength="20">
-    				</div>
-  				</div>  				
-  				<div class="form-group">
-  					<label class="control-label col-sm-2" for="genre">Favorite Genre:</label>
-  					<div class="col-sm-8">
-  					<select class="form-control" id="genre" name="">
-  						<option>Choose one..</option>
-    					<option value="1" id="action" name="action">Action</option>
-    					<option value="2" id="comedy" name="comedy">Comedy</option>
-    					<option value="3" id="drama" name="drama">Drama</option>
-    					<option value="4" id="horror" name="horror">Horror</option>
-    					<option value="5" id="scifi" name="scifi">Sci-Fi</option>
-  					</select>
-  					</div>
-				</div>
-  			
-  			
- 			<div class="form-group"> 
-    			<div class="col-sm-offset-2 col-sm-8">
-      			<button type="submit" value="updateAccount" class="btn btn-success">Save Changes</button>
-   				</div>
-   				
-  			</div>
-		</form>
- 	</div>
- <div class="modal-footer">
- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
- </div>
- </div>
-
- </div>
- </div> <!-- END OF ACCOUNT INFO MODAL-->
-				
-				
-				
-				
-<!-- PLAN UPDATE MODAL -->
-<div class="modal fade" id="updatePlan" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-				</button>
-				<h3 class="modal-title" id="modalLabel">Update Plan</h3>
-			</div>
-			<div class="modal-body">				
-				<form class="form-horizontal" action="" method="post">
+				</form><br><br> 
+  				
+  				
+  				<center><h3>Update Account Info</h3></center>
+  				<form name="updateAccountInfo" class="form-horizontal" action="" method="post">  			
+		  			<div class="form-group">
+		    				<label class="control-label col-sm-2" for="m_email">Email:</label>
+		    				<div class="col-sm-8">
+		      				<input type="email" class="form-control" id="m_email" name="m_email" placeholder="e.g. Example@example.com" maxlength="45">
+		    				</div>
+		  				</div>
+		  				<div class="form-group">
+		    				<label class="control-label col-sm-2" for="m_password">Password:</label>
+		    				<div class="col-sm-8"> 
+		      				<input type="password" class="form-control" id="m_password" name="m_password" placeholder="Enter password" maxlength="45">
+		    				</div>
+		  				</div>
+		  				<div class="form-group">
+		    				<label class="control-label col-sm-2" for="m_password1">Re-enter <br> password:</label>
+		    				<div class="col-sm-8"> 
+		      				<input type="password" class="form-control" id="m_password1" name="m_password1" placeholder="Re-enter password" maxlength="45">
+		    				</div>
+		  				</div>
+						<div class="form-group">
+		    				<label class="control-label col-sm-2" for="m_firstName">First Name:</label>
+		    				<div class="col-sm-8">
+		      				<input type="text" class="form-control" id="m_firstName" name="m_firstName" placeholder="Enter first name" maxlength="45">
+		    				</div>
+		  				</div>
+						<div class="form-group">
+		    				<label class="control-label col-sm-2" for="m_lastName">Last Name:</label>
+		    				<div class="col-sm-8">
+		      				<input type="text" class="form-control" id="m_lastName" name="m_lastName" placeholder="Enter last name" maxlength="45">
+		    				</div>
+		  				</div>
+						
+		  				<div class="form-group">
+		    				<label class="control-label col-sm-2" for="dateOfBirth">Date of birth:</label>
+		    				<div class="col-sm-8"> 
+		      				<input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth">
+		    				</div>
+		  				</div>
+		  				<div class="form-group">
+		    				<label class="control-label col-sm-2" for="m_line1">Address line 1:</label>
+		    				<div class="col-sm-8">
+		      				<input type="text" class="form-control" id="m_line1" name="m_line1" placeholder="e.g. 123 Fake St." maxlength="45">
+		    				</div>
+		  				</div>
+		  				<div class="form-group">
+		    				<label class="control-label col-sm-2" for="m_line2">Address line 2:</label>
+		    				<div class="col-sm-8">
+		      				<input type="text" class="form-control" id="m_line2" name="m_line2" placeholder=" e.g. Apt.#, Suite #, etc." maxlength="45">
+		    				</div>
+		  				</div>
+		  				<div class="form-group">
+		    				<label class="control-label col-sm-2" for="m_city">City:</label>
+		    				<div class="col-sm-8">
+		      				<input type="text" class="form-control" id="m_city" name="m_city" placeholder="e.g. Chicago" maxlength="45">
+		    				</div>
+		  				</div>
+		  				<div class="form-group">
+		    				<label class="control-label col-sm-2" for="m_state">State:</label>
+		    				<div class="col-sm-8">
+		      				<input type="text" class="form-control" id="m_state" name="m_state" placeholder="e.g. IL" maxlength="2">
+		    				</div>
+		  				</div>
+		  				<div class="form-group">
+		    				<label class="control-label col-sm-2" for="m_zip">Zip Code:</label>
+		    				<div class="col-sm-8">
+		      				<input type="text" class="form-control" id="m_zip" name="m_zip" placeholder="e.g. 60007" maxlength="5">
+		    				</div>
+		  				</div>
+		  				<div class="form-group">
+		    				<label class="control-label col-sm-2" for="m_phoneNumber">Phone Number:</label>
+		    				<div class="col-sm-8">
+		      				<input type="tel" class="form-control" id="m_phoneNumber" name="m_phoneNumber" placeholder="e.g. (555) 555-0000" maxlength="20">
+		    				</div>
+		  				</div>  				
+		  				<div class="form-group">
+		  					<label class="control-label col-sm-2" for="genre">Favorite Genre:</label>
+		  					<div class="col-sm-8">
+		  					<select class="form-control" id="genre" name="">
+		  						<option>Choose one..</option>
+		    					<option value="1" id="action" name="action">Action</option>
+		    					<option value="2" id="comedy" name="comedy">Comedy</option>
+		    					<option value="3" id="drama" name="drama">Drama</option>
+		    					<option value="4" id="horror" name="horror">Horror</option>
+		    					<option value="5" id="scifi" name="scifi">Sci-Fi</option>
+		  					</select>
+		  					</div>
+						</div>
+		  			
+		  			
+		 			<div class="form-group"> 
+		    			<div class="col-sm-offset-2 col-sm-8">
+		      			<button type="submit" value="updateAccount" class="btn btn-success">Save Changes</button>
+		   				</div>		   				
+		  			</div>
+				</form><br><br>
+  				
+  				
+  				<center><h3>Update Subscription Level</h3></center>
+  				<form name="updateSubscription" class="form-horizontal" action="" method="post" onsubmit="">
 					
 					<div class="form-group">
   					<label class="control-label col-sm-2" for="m_levelName">Subscription Level:</label>
@@ -266,25 +207,12 @@
   				
   				<div class="form-group"> 
     				<div class="col-sm-offset-2 col-sm-8">
-      				<button type="submit" value="updatePayment" class="btn btn-success">Save Changes</button>
+      				<button type="submit" value="updateSubscription" class="btn btn-success">Save Changes</button>
     				</div>
   				</div>				
 				
 				</form>
-			</div>
-			<div class="modal-footer">
-				
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-			</div>
-		</div>
-	</div>
-</div>  <!-- END OF PLAN UPDATE MODAL  -->				
-				
-				
-				
-				
-				
-				
+
 				
 				<h4>Profile Management <a href="./profileManagement.jsp">Manage</a><br><br><br><br><br><br></h4>				
 				<h4><a href="./welcome.jsp">Cancel Plan</a> </h4> <h4> <a href="./startPage.jsp">Go back to Home Page</a></h4>
@@ -294,28 +222,7 @@
   				
   			</div>
 		</div>
-	
-	
-	
-	
-	
-	
 	</div>
-	
-	
-	
-<script>
-// Initialize tooltip component
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
 
-// Initialize popover component
-$(function () {
-  $('[data-toggle="popover"]').popover()
-})
-</script>
-	
-	
 </body>
 </html>

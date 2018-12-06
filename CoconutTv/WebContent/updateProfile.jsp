@@ -47,26 +47,11 @@
  				
  			</div>
   			<div class="col-sm-4">
-  				<br><br>
-  				<h4>Update User Name <button type="button" class="btn btn-success btn" data-toggle="modal" data-target="#updateUsername">Change</button><br><br></h4>
-				<h4>Update Favorite Genre <button type="button" action="" class="btn btn-success btn" data-toggle="modal" data-target="#genrePreference">Update</button><br><br></h4>
-				<h4>Update Age Restriction <button type="button" action="" class="btn btn-success btn" data-toggle="modal" data-target="#ageRestriction">Update</button><br><br></h4>
-								
-<!-- USERNAME UPDATE MODAL -->
-<div class="modal fade" id="updateUsername" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-				</button>
-				<h3 class="modal-title" id="modalLabel">Update Username</h3>
-			</div>
-			<div class="modal-body">				
-				<form class="form-horizontal" action="UpdateProfile" method="post" >
+  				<!-- USERNAME UPDATE FORM -->
+  				<form name="updateUsername" class="form-horizontal" action="" method="post" onsubmit="" >
 					
 					<div class="form-group">
-    					<label class="control-label col-sm-2" for="userName">First Name:</label>
+    					<label class="control-label col-sm-2" for="userName">Update First Name:</label>
     					<div class="col-sm-8">
       					<input type="text" class="form-control" id="userName" name="userName" placeholder="<%if(selectedProfile.getUsername() != null){
       						out.print(selectedProfile.getUsername());
@@ -83,32 +68,14 @@
     				</div>
   				</div>				
 				
-				</form>
-			</div>
-			<div class="modal-footer">
-				
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-			</div>
-		</div>
-	</div>
-</div>  <!-- END OF USERNAME UPDATE MODAL  -->		
-				
-				
-<!-- GENRE UPDATE MODAL -->
-<div class="modal fade" id="genrePreference" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-				</button>
-				<h3 class="modal-title" id="modalLabel">Update Genre</h3>
-			</div>
-			<div class="modal-body">				
-				<form class="form-horizontal" action="UpdateProfile" method="post">
+				</form><!-- END OF USERNAME UPDATE FORM  -->
+  				<br><br>
+  				
+  				<!-- UDPDATE FAVORITE GENRE -->
+  				<form name="updateGenre" class="form-horizontal" action="" method="post" onsubmit="" >
 					
 					<div class="form-group">
-  					<label class="control-label col-sm-2" for="genrePreference">Favorite Genre:</label>
+  					<label class="control-label col-sm-2" for="genrePreference">Update Favorite Genre:</label>
   					<div class="col-sm-8">
   					<select class="form-control" id="genrePreference" name="genrePreference">
   						<option>Choose one..</option>
@@ -127,30 +94,11 @@
     				</div>
   				</div>				
 				
-				</form>
-			</div>
-			<div class="modal-footer">
-				
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-			</div>
-		</div>
-	</div>
-</div>  <!-- END OF GENRE UPDATE MODAL  -->				
-				
-
-
-<!-- AGE RESTRICTION UPDATE MODAL -->
-<div class="modal fade" id="ageRestriction" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-				</button>
-				<h3 class="modal-title" id="modalLabel">Update Age Restriction</h3>
-			</div>
-			<div class="modal-body">				
-				<form class="form-horizontal" action="UpdateProfile" method="post">
+				</form><!--END UDPDATE FAVORITE GENRE -->
+  			
+  				<br><br>
+  				<!-- AGE RESTRICTION UPDATE FORM -->
+  				<form name="updateAgeRestriction" class="form-horizontal" action="" method="post" onsubmit="" >
 					
 					<div class="form-group">
   					<label class="control-label col-sm-2" for="ageRestriction">Age Restriction:</label>
@@ -169,20 +117,12 @@
     				</div>
   				</div>				
 				
-				</form>
-			</div>
-			<div class="modal-footer">
-				
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-			</div>
-		</div>
-	</div>
-</div>  <!-- END OF AGE RESTRICTION UPDATE MODAL  -->			
-				
-				
-				
-				
-				
+				</form><!-- END OF AGE RESTRICTION UPDATE FORM  -->	
+  				
+  				
+  				
+  				<br><br>
+								
 				<h4><a href="./profileManagement.jsp">Back to Profile Management</a></h4>
 				<br><br><br><br><br><br>				
 				<h4><a href="./selectProfile.jsp">Back to Select Profile</a> </h4>
@@ -193,31 +133,7 @@
   				
   			</div>
 		</div>
-	
-	
-	
-	
-	
-	
 	</div>
 
-
-
-
-
-
-
-
-<script>
-// Initialize tooltip component
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
-
-// Initialize popover component
-$(function () {
-  $('[data-toggle="popover"]').popover()
-})
-</script>
 </body>
 </html>

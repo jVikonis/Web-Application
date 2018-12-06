@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -14,13 +14,13 @@
 <!-- Latest compiled and minified JavaScript -->
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <link href="./adminOptions.css" rel="stylesheet" type="text/css">
-<title>Admin Options</title>
+<title>Admin Delete Movie</title>
 </head>
 <body>
 
 <div class="container-fluid">
 		<div class="page-header">
-			<h1> Administrator Options <br><br> </h1>
+			<h1> Delete Movie From Database <br><br> </h1>
 		</div>
 		
 		<div class="row">
@@ -31,9 +31,22 @@
  			
   			<div class="col-sm-4 col-md-4">
  				
- 				<a href="./adminAddMovie.jsp"> Add Movie </a> <br>
- 				<a href="./adminDeleteMovie.jsp"> Delete Movie </a> <br> 
- 				<a href="./subTableAdmin.jsp"> Pull Up Tables </a> <br><br>
+ 				<form name="adminDeleteMovie" class="form-horizontal" action="./adminOptions.jsp" method="post" onsubmit="">
+  					<div class="form-group">
+   						<label class="control-label col-sm-2" for="movieTitle">Enter Movie title</label>
+    					<div class="col-sm-8">
+     					<input type="text" class="form-control" id="movieTitle" name="movieTitle" placeholder="e.g. A Few Good Men" maxlength="45">
+   						</div>
+  					</div>
+  			
+ 					<div class="form-group"> 
+    					<div class="col-sm-offset-2 col-sm-8">
+      					<button type="submit" value="submit" class="btn btn-success">Delete</button>
+   						</div>
+  					</div>
+				</form>
+ 				
+ 				
  				
  				<a href="./welcome.jsp"> Exit </a>
  				
@@ -50,8 +63,6 @@
 	
 	</div>
 
-
-<!-- Add three links here, one to the admin subTableAdmin, one to a form to add a movie and another to enter a movie and have it deleted from the database -->
 
 </body>
 </html>
