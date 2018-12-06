@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/x-icon" href="">
+<link rel="icon" type="image/x-icon" href="WebImages/logo.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -45,7 +45,7 @@ function checkAdmin() {
  			
  			
   			<div class="col-sm-4 col-md-4">
- 				<form name="adminlogin" class="form-horizontal" action="adminOptions.jsp" method="post" onsubmit="return checkAdmin()">
+ 				<form name="adminlogin" class="form-horizontal" action="./adminOptions.jsp" method="post" onsubmit="return checkAdmin()">
   					<div class="form-group">
    						<label class="control-label col-sm-2" for="m_email"></label>
     					<div class="col-sm-8">

@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/x-icon" href="">
+<link rel="icon" type="image/x-icon" href="WebImages/logo.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -21,7 +21,7 @@
 	
 	<div class="container-fluid">
 	<div class="page-header">
-		<h1> Welcome <br> to <br> Gilligan's CoconutTV!</h1>
+		<h1 class="glow"> Welcome <br> to <br> Gilligan's CoconutTV!</h1>
 	</div>
 	
 	<div class="row">
@@ -50,7 +50,7 @@
   			<div class="form-group"> 
     			<div class="col-sm-offset-2 col-sm-8">
       			<div>
-        		<label><a href="./getPassword.jsp">Forgot Password? </a></label><br>
+        		<label><a href="getPassword.jsp">Forgot Password? </a></label><br>
         		<label>Not a Member? <a href="./signUp.jsp">Sign Up!</a></label>
       			</div>
     			</div>
@@ -93,7 +93,7 @@
   		<div class="col-sm-4 col-md-4">
   			<h3>Check Out Movies<br><br></h3>
   			<div class="thumbnail">  				
-  				<img src="logo.png" alt="Any Picture" id="welcomeImage">
+  				<img src="./WebImages/logo.png" alt="Any Picture" id="welcomeImage">
   				<div class="caption">
   				<h3>Browse Movies</h3>
   				<p>See our available movies before you sign up. </p>
@@ -109,21 +109,14 @@
 	
 	
 	
-	<footer class="navbar-default navbar-fixed-bottom">
-  		<div class="container-fluid">
+	<div class="navbar-default navbar-fixed-bottom">
+  		<div >
   			<div class="boom">
     		<a href="./adminLogin.jsp" style="float:right">Admin<span class="glyphicon glyphicon-log-in"></span></a>
   			</div>
   		</div>
-	</footer>
-	
 	</div>
 	
-	
-	
-	
-	
-	
-	
+	</div>	
 </body>
 </html>

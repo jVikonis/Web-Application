@@ -72,7 +72,9 @@
 }
 
 body {
-	background-color: lightgrey; 
+	background-repeat: no-repeat; 
+	background-image: linear-gradient(to bottom , red, white);
+	-webkit-background-image: linear-gradient(to bottom right, white, red);
 }
 
 .header {

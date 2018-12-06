@@ -72,7 +72,9 @@
 }
 
 body {
-	background-color: lightgrey; 
+	background-repeat: no-repeat; 
+	background-image: linear-gradient(to bottom , red, white);
+	-webkit-background-image: linear-gradient(to bottom right, white, red);
 }
 .downloadBtn {
 	background-color: green; 
@@ -102,7 +104,7 @@ body {
 
 .col-sm-5 {
 	text-align: center; 
-	margin-top: 225px; 
+	margin-top: 175px; 
 }
 .col-sm-7 {
 	text-align: left; 
@@ -121,7 +123,12 @@ body {
 	color: white; 
 	text-decoration: none; 
 }
-
+.downloadBtn:hover {
+	transform: scale(1.1); 
+}
+.fa-heart:hover {
+	transform: scale(1.2); 
+}
 
 
 

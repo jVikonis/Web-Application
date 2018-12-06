@@ -15,7 +15,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/x-icon" href="">
+<link rel="icon" type="image/x-icon" href="WebImages/logo.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -93,25 +93,23 @@
 	
 		<div class="row">		
 			<div class="col-sm-5">  			
-   				 <img src="./MoviePosters/<%=selectedMovie.getMovieImage()%>" alt= "movieimage" id="movieImage" name="movieImage">
-    				<h4>INSERT MOVIE PICTURE<br> HERE</h4>
-   					<p>Optional text</p> 			
+   				 <img src="./MoviePosters/<%=selectedMovie.getMovieImage()%>" alt= "movieimage" id="movieImage" name="movieImage">		
 			</div>		
 		
   			<div class="col-sm-7">
-   			<div  style="max-width: 600px;"> 	
+   			<div  style="max-width: 575px;"> 	
   				<h3><%selectedMovie.getTitle(); %>
   				</h3><br>
   				
-    			<h5><b>Director:</b><% selectedMovie.getDirector(); %></h5> 
+    			<h5><b>Director:</b><%=selectedMovie.getDirector() %></h5> 
     			
-    			<h5><b>Actors:</b> <% selectedMovie.getActor1(); %> , <% selectedMovie.getActor2(); %> </h5>
+    			<h5><b>Actors:</b> <%=selectedMovie.getActor1() %> , <%= selectedMovie.getActor2() %> </h5>
     			
-    			<h5><b>Description: </b> <br>  <% selectedMovie.getDescription(); %> </h5>
+    			<h5><b>Description: </b> <br>  <%=selectedMovie.getDescription() %> </h5>
     			
     			
     			
-    			<p><a href= <% selectedMovie.getMovieTrailer(); %> >Watch a trailer here!</a> </p>
+    			<p><a href="<%=selectedMovie.getMovieTrailer() %>" >Watch a trailer here!</a> </p>
     			
     			<form action="" method="post">
 				<label for="input-1 xs" class="control-label">Rate this movie:</label>
@@ -125,7 +123,7 @@
     			<p>
     			<br><button type="submit" title="Download" class="downloadBtn"><i class="fa fa-download"></i></button>        
     			
-    			<a href="selectedMovie.jsp"  title="Add to Favorites" class="heartIcon"><i class="fa fa-fw fa-heart"></i></a>      			
+    			<a href="selectedMovie.jsp" action="" title="Add to Favorites" class="heartIcon"><i class="fa fa-fw fa-heart"></i></a>      			
     			(If person is not logged in, download button will not appear)
     			</p>
     				
@@ -147,70 +145,3 @@ $(document).on('ready', function(){
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

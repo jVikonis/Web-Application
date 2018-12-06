@@ -5,13 +5,19 @@
 	font-size: 40px; 
 	text-align: center; 
 	margin-top: 50px;
+	position: relative; 
 }
 body {
-	background-color: lightgrey;
+	background-color: ;
+	background-repeat: no-repeat; 
+	background-image: linear-gradient(to bottom , red, white);
+	-webkit-background-image: linear-gradient(to bottom right, white, red);
+	margin-bottom: 150px;
 }
 .col-sm-4 {
 	text-align: center; 
 	margin-top: 100px; 
+	
 }
 
 .list-group a:hover {
@@ -44,13 +50,33 @@ body {
    -moz-transition: .5s background-color;
    -o-transition: .5s background-color;
 }
-footer {
-	height: 30px;
-}
 .boom a{
 	margin-right: 10px; 
 	margin-top: 5px;
 	margin-bottom: 5px;
 	
+}
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.glow {
+  font-size: 80px;
+  color: #fff;
+  text-align: center;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
 }
 
