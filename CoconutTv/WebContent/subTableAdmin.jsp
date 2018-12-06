@@ -40,7 +40,7 @@
 	<tr>
 	<% // Add column names to the table
 	while (rsColumns.next()) { %>
-	<td> <h4><b><%= rsColumns.getString("COLUMN_NAME") %></b> </h4></td>
+	<td> <h5><b><%= rsColumns.getString("COLUMN_NAME") %></b> </h5></td>
 	<%}%>
 	
 	</tr> 
