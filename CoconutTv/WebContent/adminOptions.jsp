@@ -31,11 +31,26 @@
  			
   			<div class="col-sm-4 col-md-4">
  				
- 				<a href="./adminAddMovie.jsp"> Add Movie </a> <br>
- 				<a href="./adminDeleteMovie.jsp"> Delete Movie </a> <br> 
- 				<!-- change this to a entry field pull a specific table -->
- 				<a href="./subTableAdmin.jsp"> Pull Up Tables </a> <br><br>
+ 				<a href="./adminAddMovie.jsp"> Add Movie </a> <br><br>
+ 				<a href="./adminDeleteMovie.jsp"> Delete Movie </a> <br><br> 
  				
+ 			<form class="form-horizontal" action="subTableAdmin.jsp" method="post">
+	  			<div class="form-group">
+	   				<label class="control-label col-sm-2" for="tablename">Enter Name of the Table:</label>
+	    			<div class="col-sm-8">
+	     			<input type="text" class="form-control" id="tablename" name="tablename" placeholder="Enter name" maxlength="45">
+	   				</div>
+	  			</div>
+	  			
+	 			<div class="form-group"> 
+	    			<div class="col-sm-offset-2 col-sm-8">
+	      			<button type="submit" value="tablename" class="btn btn-success">Submit</button>
+	   			</div>
+	   				
+	  			</div>
+			</form> 
+ 				
+ 				<br><br>
  				<a href="./welcome.jsp"> Exit </a>
  				
  			</div>

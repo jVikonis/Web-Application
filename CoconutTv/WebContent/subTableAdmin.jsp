@@ -30,9 +30,9 @@
 	//This should be passed down from the page that collects the parameters
 	String tableName = request.getParameter("tablename");
 	
-	ResultSet rsColumns = adminDB.getConnection().getMetaData().getColumns(null, null, table,null);
+	ResultSet rsColumns = adminDB.getConnection().getMetaData().getColumns(null, null, tableName,null);
 	%>
-	<div class="page-header"> <h2> Current Table Name: <% out.println(table); %> </h2>  </div>
+	<div class="page-header"> <h2> Current Table Name: <% out.println(tableName); %> </h2>  </div>
 	
 	<div class="row">
 	
@@ -46,7 +46,7 @@
 	</tr> 
 
 	<% 
-	ResultSet rs = adminDB.getTableData(table);
+	ResultSet rs = adminDB.getTableData(tableName);
 	
 	// Get column count
 	int columnCount = rs.getMetaData().getColumnCount();
