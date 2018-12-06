@@ -24,25 +24,21 @@
 <link href="./profileManagement.css" rel="stylesheet" type="text/css">
 <title>Profile Management</title>
 </head>
-<%	newSub = subscriberDB.getSub(10001);
-	selectedProfile = newSub.getUserProfiles().get(0);
-%>
-
 <body>
-
 <div class="container">
 		<div class="page-header">
 			<h1> Manage Your Profiles<br><br></h1>
 		</div>
 	
+
 		<div class="row">
-		<%if (newSub.getUserProfiles().get(0) != null) {
+		<%if (newSub.getUserProfiles().get(0) != null && newSub.getUserProfiles().get(0).getUsername() != null) {
 		%><div class="col-sm-4 col-md-4">
     			<div class="thumbnail">
       				<h1>Profile 1</h1>
       				<div class="caption">
         			<h3><%
- 					if(newSub.getUserProfiles().get(0) != null) {
+ 					if(newSub.getUserProfiles().get(0).getUsername() != null) {
  						out.print(newSub.getUserProfiles().get(0).getUsername());
  					}
  					else
@@ -73,13 +69,13 @@ else {
 %>
  			
 <%
-		if (newSub.getUserProfiles().get(1) != null) {
+		if (newSub.getUserProfiles().get(1) != null && newSub.getUserProfiles().get(1).getUsername() != null) {
 		%><div class="col-sm-4 col-md-4">
     			<div class="thumbnail">
       				<h1>Profile 2</h1>
       				<div class="caption">
         			<h3><%
- 					if(newSub.getUserProfiles().get(1) != null) {
+ 					if(newSub.getUserProfiles().get(1).getUsername() != null) {
  						out.print(newSub.getUserProfiles().get(1).getUsername());
  					}
  					else
@@ -110,13 +106,13 @@ else {
 %>
   			
 <%
-		if (newSub.getUserProfiles().get(2) != null) {
+		if (newSub.getUserProfiles().get(2) != null && newSub.getUserProfiles().get(2).getUsername() != null) {
 		%><div class="col-sm-4 col-md-4">
     			<div class="thumbnail">
       				<h1>Profile 3</h1>
       				<div class="caption">
         			<h3><%
- 					if(newSub.getUserProfiles().get(2) != null) {
+ 					if(newSub.getUserProfiles().get(2).getUsername() != null) {
  						out.print(newSub.getUserProfiles().get(2).getUsername());
  					}
  					else

@@ -87,20 +87,45 @@ public class favoritesDB {
 	}
 
 	public static void updateFavorites(Users updatedUser) throws SQLException {
+		if(updatedUser == null) {
+			return;
+		}
 		PreparedStatement dbQuery;
-		String updateFav = "update favorites set userName = ?, genrePreference = ?, favorite1 = ?, favorite2 = ?, favorite3 = ?, crewPerson = ?, recent1 = ?, recent2 = ?, recent3 = ?, where userID = ?";
+		String updateFav = "update favorites set userName = ?, genrePreference = ?, favorite1 = ?, favorite2 = ?, favorite3 = ?, crewPerson = ?, recent1 = ?, recent2 = ?, recent3 = ?, ageRestriction = ? where userid = ?";
 		dbQuery = con.prepareStatement(updateFav);
 
 		dbQuery.setString(1, updatedUser.getUsername());
 		dbQuery.setString(2, updatedUser.getFavoriteGenre());
-		dbQuery.setInt(3, updatedUser.getFavorites().get(0));
-		dbQuery.setInt(4, updatedUser.getFavorites().get(1));
-		dbQuery.setInt(5, updatedUser.getFavorites().get(2));
-		dbQuery.setString(6, updatedUser.getAgeRestriction());
-		dbQuery.setInt(7, updatedUser.getFavoriteCrew().getCrewID());
-		dbQuery.setInt(8, updatedUser.getRecents().get(0));
-		dbQuery.setInt(9, updatedUser.getRecents().get(1));
-		dbQuery.setInt(10, updatedUser.getRecents().get(2));
+		if(updatedUser.getFavorites() != null) {
+			dbQuery.setInt(3, updatedUser.getFavorites().get(0));
+			dbQuery.setInt(4, updatedUser.getFavorites().get(1));
+			dbQuery.setInt(5, updatedUser.getFavorites().get(2));
+		}
+		else {
+			dbQuery.setInt(3, 0);
+			dbQuery.setInt(4, 0);
+			dbQuery.setInt(5, 0);
+		}
+		if(updatedUser.getFavoriteCrew() != null) {
+			dbQuery.setInt(6, updatedUser.getFavoriteCrew().getCrewID());
+		}
+		else {
+			dbQuery.setInt(6, 0);
+		}
+		
+		if (updatedUser.getRecents()!= null) {
+			dbQuery.setInt(7, updatedUser.getRecents().get(0));
+			dbQuery.setInt(8, updatedUser.getRecents().get(1));
+			dbQuery.setInt(9, updatedUser.getRecents().get(2));
+		}
+		else {
+			dbQuery.setInt(7, 0);
+			dbQuery.setInt(8, 0);
+			dbQuery.setInt(9, 0);
+		}
+		
+		dbQuery.setString(10, updatedUser.getAgeRestriction());
+		dbQuery.setInt(11, updatedUser.getUserID());
 
 		dbQuery.executeUpdate();
 

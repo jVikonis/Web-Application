@@ -1,6 +1,7 @@
 package Servlets;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import classes.Subscriber;
 import classes.Users;
+import database.favoritesDB;
 import database.userDB;
 
 /**
@@ -42,15 +45,41 @@ public class UpdateProfile extends HttpServlet {
 		String username = request.getParameter("userName");
 		String favGenre = request.getParameter("genrePreference");
 		String ageRest = request.getParameter("ageRestriction");
+		Subscriber newSub = (Subscriber) session.getAttribute("newSub");
 		Users newUser = (Users) session.getAttribute("selectedProfile");
 		newUser.setUsername(username);
 		newUser.setFavoriteGenre(favGenre);
 		newUser.setAgeRestriction(ageRest);
-		
-		
-		
-		response.getWriter().append(username).append(request.getContextPath());
-		
+		if (newUser.getUserID() != 0) {
+			try {
+				favoritesDB.updateFavorites(newUser);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else {
+			try {
+				favoritesDB.addFavorite(newUser);
+				for (int i = 0; i < newSub.getUserProfiles().size(); i++) {
+					if(newSub.getUserProfiles().get(i) == null) {
+						newSub.getUserProfiles().set(i, newUser);
+						i = 8;
+					}
+				}
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+		try {
+			userDB.updateUser(newSub.getUserProfiles(), newSub.getAccountID());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		session.setAttribute("newSub", newSub);
+		response.sendRedirect("selectProfile.jsp");
 		
 	}
 

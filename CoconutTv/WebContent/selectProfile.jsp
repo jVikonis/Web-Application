@@ -31,8 +31,12 @@ if(request.getSession().getAttribute("signUpFlag") == "true") {
 	request.getSession().setAttribute("signUpFlag", "false");
 }
 %>
-
 <body>
+<%
+if(newSub.getAccountID() == 0) {
+	response.sendRedirect("welcome.jsp");
+}
+%>
 
 	<div class="container">
 		<div class="page-header">

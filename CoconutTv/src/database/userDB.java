@@ -22,17 +22,22 @@ public class userDB {
 
 	public static void updateUser(List<Users> changedUser, int accountID) throws SQLException {
 		PreparedStatement dbQuery;
-		String userInfo = "update users set user1=?, user2=?, user3=?, where accountID=?";
+		String userInfo = "update users set user1=?, user2=?, user3=? where accountID=?";
 
 		dbQuery = con.prepareStatement(userInfo);
-
-		dbQuery.setString(1, changedUser.get(0).getUsername());
-		dbQuery.setString(2, changedUser.get(1).getUsername());
-		dbQuery.setString(3, changedUser.get(2).getUsername());
+		int i = 0;
+		for (i = 0; i < changedUser.size(); i++) {
+			if(changedUser.get(i) != null)
+				dbQuery.setInt((i+1), changedUser.get(i).getUserID());
+			else
+				dbQuery.setInt((i+1), 0);
+		}
+		
+		
 		dbQuery.setInt(4, accountID);
 		dbQuery.executeUpdate();
 		
-		for (int i = 0; i < changedUser.size(); i++) {
+		for (i = 0; i < changedUser.size(); i++) {
 			favoritesDB.updateFavorites(changedUser.get(i));
 		}
 	}

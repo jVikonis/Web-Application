@@ -33,6 +33,7 @@
  				
  				<a href="./adminAddMovie.jsp"> Add Movie </a> <br>
  				<a href="./adminDeleteMovie.jsp"> Delete Movie </a> <br> 
+ 				<!-- change this to a entry field pull a specific table -->
  				<a href="./subTableAdmin.jsp"> Pull Up Tables </a> <br><br>
  				
  				<a href="./welcome.jsp"> Exit </a>

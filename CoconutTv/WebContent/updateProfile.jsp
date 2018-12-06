@@ -29,10 +29,14 @@
 
 <title>Update Profile Info</title>
 </head>
-<%	newSub = subscriberDB.getSub(10001);
+<%	
 	int userNumber = Integer.parseInt(request.getParameter("value"));
 	selectedProfile = newSub.getUserProfiles().get(userNumber);
-	session.setAttribute("newSub", newSub);
+	if(selectedProfile == null) {
+		selectedProfile = new Users();
+	}
+	
+	session.setAttribute("selectedProfile", selectedProfile);
 %>
 
 <body>
@@ -47,9 +51,7 @@
  				
  			</div>
   			<div class="col-sm-4">
-  				<!-- USERNAME UPDATE FORM -->
-  				<form name="updateUsername" class="form-horizontal" action="" method="post" onsubmit="" >
-					
+  				<form name="updateUsername" class="form-horizontal" action="UpdateProfile" method="post" onsubmit="" >
 					<div class="form-group">
     					<label class="control-label col-sm-2" for="userName">Update First Name:</label>
     					<div class="col-sm-8">
@@ -62,17 +64,10 @@
     					</div>
   					</div>
   				
-  				<div class="form-group"> 
-    				<div class="col-sm-offset-2 col-sm-8">
-      				<button type="submit" value="userName" class="btn btn-success">Save Changes</button>
-    				</div>
-  				</div>				
-				
-				</form><!-- END OF USERNAME UPDATE FORM  -->
+  				<div class="form-group">
+  				</div>
   				<br><br>
-  				
-  				<!-- UDPDATE FAVORITE GENRE -->
-  				<form name="updateGenre" class="form-horizontal" action="" method="post" onsubmit="" >
+
 					
 					<div class="form-group">
   					<label class="control-label col-sm-2" for="genrePreference">Update Favorite Genre:</label>
@@ -89,17 +84,9 @@
 				</div>  
   				
   				<div class="form-group"> 
-    				<div class="col-sm-offset-2 col-sm-8">
-      				<button type="submit" value="genrePreference" class="btn btn-success">Save Changes</button>
-    				</div>
   				</div>				
-				
-				</form><!--END UDPDATE FAVORITE GENRE -->
   			
-  				<br><br>
-  				<!-- AGE RESTRICTION UPDATE FORM -->
-  				<form name="updateAgeRestriction" class="form-horizontal" action="" method="post" onsubmit="" >
-					
+  				<br><br>					
 					<div class="form-group">
   					<label class="control-label col-sm-2" for="ageRestriction">Age Restriction:</label>
   					<div class="col-sm-8">
@@ -117,10 +104,7 @@
     				</div>
   				</div>				
 				
-				</form><!-- END OF AGE RESTRICTION UPDATE FORM  -->	
-  				
-  				
-  				
+				</form>
   				<br><br>
 								
 				<h4><a href="./profileManagement.jsp">Back to Profile Management</a></h4>
