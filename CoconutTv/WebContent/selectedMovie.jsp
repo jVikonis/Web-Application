@@ -113,6 +113,7 @@
     			
     			<form action="" method="post">
 				<label for="input-1 xs" class="control-label">Rate this movie:</label>
+				<!-- does the value filed indicate the default value? If so we can change it to selectedMovie.getRating to display the rating -->
    				<input id="input-1 xs" name="input-1 xs" class="rating rating-loading" data-min="0" data-max="5" data-step="1" value="0" data-size="xs">
    				<hr>
    					<button type="submit" class="btn btn-secondary">Submit</button>&nbsp;
@@ -127,7 +128,6 @@
     			(If person is not logged in, download button will not appear)
     			</p>
     				
-      			
       			
 				
 				

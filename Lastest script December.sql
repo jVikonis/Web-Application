@@ -689,7 +689,8 @@ INSERT INTO `crew` (`crewID`,`crewFirstName`,`crewLastName`) VALUES
  (653,'Martin','Sheen'),
  (654,'Alexandre','Rodrigues'),
  (655,'Leandro','Firmino'),
- (656,'Frances','McDormand');
+ (656,'Frances','McDormand'),
+ (657, 'Greg', 'Marcks');
 
 
 

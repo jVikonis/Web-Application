@@ -38,9 +38,7 @@ selectedProfile = newSub.getUserProfiles().get(0);%>
  		</div>
  		
 	<form class="form-horizontal" action="VerifyPassword" method="post">
-	<input type = "hidden" name = "verifyPassword" id = "verifyPassword" value="<%=newSub.getLoginInfo().getPassword()%>">
-	<input type = "hidden" name = "userIDDel" id = "userIDDel" value = "<%=selectedProfile.getUserID()%>">
-	<input type = "hidden" name = "accountID" id = "accountID" value = "<%=newSub.getAccountID()%>">
+	<input type="hidden" name= "checkCancel" value=<%=request.getParameter("checkCancel") %>>
 		<div class="form-group">
    				<label class="control-label col-sm-2" for="m_password">Password:</label>
     			<div class="col-sm-8"> 

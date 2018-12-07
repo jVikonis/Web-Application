@@ -25,7 +25,7 @@
 </head>
 <%	
 	int userNumber = Integer.parseInt(request.getParameter("value"));
-	selectedProfile = newSub.getUserProfiles().get(userNumber);
+	selectedProfile = favoritesDB.getUsersObj(userNumber);
 	
 	if(selectedProfile == null) {
 		response.sendRedirect("selectProfile.jsp");

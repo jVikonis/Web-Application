@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import classes.Subscriber;
+import classes.Users;
 import database.*;
 /**
  * Servlet implementation class VerifyPassword
@@ -39,26 +42,45 @@ public class VerifyPassword extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//doGet(request, response);
 		HttpSession session = request.getSession();
+		Subscriber tempSub = (Subscriber) session.getAttribute("newSub");
 		String s1 = (String)request.getParameter("m_verify_password");
-		String s2 = (String)request.getParameter("verifyPassword");
-		int n1 = Integer.parseInt(request.getParameter("accountID"));
-		int n2 = Integer.parseInt(request.getParameter("userIDDel"));
-		
-		if(s1.equals(s2) ) {
-			try {
-				userDB.deleteUser(n1 , n2);
-			} catch (NumberFormatException e) {
-				e.printStackTrace();
-			} catch (SQLException e) {
-				e.printStackTrace();
+		String s2 = tempSub.getLoginInfo().getPassword();
+		if (!request.getParameter("checkCancel").equals("cancel")) {
+			Users tempUser = (Users) session.getAttribute("selectedProfile");			
+			if(s1.equals(s2) ) {
+				try {
+					userDB.deleteUser( tempSub.getAccountID(), tempUser.getUserID());
+				} catch (NumberFormatException e) {
+					e.printStackTrace();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				session.setAttribute("verifyFail", "false");
+				response.sendRedirect("DeleteConfirmation.jsp");
 			}
-			session.setAttribute("verifyFail", "false");
-			response.sendRedirect("DeleteConfirmation.jsp");
+			else {
+				request.setAttribute("verifyFail", "true");
+				request.getRequestDispatcher("verifyPassword.jsp").forward(request, response);
+			}
 		}
 		else {
-			request.setAttribute("verifyFail", "true");
-			request.getRequestDispatcher("verifyPassword.jsp").forward(request, response);
+			if(s1.equals(s2) ) {
+				tempSub.setAccountStatus("canceled");
+				try {
+					subscriberDB.updateStatus(tempSub);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				session.setAttribute("verifyFail", "false");
+				response.sendRedirect("LogOut");
+			}
+			else {
+				request.setAttribute("verifyFail", "true");
+				request.getRequestDispatcher("verifyPassword.jsp").forward(request, response);
+			}
 		}
+		
 		
 		
 		

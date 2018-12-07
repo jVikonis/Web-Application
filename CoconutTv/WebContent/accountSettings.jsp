@@ -2,6 +2,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<jsp:useBean id="newSub" class="classes.Subscriber" scope="session"></jsp:useBean>
+<jsp:useBean id="selectedProfile" class="classes.Users" scope="session"></jsp:useBean>
+<%@ page import = "database.*" %>
+<%@ page import = "classes.*" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -24,8 +28,13 @@
 <title>Account Settings</title>
 </head>
 <body>
-	
-		
+<%
+if (newSub == null || newSub.getAccountID() == 0) {
+	request.getRequestDispatcher("welcome.jsp").forward(request, response);
+}
+	selectedProfile = (Users) session.getAttribute("selectedProfile");
+%>
+
 	
 	<div class="container-fluid">
 		<div class="header">
@@ -40,46 +49,46 @@
   				<h4>Next charge (display info)<br><br></h4>
   				
   				<center><h3>Update Payment Info</h3></center>
-  				<form name="updateCardInfo" class="form-horizontal" action="" method="post" onsubmit="">
+  				<form name="updateCardInfo" class="form-horizontal" action="SaveCCInfo" method="post" onsubmit="">
 					<div class="form-group">
     				<label class="control-label col-sm-2" for="cardHolderFirstName">First Name:</label>
     				<div class="col-sm-8">
-      				<input type="text" class="form-control" id="m_firstName" name="m_firstName" placeholder="Card holder first name" maxlength="45">
+      				<input type="text" class="form-control" id="m_firstName" name="m_firstName" placeholder=<%=newSub.getPaymentInfo().getFirstName() %> maxlength="45">
     				</div>
   				</div>
   				<div class="form-group">
     				<label class="control-label col-sm-2" for="cardHolderLastName">Last Name:</label>
     				<div class="col-sm-8">
-      				<input type="text" class="form-control" id="m_lastName" name="m_lastName" placeholder="Card holder last name" maxlength="45">
+      				<input type="text" class="form-control" id="m_lastName" name="m_lastName" placeholder=<%=newSub.getPaymentInfo().getLastName() %> maxlength="45">
     				</div>
   				</div>
   				<div class="form-group">
     				<label class="control-label col-sm-2" for="m_ccNumber">Credit Card Number:</label>
     				<div class="col-sm-8">
-      				<input type="text" class="form-control" id="m_ccNumber" name="m_ccNumber" placeholder="1234 5678 9000 0000" maxlength="16">
+      				<input type="text" class="form-control" id="m_ccNumber" name="m_ccNumber" placeholder=<%=newSub.getPaymentInfo().getCCNumber() %> maxlength="16">
     				</div>
   				</div>
   				<div class="form-group">
     				<label class="control-label col-sm-2" for="m_ccType">Credit Card Type:</label>
     				<div class="col-sm-8">
-      				<input type="text" class="form-control" id="m_ccType" name="m_ccType" placeholder="e.g. Visa, Discover, MasterCard ,etc." maxlength="45">
+      				<input type="text" class="form-control" id="m_ccType" name="m_ccType" placeholder=<%=newSub.getPaymentInfo().getCCType() %> maxlength="45">
     				</div>
   				</div>
   				<div class="form-group"> 
   				<div class="form-row">
     				<label class="control-label col-sm-2" for="m_ccExpiration">Expiration Month/Year:</label>
     				<div class="col-sm-4">
-      				<input type="text" class="form-control" id="m_expMonth" name="m_expMonth" placeholder="e.g. 9" maxlength="2">
+      				<input type="text" class="form-control" id="m_expMonth" name="m_expMonth" placeholder=<%=newSub.getPaymentInfo().getExpMonth() %> maxlength="2">
       				</div>
       				<div class="col-sm-4">
-      				<input type="text" class="form-control" id="m_expYear" name="m_expYear" placeholder="e.g. 2020" maxlength="4">
+      				<input type="text" class="form-control" id="m_expYear" name="m_expYear" placeholder=<%=newSub.getPaymentInfo().getExpYear() %> maxlength="4">
     				</div>
   				</div>
   				</div>
   				<div class="form-group">
     				<label class="control-label col-sm-2" for="m_ccv">CCV:</label>
     				<div class="col-sm-8">
-      				<input type="text" class="form-control" id="m_ccv" name="m_ccv" placeholder="e.g. 000" maxlength="3">
+      				<input type="text" class="form-control" id="m_ccv" name="m_ccv" placeholder=<%=newSub.getPaymentInfo().getCCNumber() %> maxlength="3">
     				</div>
   				</div>
   				
@@ -93,11 +102,11 @@
   				
   				
   				<center><h3>Update Account Info</h3></center>
-  				<form name="updateAccountInfo" class="form-horizontal" action="" method="post">  			
+  				<form name="updateAccountInfo" class="form-horizontal" action="UpdateAccountInfo" method="post">  			
 		  			<div class="form-group">
 		    				<label class="control-label col-sm-2" for="m_email">Email:</label>
 		    				<div class="col-sm-8">
-		      				<input type="email" class="form-control" id="m_email" name="m_email" placeholder="e.g. Example@example.com" maxlength="45">
+		      				<input type="email" class="form-control" id="m_email" name="m_email" placeholder=<%=newSub.getLoginInfo().getEmail() %> maxlength="45">
 		    				</div>
 		  				</div>
 		  				<div class="form-group">
@@ -115,13 +124,13 @@
 						<div class="form-group">
 		    				<label class="control-label col-sm-2" for="m_firstName">First Name:</label>
 		    				<div class="col-sm-8">
-		      				<input type="text" class="form-control" id="m_firstName" name="m_firstName" placeholder="Enter first name" maxlength="45">
+		      				<input type="text" class="form-control" id="m_firstName" name="m_firstName" placeholder=<%=newSub.getFirstName() %> maxlength="45">
 		    				</div>
 		  				</div>
 						<div class="form-group">
 		    				<label class="control-label col-sm-2" for="m_lastName">Last Name:</label>
 		    				<div class="col-sm-8">
-		      				<input type="text" class="form-control" id="m_lastName" name="m_lastName" placeholder="Enter last name" maxlength="45">
+		      				<input type="text" class="form-control" id="m_lastName" name="m_lastName" placeholder=<%=newSub.getLastName() %> maxlength="45">
 		    				</div>
 		  				</div>
 						
@@ -134,52 +143,52 @@
 		  				<div class="form-group">
 		    				<label class="control-label col-sm-2" for="m_line1">Address line 1:</label>
 		    				<div class="col-sm-8">
-		      				<input type="text" class="form-control" id="m_line1" name="m_line1" placeholder="e.g. 123 Fake St." maxlength="45">
+		      				<input type="text" class="form-control" id="m_line1" name="m_line1" placeholder=<%=newSub.getAddress().getLine1() %> maxlength="45">
 		    				</div>
 		  				</div>
 		  				<div class="form-group">
 		    				<label class="control-label col-sm-2" for="m_line2">Address line 2:</label>
 		    				<div class="col-sm-8">
-		      				<input type="text" class="form-control" id="m_line2" name="m_line2" placeholder=" e.g. Apt.#, Suite #, etc." maxlength="45">
+		      				<input type="text" class="form-control" id="m_line2" name="m_line2" placeholder= <%if (newSub.getAddress().getLine2() != null ) {out.print(newSub.getAddress().getLine2());} else { out.print(" e.g. Apt.#, Suite #, etc.");} %> maxlength="45">
 		    				</div>
 		  				</div>
 		  				<div class="form-group">
 		    				<label class="control-label col-sm-2" for="m_city">City:</label>
 		    				<div class="col-sm-8">
-		      				<input type="text" class="form-control" id="m_city" name="m_city" placeholder="e.g. Chicago" maxlength="45">
+		      				<input type="text" class="form-control" id="m_city" name="m_city" placeholder=<%=newSub.getAddress().getCity() %> maxlength="45">
 		    				</div>
 		  				</div>
 		  				<div class="form-group">
 		    				<label class="control-label col-sm-2" for="m_state">State:</label>
 		    				<div class="col-sm-8">
-		      				<input type="text" class="form-control" id="m_state" name="m_state" placeholder="e.g. IL" maxlength="2">
+		      				<input type="text" class="form-control" id="m_state" name="m_state" placeholder=<%=newSub.getAddress().getState() %> maxlength="2">
 		    				</div>
 		  				</div>
 		  				<div class="form-group">
 		    				<label class="control-label col-sm-2" for="m_zip">Zip Code:</label>
 		    				<div class="col-sm-8">
-		      				<input type="text" class="form-control" id="m_zip" name="m_zip" placeholder="e.g. 60007" maxlength="5">
+		      				<input type="text" class="form-control" id="m_zip" name="m_zip" placeholder=<%=newSub.getAddress().getZip() %> maxlength="5">
 		    				</div>
 		  				</div>
 		  				<div class="form-group">
 		    				<label class="control-label col-sm-2" for="m_phoneNumber">Phone Number:</label>
 		    				<div class="col-sm-8">
-		      				<input type="tel" class="form-control" id="m_phoneNumber" name="m_phoneNumber" placeholder="e.g. (555) 555-0000" maxlength="20">
+		      				<input type="tel" class="form-control" id="m_phoneNumber" name="m_phoneNumber" placeholder=<%=newSub.getPhoneNumber() %> maxlength="20">
 		    				</div>
 		  				</div>  				
-		  				<div class="form-group">
-		  					<label class="control-label col-sm-2" for="genre">Favorite Genre:</label>
-		  					<div class="col-sm-8">
-		  					<select class="form-control" id="genre" name="">
-		  						<option>Choose one..</option>
-		    					<option value="1" id="action" name="action">Action</option>
-		    					<option value="2" id="comedy" name="comedy">Comedy</option>
-		    					<option value="3" id="drama" name="drama">Drama</option>
-		    					<option value="4" id="horror" name="horror">Horror</option>
-		    					<option value="5" id="scifi" name="scifi">Sci-Fi</option>
-		  					</select>
-		  					</div>
-						</div>
+<!-- 		  				<div class="form-group"> -->
+<!-- 		  					<label class="control-label col-sm-2" for="genre">Favorite Genre:</label> -->
+<!-- 		  					<div class="col-sm-8"> -->
+<!-- 		  					<select class="form-control" id="genre" name=""> -->
+<!-- 		  						<option>Choose one..</option> -->
+<!-- 		    					<option value="1" id="action" name="action">Action</option> -->
+<!-- 		    					<option value="2" id="comedy" name="comedy">Comedy</option> -->
+<!-- 		    					<option value="3" id="drama" name="drama">Drama</option> -->
+<!-- 		    					<option value="4" id="horror" name="horror">Horror</option> -->
+<!-- 		    					<option value="5" id="scifi" name="scifi">Sci-Fi</option> -->
+<!-- 		  					</select> -->
+<!-- 		  					</div> -->
+<!-- 						</div> -->
 		  			
 		  			
 		 			<div class="form-group"> 
@@ -191,7 +200,7 @@
   				
   				
   				<center><h3>Update Subscription Level</h3></center>
-  				<form name="updateSubscription" class="form-horizontal" action="" method="post" onsubmit="">
+  				<form name="updateSubscription" class="form-horizontal" action="UpdateSubLevel" method="post" onsubmit="">
 					
 					<div class="form-group">
   					<label class="control-label col-sm-2" for="m_levelName">Subscription Level:</label>
@@ -215,7 +224,7 @@
 
 				
 				<h4>Profile Management <a href="./profileManagement.jsp">Manage</a><br><br><br><br><br><br></h4>				
-				<h4><a href="./welcome.jsp">Cancel Plan</a> </h4> <h4> <a href="./startPage.jsp">Go back to Home Page</a></h4>
+				<h4><a href="./verifyPassword.jsp?checkCancel=cancel">Cancel Plan</a> </h4> <h4> <a href=<%if((selectedProfile.getUserID() == 0) || (selectedProfile == null)) {out.print("./selecteProfile.jsp");} else { out.print("./startPage.jsp" + selectedProfile.getUserID());}%>>Go back to Home Page</a></h4>
 				
 			</div>
   			<div class="col-sm-4">
