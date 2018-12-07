@@ -57,7 +57,7 @@
   			</div>
  			<div class="form-group"> 
     			<div class="col-sm-offset-2 col-sm-8">
-      			<button type="submit" value="login" class="btn btn-success">Log In</button>
+      			<button type="submit" value="login" class="btn btn">Log In</button>
    				</div>
    				
   			</div>
@@ -97,7 +97,7 @@
   				<div class="caption">
   				<h3>Browse Movies</h3>
   				<p>See our available movies before you sign up. </p>
-  				<p><a href="./movieBrowser.jsp" class="btn btn-success" role="button">See Movies</a></p>
+  				<p><a href="./movieBrowser.jsp" class="btn btn" role="button">See Movies</a></p>
   				</div>
   			</div>
   		</div>  		
