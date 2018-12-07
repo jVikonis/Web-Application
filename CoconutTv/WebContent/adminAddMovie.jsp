@@ -107,7 +107,7 @@
  				
  				
  				
- 				<a href="./welcome.jsp"> Exit </a> 				
+ 				<a href="./welcome.jsp" class="admin1"> Exit </a> 				
  			</div>
  			
  			

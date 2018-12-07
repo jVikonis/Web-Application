@@ -26,12 +26,12 @@
 	
 	<div class="row">
  		<div class="col-sm-4">
- 		<h3>Log In / Sign Up<br><br>
+ 		<h2>Log In / Sign Up<br><br>
  		<% if(request.getAttribute("loginCheckFail") == "true") {
  			//TODO: Can we change this font, color and size to match
  			out.println("Invalid Username or Password");
  		}%>
- 		</h3>
+ 		</h2>
  		
  		
  		<form class="form-horizontal" action="Login" method="post">
@@ -66,22 +66,22 @@
  		
  		
  		<div class="col-sm-4">
- 		<h3>Plan Options<br><br></h3>
+ 		<h2>Plan Options<br><br></h2>
  		<div class="list-group">
     		<a href="./signUp.jsp" class="list-group-item">
-      		<h4 class="list-group-item-heading">Silver</h4>
+      		<h3 class="list-group-item-heading">Silver</h3>
       		<p class="list-group-item-text"> 1 movie rented out at a time</p>
       		<p class="list-group-item-text">Small promotional benefits</p>
       		<p class="list-group-item-text">Price: $3.95</p>
    			</a>
     		<a href="./signUp.jsp" class="list-group-item">
-     		<h4 class="list-group-item-heading">Gold</h4>
+     		<h3 class="list-group-item-heading">Gold</h3>
      		<p class="list-group-item-text"> 2 movies rented out at a time</p>
       		<p class="list-group-item-text">Large promotional value</p>
       		<p class="list-group-item-text">Price: $6.95</p>
     		</a>
    			<a href="./signUp.jsp" class="list-group-item">
-      		<h4 class="list-group-item-heading">Platinum</h4>
+      		<h3 class="list-group-item-heading">Platinum</h3>
       		<p class="list-group-item-text"> 3 movies rented out at a time</p>
       		<p class="list-group-item-text">Highest promotional value</p>
       		<p class="list-group-item-text">Price: $9.95</p>
@@ -91,7 +91,7 @@
  		
   		
   		<div class="col-sm-4 col-md-4">
-  			<h3>Check Out Movies<br><br></h3>
+  			<h2>Check Out Movies<br><br></h2>
   			<div class="thumbnail">  				
   				<img src="./WebImages/logo.png" alt="Any Picture" id="welcomeImage">
   				<div class="caption">

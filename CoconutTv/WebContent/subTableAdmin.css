@@ -22,3 +22,22 @@ td {
 table {
 	border: solid 2px black; 
 }
+.admin1 {
+	color: #ff8080;
+	font-weight: 200; 
+	font-size: 20px; 
+	text-align: center; 	
+	border: solid 2px #ff8080; 
+	border-radius: 10px;
+	padding: 10px 20px; 
+	padding-left: 18px; 
+	top: -5px;
+	-webkit-transition-duration: .5s; 
+	transition-duration: .5s; 
+	
+}
+.admin1:hover {
+	text-decoration: none; 
+	background-color: #ff8080; 
+	color: white;
+}

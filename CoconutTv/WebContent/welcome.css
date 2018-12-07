@@ -8,7 +8,8 @@
 	position: relative; 
 }
 body {
-	background-color: ;
+	font-family: 'proxima nova'; 
+	font-weight: 10px; 
 	background-repeat: no-repeat; 
 	background-image: linear-gradient(to bottom , red, white);
 	-webkit-background-image: linear-gradient(to bottom right, white, red);
@@ -16,34 +17,38 @@ body {
 }
 .col-sm-4 {
 	text-align: center; 
-	margin-top: 100px; 
+	margin-top: 50px; 
 	
 }
 
 .list-group a:hover {
 	background: red; 
-	backround-color: red; 
+	background-color: rgba(255, 0, 0, 0.2); 
 	color: white; 
 	transition: .5s background-color;
    -webkit-transition: .5s background-color;
    -moz-transition: .5s background-color;
    -o-transition: .5s background-color;
 }
-.list-group a:hover h4 {
+.list-group a:hover h3 {
 	color: white; 
+}
+.list-group-item-text {
+	font-size: 17px;
 }
 .thumbnail:hover {
 	background: red; 
-	backround-color: red; 
+	background-color: rgba(255, 0, 0, 0.2); 
 	color: white; 
 	transition: .5s background-color;
    -webkit-transition: .5s background-color;
    -moz-transition: .5s background-color;
    -o-transition: .5s background-color;
+   	 
 }
 .thumbnail:hover .caption {
 	background: red; 
-	backround-color: red; 
+	background-color: rgba(255, 0, 0, 0.2); 
 	color: white; 
 	transition: .5s background-color;
    -webkit-transition: .5s background-color;
@@ -63,7 +68,7 @@ body {
     transform: translate(-50%, -50%);
 }
 .glow {
-  font-size: 80px;
+  font-size: 60px;
   color: #fff;
   text-align: center;
   -webkit-animation: glow 1s ease-in-out infinite alternate;
