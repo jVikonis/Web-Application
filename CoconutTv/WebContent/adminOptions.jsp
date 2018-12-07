@@ -24,39 +24,34 @@
 		</div>
 		
 		<div class="row">
- 			<div class="col-sm-4 col-md-4">
+ 			<div class="col-sm-3 ">
  				
  			</div>
  			
  			
-  			<div class="col-sm-4 col-md-4">
+  			<div class="col-sm-6 ">
  				
- 				<a href="./adminAddMovie.jsp"> Add Movie </a> <br><br>
- 				<a href="./adminDeleteMovie.jsp"> Delete Movie </a> <br><br> 
+ 				<a href="./adminAddMovie.jsp" class="admin"> Add Movie </a> &nbsp;&nbsp;&nbsp;
+ 				<a href="./adminDeleteMovie.jsp" class="admin"> Delete Movie </a> <br><br><br><br>
  				
  			<form class="form-horizontal" action="subTableAdmin.jsp" method="post">
 	  			<div class="form-group">
-	   				<label class="control-label col-sm-2" for="tablename">Enter Name of the Table:</label>
+	   				<label class="control-label col-sm-2" for="tablename">Table Name:</label>
 	    			<div class="col-sm-8">
-	     			<input type="text" class="form-control" id="tablename" name="tablename" placeholder="Enter name" maxlength="45">
+	     			<input type="text" class="form-control" id="tablename" name="tablename" placeholder="Enter table name" maxlength="45">
 	   				</div>
 	  			</div>
 	  			
-	 			<div class="form-group"> 
-	    			<div class="col-sm-offset-2 col-sm-8">
-	      			<button type="submit" value="tablename" class="btn btn-success">Submit</button>
-	   			</div>
-	   				
-	  			</div>
+	 			
 			</form> 
  				
  				<br><br>
- 				<a href="./welcome.jsp"> Exit </a>
+ 				<a href="./welcome.jsp" class="admin1"> Exit </a>
  				
  			</div>
  			
  			
-  			<div class="col-sm-4 col-md-4">
+  			<div class="col-sm-3 ">
  				
  			</div>
 		</div>

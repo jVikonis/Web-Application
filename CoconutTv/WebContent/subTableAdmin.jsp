@@ -64,7 +64,7 @@
 	</div>
 	</div>
 	<br> 
-	<center><a href="./adminOptions.jsp" >Back To Options</a><br>
-	<a href="./welcome.jsp">Exit</a><br><br> </center>
+	<center><a href="adminOptions.jsp" class="admin1" >Back To Options</a>
+	<a href="./welcome.jsp" class="admin1">Exit</a><br><br> </center>
 	</body>
   </html>
