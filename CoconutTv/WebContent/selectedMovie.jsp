@@ -101,7 +101,7 @@
   				<h3><%=selectedMovie.getTitle() %>
   				</h3><br>
   				
-    			<h5><b>Director:</b><%=selectedMovie.getDirector() %></h5> 
+    			<h5><b>Director:</b><%=selectedMovie.getDirector().getFirstName() %> <%= selectedMovie.getDirector().getLastName() %></h5> 
     			
     			<h5><b>Actors:</b> <%=selectedMovie.getActor1() %> , <%= selectedMovie.getActor2() %> </h5>
     			
@@ -116,13 +116,13 @@
 				<!-- does the value filed indicate the default value? If so we can change it to selectedMovie.getRating to display the rating -->
    				<input id="input-1 xs" name="input-1 xs" class="rating rating-loading" data-min="0" data-max="5" data-step="1" value="0" data-size="xs">
    				<hr>
-   					<button type="submit" class="btn btn-secondary">Submit</button>&nbsp;
+   					<button type="submit"  class="btn btn-secondary">Submit <a href= Ratings></a> </button>&nbsp;
     				<button type="reset" class="btn btn-secondary">Reset</button>
    				</form>
     			
     			
     			<p>
-    			<br><button type="submit" title="Download" class="downloadBtn"><i class="fa fa-download"></i></button>        
+    			<br><button type="submit" title="Download" class="downloadBtn"> <a href = Downloads></a><i class="fa fa-download"></i></button>        
     			
     			<a href="selectedMovie.jsp" action="" title="Add to Favorites" class="heartIcon"><i class="fa fa-fw fa-heart"></i></a>      			
     			(If person is not logged in, download button will not appear)
