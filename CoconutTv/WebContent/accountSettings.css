@@ -15,7 +15,7 @@ body {
 	text-align: center; 
 	margin-top: 50px;
 }
-a:hover {
+.col-sm-4 a:hover {
 	transform: scale(1.1);
 	-webkit-transform: scale(1.1);
 }
@@ -63,4 +63,28 @@ a:hover {
 	color: white;
 	transform: scale(1.1);
 	-webkit-transform: scale(1.1);
+}
+.modalbtn {
+	color: rgba(255, 0, 0, 0.5);
+	background-color: white; 
+	font-weight: 200; 
+	font-size: 17px; 
+	text-align: center; 	
+	border: solid 2px white; 
+	border-radius: 10px;
+	padding: 5px 10px; 
+	padding-left: 13px; 
+	text-decoration: none; 
+	
+	-webkit-transition-duration: .5s; 
+	transition-duration: .5s; 
+}
+
+.modalbtn:hover {
+	text-decoration: none; 
+	background-color: #ff8080; 
+	color: white;
+	 
+	transform: scale(1.2);
+	-webkit-transform: scale(1.2);
 }

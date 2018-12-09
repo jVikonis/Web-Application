@@ -110,7 +110,7 @@ if (newSub == null || newSub.getAccountID() == 0) {
   				
   				<div class="form-group"> 
     				<div class="col-sm-offset-2 col-sm-8">
-      				<button type="submit" value="updatePayment" class="btn btn-success">Save Changes</button>
+      				<button type="submit" value="updatePayment" class="modalbtn">Save Changes</button>
     				</div>
   				</div>				
 				
@@ -119,7 +119,7 @@ if (newSub == null || newSub.getAccountID() == 0) {
 			</div>
 			<div class="modal-footer">
 				
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+				<button type="button" class="modalbtn" data-dismiss="modal">Cancel</button>
 			</div>
 		</div>
 	</div>
@@ -228,13 +228,13 @@ if (newSub == null || newSub.getAccountID() == 0) {
 		  			
 		 			<div class="form-group"> 
 		    			<div class="col-sm-offset-2 col-sm-8">
-		      			<button type="submit" value="updateAccount" class="btn btn-success">Save Changes</button>
+		      			<button type="submit" value="updateAccount" class="modalbtn">Save Changes</button>
 		   				</div>		   				
 		  			</div>
 				</form>
  	</div>
  <div class="modal-footer">
- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+ <button type="button" class="modalbtn" data-dismiss="modal">Cancel</button>
  </div>
  </div>
 
@@ -269,7 +269,7 @@ if (newSub == null || newSub.getAccountID() == 0) {
   				
   				<div class="form-group"> 
     				<div class="col-sm-offset-2 col-sm-8">
-      				<button type="submit" value="updateSubscription" class="btn btn-success">Save Changes</button>
+      				<button type="submit" value="updateSubscription" class="modalbtn">Save Changes</button>
     				</div>
   				</div>				
 				
@@ -277,7 +277,7 @@ if (newSub == null || newSub.getAccountID() == 0) {
 			</div>
 			<div class="modal-footer">
 				
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+				<button type="button" class="modalbtn" data-dismiss="modal">Cancel</button>
 			</div>
 		</div>
 	</div>
