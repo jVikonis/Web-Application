@@ -98,19 +98,18 @@
 		
   			<div class="col-sm-7">
    			<div  style="max-width: 575px;"> 	
-  				<h3><%=selectedMovie.getTitle() %>
-  				</h3><br>
+  				<h2><%=selectedMovie.getTitle() %></h2><br>
   				
-    			<h5><b>Director:</b><%=selectedMovie.getDirector().getFirstName() %> <%=selectedMovie.getDirector().getLastName() %></h5> 
+    			<h5><b>Director: </b><%=selectedMovie.getDirector().getFirstName() %> <%=selectedMovie.getDirector().getLastName() %></h5> 
     			
-    			<h5><b>Actors:</b> <%=selectedMovie.getActor1() %> , <%= selectedMovie.getActor2() %> </h5>
+    			<h5><b>Actors: </b><%=selectedMovie.getActor1() %> , <%= selectedMovie.getActor2() %> </h5>
     			
-    			<h5><b>Description: </b> <br>  <%=selectedMovie.getDescription() %> </h5>
-    			
-    			
+    			<h5><b>Description: </b> <br><br>  <%=selectedMovie.getDescription() %> </h5>
     			
     			
     			
+    			
+    			<br>
     			<form action="" method="post">
 				<label for="input-1 xs" class="control-label">Rate this movie:</label>
 				<!-- does the value filed indicate the default value? If so we can change it to selectedMovie.getRating to display the rating -->
