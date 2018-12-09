@@ -90,15 +90,15 @@
  		</div> 		
  		
   		
-  		<div class="col-sm-4 col-md-4">
+  		<div class="col-sm-4">
   			<h2>Check Out Movies<br><br></h2>
   			<div class="thumbnail">  				
   				<img src="./WebImages/logo.png" alt="Any Picture" id="welcomeImage">
-  				<div class="caption">
+  				
   				<h3>Browse Movies</h3>
   				<p>See our available movies before you sign up. </p>
   				<p><a href="./movieBrowser.jsp" class="btn btn" role="button">See Movies</a></p>
-  				</div>
+  				
   			</div>
   		</div>  		
   		
