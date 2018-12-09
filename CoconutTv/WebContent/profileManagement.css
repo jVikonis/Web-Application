@@ -14,16 +14,34 @@ body {
 	text-align: center; 
 	margin-top: 200px;
 }
+.thumbnail {
+	border: none; 
+	color: red; 
+}
+.thumbnail a:hover {
+	text-decoration: none; 
+}
+.thumbnail a {
+	color: red; 
+}
+
+
 .thumbnail:hover {
 	background-color: red; 
 	color: white; 
 	transition: .5s background-color;
+	border: none; 
+	text-decoration: none; 
    -webkit-transition: .5s background-color;
    -moz-transition: .5s background-color;
    -o-transition: .5s background-color;
+   transform: scale(1.1);
+	-webkit-transform: scale(1.1);
 }
+
 .thumbnail:hover h1 {
 	color: white; 
+	text-decoration: none;
 	transition: .5s background-color;
    -webkit-transition: .5s background-color;
    -moz-transition: .5s background-color;
@@ -31,25 +49,34 @@ body {
 }
 .thumbnail:hover h3 {
 	color: white;
+	text-decoration: none;
 	transition: .5s background-color;
    -webkit-transition: .5s background-color;
    -moz-transition: .5s background-color;
    -o-transition: .5s background-color; 
 }
-.btn-danger:hover {
-	background-color: white;
-	background: white; 
-	color: red; 
-	transition: .5s background-color;
-   -webkit-transition: .5s background-color;
-   -moz-transition: .5s background-color;
-   -o-transition: .5s background-color;
-}
-.btn-default:hover {
-	background-color: green; 
-	background: green; 
-	color: white; 
+.btn {
+	color: rgba(255, 0, 0, 0.8);
+	background-color: white; 
+	font-weight: 500; 
+	font-size: 17px; 
+	text-align: center; 	
+	border: solid 2px white; 
+	border-radius: 10px;
+	padding: 5px 10px; 
+	padding-left: 13px; 
+	text-decoration: none; 
+	
+	-webkit-transition-duration: .5s; 
+	transition-duration: .5s; 
 }
 
-
+.btn:hover {
+	text-decoration: none; 
+	background-color: #ff8080; 
+	color: white;
+	border: none; 
+	transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+}
 

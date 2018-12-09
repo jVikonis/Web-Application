@@ -37,16 +37,16 @@
     			<div class="thumbnail">
       				<h1>Profile 1</h1>
       				<div class="caption">
-        			<h3><%
+        			<h3><b><%
  					if(newSub.getUserProfiles().get(0).getUsername() != null) {
  						out.print(newSub.getUserProfiles().get(0).getUsername());
  					}
  					else
  						out.print("Add");
- 					%></h3>
+ 					%></b></h3>
         			<p>
-        				<a href="./verifyPassword.jsp?value=0" class="btn btn-danger" role="button">Delete</a> 
-        				<a href="./updateProfile.jsp?value=0" class="btn btn-default" role="button">Update Info</a>
+        				<a href="./verifyPassword.jsp?value=0" class="btn" role="button">Delete</a> &nbsp;
+        				<a href="./updateProfile.jsp?value=0" class="btn" role="button">Update Info</a>
         			</p>
       				</div>
     			</div>
@@ -74,16 +74,16 @@ else {
     			<div class="thumbnail">
       				<h1>Profile 2</h1>
       				<div class="caption">
-        			<h3><%
+        			<h3><b><%
  					if(newSub.getUserProfiles().get(1).getUsername() != null) {
  						out.print(newSub.getUserProfiles().get(1).getUsername());
  					}
  					else
  						out.print("Add");
- 					%></h3>
+ 					%></b></h3>
         			<p>
-        				<a href="./verifyPassword.jsp?value=1" class="btn btn-danger" role="button">Delete</a> 
-        				<a href="./updateProfile.jsp?value=1" class="btn btn-default" role="button">Update Info</a>
+        				<a href="./verifyPassword.jsp?value=1" class="btn" role="button">Delete</a> &nbsp;
+        				<a href="./updateProfile.jsp?value=1" class="btn" role="button">Update Info</a>
         			</p>
       				</div>
     			</div>
@@ -111,16 +111,16 @@ else {
     			<div class="thumbnail">
       				<h1>Profile 3</h1>
       				<div class="caption">
-        			<h3><%
+        			<h3><b><%
  					if(newSub.getUserProfiles().get(2).getUsername() != null) {
  						out.print(newSub.getUserProfiles().get(2).getUsername());
  					}
  					else
  						out.print("Add");
- 					%></h3>
+ 					%></b></h3>
         			<p>
-        				<a href="./verifyPassword.jsp?value=2" class="btn btn-danger" role="button">Delete</a> 
-        				<a href="./updateProfile.jsp?value=2" class="btn btn-default" role="button">Update Info</a>
+        				<a href="./verifyPassword.jsp?value=2" class="btn" role="button">Delete</a> &nbsp; 
+        				<a href="./updateProfile.jsp?value=2" class="btn" role="button">Update Info</a>
         			</p>
       				</div>
     			</div>
