@@ -100,17 +100,17 @@
   				
   				<div class="form-group"> 
     				<div class="col-sm-offset-2 col-sm-8">
-      				<button type="submit" value="ageRestriction" class="btn btn-success">Save Changes</button>
+      				<button type="submit" value="ageRestriction" class="btn">Save Changes</button>
     				</div>
   				</div>				
 				
 				</form>
   				<br><br>
 								
-				<h4><a href="./profileManagement.jsp">Back to Profile Management</a></h4>
-				<br><br><br><br><br><br>				
-				<h4><a href="./selectProfile.jsp">Back to Select Profile</a> </h4>
-				<h4> <a href="./startPage.jsp">Back to Home Page</a></h4>
+				<a href="./profileManagement.jsp" class="btn">Back to Profile Management</a>
+				<br><br><br><br><br><br><br><br>		
+				<a href="./selectProfile.jsp" class="btn">Back to Select Profile</a><br><br>
+				<a href="./startPage.jsp" class="btn">Back to Home Page</a>
 				
 			</div>
   			<div class="col-sm-4">
