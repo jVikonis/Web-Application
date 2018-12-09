@@ -50,7 +50,7 @@
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-8">
-					<button type="submit" value="resetSent" class="btn btn-success">Send
+					<button type="submit" value="resetSent" class="btn">Send
 						Link</button>
 				</div>
 			</div>
@@ -68,7 +68,7 @@
 		<form class="form-horizontal" action="welcome.jsp" method="post">
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-8">
-					<button type="submit" value="login" class="btn btn-success">Return
+					<button type="submit" value="login" class="btn">Return
 						to Login</button>
 				</div>
 			</div>
