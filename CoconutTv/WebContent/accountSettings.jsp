@@ -37,7 +37,7 @@ if (newSub == null || newSub.getAccountID() == 0) {
 
 	
 	<div class="container-fluid">
-		<div class="header">
+		<div class="page-header">
 			<h1> Account Settings<br><br></h1>
 		</div>
 	
@@ -46,10 +46,26 @@ if (newSub == null || newSub.getAccountID() == 0) {
  				
  			</div>
   			<div class="col-sm-4">
-  				<h4>Next charge (display info)<br><br></h4>
   				
-  				<center><h3>Update Payment Info</h3></center>
-  				<form name="updateCardInfo" class="form-horizontal" action="SaveCCInfo" method="post" onsubmit="">
+  				
+				<button type="button" class="upperbtn" data-toggle="modal" data-target="#updatePayment">Update Payment Info</button><br><br>
+				<button type="button" class="upperbtn" data-toggle="modal" data-target="#updateAccount">Update Account Info</button><br><br>
+				<button type="button" class="upperbtn" data-toggle="modal" data-target="#updatePlan">Change the Plan</button><br><br>
+  				
+  				
+  				<!-- PAYMENT UPDATE MODAL -->
+<div class="modal fade" id="updatePayment" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+				<h3 class="modal-title" id="modalLabel">Update Payment Info</h3>
+			</div>
+			<div class="modal-body">				
+				
+				<form name="updateCardInfo" class="form-horizontal" action="SaveCCInfo" method="post" onsubmit="">
 					<div class="form-group">
     				<label class="control-label col-sm-2" for="cardHolderFirstName">First Name:</label>
     				<div class="col-sm-8">
@@ -98,15 +114,34 @@ if (newSub == null || newSub.getAccountID() == 0) {
     				</div>
   				</div>				
 				
-				</form><br><br> 
+				</form>				
+				
+			</div>
+			<div class="modal-footer">
+				
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>  <!-- END OF PAYMENT UPDATE MODAL -->
   				
   				
-  				<center><h3>Update Account Info</h3></center>
-  				<form name="updateAccountInfo" class="form-horizontal" action="UpdateAccountInfo" method="post">  			
+ <!-- MODAL FOR ACCOUNT INFO UPDATE -->
+ <div class="modal fade" id="updateAccount" role="dialog">
+ <div class="modal-dialog">
+
+ <!-- Modal content-->
+ <div class="modal-content">
+ 	<div class="modal-header">
+ 		<button type="button" class="close" data-dismiss="modal">&times;</button>
+ 		<h3 class="modal-title">Update Account Info</h3>
+ 	</div>
+ 	<div class="modal-body">
+ 		<form name="updateAccountInfo" class="form-horizontal" action="UpdateAccountInfo" method="post">  			
 		  			<div class="form-group">
 		    				<label class="control-label col-sm-2" for="m_email">Email:</label>
 		    				<div class="col-sm-8">
-		      				<input type="email" class="form-control" id="m_email" name="m_email" placeholder=<%=newSub.getLoginInfo().getEmail() %> maxlength="45">
+		      				<input type="email" class="form-control" id="m_email" name="m_email" placeholder="<%=newSub.getLoginInfo().getEmail() %>" maxlength="45">
 		    				</div>
 		  				</div>
 		  				<div class="form-group">
@@ -124,13 +159,13 @@ if (newSub == null || newSub.getAccountID() == 0) {
 						<div class="form-group">
 		    				<label class="control-label col-sm-2" for="m_firstName">First Name:</label>
 		    				<div class="col-sm-8">
-		      				<input type="text" class="form-control" id="m_firstName" name="m_firstName" placeholder=<%=newSub.getFirstName() %> maxlength="45">
+		      				<input type="text" class="form-control" id="m_firstName" name="m_firstName" placeholder="<%=newSub.getFirstName() %>" maxlength="45">
 		    				</div>
 		  				</div>
 						<div class="form-group">
 		    				<label class="control-label col-sm-2" for="m_lastName">Last Name:</label>
 		    				<div class="col-sm-8">
-		      				<input type="text" class="form-control" id="m_lastName" name="m_lastName" placeholder=<%=newSub.getLastName() %> maxlength="45">
+		      				<input type="text" class="form-control" id="m_lastName" name="m_lastName" placeholder="<%=newSub.getLastName() %>" maxlength="45">
 		    				</div>
 		  				</div>
 						
@@ -143,37 +178,37 @@ if (newSub == null || newSub.getAccountID() == 0) {
 		  				<div class="form-group">
 		    				<label class="control-label col-sm-2" for="m_line1">Address line 1:</label>
 		    				<div class="col-sm-8">
-		      				<input type="text" class="form-control" id="m_line1" name="m_line1" placeholder=<%=newSub.getAddress().getLine1() %> maxlength="45">
+		      				<input type="text" class="form-control" id="m_line1" name="m_line1" placeholder="<%=newSub.getAddress().getLine1() %>" maxlength="45">
 		    				</div>
 		  				</div>
 		  				<div class="form-group">
 		    				<label class="control-label col-sm-2" for="m_line2">Address line 2:</label>
 		    				<div class="col-sm-8">
-		      				<input type="text" class="form-control" id="m_line2" name="m_line2" placeholder= <%if (newSub.getAddress().getLine2() != null ) {out.print(newSub.getAddress().getLine2());} else { out.print(" e.g. Apt.#, Suite #, etc.");} %> maxlength="45">
+		      				<input type="text" class="form-control" id="m_line2" name="m_line2" placeholder= "<%if (newSub.getAddress().getLine2() != null ) {out.print(newSub.getAddress().getLine2());} else { out.print(" e.g. Apt.#, Suite #, etc.");} %>" maxlength="45">
 		    				</div>
 		  				</div>
 		  				<div class="form-group">
 		    				<label class="control-label col-sm-2" for="m_city">City:</label>
 		    				<div class="col-sm-8">
-		      				<input type="text" class="form-control" id="m_city" name="m_city" placeholder=<%=newSub.getAddress().getCity() %> maxlength="45">
+		      				<input type="text" class="form-control" id="m_city" name="m_city" placeholder="<%=newSub.getAddress().getCity() %>" maxlength="45">
 		    				</div>
 		  				</div>
 		  				<div class="form-group">
 		    				<label class="control-label col-sm-2" for="m_state">State:</label>
 		    				<div class="col-sm-8">
-		      				<input type="text" class="form-control" id="m_state" name="m_state" placeholder=<%=newSub.getAddress().getState() %> maxlength="2">
+		      				<input type="text" class="form-control" id="m_state" name="m_state" placeholder="<%=newSub.getAddress().getState() %>" maxlength="2">
 		    				</div>
 		  				</div>
 		  				<div class="form-group">
 		    				<label class="control-label col-sm-2" for="m_zip">Zip Code:</label>
 		    				<div class="col-sm-8">
-		      				<input type="text" class="form-control" id="m_zip" name="m_zip" placeholder=<%=newSub.getAddress().getZip() %> maxlength="5">
+		      				<input type="text" class="form-control" id="m_zip" name="m_zip" placeholder="<%=newSub.getAddress().getZip() %>" maxlength="5">
 		    				</div>
 		  				</div>
 		  				<div class="form-group">
 		    				<label class="control-label col-sm-2" for="m_phoneNumber">Phone Number:</label>
 		    				<div class="col-sm-8">
-		      				<input type="tel" class="form-control" id="m_phoneNumber" name="m_phoneNumber" placeholder=<%=newSub.getPhoneNumber() %> maxlength="20">
+		      				<input type="tel" class="form-control" id="m_phoneNumber" name="m_phoneNumber" placeholder="<%=newSub.getPhoneNumber() %>" maxlength="20">
 		    				</div>
 		  				</div>  				
 <!-- 		  				<div class="form-group"> -->
@@ -196,11 +231,29 @@ if (newSub == null || newSub.getAccountID() == 0) {
 		      			<button type="submit" value="updateAccount" class="btn btn-success">Save Changes</button>
 		   				</div>		   				
 		  			</div>
-				</form><br><br>
+				</form>
+ 	</div>
+ <div class="modal-footer">
+ <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+ </div>
+ </div>
+
+ </div>
+ </div> <!-- END OF ACCOUNT INFO MODAL-->				
+  			
   				
-  				
-  				<center><h3>Update Subscription Level</h3></center>
-  				<form name="updateSubscription" class="form-horizontal" action="UpdateSubLevel" method="post" onsubmit="">
+<!-- PLAN UPDATE MODAL -->
+<div class="modal fade" id="updatePlan" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+				<h3 class="modal-title" id="modalLabel">Update Plan</h3>
+			</div>
+			<div class="modal-body">				
+				<form name="updateSubscription" class="form-horizontal" action="UpdateSubLevel" method="post" onsubmit="">
 					
 					<div class="form-group">
   					<label class="control-label col-sm-2" for="m_levelName">Subscription Level:</label>
@@ -221,10 +274,22 @@ if (newSub == null || newSub.getAccountID() == 0) {
   				</div>				
 				
 				</form>
-
+			</div>
+			<div class="modal-footer">
 				
-				<h4>Profile Management <a href="./profileManagement.jsp">Manage</a><br><br><br><br><br><br></h4>				
-				<h4><a href="./verifyPassword.jsp?checkCancel=cancel">Cancel Plan</a> </h4> <h4> <a href=<%if((selectedProfile.getUserID() == 0) || (selectedProfile == null)) {out.print("./selecteProfile.jsp");} else { out.print("./startPage.jsp" + selectedProfile.getUserID());}%>>Go back to Home Page</a></h4>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>  <!-- END OF PLAN UPDATE MODAL  -->
+  				
+  							
+				<a href="./profileManagement.jsp" class="upperbtn">Profile Management</a>
+				<br><br><br><br><br><br>
+				<br><br><br><br><br><br>	
+				<br><br><br><br><br><br>			
+				<a href="./verifyPassword.jsp?checkCancel=cancel" class="lowerbtn">Cancel Plan</a>  <br><br> 
+				<a href="<%if((selectedProfile.getUserID() == 0) || (selectedProfile == null)) {out.print("./selecteProfile.jsp");} else { out.print("./startPage.jsp" + selectedProfile.getUserID());}%>" class="lowerbtn">Go back to Home Page</a>
 				
 			</div>
   			<div class="col-sm-4">
@@ -232,6 +297,19 @@ if (newSub == null || newSub.getAccountID() == 0) {
   			</div>
 		</div>
 	</div>
+	
+	
+<script>
+// Initialize tooltip component
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
 
+// Initialize popover component
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
+</script>
+	
 </body>
 </html>
