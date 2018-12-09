@@ -76,7 +76,7 @@
      		<span class="navbar-brand">GCTV</span>
     	</div>			 
 		<ul class="nav navbar-nav">
-     		<li class="nav navbar-nav navbar-left"><a href=<%
+     		<li class="nav navbar-nav navbar-left"><a href="<%
      		if (newSub != null) {
 				if (selectedProfile != null) {
 				out.print("./startPage.jsp?value=" + userNumber);
@@ -87,7 +87,7 @@
      		}
 			else {
 				out.print("./welcome.jsp");
-			}%> title="Home Page"><span class="fa fa-fw fa-home"></span></a></li>
+			}%>" title="Home Page"><span class="fa fa-fw fa-home"></span></a></li>
      			<li class="dropdown">
       				<a class="dropdown-toggle" data-toggle="dropdown" href="#" title="Movies">
       				  <span class="fa fa-fw fa-tv"></span>
