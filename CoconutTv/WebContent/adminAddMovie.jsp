@@ -99,15 +99,15 @@
   					
  					<div class="form-group"> 
     					<div class="col-sm-offset-2 col-sm-8">
-      					<button type="submit" value="submit" class="btn btn-success">Add Movie</button>
+      					<button type="submit" value="submit" class="submitbtn">Add Movie</button>
    						</div>
   					</div>
 				</form>
  				
  				
+ 				<br><br>
  				
- 				
- 				<a href="./welcome.jsp" class="admin1"> Exit </a> 				
+ 				<a href="welcome.jsp" class="admin1"> Exit </a> 				
  			</div>
  			
  			

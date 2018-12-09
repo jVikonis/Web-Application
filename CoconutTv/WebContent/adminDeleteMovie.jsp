@@ -41,13 +41,13 @@
   			
  					<div class="form-group"> 
     					<div class="col-sm-offset-2 col-sm-8">
-      					<button type="submit" value="submit" class="btn btn-success">Delete</button>
+      					<button type="submit" value="submit" class="submitbtn">Delete</button>
    						</div>
   					</div>
 				</form>
  				
  				
- 				
+ 				<br><br><br><br><br>
  				<a href="./welcome.jsp" class="admin1"> Exit </a>
  				
  			</div>

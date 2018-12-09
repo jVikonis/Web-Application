@@ -7,9 +7,36 @@ body {
 	background-repeat: no-repeat; 
 	background-image: linear-gradient(to bottom , red, white);
 	-webkit-background-image: linear-gradient(to bottom right, white, red);
+	
+	font-family: 'proxima nova'; 
+	font-weight: 10px; 
 }
 .col-sm-4 {
 	text-align: center; 
 	margin-top: 100px; 
 }
 
+.btn {
+	color: rgba(255, 0, 0, 0.5);
+	background-color: white; 
+	font-weight: 200; 
+	font-size: 17px; 
+	text-align: center; 	
+	border: solid 2px white; 
+	border-radius: 10px;
+	padding: 5px 10px; 
+	padding-left: 13px; 
+	text-decoration: none; 
+	
+	-webkit-transition-duration: .5s; 
+	transition-duration: .5s; 
+}
+
+.btn:hover {
+	text-decoration: none; 
+	background-color: #ff8080; 
+	color: white;
+	border: none; 
+	transform: scale(1.2);
+	-webkit-transform: scale(1.2);
+}

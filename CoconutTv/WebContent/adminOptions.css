@@ -37,6 +37,8 @@ body {
 	text-decoration: none; 
 	background-color: white; 
 	color: #ff8080;
+	transform: scale(1.1);
+	-webkit-transform: scale(1.1);
 }
 
 .admin1 {
@@ -57,4 +59,26 @@ body {
 	text-decoration: none; 
 	background-color: #ff8080; 
 	color: white;
+	transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+}
+.submitbtn {
+	color: #ff8080;
+	background-color: inherit; 
+	font-size: 17px; 
+	text-align: center; 	
+	border: solid 2px #ff8080; 
+	border-radius: 10px;
+	padding: 5px 15px; 
+	padding-left: 18px; 
+	
+	-webkit-transition-duration: .5s; 
+	transition-duration: .5s; 
+}
+.submitbtn:hover {
+	text-decoration: none; 
+	background-color: #ff8080; 
+	color: white;
+	transform: scale(1.1);
+	-webkit-transform: scale(1.1);
 }
