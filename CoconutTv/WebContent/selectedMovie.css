@@ -90,6 +90,8 @@ body {
 }
 .downloadBtn:hover {
 	background-color: red; 
+	transform: scale(1.1);
+	-webkit-transform: scale(1.1);
 	transition: .5s background-color;
    -webkit-transition: .5s background-color;
    -moz-transition: .5s background-color;
@@ -123,18 +125,59 @@ body {
 	color: white; 
 	text-decoration: none; 
 }
-.downloadBtn:hover {
-	transform: scale(1.1); 
-}
+
 .fa-heart:hover {
 	transform: scale(1.2); 
+	color: red; 
 }
+.ratingbtn {
+	color: white;
+	background-color: inherit; 
+	font-weight: 200; 
+	font-size: 17px; 
+	text-align: center; 	
+	border: solid 2px #ff8080; 
+	border-radius: 10px;
+	padding: 5px 10px; 
+	padding-left: 10px; 
+	
+	-webkit-transition-duration: .5s; 
+	transition-duration: .5s; 
+	
+}
+.ratingbtn:hover {
+	text-decoration: none; 
+	background-color: #ff8080; 
+	color: white;
+	transform: scale(1.1); 
+	-webkit-transform: scale(1.1);
+}
+.trailer {
+	color: red;
+	backround-color: white; 
+	text-align: center;  
+	font-size: 30px; 
+	text-align: center; 	
+	border: none; 
+	padding-top: 5px; 
+	
+	
+	
+	-webkit-transition-duration: .5s; 
+	transition-duration: .5s; 
+}
+.trailer:hover {
+	text-decoration: none; 	
+	color: white;
 
-
-
-
-
-
+}
+.glyphicon-play:hover {
+	transform: scale(1.2); 
+	-webkit-transform: scale(1.2);
+}
+.glyphicon-play {
+	top: 5px; 
+}
 
 
 
