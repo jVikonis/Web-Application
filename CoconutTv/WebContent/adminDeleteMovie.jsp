@@ -24,12 +24,12 @@
 		</div>
 		
 		<div class="row">
- 			<div class="col-sm-4 col-md-4">
+ 			<div class="col-sm-3">
  				
  			</div>
  			
  			
-  			<div class="col-sm-4 col-md-4">
+  			<div class="col-sm-6">
  				
  				<form name="adminDeleteMovie" class="form-horizontal" action="./adminOptions.jsp" method="post" onsubmit="">
   					<div class="form-group">
@@ -53,7 +53,7 @@
  			</div>
  			
  			
-  			<div class="col-sm-4 col-md-4">
+  			<div class="col-sm-3">
  				
  			</div>
 		</div>
