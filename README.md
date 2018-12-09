@@ -1,4 +1,5 @@
 # Web-Application
+# Completion Date estimated to be on December 14, 2018
 CS 419 web application: Code name GCTV
 This is the project for the CS 419 Java Programing and Web Development at Elmhurst College Fall 2018 semester.
 
