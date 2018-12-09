@@ -14,12 +14,44 @@ body {
 	text-align: center; 
 	margin-top: 200px;
 }
+.thumbnail {
+	color: #ff8080;
+	border: none; 
+}
+.profile {
+	color: rgba(255, 0, 0, 0.7);
+	
+	font-weight: 10; 
+	font-size: 17px; 
+	text-align: center; 	
+	border: none; 
+	border-radius: 10px;
+	padding: 10px 10px; 
+	padding-left: 13px; 
+	text-decoration: none; 
+	
+	-webkit-transition-duration: .5s; 
+	transition-duration: .5s; 
+	
+}
+.profile:hover {
+	text-decoration: none; 
+	background-color: #ff8080; 
+	color: white;
+	
+}
+
 .thumbnail:hover {
 	background-color: red; 
+	text-decoration: none; 
+	border: none; 
 	color: white; 
 	transition: .5s background-color;
    -webkit-transition: .5s background-color;
    -moz-transition: .5s background-color;
    -o-transition: .5s background-color;
 }
-
+.col-md-4 a:hover {
+	transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+}

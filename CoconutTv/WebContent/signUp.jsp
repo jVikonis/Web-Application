@@ -292,7 +292,7 @@
 
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-8">
-							<button type="submit" name="submit" value="submit" class="btn btn-success">Submit</button>
+							<button type="submit" name="submit" value="submit" class="btn btn">Submit</button>
 						</div>
 					</div>
 				</form>

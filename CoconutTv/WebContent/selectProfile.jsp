@@ -81,8 +81,8 @@ if(newSub.getAccountID() == 0) {
  					%></h3>
  				</a>
  				<br><br><br><br> 
- 				<a href="./profileManagement.jsp">Manage your profiles </a> <br>
- 				<a href="./accountSettings.jsp">Manage your account </a>
+ 				<a href="./profileManagement.jsp" class="profile">Manage your profiles </a> <br><br><br> 
+ 				<a href="./accountSettings.jsp" class="profile">Manage your account </a>
  				
  			</div>
  			

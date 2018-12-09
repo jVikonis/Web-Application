@@ -61,7 +61,7 @@ function checkAdmin() {
   			
  					<div class="form-group"> 
     					<div class="col-sm-offset-2 col-sm-8">
-      					<button type="submit" value="submit" class="btn btn-success">Log In</button>
+      					<button type="submit" value="submit" class="btn btn">Log In</button>
    						</div>
   					</div>
 				</form>
