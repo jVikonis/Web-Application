@@ -2,6 +2,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page import = "database.*" %>
+<%@ page import = "classes.*" %>
+<%@ page import = "java.util.*" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -42,11 +45,11 @@
 					 </a>
 					 
         			<ul class="dropdown-menu">
-          				<li><a href="./movieBrowser.jsp" title="Action">Action</a></li>
-         				<li><a href="./movieBrowser.jsp" title="Comedy">Comedy</a></li>
-          				<li><a href="./movieBrowser.jsp" title="Drama">Drama</a></li>
-          				<li><a href="./movieBrowser.jsp" title="Horror">Horror</a></li>
-         				<li><a href="./movieBrowser.jsp" title="Sci-Fi">Sci-Fi</a></li>
+          				<li><a href="./movieBrowser.jsp?value=action" title="Action">Action</a></li>
+         				<li><a href="./movieBrowser.jsp?value=comedy" title="Comedy">Comedy</a></li>
+          				<li><a href="./movieBrowser.jsp?value=drama" title="Drama">Drama</a></li>
+          				<li><a href="./movieBrowser.jsp?value=horror" title="Horror">Horror</a></li>
+         				<li><a href="./movieBrowser.jsp?value=Sci-Fi" title="Sci-Fi">Sci-Fi</a></li>
         			</ul>
       			</li>
       	</ul>
@@ -77,8 +80,35 @@
   			
   			<div class="col-sm-4">
   				<div class="header">
-  					<h3> List of movies will be displayed here<br><br></h3>
-  					<p> Will be changed</p>
+  					
+  					<%
+  					String search = null, value = null, rating = null;
+  					Integer urating = null;
+  					
+  					if (!"".equals(request.getParameter("search"))) {
+  						search = request.getParameter("search");
+  					}
+  					if (!"".equals(request.getParameter("value"))) {
+  						value = request.getParameter("value");
+  					}
+  					if (!"".equals(request.getParameter("rating"))) {
+  						rating = request.getParameter("rating");
+  					}
+  					
+  					if (!"".equals(request.getParameter("urating"))) {
+  						urating = Integer.getInteger(request.getParameter("urating"));
+  					}
+  				
+  					
+  					
+  					List<Movie> movieList = movieDB.search(search, value, rating, urating);
+  					if (movieList.size()!=0) {
+  						for (int i = 0; i < movieList.size(); i++) {
+  							out.print(movieList.get(i).getMovieID() + " ");
+  						}
+  					}
+  					
+  					%>
   				</div>
   				<ul class="list-group">
   					<li class="list-group-item">Action movies <span class="badge">3</span></li>
@@ -90,38 +120,6 @@
 				<a href="./selectedMovie.jsp"> Show movie selected</a>
   			
   			</div>
-  			
-  			
-  			
-  			
-  			
-  			
-  			
-  			<div class="col-sm-4"></div>
 		</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
 </html>
