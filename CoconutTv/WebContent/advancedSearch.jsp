@@ -125,20 +125,34 @@
 		
 <div class="container">	
 	<div class="row">
-			<form name="advancedSearch" class="form-horizontal" action="./movieBrowser.jsp" method="post" onsubmit="">
-  					<div class="form-group">
-   						<label class="control-label col-sm-2" for="movieGenre">Keywords</label>
-    					<div class="col-sm-8">
-     					<input type="text" class="form-control" id="movieGenre" name="movieGenre" placeholder="Movie Genre" maxlength="45">
-   						</div>
-  					</div>
-  					
- 					<div class="form-group"> 
-    					<div class="col-sm-offset-2 col-sm-8">
-      					<button type="submit" value="submit" class="submitbtn">Search</button>
-   						</div>
-  					</div>
-				</form>
+		<form action="./movieBrowser.jsp">
+			Keywords: <input type="text" name="search" value="">
+  			Genre: <select name="value">
+    			<option value="">Any</option>
+    			<option value="action">Action</option>
+    			<option value="comedy">Comedy</option>
+    			<option value="drama">Drama</option>
+    			<option value="horror">Horror</option>
+    			<option value="sci-fi">Sci-Fi</option>
+  			</select>
+  			MPAA Rating: <select name="rating">
+    			<option value="">Any</option>
+    			<option value="r">R</option>
+    			<option value="pg-13">PG-13</option>
+    			<option value="pg">PG</option>
+  			</select>
+  			User Rating: <select name="rating">
+    			<option value="">Any</option>
+    			<option value="5">5</option>
+    			<option value="4">4</option>
+    			<option value="3">3</option>
+    			<option value="1">2</option>
+    			<option value="1">1</option>
+    			<option value="0">0</option>
+  			</select>
+  			<br>
+  			<input type="submit" value="Search">
+		</form>
   	</div>
   	<div class="row">	
 	</div>
