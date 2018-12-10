@@ -80,7 +80,6 @@
   			
   			<div class="col-sm-4">
   				<div class="header">
-  					
   					<%
   					String search = null, value = null, rating = null;
   					Integer urating = null;
@@ -96,10 +95,8 @@
   					}
   					
   					if (!"".equals(request.getParameter("urating"))) {
-  						urating = Integer.getInteger(request.getParameter("urating"));
+  						urating = Integer.parseInt(request.getParameter("urating"));
   					}
-  				
-  					
   					
   					List<Movie> movieList = movieDB.search(search, value, rating, urating);
   					if (movieList.size()!=0) {

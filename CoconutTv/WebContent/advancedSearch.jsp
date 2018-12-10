@@ -141,7 +141,7 @@
     			<option value="pg-13">PG-13</option>
     			<option value="pg">PG</option>
   			</select>
-  			User Rating: <select name="rating">
+  			User Rating: <select name="urating">
     			<option value="">Any</option>
     			<option value="5">5</option>
     			<option value="4">4</option>
