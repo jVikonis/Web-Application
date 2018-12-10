@@ -104,7 +104,7 @@ if (newSub == null || newSub.getAccountID() == 0) {
   				<div class="form-group">
     				<label class="control-label col-sm-2" for="m_ccv">CCV:</label>
     				<div class="col-sm-8">
-      				<input type="text" class="form-control" id="m_ccv" name="m_ccv" placeholder=<%=newSub.getPaymentInfo().getCCNumber() %> maxlength="3" required>
+      				<input type="text" class="form-control" id="m_ccv" name="m_ccv" placeholder=<%=newSub.getPaymentInfo().getCCV() %> maxlength="3" required>
     				</div>
   				</div>
   				
@@ -159,13 +159,13 @@ if (newSub == null || newSub.getAccountID() == 0) {
 						<div class="form-group">
 		    				<label class="control-label col-sm-2" for="m_firstName">First Name:</label>
 		    				<div class="col-sm-8">
-		      				<input type="text" class="form-control" id="m_firstName" name="m_firstName" placeholder="<%=newSub.getFirstName() %>" maxlength="45">
+		      				<input type="text" class="form-control" id="m_firstName" name="m_firstName" placeholder="<%=newSub.getFirstName() %>" maxlength="45" required>
 		    				</div>
 		  				</div>
 						<div class="form-group">
 		    				<label class="control-label col-sm-2" for="m_lastName">Last Name:</label>
 		    				<div class="col-sm-8">
-		      				<input type="text" class="form-control" id="m_lastName" name="m_lastName" placeholder="<%=newSub.getLastName() %>" maxlength="45">
+		      				<input type="text" class="form-control" id="m_lastName" name="m_lastName" placeholder="<%=newSub.getLastName() %>" maxlength="45" required>
 		    				</div>
 		  				</div>
 						
@@ -178,7 +178,7 @@ if (newSub == null || newSub.getAccountID() == 0) {
 		  				<div class="form-group">
 		    				<label class="control-label col-sm-2" for="m_line1">Address line 1:</label>
 		    				<div class="col-sm-8">
-		      				<input type="text" class="form-control" id="m_line1" name="m_line1" placeholder="<%=newSub.getAddress().getLine1() %>" maxlength="45">
+		      				<input type="text" class="form-control" id="m_line1" name="m_line1" placeholder="<%=newSub.getAddress().getLine1() %>" maxlength="45" required>
 		    				</div>
 		  				</div>
 		  				<div class="form-group">
@@ -190,25 +190,25 @@ if (newSub == null || newSub.getAccountID() == 0) {
 		  				<div class="form-group">
 		    				<label class="control-label col-sm-2" for="m_city">City:</label>
 		    				<div class="col-sm-8">
-		      				<input type="text" class="form-control" id="m_city" name="m_city" placeholder="<%=newSub.getAddress().getCity() %>" maxlength="45">
+		      				<input type="text" class="form-control" id="m_city" name="m_city" placeholder="<%=newSub.getAddress().getCity() %>" maxlength="45" required>
 		    				</div>
 		  				</div>
 		  				<div class="form-group">
 		    				<label class="control-label col-sm-2" for="m_state">State:</label>
 		    				<div class="col-sm-8">
-		      				<input type="text" class="form-control" id="m_state" name="m_state" placeholder="<%=newSub.getAddress().getState() %>" maxlength="2">
+		      				<input type="text" class="form-control" id="m_state" name="m_state" placeholder="<%=newSub.getAddress().getState() %>" maxlength="2" required>
 		    				</div>
 		  				</div>
 		  				<div class="form-group">
 		    				<label class="control-label col-sm-2" for="m_zip">Zip Code:</label>
 		    				<div class="col-sm-8">
-		      				<input type="text" class="form-control" id="m_zip" name="m_zip" placeholder="<%=newSub.getAddress().getZip() %>" maxlength="5">
+		      				<input type="text" class="form-control" id="m_zip" name="m_zip" placeholder="<%=newSub.getAddress().getZip() %>" maxlength="5" required>
 		    				</div>
 		  				</div>
 		  				<div class="form-group">
 		    				<label class="control-label col-sm-2" for="m_phoneNumber">Phone Number:</label>
 		    				<div class="col-sm-8">
-		      				<input type="tel" class="form-control" id="m_phoneNumber" name="m_phoneNumber" placeholder="<%=newSub.getPhoneNumber() %>" maxlength="20">
+		      				<input type="tel" class="form-control" id="m_phoneNumber" name="m_phoneNumber" placeholder="<%=newSub.getPhoneNumber() %>" maxlength="20" required>
 		    				</div>
 		  				</div>  				
 <!-- 		  				<div class="form-group"> -->

@@ -46,28 +46,24 @@
 			
 			
 			
-			<form name="updateSubscription" class="form-horizontal" action="UpdateSubLevel" method="post" onsubmit="" required>
+			<form name="updateSubscription" class="form-horizontal" action="subTableAdmin.jsp" method="post" onsubmit="" required>
 					
 					<div class="form-group">
   					<label class="control-label col-sm-2" for="m_levelName">Table Name:</label>
   					<div class="col-sm-8">
-  					<select class="form-control" id="tablename" name="m_levelName">
+  					<select class="form-control" id="tablename" name="tablename">
   						<option>Choose one..</option>
-  						
-  						
-  						
-    					<option value="1" id="Silver" name="Silver">Silver </option>
-    					<option value="2" id="Gold" name="Gold">Gold </option>
-    					<option value="3" id="Platinum" name="Platinum">Platinum </option>
-  					
-  					
+  						<% String[] tableNames = adminDB.getTables(); %>
+  						<%for (int i = 0; i < tableNames.length; i++ ) { %>
+  							<option><% out.print(tableNames[i]); %></option>
+  							<%} %>  					
   					</select>
   					</div>
 				</div>  
   				
   				<div class="form-group"> 
     				<div class="col-sm-offset-2 col-sm-8">
-      				<button type="submit" value="updateSubscription" class="modalbtn">Save Changes</button>
+      				<button type="submit" value="updateSubscription" class="modalbtn">Show Table</button>
     				</div>
   				</div>				
 				
