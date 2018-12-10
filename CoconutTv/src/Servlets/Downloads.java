@@ -36,7 +36,7 @@ public class Downloads extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		HttpSession session = request.getSession();
-		Movie temp = (Movie) session.getAttribute("selectedProfile");
+		Movie temp = (Movie) session.getAttribute("selectedMovie");
 		Users users = (Users) session.getAttribute("selectedProfile");// get the user  
 		 // getNumberOfRentals requires an int param that takes in the account ID
 		Subscriber sub = (Subscriber) session.getAttribute("selectedProfile");// gets the subscriber needed for gaining the users level

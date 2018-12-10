@@ -46,7 +46,7 @@ public class UpdateAccountInfo extends HttpServlet {
 		Subscriber temp = new Subscriber();
 		temp = (Subscriber) session.getAttribute("newSub");
 		temp.getLoginInfo().setEmail(request.getParameter("m_email"));
-		temp.getLoginInfo().setPassword("m_password");
+		temp.getLoginInfo().setPassword(request.getParameter("m_password"));
 		temp.setFirstName(request.getParameter("m_firstName"));
 		temp.setLastName(request.getParameter("m_lastName"));
 		temp.getAddress().setLine1(request.getParameter("m_line1"));

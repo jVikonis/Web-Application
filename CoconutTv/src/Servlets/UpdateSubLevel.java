@@ -45,7 +45,17 @@ public class UpdateSubLevel extends HttpServlet {
 		HttpSession session = request.getSession();
 		Subscriber temp = new Subscriber();
 		temp = (Subscriber) session.getAttribute("newSub");
-		temp.setLevelName(request.getParameter("m_levelName"));		
+		String levelName = request.getParameter("m_levelName");
+		if (levelName.equals("3")) {
+			temp.setLevelName("Platinum");	
+		}
+		else if(levelName.equals("2")) {
+			temp.setLevelName("Gold");	
+		}
+		else {
+			temp.setLevelName("Silver");
+		}
+			
 		try {
 			subscriberDB.updateLevel(temp);
 		} catch (SQLException e) {

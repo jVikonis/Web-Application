@@ -33,7 +33,7 @@ public class adminDB {
 		
 		try {
 			DatabaseMetaData dbMetaData = con.getMetaData();
-			ResultSet rsTables = dbMetaData.getTables(null, null, null, new String[] {"TABLE"});
+			ResultSet rsTables = dbMetaData.getTables(null, "moviestoredb", null, new String[] {"TABLE"});
 			
 			int size = 0;
 			while (rsTables.next()) size++;

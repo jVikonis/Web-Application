@@ -4,6 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <jsp:useBean id="selectedMovie" class="classes.Movie" scope="session"></jsp:useBean>
 <jsp:useBean id="selectedProfile" class="classes.Users" scope="session"></jsp:useBean>
+<jsp:useBean id="newSub" class="classes.Subscriber" scope="session"></jsp:useBean>
 <%@ page import= "database.*"%>
 <%@ page import = "classes.*" %>
 <%@ page session="true" %>
@@ -46,7 +47,18 @@
      		<span class="navbar-brand">GCTV</span>
     	</div>			 
 		<ul class="nav navbar-nav">
-     		<li class="nav navbar-nav navbar-left"><a href="./startPage.jsp" title="Home Page"><span class="fa fa-fw fa-home"></span></a></li>
+     		<li class="nav navbar-nav navbar-left"><a href="<%
+     		if (newSub != null) {
+				if (selectedProfile != null) {
+				out.print("./startPage.jsp?value=" + selectedProfile.getUserID());
+				}
+				else {
+					out.print("./selectProfile.jsp");
+				}
+     		}
+			else {
+				out.print("./welcome.jsp");
+			}%>" title="Home Page"><span class="fa fa-fw fa-home"></span></a></li>
      			<li class="dropdown">
       				<a class="dropdown-toggle" data-toggle="dropdown" href="#" title="Movies">
       				  <span class="fa fa-fw fa-tv"></span>
@@ -54,11 +66,11 @@
 					 </a>
 					 
         			<ul class="dropdown-menu">
-          				<li><a href="./movieBrowser.jsp" title="Action">Action</a></li>
-         				<li><a href="./movieBrowser.jsp" title="Comedy">Comedy</a></li>
-          				<li><a href="./movieBrowser.jsp" title="Drama">Drama</a></li>
-          				<li><a href="./movieBrowser.jsp" title="Horror">Horror</a></li>
-         				<li><a href="./movieBrowser.jsp" title="Sci-Fi">Sci-Fi</a></li>
+          				<li><a href="./movieBrowser.jsp?genre=Action" title="Action">Action</a></li>
+         				<li><a href="./movieBrowser.jsp?genre=Comedy" title="Comedy">Comedy</a></li>
+          				<li><a href="./movieBrowser.jsp?genre=Drama" title="Drama">Drama</a></li>
+          				<li><a href="./movieBrowser.jsp?genre=Horror" title="Horror">Horror</a></li>
+         				<li><a href="./movieBrowser.jsp?genre=Sci-Fi" title="Sci-Fi">Sci-Fi</a></li>
         			</ul>
       			</li>
       	</ul>
@@ -77,7 +89,7 @@
 			 </form>
       	 
      	 <li><a href="./selectProfile.jsp" title="Switch Profile"><span class="glyphicon glyphicon-user"></span></a></li>
-    	 <li><a href="./welcome.jsp" title="Log Out"><span class="glyphicon glyphicon-log-out"></span></a></li>
+    	  <li><a href="LogOut" title="Log Out"><span class="glyphicon glyphicon-log-out"></span></a></li>
 		</ul>
 	</div>
 </nav>
@@ -118,8 +130,9 @@
     			
     			
     			<p>
+    			<form action="Downloads" method="post">
     			<br><button type="submit" title="Download" class="downloadBtn"> <a href ="Downloads"></a><i class="fa fa-download"></i></button>        
-    			
+    			</form>
     			<a href="selectedMovie.jsp" action="Favorites" title="Add to Favorites" class="heartIcon"><i class="fa fa-fw fa-heart"></i></a>      			
     			<a href="<%=selectedMovie.getMovieTrailer() %>" class="trailer" title="Watch a trailer here!"><span class="glyphicon glyphicon-play"></span></a> 
     			</p>
