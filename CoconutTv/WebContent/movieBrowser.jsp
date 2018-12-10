@@ -94,19 +94,42 @@
   						rating = request.getParameter("rating");
   					}
   					
-  					if (!"".equals(request.getParameter("urating"))) {
+  					if (!"".equals(request.getParameter("urating")) && request.getParameter("urating") != null) {
   						urating = Integer.parseInt(request.getParameter("urating"));
   					}
   					
   					List<Movie> movieList = movieDB.search(search, value, rating, urating);
   					if (movieList.size()!=0) {
-  						for (int i = 0; i < movieList.size(); i++) {
-  							out.print(movieList.get(i).getMovieID() + " ");
+  						for (int i = 0; i < movieList.size(); i++) { %>
+  							<table style="width: 500px; height: 200px;" border=1>
+  		  					<tbody>
+  		  						<tr>
+  		  							<td style="width: 50%;"><img src="./MoviePosters/<%=movieList.get(i).getMovieImage()%>" alt= "movieimage" id="movieImage" name="movieImage" style="width: 200px; height: 200px;"></td>
+  		  							<td style="width: 50%;">
+  										<table style="width: 100%; height: 100%;" border=1>
+  		  									<tbody>
+  		  										<tr>
+  		  											<td style="width: 50%; height: 50%;"><%=movieList.get(i).getTitle() %></td>
+  		  											<td style="width: 50%; height: 50%;"><%=movieList.get(i).getRatingAvg() %></td>
+  		  										</tr>
+  		  										<tr>
+  		  											<td style="width: 50%; height: 50%;">Watch</td>
+  		  											<td style="width: 50%; height: 50%;">Queue</td>
+  		  										</tr>
+  		  									</tbody>
+  		  								</table>
+  									</td>
+  		  						</tr>
+  		  					</tbody>
+  		  				</table>
+  		  				<br>
+  		  				<%
   						}
   					}
   					
   					%>
   				</div>
+  				
   				<ul class="list-group">
   					<li class="list-group-item">Action movies <span class="badge">3</span></li>
   					<li class="list-group-item">Comedy movies <span class="badge">5</span></li> 
@@ -115,7 +138,10 @@
   					<li class="list-group-item">Sci-Fi movies <span class="badge">4</span></li>
 				</ul>
 				<a href="./selectedMovie.jsp"> Show movie selected</a>
-  			
+  				
+  				
+  				
+  				
   			</div>
 		</div>
 </body>

@@ -21,7 +21,7 @@
 <!-- Latest compiled and minified JavaScript -->
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <link href="./advancedSearch.css" rel="stylesheet" type="text/css">
-<title>Start Page</title>
+<title>Advanced Search</title>
 </head>
 <%	
 	int userNumber = Integer.parseInt(request.getParameter("value"));
@@ -32,34 +32,6 @@
 	}
 	session.setAttribute("selectedProfile", selectedProfile);
 	%>
-<%	
-	Movie[] m = new Movie[6];
-	
-	if (selectedProfile.getFavorites() == null) {
-		selectedProfile.setFavorites(new ArrayList<Integer>());
-		selectedProfile.getFavorites().add(0);
-		selectedProfile.getFavorites().add(0);
-		selectedProfile.getFavorites().add(0);
-	}
-	if (selectedProfile.getRecents() == null) {
-		selectedProfile.setRecents(new ArrayList<Integer>());
-		selectedProfile.getRecents().add(0);
-		selectedProfile.getRecents().add(0);
-		selectedProfile.getRecents().add(0);
-	}
-	
-	m[0] = movieDB.getMovie(selectedProfile.getFavorites().get(0));
-	m[1] = movieDB.getMovie(selectedProfile.getFavorites().get(1));
-	m[2] = movieDB.getMovie(selectedProfile.getFavorites().get(2));
-	m[3] = movieDB.getMovie(selectedProfile.getRecents().get(0));
-	m[4] = movieDB.getMovie(selectedProfile.getRecents().get(1));
-	m[5] = movieDB.getMovie(selectedProfile.getRecents().get(2));
-	
-%>
-
-
-		
-	
 
 
 
