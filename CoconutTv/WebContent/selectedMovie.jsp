@@ -9,10 +9,6 @@
 <%@ page session="true" %>
 <html>
 <head>
-
-
-
-
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="WebImages/logo.png">
@@ -37,6 +33,7 @@
 <% 	selectedProfile = (Users) session.getAttribute("selectedProfile");
 	int movieID = Integer.parseInt(request.getParameter("value"));
 	selectedMovie = movieDB.getMovie(movieID);
+	session.setAttribute("selectedMovie", selectedMovie);
 	%>
 	<div class="logo">
 		<a href="./startPage.jsp"><img src="logo.png" alt="CoconutTvLogo" id="logo"></a>
@@ -110,10 +107,10 @@
     			
     			
     			<br>
-    			<form action="" method="post">
+    			<form action="Ratings" method="post">
 				<label for="input-1 xs" class="control-label">Rate this movie:</label>
 				<!-- does the value filed indicate the default value? If so we can change it to selectedMovie.getRating to display the rating -->
-   				<input id="input-1 xs" name="input-1 xs" class="rating rating-loading" data-min="0" data-max="5" data-step="1" value="0" data-size="xs">
+   				<input id="input-1 xs" name="input-1 xs" class="rating rating-loading" data-min="0" data-max="5" data-step="1" value=<%=selectedMovie.getRatingAvg() %> data-size="xs">
    				<br> 
    					<button type="submit"  class="ratingbtn">Submit </button>&nbsp;
     				<button type="reset" class="ratingbtn">Reset</button>

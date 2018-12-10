@@ -28,6 +28,31 @@ public class adminDB {
 		return dbQuery.executeQuery();
 	}
 	
+	public static String[] getTables() {
+		String[] tables = null;
+		
+		try {
+			DatabaseMetaData dbMetaData = con.getMetaData();
+			ResultSet rsTables = dbMetaData.getTables(null, null, null, new String[] {"TABLE"});
+			
+			int size = 0;
+			while (rsTables.next()) size++;
+			
+			rsTables = dbMetaData.getTables(null, null, null, new String[] {"TABLE"});
+			
+			tables = new String[size];
+			
+			int i = 0;
+			while (rsTables.next())
+				tables[i++] = rsTables.getString("TABLE_NAME");
+		}
+		catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	
+		return tables;
+	}
+	
 	public static Connection getConnection() {
 		return con;
 	}

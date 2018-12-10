@@ -69,42 +69,42 @@ if (newSub == null || newSub.getAccountID() == 0) {
 					<div class="form-group">
     				<label class="control-label col-sm-2" for="cardHolderFirstName">First Name:</label>
     				<div class="col-sm-8">
-      				<input type="text" class="form-control" id="m_firstName" name="m_firstName" placeholder=<%=newSub.getPaymentInfo().getFirstName() %> maxlength="45">
+      				<input type="text" class="form-control" id="m_firstName" name="m_firstName" placeholder=<%=newSub.getPaymentInfo().getFirstName() %> maxlength="45" required>
     				</div>
   				</div>
   				<div class="form-group">
     				<label class="control-label col-sm-2" for="cardHolderLastName">Last Name:</label>
     				<div class="col-sm-8">
-      				<input type="text" class="form-control" id="m_lastName" name="m_lastName" placeholder=<%=newSub.getPaymentInfo().getLastName() %> maxlength="45">
+      				<input type="text" class="form-control" id="m_lastName" name="m_lastName" placeholder=<%=newSub.getPaymentInfo().getLastName() %> maxlength="45" required>
     				</div>
   				</div>
   				<div class="form-group">
     				<label class="control-label col-sm-2" for="m_ccNumber">Credit Card Number:</label>
     				<div class="col-sm-8">
-      				<input type="text" class="form-control" id="m_ccNumber" name="m_ccNumber" placeholder=<%=newSub.getPaymentInfo().getCCNumber() %> maxlength="16">
+      				<input type="text" class="form-control" id="m_ccNumber" name="m_ccNumber" placeholder=<%=newSub.getPaymentInfo().getCCNumber() %> maxlength="16" required>
     				</div>
   				</div>
   				<div class="form-group">
     				<label class="control-label col-sm-2" for="m_ccType">Credit Card Type:</label>
     				<div class="col-sm-8">
-      				<input type="text" class="form-control" id="m_ccType" name="m_ccType" placeholder=<%=newSub.getPaymentInfo().getCCType() %> maxlength="45">
+      				<input type="text" class="form-control" id="m_ccType" name="m_ccType" placeholder=<%=newSub.getPaymentInfo().getCCType() %> maxlength="45" required>
     				</div>
   				</div>
   				<div class="form-group"> 
   				<div class="form-row">
     				<label class="control-label col-sm-2" for="m_ccExpiration">Expiration Month/Year:</label>
     				<div class="col-sm-4">
-      				<input type="text" class="form-control" id="m_expMonth" name="m_expMonth" placeholder=<%=newSub.getPaymentInfo().getExpMonth() %> maxlength="2">
+      				<input type="text" class="form-control" id="m_expMonth" name="m_expMonth" placeholder=<%=newSub.getPaymentInfo().getExpMonth() %> maxlength="2" required>
       				</div>
       				<div class="col-sm-4">
-      				<input type="text" class="form-control" id="m_expYear" name="m_expYear" placeholder=<%=newSub.getPaymentInfo().getExpYear() %> maxlength="4">
+      				<input type="text" class="form-control" id="m_expYear" name="m_expYear" placeholder=<%=newSub.getPaymentInfo().getExpYear() %> maxlength="4" required>
     				</div>
   				</div>
   				</div>
   				<div class="form-group">
     				<label class="control-label col-sm-2" for="m_ccv">CCV:</label>
     				<div class="col-sm-8">
-      				<input type="text" class="form-control" id="m_ccv" name="m_ccv" placeholder=<%=newSub.getPaymentInfo().getCCNumber() %> maxlength="3">
+      				<input type="text" class="form-control" id="m_ccv" name="m_ccv" placeholder=<%=newSub.getPaymentInfo().getCCNumber() %> maxlength="3" required>
     				</div>
   				</div>
   				
@@ -141,19 +141,19 @@ if (newSub == null || newSub.getAccountID() == 0) {
 		  			<div class="form-group">
 		    				<label class="control-label col-sm-2" for="m_email">Email:</label>
 		    				<div class="col-sm-8">
-		      				<input type="email" class="form-control" id="m_email" name="m_email" placeholder="<%=newSub.getLoginInfo().getEmail() %>" maxlength="45">
+		      				<input type="email" class="form-control" id="m_email" name="m_email" placeholder="<%=newSub.getLoginInfo().getEmail() %>" maxlength="45" required>
 		    				</div>
 		  				</div>
 		  				<div class="form-group">
 		    				<label class="control-label col-sm-2" for="m_password">Password:</label>
 		    				<div class="col-sm-8"> 
-		      				<input type="password" class="form-control" id="m_password" name="m_password" placeholder="Enter password" maxlength="45">
+		      				<input type="password" class="form-control" id="m_password" name="m_password" placeholder="Enter password" maxlength="45" required>
 		    				</div>
 		  				</div>
 		  				<div class="form-group">
 		    				<label class="control-label col-sm-2" for="m_password1">Re-enter <br> password:</label>
 		    				<div class="col-sm-8"> 
-		      				<input type="password" class="form-control" id="m_password1" name="m_password1" placeholder="Re-enter password" maxlength="45">
+		      				<input type="password" class="form-control" id="m_password1" name="m_password1" placeholder="Re-enter password" maxlength="45" required>
 		    				</div>
 		  				</div>
 						<div class="form-group">
@@ -253,7 +253,7 @@ if (newSub == null || newSub.getAccountID() == 0) {
 				<h3 class="modal-title" id="modalLabel">Update Plan</h3>
 			</div>
 			<div class="modal-body">				
-				<form name="updateSubscription" class="form-horizontal" action="UpdateSubLevel" method="post" onsubmit="">
+				<form name="updateSubscription" class="form-horizontal" action="UpdateSubLevel" method="post" onsubmit="" required>
 					
 					<div class="form-group">
   					<label class="control-label col-sm-2" for="m_levelName">Subscription Level:</label>

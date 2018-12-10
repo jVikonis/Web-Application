@@ -62,7 +62,7 @@ public class movieDB {
 		dbQuery = con.prepareStatement("update movie set ratingAvg = ? where movieID = ?");
 		dbQuery.setDouble(1, newRatingAvg);
 		dbQuery.setInt(2, movieID);
-		dbQuery.executeQuery();
+		dbQuery.executeUpdate();
 	}
 	
 	public static int getRatingCount(int movieID) throws SQLException {
@@ -86,7 +86,7 @@ public class movieDB {
 		dbQuery = con.prepareStatement("update movie set ratingCount = ? where movieID = ?");
 		dbQuery.setInt(1, count);
 		dbQuery.setInt(2, movieID);
-		dbQuery.executeQuery();
+		dbQuery.executeUpdate();
 	}
 	
 	public static int getRatingSum(int movieID) throws SQLException {
@@ -107,24 +107,24 @@ public class movieDB {
 	public static void setRatingSum(int movieID, int newSum) throws SQLException {
 		PreparedStatement dbQuery;
 		
-		dbQuery = con.prepareStatement("update movie set ratingCount = ? where movieID = ?");
+		dbQuery = con.prepareStatement("update movie set ratingSum = ? where movieID = ?");
 		dbQuery.setInt(1, newSum);
 		dbQuery.setInt(2, movieID);
-		dbQuery.executeQuery();
+		dbQuery.executeUpdate();
 	}
 	
 	public static void addRating(int movieID, int userRating) throws SQLException { // Adds user rating to ratingSum, increments ratingCount,
 														 // then calculates ratingAvg, stores back in database
 		int ratingCount, ratingSum;
-		double ratingAvg;
+		//double ratingAvg;
 		
 		ratingCount = getRatingCount(movieID) + 1;
 		ratingSum = getRatingSum(movieID) + userRating;
-		ratingAvg = ratingSum / ratingCount;
+		//ratingAvg = ratingSum / ratingCount;
 		
 		setRatingCount(movieID, ratingCount);
 		setRatingSum(movieID, ratingSum);
-		setRatingAvg(movieID, ratingAvg);
+		//setRatingAvg(movieID, ratingAvg);
 	}
 	
 	public static Movie getMovie(int movieID) throws SQLException {
