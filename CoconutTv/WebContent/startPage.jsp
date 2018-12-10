@@ -56,13 +56,6 @@
 	m[5] = movieDB.getMovie(selectedProfile.getRecents().get(2));
 	
 %>
-
-
-		
-	
-
-
-
 <body>
 
 	<div class="logo">
@@ -95,11 +88,11 @@
 					 </a>
 					 
         			<ul class="dropdown-menu">
-          				<li><a href="./movieBrowser.jsp?value=Action" title="Action">Action</a></li>
-         				<li><a href="./movieBrowser.jsp?value=Comedy" title="Comedy">Comedy</a></li>
-          				<li><a href="./movieBrowser.jsp?value=Drama" title="Drama">Drama</a></li>
-          				<li><a href="./movieBrowser.jsp?value=Horror" title="Horror">Horror</a></li>
-         				<li><a href="./movieBrowser.jsp?value=Sci-Fi" title="Sci-Fi">Sci-Fi</a></li>
+          				<li><a href="./movieBrowser.jsp?genre=Action" title="Action">Action</a></li>
+         				<li><a href="./movieBrowser.jsp?genre=Comedy" title="Comedy">Comedy</a></li>
+          				<li><a href="./movieBrowser.jsp?genre=Drama" title="Drama">Drama</a></li>
+          				<li><a href="./movieBrowser.jsp?genre=Horror" title="Horror">Horror</a></li>
+         				<li><a href="./movieBrowser.jsp?genre=Sci-Fi" title="Sci-Fi">Sci-Fi</a></li>
         			</ul>
       			</li>
       	</ul>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
+<%@ page import = "database.*" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -41,16 +42,44 @@
 	     			<input type="text" class="form-control" id="tablename" name="tablename" placeholder="Enter table name" maxlength="45">
 	   				</div>
 	  			</div>
-	  			
-	 			
 			</form> 
+			
+			
+			
+			<form name="updateSubscription" class="form-horizontal" action="UpdateSubLevel" method="post" onsubmit="" required>
+					
+					<div class="form-group">
+  					<label class="control-label col-sm-2" for="m_levelName">Table Name:</label>
+  					<div class="col-sm-8">
+  					<select class="form-control" id="tablename" name="m_levelName">
+  						<option>Choose one..</option>
+  						
+  						
+  						
+    					<option value="1" id="Silver" name="Silver">Silver </option>
+    					<option value="2" id="Gold" name="Gold">Gold </option>
+    					<option value="3" id="Platinum" name="Platinum">Platinum </option>
+  					
+  					
+  					</select>
+  					</div>
+				</div>  
+  				
+  				<div class="form-group"> 
+    				<div class="col-sm-offset-2 col-sm-8">
+      				<button type="submit" value="updateSubscription" class="modalbtn">Save Changes</button>
+    				</div>
+  				</div>				
+				
+				</form>
+			
+			
+			
  				
  				<br><br>
  				<a href="./welcome.jsp" class="admin1"> Exit </a>
  				
  			</div>
- 			
- 			
   			<div class="col-sm-3 ">
  				
  			</div>
@@ -60,9 +89,5 @@
 	
 	
 	</div>
-
-
-<!-- Add three links here, one to the admin subTableAdmin, one to a form to add a movie and another to enter a movie and have it deleted from the database -->
-
 </body>
 </html>
