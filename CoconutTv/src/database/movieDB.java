@@ -1,6 +1,9 @@
 package database;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
 import classes.*;
 
 public class movieDB {
@@ -113,6 +116,54 @@ public class movieDB {
 		dbQuery.executeQuery();
 	}
 	
+	public static List<Movie> search(String keyword, String genre, String MPAARating, Integer userRating) throws SQLException {
+		// Returns a list with given search parameters, checks if any are null
+		StringBuilder queryString = new StringBuilder("select movieID from movie");
+		PreparedStatement dbQuery;
+		List<Movie> list = new ArrayList<Movie>();
+		
+			if ((genre != null || keyword != null || MPAARating != null || userRating != null) ) {
+				queryString.append(" where ");
+				if (keyword != null) {
+					queryString.append("(movieTitle LIKE '%" + keyword + "%' OR movieDescription LIKE '%" + keyword + "%')");
+					if (genre != null) {
+						queryString.append(" AND movieGenre = '" + genre + "'");
+					}
+					if (MPAARating != null) {
+						queryString.append(" AND movieMPAARating = '" + MPAARating + "'");
+					}
+					if (userRating != null) {
+						queryString.append(" AND ratingAvg = " + userRating.intValue());
+					}
+				}
+				else if (genre != null) {
+					queryString.append("movieGenre = '" + genre + "'");
+					if (MPAARating != null) {
+						queryString.append(" AND movieMPAARating = '" + MPAARating + "'");
+					}
+					if (userRating != null) {
+						queryString.append(" AND ratingAvg = " + userRating.intValue());
+					}
+				}
+				else if (MPAARating != null) {
+					queryString.append("movieMPAARating = '" + MPAARating + "'");
+					if (userRating != null) {
+						queryString.append(" AND ratingAvg = " + userRating.intValue());
+					}
+				}
+				else if (userRating != null) {
+					queryString.append("ratingAvg = " + userRating.intValue());
+				}
+			}
+		dbQuery = con.prepareStatement(queryString.toString());
+		ResultSet rset = dbQuery.executeQuery();
+			
+		while (rset.next()) {
+			list.add(movieDB.getMovie(rset.getInt(1)));
+		}
+		return list;
+	}
+	
 	public static void addRating(int movieID, int userRating) throws SQLException { // Adds user rating to ratingSum, increments ratingCount,
 														 // then calculates ratingAvg, stores back in database
 		int ratingCount, ratingSum;
@@ -129,11 +180,12 @@ public class movieDB {
 	
 	public static Movie getMovie(int movieID) throws SQLException {
 		Movie movie = new Movie();
-		//
 		PreparedStatement dbQuery;
+		/*
 		while (con == null) {
 			//
 		}
+		*/
 		if(movieID == 0) {
 			return null;
 		}

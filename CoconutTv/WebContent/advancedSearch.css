@@ -1,0 +1,107 @@
+
+@charset "ISO-8859-1";
+
+.navbar-header {
+	color: white; 
+	text-decoration: none;  
+	font-color: white; 
+}
+.container-fluid  {
+	background-color: green;
+	font-size: 21px; 
+	border: none; 
+	text-decoration: none; 
+}
+.container-fluid ul li span {
+	color: white; 
+	border: none; 
+	tex-decoration: none; 
+}
+.navbar li:hover {
+	background-color: red; 
+	transition: .5s background-color;
+   -webkit-transition: .5s background-color;
+   -moz-transition: .5s background-color;
+   -o-transition: .5s background-color;
+	
+}
+.navbar {
+	background-color: green;
+}
+
+.input-group-btn button {
+	color: white; 
+	background: green;
+	border: none; 
+	cursor: pointer; 
+	box-shadow: none;
+	shadow: none; 
+	text-decoration: none; 
+}
+.input-group-btn button:hover {
+	color: white; 
+	background: red;
+	border: none; 
+	box-shadow: none; 
+	shadow: none; 
+	text-decoration: none; 
+	transition: .5s background-color;
+   -webkit-transition: .5s background-color;
+   -moz-transition: .5s background-color;
+   -o-transition: .5s background-color;
+}
+.dropdown:hover .dropdown-menu {
+	display: block; 
+}
+.dropdown-menu li {
+
+	background-color: green; 
+	font-size: 15px;
+	text-decoration: none; 
+	z-index: 1;
+}
+.dropdown-menu li a {
+	color: white;
+	font-size: 16px;
+	padding: 14px;
+}
+
+.dropdown-menu li a:hover {
+	background-color: red;
+	background: red; 
+	color: white; 	
+	transition: .5s background-color;
+   -webkit-transition: .5s background-color;
+   -moz-transition: .5s background-color;
+   -o-transition: .5s background-color;  
+}
+
+body {
+	background-repeat: no-repeat; 
+	background-image: linear-gradient(to bottom , red, white);
+	-webkit-background-image: linear-gradient(to bottom right, white, red);
+}
+.header {
+	font-size: 40px; 
+	text-align: center; 
+	margin-top: 40px;
+}
+.row {
+	text-align: center; 
+	margin-top: 50px;
+}
+.navbar-header .navbar-brand {
+	color: white; 
+	text-decoration: none; 
+}
+.thumbnail:hover {
+	background-color: red; 
+	color: white; 
+	border: none; 
+	transform: scale(1.1);
+	-webkit-transition: transform 1s ease-in-out; 
+	transition: .5s background-color;
+   -webkit-transition: .5s background-color;
+   -moz-transition: .5s background-color;
+   -o-transition: .5s background-color;
+}
