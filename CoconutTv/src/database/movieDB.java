@@ -133,7 +133,7 @@ public class movieDB {
 						queryString.append(" AND movieMPAARating = '" + MPAARating + "'");
 					}
 					if (userRating != null) {
-						queryString.append(" AND ratingAvg = " + userRating);
+						queryString.append(" AND ratingAvg >= " + userRating);
 					}
 				}
 				else if (genre != null) {
@@ -142,17 +142,17 @@ public class movieDB {
 						queryString.append(" AND movieMPAARating = '" + MPAARating + "'");
 					}
 					if (userRating != null) {
-						queryString.append(" AND ratingAvg = " + userRating);
+						queryString.append(" AND ratingAvg >= " + userRating);
 					}
 				}
 				else if (MPAARating != null) {
 					queryString.append("movieMPAARating = '" + MPAARating + "'");
 					if (userRating != null) {
-						queryString.append(" AND ratingAvg = " + userRating);
+						queryString.append(" AND ratingAvg >= " + userRating);
 					}
 				}
 				else if (userRating != null) {
-					queryString.append("ratingAvg = " + userRating);
+					queryString.append("ratingAvg >= " + userRating);
 				}
 			}
 		dbQuery = con.prepareStatement(queryString.toString());

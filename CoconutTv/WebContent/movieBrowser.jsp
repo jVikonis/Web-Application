@@ -114,12 +114,12 @@
 				    			<option value="pg-13">PG-13</option>
 				    			<option value="pg">PG</option>
 				  			</select>
-				  			User Rating: <select name="urating" style="background-color:green">
+				  			Minimum User Rating: <select name="urating" style="background-color:green">
 				    			<option value="">Any</option>
 				    			<option value="5">5</option>
 				    			<option value="4">4</option>
 				    			<option value="3">3</option>
-				    			<option value="1">2</option>
+				    			<option value="2">2</option>
 				    			<option value="1">1</option>
 				    			<option value="0">0</option>
 				  			</select>
@@ -158,7 +158,7 @@
   					List<Movie> movieList = movieDB.search(search, genre, rating, urating);
   					if (movieList.size()!=0) {
   						for (int i = 0; i < movieList.size(); i++) { %>
-  							<table style="width: 500px; height: 200px;" border=1;>
+  							<table style="width: 500px; height: 200px;">
   		  					<tbody>
   		  						<tr>
   		  							<td style="width: 200px;">
