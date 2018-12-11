@@ -33,8 +33,6 @@ public class Downloads extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 		HttpSession session = request.getSession();
 		Movie temp = (Movie) session.getAttribute("movie");
 		Users users = (Users) session.getAttribute("user");// get the user  
@@ -50,11 +48,13 @@ public class Downloads extends HttpServlet {
 				 
 				 if(check <1)
 					{try {
-						QueueDB.rentOutMovie(temp.getMovieID(), temp.getTitle(), users.getAccountID());
+						QueueDB.rentOutMovie(temp.getMovieID(), temp.getTitle(), sub.getAccountID());
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
-					}}
+					}
+						//send to a relevant page
+					}
 					else {System.out.print("Sorry you've reached your limit of downloads");
 						response.sendRedirect("welcome.jsp");}
 			} catch (SQLException e) {
@@ -81,11 +81,13 @@ public class Downloads extends HttpServlet {
 				 check = QueueDB.getNumberofRentals(users.getAccountID());
 				 if(check < 2) {
 						try {
-							QueueDB.rentOutMovie(temp.getMovieID(), temp.getTitle(), users.getAccountID());
+							QueueDB.rentOutMovie(temp.getMovieID(), temp.getTitle(), sub.getAccountID());
 						} catch (SQLException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
-						}} 
+						}
+						//send to a relevant page
+						} 
 						else {System.out.print("Sorry you've reached your limit of downloads");
 							response.sendRedirect("welcome.jsp");}
 			} catch (SQLException e) {
@@ -114,7 +116,9 @@ public class Downloads extends HttpServlet {
 							} catch (SQLException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
-							}}
+							}
+							//send to a relevant page
+							}
 							else {System.out.print("Sorry you've reached your limit of downloads");
 								response.sendRedirect("welcome.jsp");}
 				} catch (SQLException e) {

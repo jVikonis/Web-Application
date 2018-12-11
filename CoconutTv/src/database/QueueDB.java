@@ -66,7 +66,7 @@ public class QueueDB {
 	// executing this method
 	public static void rentOutMovie(int movieID, String movieTitle, int accountID) throws SQLException {
 		PreparedStatement dbQuery;
-		String rentMovie = "insert into queue (accountID, movieID, accountID) values (?,?,?);";
+		String rentMovie = "insert into queue (accountID, movieID, movieTitle) values (?,?,?);";
 		dbQuery = con.prepareStatement(rentMovie);
 		dbQuery.setInt(1, accountID);
 		dbQuery.setInt(2, movieID);

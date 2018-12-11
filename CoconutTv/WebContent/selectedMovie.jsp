@@ -135,7 +135,7 @@
     			<form action="Downloads" method="post">
     			<br><button type="submit" title="Download" class="downloadBtn"> <a href ="Downloads"></a><i class="fa fa-download"></i></button>        
     			</form>
-    			<a href="selectedMovie.jsp" action="Favorites" title="Add to Favorites" class="heartIcon"><i class="fa fa-fw fa-heart"></i></a>      			
+    			<a href="Favorites" action="Favorites" title="Add to Favorites" class="heartIcon"><i class="fa fa-fw fa-heart"></i></a>      			
     			<a href="<%=selectedMovie.getMovieTrailer() %>" class="trailer" title="Watch a trailer here!"><span class="glyphicon glyphicon-play"></span></a> 
     			</p>
     				

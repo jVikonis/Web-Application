@@ -33,8 +33,7 @@ public class Favorites extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request, response);
 	}
 
 	/**
@@ -42,7 +41,7 @@ public class Favorites extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		//doGet(request, response);
 		HttpSession session = request.getSession();
 		Movie temp = (Movie) session.getAttribute("movie");	
 		Users tempUser = (Users) session.getAttribute("user");
@@ -54,10 +53,8 @@ public class Favorites extends HttpServlet {
 			try {
 				favoritesDB.updateFavorites(tempUser);
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
 		}
 		else{
 			tempUser.addFavorite(temp.getMovieID());
@@ -69,6 +66,7 @@ public class Favorites extends HttpServlet {
 			}
 			
 		}
+		//redirect to start page
 		response.sendRedirect("welcome.jsp"); 
 	}
 

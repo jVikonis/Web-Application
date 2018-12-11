@@ -37,13 +37,11 @@ public class Ratings extends HttpServlet {
 		try {
 			movieDB.addRating(temp.getMovieID(), rating); // adds rating to the database
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}//accountID and user rating
 		try {
 			temp = movieDB.getMovie(temp.getMovieID()); // updates the site with the new information
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		session.setAttribute("selectedMovie", temp);
@@ -53,23 +51,18 @@ public class Ratings extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//doGet(request, response);
 		HttpSession session = request.getSession();		
-		Movie temp = (Movie) session.getAttribute("movie");
-		//int fun = valueOf(temp.getMPAARating());
-		
+		Movie temp = (Movie) session.getAttribute("movie");		
 		int rating = Integer.parseInt( request.getParameter("input-1 xs"));
 		try {
 			movieDB.addRating(temp.getMovieID(), rating); // adds rating to the database
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}//accountID and user rating
 		try {
 			temp = movieDB.getMovie(temp.getMovieID()); // updates the site with the new information
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		session.setAttribute("selectedMovie", temp);
