@@ -218,9 +218,9 @@ public class movieDB {
 		//
 		PreparedStatement dbQuery;
 		
-		dbQuery = con.prepareStatement("Insert into crew (movieID, movieGenre, movieTitle, movieDescription, movieImage, movieTrailer,"
-				+ "movieReleaseDate, movieMPAARating, director, actor1, actor2, views, ratingSum, ratingCount, ratingAvg) "
-				+ "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+		dbQuery = con.prepareStatement("Insert into movie (movieID, movieGenre, movieTitle, movieDescription, movieImage, movieTrailer,"
+				+ "movieReleaseDate, movieMPAARating, director, actor1, actor2, views, ratingSum, ratingCount) "
+				+ "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 		dbQuery.setInt(1, newMovie.getMovieID());
 		dbQuery.setString(2, newMovie.getGenre());
 		dbQuery.setString(3, newMovie.getTitle());
@@ -236,14 +236,17 @@ public class movieDB {
 		dbQuery.setInt(12, newMovie.getViews());
 		dbQuery.setDouble(13, newMovie.getRatingSum());
 		dbQuery.setDouble(14, newMovie.getRatingCount());
-		dbQuery.setDouble(15, newMovie.getRatingAvg());
 		
-		dbQuery.executeQuery();
+		dbQuery.executeUpdate();
 	}
 	
 	public static void deleteMovie(int movieID) throws SQLException {
-		PreparedStatement dbQuery = con.prepareStatement("delete from table movies where movieID = ?");
+		PreparedStatement dbQuery = con.prepareStatement("delete from movie where movieID = ?");
 		dbQuery.setInt(1, movieID);
 		dbQuery.executeUpdate();
+	}
+	
+	public static Connection getConnection() {
+		return con;
 	}
 }

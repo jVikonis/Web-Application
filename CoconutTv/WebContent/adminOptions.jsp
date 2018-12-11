@@ -34,17 +34,6 @@
  				
  				<a href="./adminAddMovie.jsp" class="admin"> Add Movie </a> &nbsp;&nbsp;&nbsp;
  				<a href="./adminDeleteMovie.jsp" class="admin"> Delete Movie </a> <br><br><br><br>
- 				
- 			<form class="form-horizontal" action="subTableAdmin.jsp" method="post">
-	  			<div class="form-group">
-	   				<label class="control-label col-sm-2" for="tablename">Table Name:</label>
-	    			<div class="col-sm-8">
-	     			<input type="text" class="form-control" id="tablename" name="tablename" placeholder="Enter table name" maxlength="45">
-	   				</div>
-	  			</div>
-			</form> 
-			
-			
 			
 			<form name="updateSubscription" class="form-horizontal" action="subTableAdmin.jsp" method="post" onsubmit="" required>
 					

@@ -31,7 +31,7 @@
  			
   			<div class="col-sm-6">
  				
- 				<form name="adminDeleteMovie" class="form-horizontal" action="./adminOptions.jsp" method="post" onsubmit="">
+ 				<form name="adminDeleteMovie" class="form-horizontal" action="DeleteMovie" method="post" onsubmit="">
   					<div class="form-group">
    						<label class="control-label col-sm-2" for="movieTitle">Enter Movie title</label>
     					<div class="col-sm-8">
@@ -45,7 +45,9 @@
    						</div>
   					</div>
 				</form>
- 				
+ 			<% if(request.getAttribute("deleteFail") == "true") {
+ 			out.println("Movie was not removed");
+ 		}%>
  				
  				<br><br><br><br><br>
  				<a href="./welcome.jsp" class="admin1"> Exit </a>

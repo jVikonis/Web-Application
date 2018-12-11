@@ -29,71 +29,65 @@
  			</div>			
  			
   			<div class="col-sm-4 col-md-4">
- 				<form name="adminAddMovie" class="form-horizontal" action="./adminOptions.jsp" method="post" onsubmit="">
+ 				<form name="adminAddMovie" class="form-horizontal" action="AddMovie" method="post" >
   					<div class="form-group">
    						<label class="control-label col-sm-2" for="movieGenre">Movie Genre</label>
     					<div class="col-sm-8">
-     					<input type="text" class="form-control" id="movieGenre" name="movieGenre" placeholder="Movie Genre" maxlength="45">
+     					<input type="text" class="form-control" id="movieGenre" name="movieGenre" placeholder="Movie Genre" maxlength="45" required>
    						</div>
   					</div>
   					<div class="form-group">
    						<label class="control-label col-sm-2" for="movieTitle">Movie Title</label>
     					<div class="col-sm-8"> 
-      					<input type="text" class="form-control" id="movieTitle" name="movieTitle" placeholder="Movie Title" maxlength="45">
+      					<input type="text" class="form-control" id="movieTitle" name="movieTitle" placeholder="Movie Title" maxlength="45" required>
     					</div>
   					</div>
   					<div class="form-group">
    						<label class="control-label col-sm-2" for="movieDescription">Movie Description</label>
     					<div class="col-sm-8"> 
-      					<textarea class="form-control" id="movieDescription" name="movieDescription" placeholder="Movie Description" rows="5"></textarea>
-    					</div>
-  					</div>
-  					<div class="form-group">
-   						<label class="control-label col-sm-2" for="movieYearReleased">Movie Release Year</label>
-    					<div class="col-sm-8"> 
-      					<input type="text" class="form-control" id="movieYearReleased" name="movieYearReleased" placeholder="e.g. 1999" maxlength="4">
+      					<textarea class="form-control" id="movieDescription" name="movieDescription" placeholder="Movie Description" rows="5" required></textarea>
     					</div>
   					</div>
   					<div class="form-group">
    						<label class="control-label col-sm-2" for="movieImage">Movie Image Filename</label>
     					<div class="col-sm-8"> 
-      					<input type="text" class="form-control" id="movieImage" name="movieImage" placeholder="e.g. 21grams.jpg" maxlength="45">
+      					<input type="text" class="form-control" id="movieImage" name="movieImage" placeholder="e.g. 21grams.jpg" maxlength="45" required>
     					</div>
   					</div>
   					<div class="form-group">
    						<label class="control-label col-sm-2" for="movieTrailer">Movie Trailer Link</label>
     					<div class="col-sm-8"> 
-      					<input type="text" class="form-control" id="movieTrailer" name="movieTrailer" placeholder="Paste movie link here">
+      					<input type="text" class="form-control" id="movieTrailer" name="movieTrailer" placeholder="Paste movie link here" required>
     					</div>
   					</div>
   					<div class="form-group">
    						<label class="control-label col-sm-2" for="movieReleaseDate">Movie Release Date</label>
     					<div class="col-sm-8"> 
-      					<input type="text" class="form-control" id="movieReleaseDate" name="movieReleaseDate" placeholder="e.g. 1999-05-02" maxlength="45">
+      					<input type="text" class="form-control" id="movieReleaseDate" name="movieReleaseDate" placeholder="e.g. 1999-05-02" maxlength="45" required>
     					</div>
   					</div>
   					<div class="form-group">
    						<label class="control-label col-sm-2" for="movieMPAARating">MPAA Rating</label>
     					<div class="col-sm-8"> 
-      					<input type="text" class="form-control" id="movieMPAARating" name="movieMPAARating" placeholder="e.g. R" maxlength="45">
+      					<input type="text" class="form-control" id="movieMPAARating" name="movieMPAARating" placeholder="e.g. R" maxlength="45" required>
     					</div>
   					</div>
   					<div class="form-group">
    						<label class="control-label col-sm-2" for="director">Movie Director</label>
     					<div class="col-sm-8">
-     					<input type="text" class="form-control" id="director" name="director" placeholder="e.g. Jack Nicholson" maxlength="45">
+     					<input type="text" class="form-control" id="director" name="director" placeholder="e.g. Jack Nicholson" maxlength="45" required>
    						</div>
   					</div>
   					<div class="form-group">
    						<label class="control-label col-sm-2" for="actor1">Movie Actor 1</label>
     					<div class="col-sm-8">
-     					<input type="text" class="form-control" id="actor1" name="actor1" placeholder="e.g. Jack Nicholson" maxlength="45">
+     					<input type="text" class="form-control" id="actor1" name="actor1" placeholder="e.g. Jack Nicholson" maxlength="45" required>
    						</div>
   					</div>
   					<div class="form-group">
    						<label class="control-label col-sm-2" for="actor2">Movie Actor 2</label>
     					<div class="col-sm-8">
-     					<input type="text" class="form-control" id="actor2" name="actor2" placeholder="e.g. Jack Nicholson" maxlength="45">
+     					<input type="text" class="form-control" id="actor2" name="actor2" placeholder="e.g. Jack Nicholson" maxlength="45" required>
    						</div>
   					</div>
   					

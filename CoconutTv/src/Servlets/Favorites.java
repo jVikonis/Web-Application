@@ -48,6 +48,17 @@ public class Favorites extends HttpServlet {
 		//int check = tempUser.getFavorites().size();
 		if(tempUser.getFavorites().get(2) != 0)
 		{
+			boolean test = false;
+			for(int i =0 ; i<3; i++) {
+				
+			if(tempUser.getFavorites().get(i) == temp.getMovieID()) {
+				test = true;
+				}
+				
+			}	
+			if(test == true) {
+				response.sendRedirect("welcome.jsp"); 
+			}
 			tempUser.addFavorite(temp.getMovieID()); //changed the addFavorite method in the user class, so that an added favorite will go into idex 0 of the list, with the other favorites shifted down as necessesary. 
 			tempUser.removeFavorite(tempUser.getFavorites().get(3));//garbage collecting, should delete the fourth movie from the favorites
 			try {
@@ -67,7 +78,7 @@ public class Favorites extends HttpServlet {
 			
 		}
 		//redirect to start page
-		response.sendRedirect("welcome.jsp"); 
+		response.sendRedirect("favoritesUpdated.jsp"); 
 	}
 
 }
