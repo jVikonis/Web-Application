@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import database.QueueDB;
+import database.movieDB;
 import classes.Movie;
 import classes.Subscriber;
 import classes.Users;
@@ -39,6 +40,25 @@ public class Downloads extends HttpServlet {
 		 // getNumberOfRentals requires an int param that takes in the account ID
 		Subscriber sub = (Subscriber) session.getAttribute("sub");// gets the subscriber needed for gaining the users level
 		//Says the subscriber isnt being properly initialized
+		if(sub == null || sub.getAddress() == null)
+		{
+			response.sendRedirect("signUp.jsp");
+		} 
+		else if(users == null || users.getUsername() == null){
+			response.sendRedirect("selectProfile.jsp");
+		}
+		
+			try {
+				if(QueueDB.movieCheckedOut(temp.getTitle(), users.getAccountID())) {
+					response.sendRedirect("downloadConfirmation.jsp");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+				
+		
+			
 		String level = sub.getLevelName();// get the subscription level
 		if(level.equals("silver")) {
 			
@@ -49,6 +69,7 @@ public class Downloads extends HttpServlet {
 				 if(check <1)
 					{try {
 						QueueDB.rentOutMovie(temp.getMovieID(), temp.getTitle(), sub.getAccountID());
+						movieDB.setViews(temp.getMovieID(),temp.getViews()+1);
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -82,6 +103,7 @@ public class Downloads extends HttpServlet {
 				 if(check < 2) {
 						try {
 							QueueDB.rentOutMovie(temp.getMovieID(), temp.getTitle(), sub.getAccountID());
+							movieDB.setViews(temp.getMovieID(),temp.getViews()+1);
 						} catch (SQLException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -113,6 +135,7 @@ public class Downloads extends HttpServlet {
 					 if(check<3) {
 							try {
 								QueueDB.rentOutMovie(temp.getMovieID(), temp.getTitle(), users.getAccountID());
+								movieDB.setViews(temp.getMovieID(),temp.getViews()+1);
 							} catch (SQLException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
