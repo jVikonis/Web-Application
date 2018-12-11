@@ -79,4 +79,27 @@ body {
 	transform: scale(1.1);
 	-webkit-transform: scale(1.1);
 }
+.profile {
+	color: rgba(255, 0, 0, 0.7);
+	
+	font-weight: 10; 
+	font-size: 17px; 
+	text-align: center; 	
+	border: none; 
+	border-radius: 10px;
+	padding: 10px 10px; 
+	padding-left: 13px; 
+	text-decoration: none; 
+	
+	-webkit-transition-duration: .5s; 
+	transition-duration: .5s; 
+	
+}
+.profile:hover {
+	text-decoration: none; 
+	background-color: #ff8080; 
+	color: white;
+	
+}
+
 
