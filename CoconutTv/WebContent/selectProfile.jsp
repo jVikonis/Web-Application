@@ -65,7 +65,7 @@ if(newSub.getAccountID() == 0) {
   			<div class="col-sm-4 col-md-4">
  				<%
  				if (newSub.getUserProfiles().get(1) != null) {
- 				%><a href="./startPage.jsp?value=<%=newSub.getUserProfiles().get(0).getUserID()%>" class="thumbnail"><%
+ 				%><a href="./startPage.jsp?value=<%=newSub.getUserProfiles().get(1).getUserID()%>" class="thumbnail"><%
  				}
  				else {
  					%><a href="./profileManagement.jsp" class="thumbnail"><%
@@ -89,7 +89,7 @@ if(newSub.getAccountID() == 0) {
   			<div class="col-sm-4 col-md-4">
  				<%
  				if (newSub.getUserProfiles().get(2) != null) {
- 				%><a href="./startPage.jsp?value=<%=newSub.getUserProfiles().get(0).getUserID()%>" class="thumbnail" ><%
+ 				%><a href="./startPage.jsp?value=<%=newSub.getUserProfiles().get(2).getUserID()%>" class="thumbnail" ><%
  				}
  				else {
  					%><a href="./profileManagement.jsp" class="thumbnail"><%

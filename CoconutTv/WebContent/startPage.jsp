@@ -27,8 +27,15 @@
 	int userNumber = Integer.parseInt(request.getParameter("value"));
 	selectedProfile = favoritesDB.getUsersObj(userNumber);
 	
-	if(selectedProfile == null) {
-		response.sendRedirect("selectProfile.jsp");
+	if(newSub == null || newSub.getAccountID() == 0) {
+		response.sendRedirect("welcome.jsp");
+		return;
+	}
+	else {
+		if(selectedProfile == null || selectedProfile.getUserID() == 0) {
+			response.sendRedirect("selectProfile.jsp");
+			return;
+		}
 	}
 	session.setAttribute("selectedProfile", selectedProfile);
 	%>
