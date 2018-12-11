@@ -57,7 +57,7 @@ public class Users {
 	
 	public void addFavorite(int movieID) {
 		if (!m_favorites.contains(movieID)) {
-			m_favorites.add(movieID);
+			m_favorites.add(0,movieID);
 		}
 	}
 	public void removeFavorite(int movieID) {

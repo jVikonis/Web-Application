@@ -55,8 +55,8 @@ public class Ratings extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
-		HttpSession session = request.getSession();
-		Movie temp = (Movie) session.getAttribute("selectedMovie");
+		HttpSession session = request.getSession();		
+		Movie temp = (Movie) session.getAttribute("movie");
 		//int fun = valueOf(temp.getMPAARating());
 		
 		int rating = Integer.parseInt( request.getParameter("input-1 xs"));

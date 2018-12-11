@@ -36,16 +36,17 @@ public class Downloads extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		HttpSession session = request.getSession();
-		Movie temp = (Movie) session.getAttribute("selectedMovie");
-		Users users = (Users) session.getAttribute("selectedProfile");// get the user  
+		Movie temp = (Movie) session.getAttribute("movie");
+		Users users = (Users) session.getAttribute("user");// get the user  
 		 // getNumberOfRentals requires an int param that takes in the account ID
-		Subscriber sub = (Subscriber) session.getAttribute("selectedProfile");// gets the subscriber needed for gaining the users level
+		Subscriber sub = (Subscriber) session.getAttribute("sub");// gets the subscriber needed for gaining the users level
+		//Says the subscriber isnt being properly initialized
 		String level = sub.getLevelName();// get the subscription level
 		if(level.equals("silver")) {
 			
 			int check;
 			try {
-				 check = QueueDB.getNumberofRentals(users.getAccountID());
+				 check = QueueDB.getNumberofRentals(users.getAccountID()); //sets check equal to the number of rentals that the user has taken out so far
 				 
 				 if(check <1)
 					{try {

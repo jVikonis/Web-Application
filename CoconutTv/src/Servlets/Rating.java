@@ -32,7 +32,7 @@ public class Rating extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		Movie temp = (Movie) session.getAttribute("selectedProfile");		
+		Movie temp = (Movie) session.getAttribute("selectedMovie");		
 		int rating = Integer.parseInt( request.getParameter("input-1 xs"));
 		try {
 			movieDB.addRating(temp.getMovieID(), rating); // adds rating to the database
@@ -56,7 +56,7 @@ public class Rating extends HttpServlet {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
 		HttpSession session = request.getSession();
-		Movie temp = (Movie) session.getAttribute("selectedProfile");
+		Movie temp = (Movie) session.getAttribute("selectedMovie");
 		//int fun = valueOf(temp.getMPAARating());
 		
 		int rating = Integer.parseInt( request.getParameter("input-1 xs"));
