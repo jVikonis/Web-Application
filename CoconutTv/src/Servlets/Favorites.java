@@ -40,8 +40,6 @@ public class Favorites extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//doGet(request, response);
 		HttpSession session = request.getSession();
 		Movie temp = (Movie) session.getAttribute("movie");	
 		Users tempUser = (Users) session.getAttribute("user");
@@ -57,7 +55,8 @@ public class Favorites extends HttpServlet {
 				
 			}	
 			if(test == true) {
-				response.sendRedirect("welcome.jsp"); 
+				response.sendRedirect("selectedMovie.jsp?value" + temp.getMovieID()); 
+				return;
 			}
 			tempUser.addFavorite(temp.getMovieID()); //changed the addFavorite method in the user class, so that an added favorite will go into idex 0 of the list, with the other favorites shifted down as necessesary. 
 			tempUser.removeFavorite(tempUser.getFavorites().get(3));//garbage collecting, should delete the fourth movie from the favorites
@@ -78,7 +77,7 @@ public class Favorites extends HttpServlet {
 			
 		}
 		//redirect to start page
-		response.sendRedirect("favoritesUpdated.jsp"); 
+		response.sendRedirect("selectedMovie.jsp?value" + temp.getMovieID()); 
 	}
 
 }

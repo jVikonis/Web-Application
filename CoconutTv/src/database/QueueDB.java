@@ -36,7 +36,6 @@ public class QueueDB {
 		dbQuery = con.prepareStatement(movieCheckString);
 		dbQuery.setInt(1, accountID);
 		ResultSet rset = dbQuery.executeQuery();
-		rset.next();
 		while (rset.next()) {
 			if (rset.getString(1).equals(movieTitle)) {
 				return true;
