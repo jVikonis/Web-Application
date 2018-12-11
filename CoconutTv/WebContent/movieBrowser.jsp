@@ -5,6 +5,9 @@
 <%@ page import = "database.*" %>
 <%@ page import = "classes.*" %>
 <%@ page import = "java.util.*" %>
+<%@ page session="true" %>
+<jsp:useBean id="newSub" class="classes.Subscriber" scope="session"></jsp:useBean>
+<jsp:useBean id="selectedProfile" class="classes.Users" scope="session"></jsp:useBean>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -27,7 +30,7 @@
 <body>
 	
 		<div class="logo">
-			<a href="./startPage.jsp"><img src="WebImages/logo.png" alt="CoconutTvLogo" id="logo"></a>
+			<img src="WebImages/logo.png" alt="CoconutTvLogo" id="logo">
 		</div>	
 	
 	
@@ -37,7 +40,18 @@
      		<span class="navbar-brand">GCTV</span>
     	</div>			 
 		<ul class="nav navbar-nav">
-     		<li class="nav navbar-nav navbar-left"><a href="./startPage.jsp" title="Home Page"><span class="fa fa-fw fa-home"></span></a></li>
+     		<li class="nav navbar-nav navbar-left"><a href="<%
+     		if (newSub != null) {
+				if (selectedProfile != null) {
+				out.print("./startPage.jsp?value=" + selectedProfile.getUserID());
+				}
+				else {
+					out.print("./selectProfile.jsp");
+				}
+     		}
+			else {
+				out.print("./welcome.jsp");
+			}%>" title="Home Page"><span class="fa fa-fw fa-home"></span></a></li>
      			<li class="dropdown">
       				<a class="dropdown-toggle" data-toggle="dropdown" href="#" title="Movies">
       				  <span class="fa fa-fw fa-tv"></span>
@@ -68,7 +82,7 @@
 			 </form>
       	 
      	 <li><a href="./selectProfile.jsp" title="Switch Profile"><span class="glyphicon glyphicon-user"></span></a></li>
-    	 <li><a href="./welcome.jsp" title="Log Out"><span class="glyphicon glyphicon-log-out"></span></a></li>
+    	 <li><a href="./LogOut" title="Log Out"><span class="glyphicon glyphicon-log-out"></span></a></li>
 		</ul>
 	</div>
 </nav>
@@ -153,7 +167,7 @@
   		  									</tr>
   		  									<tr>
   		  										<td>
-  		  											Rating: <%=movieList.get(i).getRatingAvg() %>
+  		  											Rating: <%=movieList.get(i).getRatingAvg() %>/5
   		  										</td>
   		  									</tr>
   		  									<tr>
@@ -163,7 +177,7 @@
   		  									</tr>
   		  									<tr valign="bottom">
   		  										<td>
-  		  											Download
+  		  											<a href=<% out.print("./Downloads?value=" + movieList.get(i).getMovieID()); %> style="color: white">Download</a>
   		  										</td>
   		  									</tr>
   		  								</table>
