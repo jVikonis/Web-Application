@@ -41,8 +41,8 @@
     	</div>			 
 		<ul class="nav navbar-nav">
      		<li class="nav navbar-nav navbar-left"><a href="<%
-     		if (newSub != null) {
-				if (selectedProfile != null) {
+     		if (newSub.getUserProfiles() != null) {
+				if (selectedProfile.getUsername() != null) {
 				out.print("./startPage.jsp?value=" + selectedProfile.getUserID());
 				}
 				else {
