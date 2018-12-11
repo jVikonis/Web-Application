@@ -99,8 +99,8 @@ body {
 }
 .heartIcon {
 	color: red;
-	padding: 10px ;
-	 
+	padding: 10px;
+	text-align: center;   
 	font-size: 25px;
 }
 
@@ -129,6 +129,9 @@ body {
 .fa-heart:hover {
 	transform: scale(1.2); 
 	color: red; 
+}
+.fa-heart {
+	top: 20px; 
 }
 .ratingbtn {
 	color: white;
@@ -176,11 +179,21 @@ body {
 	-webkit-transform: scale(1.2);
 }
 .glyphicon-play {
-	top: 5px; 
+	top: 20px; 
 }
-
-
-
+.col-sm-1 {
+	width: 60px; 
+	display: inline-block; 
+	 
+}
+.favorites {
+	top: 20px; 
+	margin: auto; 
+}
+.row {
+	
+	width: 100%; 
+}
 
 
 
