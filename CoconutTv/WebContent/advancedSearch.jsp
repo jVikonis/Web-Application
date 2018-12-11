@@ -23,17 +23,6 @@
 <link href="./advancedSearch.css" rel="stylesheet" type="text/css">
 <title>Advanced Search</title>
 </head>
-<%	
-	int userNumber = Integer.parseInt(request.getParameter("value"));
-	selectedProfile = favoritesDB.getUsersObj(userNumber);
-	
-	if(selectedProfile == null) {
-		response.sendRedirect("selectProfile.jsp");
-	}
-	session.setAttribute("selectedProfile", selectedProfile);
-	%>
-
-
 
 <body>
 
@@ -51,7 +40,7 @@
      		<li class="nav navbar-nav navbar-left"><a href="<%
      		if (newSub != null) {
 				if (selectedProfile != null) {
-				out.print("./startPage.jsp?value=" + userNumber);
+				out.print("./startPage.jsp?value=" + selectedProfile.getUserID());
 				}
 				else {
 					out.print("./selectProfile.jsp");

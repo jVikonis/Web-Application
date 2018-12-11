@@ -79,7 +79,7 @@
   			<div class="col-sm-4"></div>
   			
   			<div class="col-sm-4">
-  				<div class="header">
+  				<div>
   					<%
   					String search = null, value = null, rating = null;
   					Integer urating = null;
@@ -104,20 +104,12 @@
   							<table style="width: 500px; height: 200px;" border=1>
   		  					<tbody>
   		  						<tr>
-  		  							<td style="width: 50%;"><img src="./MoviePosters/<%=movieList.get(i).getMovieImage()%>" alt= "movieimage" id="movieImage" name="movieImage" style="width: 200px; height: 200px;"></td>
-  		  							<td style="width: 50%;">
-  										<table style="width: 100%; height: 100%;" border=1>
-  		  									<tbody>
-  		  										<tr>
-  		  											<td style="width: 50%; height: 50%;"><%=movieList.get(i).getTitle() %></td>
-  		  											<td style="width: 50%; height: 50%;"><%=movieList.get(i).getRatingAvg() %></td>
-  		  										</tr>
-  		  										<tr>
-  		  											<td style="width: 50%; height: 50%;">Watch</td>
-  		  											<td style="width: 50%; height: 50%;">Queue</td>
-  		  										</tr>
-  		  									</tbody>
-  		  								</table>
+  		  							<td style="width: 200px;"><img src="./MoviePosters/<%=movieList.get(i).getMovieImage()%>" alt= "movieimage" id="movieImage" name="movieImage" style="width: 200px; height: 200px;"></td>
+  		  							<td style="width: 600px;">
+  		  								<font size=6><%=movieList.get(i).getTitle() %><br></font>
+  		  								<%=movieList.get(i).getRatingAvg() %><br>
+  		  								<%=movieList.get(i).getDescription() %><br>
+  		  								Download
   									</td>
   		  						</tr>
   		  					</tbody>
@@ -129,19 +121,6 @@
   					
   					%>
   				</div>
-  				
-  				<ul class="list-group">
-  					<li class="list-group-item">Action movies <span class="badge">3</span></li>
-  					<li class="list-group-item">Comedy movies <span class="badge">5</span></li> 
-  					<li class="list-group-item">Drama movies <span class="badge">30</span></li> 
-  					<li class="list-group-item">Horror movies <span class="badge">1</span></li>
-  					<li class="list-group-item">Sci-Fi movies <span class="badge">4</span></li>
-				</ul>
-				<a href="./selectedMovie.jsp"> Show movie selected</a>
-  				
-  				
-  				
-  				
   			</div>
 		</div>
 </body>
