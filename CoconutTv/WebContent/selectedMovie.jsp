@@ -34,9 +34,9 @@
 <% 	selectedProfile = (Users) session.getAttribute("selectedProfile");
 	int movieID = Integer.parseInt(request.getParameter("value"));
 	selectedMovie = movieDB.getMovie(movieID);
-	session.setAttribute("movie", selectedMovie);
-	session.setAttribute("sub", subscriberDB.getSub(10001));
-	session.setAttribute("user", favoritesDB.getUsersObj(1));
+	//session.setAttribute("movie", selectedMovie);
+	//session.setAttribute("sub", subscriberDB.getSub(10001));
+	//session.setAttribute("user", favoritesDB.getUsersObj(1));
 	%>
 	<div class="logo">
 		<a href="./startPage.jsp"><img src="logo.png" alt="CoconutTvLogo" id="logo"></a>

@@ -37,7 +37,7 @@ public class Downloads extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		Movie temp = (Movie) session.getAttribute("movie");
+		Movie temp = (Movie) session.getAttribute("selectedMovie");
 		try {
 			if (temp.getMovieID() != Integer.parseInt(request.getParameter("value"))) {
 				temp = movieDB.getMovie(Integer.parseInt(request.getParameter("value")));
@@ -46,9 +46,9 @@ public class Downloads extends HttpServlet {
 			// TODO Auto-generated catch block
 			e2.printStackTrace();
 		}
-		Users users = (Users) session.getAttribute("user");// get the user  
+		Users users = (Users) session.getAttribute("selectedProfile");// get the user  
 		 // getNumberOfRentals requires an int param that takes in the account ID
-		Subscriber sub = (Subscriber) session.getAttribute("sub");// gets the subscriber needed for gaining the users level
+		Subscriber sub = (Subscriber) session.getAttribute("newSub");// gets the subscriber needed for gaining the users level
 		//Says the subscriber isnt being properly initialized
 		if(sub == null || sub.getAddress() == null)
 		{
@@ -62,7 +62,7 @@ public class Downloads extends HttpServlet {
 		
 			try {
 				if(QueueDB.movieCheckedOut(temp.getTitle(), sub.getAccountID())) {
-					response.sendRedirect("downloadConfirmation.jsp");
+					response.sendRedirect("DownloadConfirmation.jsp");
 					return;
 				}
 			} catch (SQLException e) {
@@ -89,6 +89,7 @@ public class Downloads extends HttpServlet {
 					users.addRecents(temp.getMovieID());
 					users.removeRecents(users.getRecents().get(3));
 					favoritesDB.updateFavorites(users);
+					response.sendRedirect("DownloadConfirmation.jsp");
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -118,6 +119,7 @@ public class Downloads extends HttpServlet {
 						users.addRecents(temp.getMovieID());
 						users.removeRecents(users.getRecents().get(3));
 						favoritesDB.updateFavorites(users);
+						response.sendRedirect("DownloadConfirmation.jsp");
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -146,6 +148,7 @@ public class Downloads extends HttpServlet {
 							users.addRecents(temp.getMovieID());
 							users.removeRecents(users.getRecents().get(3));
 							favoritesDB.updateFavorites(users);
+							response.sendRedirect("DownloadConfirmation.jsp");
 						} catch (SQLException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();

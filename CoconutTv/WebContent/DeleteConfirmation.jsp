@@ -27,7 +27,7 @@
 <body>
 <!-- can we make this look prettier -->
 	<div class="page-header">
-		<h1><center>Subscriber/User has been removed.S</center></h1>
+		<h1><center>Subscriber/User has been removed</center></h1>
 	</div>
 <center>You will be redirected in <div id="counter">3</center></div>
     <script>
