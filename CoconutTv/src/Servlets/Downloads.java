@@ -38,6 +38,14 @@ public class Downloads extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Movie temp = (Movie) session.getAttribute("movie");
+		try {
+			if (temp.getMovieID() != Integer.parseInt(request.getParameter("value"))) {
+				temp = movieDB.getMovie(Integer.parseInt(request.getParameter("value")));
+			}
+		} catch (NumberFormatException | SQLException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
 		Users users = (Users) session.getAttribute("user");// get the user  
 		 // getNumberOfRentals requires an int param that takes in the account ID
 		Subscriber sub = (Subscriber) session.getAttribute("sub");// gets the subscriber needed for gaining the users level
