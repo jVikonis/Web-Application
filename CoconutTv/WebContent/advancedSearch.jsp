@@ -56,11 +56,11 @@
 					 </a>
 					 
         			<ul class="dropdown-menu">
-          				<li><a href="./movieBrowser.jsp?value=Action" title="Action">Action</a></li>
-         				<li><a href="./movieBrowser.jsp?value=Comedy" title="Comedy">Comedy</a></li>
-          				<li><a href="./movieBrowser.jsp?value=Drama" title="Drama">Drama</a></li>
-          				<li><a href="./movieBrowser.jsp?value=Horror" title="Horror">Horror</a></li>
-         				<li><a href="./movieBrowser.jsp?value=Sci-Fi" title="Sci-Fi">Sci-Fi</a></li>
+          				<li><a href="./movieBrowser.jsp?genre=Action" title="Action">Action</a></li>
+         				<li><a href="./movieBrowser.jsp?genre=Comedy" title="Comedy">Comedy</a></li>
+          				<li><a href="./movieBrowser.jsp?genre=Drama" title="Drama">Drama</a></li>
+          				<li><a href="./movieBrowser.jsp?genre=Horror" title="Horror">Horror</a></li>
+         				<li><a href="./movieBrowser.jsp?genre=Sci-Fi" title="Sci-Fi">Sci-Fi</a></li>
         			</ul>
       			</li>
       	</ul>
@@ -69,7 +69,7 @@
       	 
       	 	 <form class="navbar-form navbar-left" action="./movieBrowser.jsp" title="Search" >
 				<div class="input-group">
-    			<input type="text" class="form-control" placeholder="Search..." name="blahblah" id="searchBox" >
+    			<input type="text" class="form-control" placeholder="Search..." name="search" id="searchBox" >
     				<div class="input-group-btn" >
      					<button class="btn btn-default" type="submit" title="Search">
         				<span class="fa fa-fw fa-search"></span>
@@ -87,8 +87,8 @@
 <div class="container">	
 	<div class="row">
 		<form action="./movieBrowser.jsp">
-			Keywords: <input type="text" name="search" value="">
-  			Genre: <select name="value">
+			Keywords: <input type="text" name="search" placeholder="Search...">
+  			Genre: <select name="genre">
     			<option value="">Any</option>
     			<option value="action">Action</option>
     			<option value="comedy">Comedy</option>

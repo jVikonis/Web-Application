@@ -6,8 +6,7 @@ public class Movie {
 	private String m_description, m_movieImage, m_movieTrailer;
 	private Crew m_director;
 	private String m_actor1, m_actor2, m_date, m_MPAARating;
-	private int m_views, m_ratingSum, m_ratingCount;
-	private double m_ratingAvg;
+	private int m_views, m_ratingSum, m_ratingCount, m_ratingAvg;
 	
 	public int getMovieID() {
 		return m_movieID;
@@ -109,10 +108,10 @@ public class Movie {
 	public void setRatingCount(int ratingCount) {
 		m_ratingCount = ratingCount;
 	}
-	public double getRatingAvg() {
+	public int getRatingAvg() {
 		return m_ratingAvg;
 	}
-	public void setRatingAvg(double ratingAvg) {
+	public void setRatingAvg(int ratingAvg) {
 		m_ratingAvg = ratingAvg;
 	}
 	

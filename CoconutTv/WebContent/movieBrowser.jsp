@@ -45,11 +45,11 @@
 					 </a>
 					 
         			<ul class="dropdown-menu">
-          				<li><a href="./movieBrowser.jsp?value=action" title="Action">Action</a></li>
-         				<li><a href="./movieBrowser.jsp?value=comedy" title="Comedy">Comedy</a></li>
-          				<li><a href="./movieBrowser.jsp?value=drama" title="Drama">Drama</a></li>
-          				<li><a href="./movieBrowser.jsp?value=horror" title="Horror">Horror</a></li>
-         				<li><a href="./movieBrowser.jsp?value=Sci-Fi" title="Sci-Fi">Sci-Fi</a></li>
+          				<li><a href="./movieBrowser.jsp?genre=action" title="Action">Action</a></li>
+         				<li><a href="./movieBrowser.jsp?genre=comedy" title="Comedy">Comedy</a></li>
+          				<li><a href="./movieBrowser.jsp?genre=drama" title="Drama">Drama</a></li>
+          				<li><a href="./movieBrowser.jsp?genre=horror" title="Horror">Horror</a></li>
+         				<li><a href="./movieBrowser.jsp?genre=Sci-Fi" title="Sci-Fi">Sci-Fi</a></li>
         			</ul>
       			</li>
       	</ul>
@@ -72,23 +72,60 @@
 		</ul>
 	</div>
 </nav>
-	
-
-
 		<div class="row">
-  			<div class="col-sm-4"></div>
+			<table align="center" width="50%">
+				<tr>
+					<td bgcolor="green">
+						<br>
+						<form action="./movieBrowser.jsp" style="color: white;">
+							<label>Advanced Search:</label><br>
+							Keywords: <input type="text" name="search" placeholder="Search..." style="color: white; background-color:green">
+				  			Genre: <select name="genre" style="background-color:green">
+				    			<option value="">Any</option>
+				    			<option value="action">Action</option>
+				    			<option value="comedy">Comedy</option>
+				    			<option value="drama">Drama</option>
+				    			<option value="horror">Horror</option>
+				    			<option value="sci-fi">Sci-Fi</option>
+				  			</select>
+				  			MPAA Rating: <select name="rating" style="background-color:green">
+				    			<option value="">Any</option>
+				    			<option value="r">R</option>
+				    			<option value="pg-13">PG-13</option>
+				    			<option value="pg">PG</option>
+				  			</select>
+				  			User Rating: <select name="urating" style="background-color:green">
+				    			<option value="">Any</option>
+				    			<option value="5">5</option>
+				    			<option value="4">4</option>
+				    			<option value="3">3</option>
+				    			<option value="1">2</option>
+				    			<option value="1">1</option>
+				    			<option value="0">0</option>
+				  			</select>
+				  			<br>
+				  			<input type="submit" value="Search" style="background-color:green">
+						</form>
+						<br>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="row">
+  			<div class="col-sm-4">
+  			</div>
   			
   			<div class="col-sm-4">
   				<div>
   					<%
-  					String search = null, value = null, rating = null;
+  					String search = null, genre = null, rating = null;
   					Integer urating = null;
   					
   					if (!"".equals(request.getParameter("search"))) {
   						search = request.getParameter("search");
   					}
-  					if (!"".equals(request.getParameter("value"))) {
-  						value = request.getParameter("value");
+  					if (!"".equals(request.getParameter("genre"))) {
+  						genre = request.getParameter("genre");
   					}
   					if (!"".equals(request.getParameter("rating"))) {
   						rating = request.getParameter("rating");
@@ -98,18 +135,38 @@
   						urating = Integer.parseInt(request.getParameter("urating"));
   					}
   					
-  					List<Movie> movieList = movieDB.search(search, value, rating, urating);
+  					List<Movie> movieList = movieDB.search(search, genre, rating, urating);
   					if (movieList.size()!=0) {
   						for (int i = 0; i < movieList.size(); i++) { %>
-  							<table style="width: 500px; height: 200px;" border=1>
+  							<table style="width: 500px; height: 200px;" border=1;>
   		  					<tbody>
   		  						<tr>
-  		  							<td style="width: 200px;"><img src="./MoviePosters/<%=movieList.get(i).getMovieImage()%>" alt= "movieimage" id="movieImage" name="movieImage" style="width: 200px; height: 200px;"></td>
-  		  							<td style="width: 600px;">
-  		  								<font size=6><%=movieList.get(i).getTitle() %><br></font>
-  		  								<%=movieList.get(i).getRatingAvg() %><br>
-  		  								<%=movieList.get(i).getDescription() %><br>
-  		  								Download
+  		  							<td style="width: 200px;">
+  		  								<a style="color:white;" href=<% out.print("./selectedMovie.jsp?value=" + movieList.get(i).getMovieID()); %>><img src="./MoviePosters/<%=movieList.get(i).getMovieImage()%>" alt= "movieimage" id="movieImage" name="movieImage" style="width: 200px; height: 200px;"></a>
+  		  							</td>
+  		  							<td style="width: 600px;" bgcolor="green" valign="top">
+  		  								<table style="color:white;" valign="top">
+  		  									<tr>
+  		  										<td align="center">
+  		  											<a style="color:white;" href=<% out.print("./selectedMovie.jsp?value=" + movieList.get(i).getMovieID()); %>><font size=6><%=movieList.get(i).getTitle() %><br></font></a> 
+  		  										</td>
+  		  									</tr>
+  		  									<tr>
+  		  										<td>
+  		  											Rating: <%=movieList.get(i).getRatingAvg() %>
+  		  										</td>
+  		  									</tr>
+  		  									<tr>
+  		  										<td>
+  		  											<%=movieList.get(i).getDescription() %>
+  		  										</td>
+  		  									</tr>
+  		  									<tr valign="bottom">
+  		  										<td>
+  		  											Download
+  		  										</td>
+  		  									</tr>
+  		  								</table>
   									</td>
   		  						</tr>
   		  					</tbody>

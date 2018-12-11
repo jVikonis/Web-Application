@@ -44,10 +44,10 @@ public class movieDB {
 		dbQuery.executeQuery();
 	}
 	
-	public static double getRatingAvg(int movieID) throws SQLException {
+	public static int getRatingAvg(int movieID) throws SQLException {
 		PreparedStatement dbQuery;
 		
-		double rating;
+		int rating;
 		
 		dbQuery = con.prepareStatement("select ratingAvg from movie where movieID = ?");
 		dbQuery.setInt(1, movieID);
@@ -59,11 +59,11 @@ public class movieDB {
 		return rating;
 	}
 	
-	public static void setRatingAvg(int movieID, double newRatingAvg) throws SQLException {
+	public static void setRatingAvg(int movieID, int newRatingAvg) throws SQLException {
 		PreparedStatement dbQuery;
 		
 		dbQuery = con.prepareStatement("update movie set ratingAvg = ? where movieID = ?");
-		dbQuery.setDouble(1, newRatingAvg);
+		dbQuery.setInt(1, newRatingAvg);
 		dbQuery.setInt(2, movieID);
 		dbQuery.executeUpdate();
 	}
@@ -181,11 +181,7 @@ public class movieDB {
 	public static Movie getMovie(int movieID) throws SQLException {
 		Movie movie = new Movie();
 		PreparedStatement dbQuery;
-		/*
-		while (con == null) {
-			//
-		}
-		*/
+		
 		if(movieID == 0) {
 			return null;
 		}
@@ -209,7 +205,7 @@ public class movieDB {
 		movie.setViews(rset.getInt(12));
 		movie.setRatingSum(rset.getInt(13));
 		movie.setRatingCount(rset.getInt(14));
-		movie.setRatingAvg(rset.getDouble(15));
+		movie.setRatingAvg(rset.getInt(15));
 		
 		return movie;
 	}
