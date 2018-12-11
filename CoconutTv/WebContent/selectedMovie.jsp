@@ -122,22 +122,29 @@
     			
     			<br>
     			<form action="Ratings" method="post">
-				<label for="input-1 xs" class="control-label">Rate this movie:</label>
-				<!-- does the value filed indicate the default value? If so we can change it to selectedMovie.getRating to display the rating -->
-   				<input id="input-1 xs" name="input-1 xs" class="rating rating-loading" data-min="0" data-max="5" data-step="1" value=<%=selectedMovie.getRatingAvg() %> data-size="xs">
-   				<br> 
+					<label for="input-1 xs" class="control-label">Rate this movie:</label>
+					<!-- does the value filed indicate the default value? If so we can change it to selectedMovie.getRating to display the rating -->
+	   				<input id="input-1 xs" name="input-1 xs" class="rating rating-loading" data-min="0" data-max="5" data-step="1" value=<%=selectedMovie.getRatingAvg() %> data-size="xs">
+	   				<br> 
    					<button type="submit"  class="ratingbtn">Submit </button>&nbsp;
     				<button type="reset" class="ratingbtn">Reset</button>
    				</form>
     			
     			
-    			<p>
-    			<form action="Downloads" method="post">
-    			<br><button type="submit" title="Download" class="downloadBtn"> <a href ="Downloads"></a><i class="fa fa-download"></i></button>        
-    			</form>
-    			<a href="Favorites" action="Favorites" title="Add to Favorites" class="heartIcon"><i class="fa fa-fw fa-heart"></i></a>      			
-    			<a href="<%=selectedMovie.getMovieTrailer() %>" class="trailer" title="Watch a trailer here!"><span class="glyphicon glyphicon-play"></span></a> 
-    			</p>
+    			
+    			<div class="row">
+    				<div class="col-sm-1">
+	    				<form action="Downloads" method="post">
+	    					<br><button type="submit" title="Download" class="downloadBtn"> <a href ="Downloads"></a><i class="fa fa-download"></i></button>        
+	    				</form>
+    				</div>
+    				<div class="col-sm-1 favorites">    					
+    						<a href="Favorites" action="Favorites" title="Add to Favorites" class="heartIcon"><i class="fa fa-fw fa-heart"></i></a>     					
+    				</div> 
+    				<div class="col-sm-1">    			
+    					<a href="<%=selectedMovie.getMovieTrailer() %>" class="trailer" title="Watch a trailer here!"><span class="glyphicon glyphicon-play"></span></a> 
+    				</div>
+    			</div>
     				
       			
 				

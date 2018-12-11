@@ -45,14 +45,17 @@ public class Downloads extends HttpServlet {
 		if(sub == null || sub.getAddress() == null)
 		{
 			response.sendRedirect("signUp.jsp");
+			return;
 		} 
 		else if(users == null || users.getUsername() == null){
 			response.sendRedirect("selectProfile.jsp");
+			return;
 		}
 		
 			try {
-				if(QueueDB.movieCheckedOut(temp.getTitle(), users.getAccountID())) {
+				if(QueueDB.movieCheckedOut(temp.getTitle(), sub.getAccountID())) {
 					response.sendRedirect("downloadConfirmation.jsp");
+					return;
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -62,31 +65,30 @@ public class Downloads extends HttpServlet {
 		
 			
 		String level = sub.getLevelName();// get the subscription level
+		int check = 0;
+		try {
+			check = QueueDB.getNumberofRentals(sub.getAccountID());
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		if(level.equals("silver")) {
 			
-			int check;
-			try {
-				 check = QueueDB.getNumberofRentals(users.getAccountID()); //sets check equal to the number of rentals that the user has taken out so far
-				 
-				 if(check <1)
-					{try {
-						QueueDB.rentOutMovie(temp.getMovieID(), temp.getTitle(), sub.getAccountID());
-						movieDB.setViews(temp.getMovieID(),temp.getViews()+1);
-						users.addRecents(temp.getMovieID());
-						users.removeRecents(users.getRecents().get(3));
-						favoritesDB.updateFavorites(users);
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-						//send to a relevant page
-					}
-					else {System.out.print("Sorry you've reached your limit of downloads");
-						response.sendRedirect("welcome.jsp");}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			if(check <1)
+				{try {
+					QueueDB.rentOutMovie(temp.getMovieID(), temp.getTitle(), sub.getAccountID());
+					movieDB.setViews(temp.getMovieID(),temp.getViews()+1);
+					users.addRecents(temp.getMovieID());
+					users.removeRecents(users.getRecents().get(3));
+					favoritesDB.updateFavorites(users);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+					//send to a relevant page
+				}
+				else {System.out.print("Sorry you've reached your limit of downloads");
+					response.sendRedirect("welcome.jsp");}
 			
 			
 			/* if(check <1)
@@ -101,29 +103,21 @@ public class Downloads extends HttpServlet {
 			
 		}
 		else if (level.equals("gold")) {
-			
-			int check;
-			try {
-				 check = QueueDB.getNumberofRentals(users.getAccountID());
-				 if(check < 2) {
-						try {
-							QueueDB.rentOutMovie(temp.getMovieID(), temp.getTitle(), sub.getAccountID());
-							movieDB.setViews(temp.getMovieID(),temp.getViews()+1);
-							users.addRecents(temp.getMovieID());
-							users.removeRecents(users.getRecents().get(3));
-							favoritesDB.updateFavorites(users);
-						} catch (SQLException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-						//send to a relevant page
-						} 
-						else {System.out.print("Sorry you've reached your limit of downloads");
-							response.sendRedirect("welcome.jsp");}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			if(check < 2) {
+					try {
+						QueueDB.rentOutMovie(temp.getMovieID(), temp.getTitle(), sub.getAccountID());
+						movieDB.setViews(temp.getMovieID(),temp.getViews()+1);
+						users.addRecents(temp.getMovieID());
+						users.removeRecents(users.getRecents().get(3));
+						favoritesDB.updateFavorites(users);
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					//send to a relevant page
+					} 
+					else {System.out.print("Sorry you've reached your limit of downloads");
+						response.sendRedirect("welcome.jsp");}
 			
 		/*	if(check < 2) {
 				try {
@@ -137,28 +131,21 @@ public class Downloads extends HttpServlet {
 			}
 			
 		 else if(level.equals("platinum")){
-			 int check;
-				try {
-					 check = QueueDB.getNumberofRentals(users.getAccountID());
-					 if(check<3) {
-							try {
-								QueueDB.rentOutMovie(temp.getMovieID(), temp.getTitle(), users.getAccountID());
-								movieDB.setViews(temp.getMovieID(),temp.getViews()+1);
-								users.addRecents(temp.getMovieID());
-								users.removeRecents(users.getRecents().get(3));
-								favoritesDB.updateFavorites(users);
-							} catch (SQLException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-							//send to a relevant page
-							}
-							else {System.out.print("Sorry you've reached your limit of downloads");
-								response.sendRedirect("welcome.jsp");}
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				if(check<3) {
+						try {
+							QueueDB.rentOutMovie(temp.getMovieID(), temp.getTitle(), users.getAccountID());
+							movieDB.setViews(temp.getMovieID(),temp.getViews()+1);
+							users.addRecents(temp.getMovieID());
+							users.removeRecents(users.getRecents().get(3));
+							favoritesDB.updateFavorites(users);
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						//send to a relevant page
+						}
+						else {System.out.print("Sorry you've reached your limit of downloads");
+							response.sendRedirect("welcome.jsp");}
 			 
 		/*	if(check<3) {
 				try {
