@@ -41,8 +41,8 @@ public class Favorites extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		Movie temp = (Movie) session.getAttribute("movie");	
-		Users tempUser = (Users) session.getAttribute("user");
+		Movie temp = (Movie) session.getAttribute("selectedMovie");	
+		Users tempUser = (Users) session.getAttribute("selectedProfile");
 		//int check = tempUser.getFavorites().size();
 		if(tempUser.getFavorites().get(2) != 0)
 		{
