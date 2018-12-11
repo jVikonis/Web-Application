@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import database.QueueDB;
+import database.favoritesDB;
 import database.movieDB;
+import database.userDB;
 import classes.Movie;
 import classes.Subscriber;
 import classes.Users;
@@ -70,6 +72,9 @@ public class Downloads extends HttpServlet {
 					{try {
 						QueueDB.rentOutMovie(temp.getMovieID(), temp.getTitle(), sub.getAccountID());
 						movieDB.setViews(temp.getMovieID(),temp.getViews()+1);
+						users.addRecents(temp.getMovieID());
+						users.removeRecents(users.getRecents().get(3));
+						favoritesDB.updateFavorites(users);
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -104,6 +109,9 @@ public class Downloads extends HttpServlet {
 						try {
 							QueueDB.rentOutMovie(temp.getMovieID(), temp.getTitle(), sub.getAccountID());
 							movieDB.setViews(temp.getMovieID(),temp.getViews()+1);
+							users.addRecents(temp.getMovieID());
+							users.removeRecents(users.getRecents().get(3));
+							favoritesDB.updateFavorites(users);
 						} catch (SQLException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -136,6 +144,9 @@ public class Downloads extends HttpServlet {
 							try {
 								QueueDB.rentOutMovie(temp.getMovieID(), temp.getTitle(), users.getAccountID());
 								movieDB.setViews(temp.getMovieID(),temp.getViews()+1);
+								users.addRecents(temp.getMovieID());
+								users.removeRecents(users.getRecents().get(3));
+								favoritesDB.updateFavorites(users);
 							} catch (SQLException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();

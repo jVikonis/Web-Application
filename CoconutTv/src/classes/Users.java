@@ -66,6 +66,17 @@ public class Users {
 			m_favorites.remove(index);
 		}
 	}
+	public void addRecents(int movieID) {
+		if (!m_recents.contains(movieID)) {
+			m_recents.add(0,movieID);
+		}
+	}
+	public void removeRecents(int movieID) {
+		if (m_recents.contains(movieID)) {
+			int index = m_recents.indexOf(movieID);
+			m_recents.remove(index);
+		}
+	}
 	public String getAgeRestriction()
 	{
 		return m_ageRestriction; 
