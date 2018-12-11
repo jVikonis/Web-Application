@@ -45,6 +45,6 @@ public class crewDB {
 		dbQuery.setInt(1, newCrew.getCrewID());
 		dbQuery.setString(2, newCrew.getFirstName());
 		dbQuery.setString(3, newCrew.getLastName());
-		dbQuery.executeQuery();
+		dbQuery.executeUpdate();
 	}
 }
