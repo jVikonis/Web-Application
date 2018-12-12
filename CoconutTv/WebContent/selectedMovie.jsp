@@ -90,8 +90,8 @@
   				</div>
 			 </form>
       	 
-     	 <li><a href=<%if (selectedProfile.getUserID() == 0) { out.print("./welcome.jsp"); } else { out.print("selecteProfile.jsp"); }%> title="Switch Profile"><span class="glyphicon glyphicon-user"></span></a></li>
-     	 }
+     	 <li><a href=<%if (selectedProfile.getUserID() == 0) { out.print("./welcome.jsp"); } else { out.print("./selectProfile.jsp"); }%> title="Switch Profile"><span class="glyphicon glyphicon-user"></span></a></li>
+     	 
     	  <li><a href="LogOut" title="Log Out"><span class="glyphicon glyphicon-log-out"></span></a></li>
 		</ul>
 	</div>
