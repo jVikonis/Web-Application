@@ -63,12 +63,7 @@
 	m[5] = movieDB.getMovie(selectedProfile.getRecents().get(2));
 	
 %>
-<body>
-
-	<div class="logo">
-	<img src="./WebImages/logo.png" alt="CoconutTvLogo" id="logo"></a>
-	</div>	
-	
+<body>	
 	
 <nav class="navbar navbar-inverse">
   	<div class="container-fluid">   
