@@ -38,11 +38,7 @@
 	//session.setAttribute("sub", subscriberDB.getSub(10001));
 	//session.setAttribute("user", favoritesDB.getUsersObj(1));
 	%>
-	<div class="logo">
-		<a href="./startPage.jsp"><img src="logo.png" alt="CoconutTvLogo" id="logo"></a>
-	</div>	
-	
-	
+		
 <nav class="navbar navbar-inverse">
   	<div class="container-fluid">   
   		<div class="navbar-header">
