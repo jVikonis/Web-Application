@@ -27,12 +27,7 @@
 
 
 
-<body>
-	
-		<div class="logo">
-			<img src="WebImages/logo.png" alt="CoconutTvLogo" id="logo">
-		</div>	
-	
+<body>	
 	
 <nav class="navbar navbar-inverse">
   	<div class="container-fluid">   
