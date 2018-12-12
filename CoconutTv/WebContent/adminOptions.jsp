@@ -52,7 +52,7 @@
   				
   				<div class="form-group"> 
     				<div class="col-sm-offset-2 col-sm-8">
-      				<button type="submit" value="updateSubscription" class="modalbtn">Show Table</button>
+      				<button type="submit" value="updateSubscription" class="admin1">Show Table</button>
     				</div>
   				</div>				
 				

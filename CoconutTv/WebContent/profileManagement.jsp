@@ -143,5 +143,7 @@ else {
 %>
 </div>
 </div>
+<br><br><br><br><br><br>
+<center><a href="./selectProfile.jsp" class="profile">Back to Profiles </a></center> 
 </body>
 </html>
