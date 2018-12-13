@@ -45,13 +45,14 @@ public class VerifyPassword extends HttpServlet {
 		Subscriber tempSub = (Subscriber) session.getAttribute("newSub");
 		String s1 = (String)request.getParameter("m_verify_password");
 		String s2 = tempSub.getLoginInfo().getPassword();
+		int tempUserNum = Integer.parseInt(request.getParameter("profileNum"));
 		if (!request.getParameter("checkCancel").equals("cancel")) {
-			Users tempUser = (Users) session.getAttribute("selectedProfile");			
+			Users tempUser = tempSub.getUserProfiles().get(tempUserNum);		
 			if(s1.equals(s2) ) {
 				try {
-					userDB.deleteUser( tempSub.getAccountID(), tempUser.getUserID());
-				} catch (NumberFormatException e) {
-					e.printStackTrace();
+					tempSub.getUserProfiles().set(tempUserNum, null);
+					userDB.updateUser(tempSub.getUserProfiles(), tempSub.getAccountID());
+					session.setAttribute("newSub", tempSub);
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}

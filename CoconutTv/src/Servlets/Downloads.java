@@ -12,7 +12,6 @@ import javax.servlet.http.HttpSession;
 import database.QueueDB;
 import database.favoritesDB;
 import database.movieDB;
-import database.userDB;
 import classes.Movie;
 import classes.Subscriber;
 import classes.Users;
@@ -38,11 +37,19 @@ public class Downloads extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Movie temp = (Movie) session.getAttribute("selectedMovie");
+		int movieNum = 0;
 		try {
-			if (temp.getMovieID() != Integer.parseInt(request.getParameter("value"))) {
-				temp = movieDB.getMovie(Integer.parseInt(request.getParameter("value")));
+			movieNum = Integer.parseInt(request.getParameter("value"));
+			
+		}catch (NumberFormatException e2) {
+			e2.printStackTrace();
+		}
+		try {
+		if (temp.getMovieID() != movieNum) {
+				temp = movieDB.getMovie(movieNum);
+				session.setAttribute("selectedMovie", temp);
 			}
-		} catch (NumberFormatException | SQLException e2) {
+		} catch (SQLException e2) {
 			// TODO Auto-generated catch block
 			e2.printStackTrace();
 		}
@@ -63,6 +70,7 @@ public class Downloads extends HttpServlet {
 			try {
 				if(QueueDB.movieCheckedOut(temp.getTitle(), sub.getAccountID())) {
 					response.sendRedirect("DownloadConfirmation.jsp");
+					session.setAttribute("DownloadStatus", "current");
 					return;
 				}
 			} catch (SQLException e) {
@@ -89,6 +97,7 @@ public class Downloads extends HttpServlet {
 					users.addRecents(temp.getMovieID());
 					users.removeRecents(users.getRecents().get(3));
 					favoritesDB.updateFavorites(users);
+					session.setAttribute("DownloadStatus", "complete");
 					response.sendRedirect("DownloadConfirmation.jsp");
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
@@ -97,7 +106,10 @@ public class Downloads extends HttpServlet {
 					//send to a relevant page
 				}
 				else {System.out.print("Sorry you've reached your limit of downloads");
-					response.sendRedirect("welcome.jsp");}
+				//route to the correct
+					session.setAttribute("DownloadStatus", "fail");
+					response.sendRedirect("CantDownload.jsp");
+					}
 			
 			
 			/* if(check <1)
@@ -119,6 +131,7 @@ public class Downloads extends HttpServlet {
 						users.addRecents(temp.getMovieID());
 						users.removeRecents(users.getRecents().get(3));
 						favoritesDB.updateFavorites(users);
+						session.setAttribute("DownloadStatus", "complete");
 						response.sendRedirect("DownloadConfirmation.jsp");
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block
@@ -127,7 +140,9 @@ public class Downloads extends HttpServlet {
 					//send to a relevant page
 					} 
 					else {System.out.print("Sorry you've reached your limit of downloads");
-						response.sendRedirect("welcome.jsp");}
+						session.setAttribute("DownloadStatus", "fail");
+						response.sendRedirect("CantDownload.jsp");
+						}
 			
 		/*	if(check < 2) {
 				try {
@@ -148,6 +163,7 @@ public class Downloads extends HttpServlet {
 							users.addRecents(temp.getMovieID());
 							users.removeRecents(users.getRecents().get(3));
 							favoritesDB.updateFavorites(users);
+							session.setAttribute("DownloadStatus", "complete");
 							response.sendRedirect("DownloadConfirmation.jsp");
 						} catch (SQLException e) {
 							// TODO Auto-generated catch block
@@ -156,7 +172,9 @@ public class Downloads extends HttpServlet {
 						//send to a relevant page
 						}
 						else {System.out.print("Sorry you've reached your limit of downloads");
-							response.sendRedirect("welcome.jsp");}
+							session.setAttribute("DownloadStatus", "fail");
+							response.sendRedirect("CantDownload.jsp");
+							}
 			 
 		/*	if(check<3) {
 				try {

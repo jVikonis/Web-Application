@@ -36,7 +36,7 @@
             var count = div.textContent * 1 - 1;
             div.textContent = count;
             if (count <= 0) {
-                window.location.replace("./selectedMovie.jsp?value=" + selectedMovie.getMovieID());
+                window.location.replace("./movieBrowser.jsp");
             }
         }, 1000);
     </script> </body>

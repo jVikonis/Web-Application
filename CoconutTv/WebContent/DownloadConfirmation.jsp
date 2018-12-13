@@ -27,7 +27,12 @@
 <body>
 <!-- can we make this look prettier -->
 	<div class="page-header">
-		<h1><center>Your Movie Will Download in...</center></h1>
+		<h1><center><% if (session.getAttribute("DownloadStatus").equals("complete")) {
+			out.print("Your download will begin shortly");
+			}
+			else {
+			out.print("You already downloaded this movie");
+		}%></center></h1>
 	</div>
 <center>You will be redirected in <div id="counter">3</center></div>
     <script>
@@ -36,7 +41,7 @@
             var count = div.textContent * 1 - 1;
             div.textContent = count;
             if (count <= 0) {
-                window.location.replace("./startPage.jsp?value=" + selectedProfile.getUserID());
+                window.location.replace("./movieBrowser.jsp");
             }
         }, 1000);
     </script> </body>

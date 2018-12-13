@@ -34,7 +34,7 @@
 <% 	selectedProfile = (Users) session.getAttribute("selectedProfile");
 	int movieID = Integer.parseInt(request.getParameter("value"));
 	selectedMovie = movieDB.getMovie(movieID);
-	//session.setAttribute("movie", selectedMovie);
+	session.setAttribute("selectedMovie", selectedMovie);
 	//session.setAttribute("sub", subscriberDB.getSub(10001));
 	//session.setAttribute("user", favoritesDB.getUsersObj(1));
 	%>
@@ -132,6 +132,7 @@
     			<div class="row">
     				<div class="col-sm-1">
 	    				<form action="Downloads" method="post">
+	    				<input type="hidden" name="value" value=<%=request.getParameter("value") %>>
 	    					<br><button type="submit" title="Download" class="downloadBtn"> <a href ="Downloads"></a><i class="fa fa-download"></i></button>        
 	    				</form>
     				</div>

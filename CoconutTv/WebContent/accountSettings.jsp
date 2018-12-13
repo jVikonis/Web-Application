@@ -289,7 +289,7 @@ if (newSub == null || newSub.getAccountID() == 0) {
 				<br><br><br><br><br><br>	
 				<br><br><br><br><br><br>			
 				<a href="./verifyPassword.jsp?checkCancel=cancel" class="lowerbtn">Cancel Plan</a>  <br><br> 
-				<a href="<%if((selectedProfile.getUserID() == 0) || (selectedProfile == null)) {out.print("./selecteProfile.jsp");} else { out.print("./startPage.jsp?value=" + selectedProfile.getUserID());}%>" class="lowerbtn">Go back to Home Page</a>
+				<a href="<%if((selectedProfile.getUserID() == 0) || (selectedProfile == null)) {out.print("./selectProfile.jsp");} else { out.print("./startPage.jsp?value=" + selectedProfile.getUserID());}%>" class="lowerbtn">Go back</a>
 				
 			</div>
   			<div class="col-sm-4">

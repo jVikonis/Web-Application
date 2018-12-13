@@ -52,12 +52,11 @@ public class Ratings extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();		
-		Movie temp = (Movie) session.getAttribute("movie");		
+		Movie temp = (Movie) session.getAttribute("selectedMovie");		
 		int rating = Integer.parseInt( request.getParameter("input-1 xs"));
 		try {
 			movieDB.addRating(temp.getMovieID(), rating); // adds rating to the database
 		} catch (SQLException e) {
-
 			e.printStackTrace();
 		}//accountID and user rating
 		try {

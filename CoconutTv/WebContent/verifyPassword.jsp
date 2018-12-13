@@ -22,8 +22,7 @@
 <title>Verify Password</title>
 </head>
 <!-- Delete this line of code -->
-<%newSub = subscriberDB.getSub(10001);
-selectedProfile = newSub.getUserProfiles().get(0);%>
+
 <body>
 	<div class="header">
 	<div class="row">
@@ -39,6 +38,7 @@ selectedProfile = newSub.getUserProfiles().get(0);%>
  		
 	<form class="form-horizontal" action="VerifyPassword" method="post">
 	<input type="hidden" name= "checkCancel" value=<%=request.getParameter("checkCancel") %>>
+	<input type="hidden" name="profileNum" value=<%=request.getParameter("value") %>>
 		<div class="form-group">
    				<label class="control-label col-sm-2" for="m_password">Password:</label>
     			<div class="col-sm-8"> 

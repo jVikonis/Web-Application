@@ -110,7 +110,6 @@
 				<a href="./profileManagement.jsp" class="btn">Back to Profile Management</a>
 				<br><br><br><br><br><br><br><br>		
 				<a href="./selectProfile.jsp" class="btn">Back to Select Profile</a><br><br>
-				<a href="./startPage.jsp" class="btn">Back to Home Page</a>
 				
 			</div>
   			<div class="col-sm-4">
