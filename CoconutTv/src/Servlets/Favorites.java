@@ -59,15 +59,24 @@ public class Favorites extends HttpServlet {
 		if(tempUser.getFavorites().get(2) != 0)
 		{
 			boolean test = false;
+			int j = -1;
 			for(int i =0 ; i<3; i++) {
 				
 			if(tempUser.getFavorites().get(i) == temp.getMovieID()) {
+				j = i;
 				test = true;
 				}
 				
 			}	
 			if(test == true) {
-				response.sendRedirect("selectedMovie.jsp?value" + temp.getMovieID()); 
+				tempUser.getFavorites().set(j, 0);
+				try {
+					favoritesDB.updateFavorites(tempUser);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}				
+				response.sendRedirect("selectedMovie.jsp?value=" + temp.getMovieID()); 
 				return;
 			}
 			tempUser.addFavorite(temp.getMovieID()); //changed the addFavorite method in the user class, so that an added favorite will go into idex 0 of the list, with the other favorites shifted down as necessesary. 
