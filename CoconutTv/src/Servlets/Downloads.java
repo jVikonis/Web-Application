@@ -36,6 +36,19 @@ public class Downloads extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		Users users = (Users) session.getAttribute("selectedProfile");// get the user  
+		 // getNumberOfRentals requires an int param that takes in the account ID
+		Subscriber sub = (Subscriber) session.getAttribute("newSub");// gets the subscriber needed for gaining the users level
+		//Says the subscriber isnt being properly initialized
+		if(sub == null || sub.getAddress() == null)
+		{
+			response.sendRedirect("signUp.jsp");
+			return;
+		} 
+		else if(users == null || users.getUsername() == null){
+			response.sendRedirect("selectProfile.jsp");
+			return;
+		}
 		Movie temp = (Movie) session.getAttribute("selectedMovie");
 		int movieNum = 0;
 		try {
@@ -53,19 +66,7 @@ public class Downloads extends HttpServlet {
 			// TODO Auto-generated catch block
 			e2.printStackTrace();
 		}
-		Users users = (Users) session.getAttribute("selectedProfile");// get the user  
-		 // getNumberOfRentals requires an int param that takes in the account ID
-		Subscriber sub = (Subscriber) session.getAttribute("newSub");// gets the subscriber needed for gaining the users level
-		//Says the subscriber isnt being properly initialized
-		if(sub == null || sub.getAddress() == null)
-		{
-			response.sendRedirect("signUp.jsp");
-			return;
-		} 
-		else if(users == null || users.getUsername() == null){
-			response.sendRedirect("selectProfile.jsp");
-			return;
-		}
+		
 		
 			try {
 				if(QueueDB.movieCheckedOut(temp.getTitle(), sub.getAccountID())) {
@@ -88,7 +89,7 @@ public class Downloads extends HttpServlet {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		if(level.equals("silver")) {
+		if(level.equals("silver") || level.equals("Silver")) {
 			
 			if(check <1)
 				{try {
@@ -123,7 +124,7 @@ public class Downloads extends HttpServlet {
 				response.sendRedirect("welcome.jsp");} */
 			
 		}
-		else if (level.equals("gold")) {
+		else if (level.equals("gold") || level.equals("Gold")) {
 			if(check < 2) {
 					try {
 						QueueDB.rentOutMovie(temp.getMovieID(), temp.getTitle(), sub.getAccountID());
@@ -155,10 +156,10 @@ public class Downloads extends HttpServlet {
 					response.sendRedirect("welcome.jsp");} */
 			}
 			
-		 else if(level.equals("platinum")){
+		 else if(level.equals("platinum") || level.equals("Platinum")){
 				if(check<3) {
 						try {
-							QueueDB.rentOutMovie(temp.getMovieID(), temp.getTitle(), users.getAccountID());
+							QueueDB.rentOutMovie(temp.getMovieID(), temp.getTitle(), sub.getAccountID());
 							movieDB.setViews(temp.getMovieID(),temp.getViews()+1);
 							users.addRecents(temp.getMovieID());
 							users.removeRecents(users.getRecents().get(3));

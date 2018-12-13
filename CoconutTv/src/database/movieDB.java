@@ -41,7 +41,7 @@ public class movieDB {
 		dbQuery = con.prepareStatement("update movie set views = ? where movieID = ?");
 		dbQuery.setInt(1, views);
 		dbQuery.setInt(2, movieID);
-		dbQuery.executeQuery();
+		dbQuery.executeUpdate();
 	}
 	
 	public static int getRatingAvg(int movieID) throws SQLException {
