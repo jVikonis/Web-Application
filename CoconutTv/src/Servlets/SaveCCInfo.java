@@ -47,8 +47,9 @@ public class SaveCCInfo extends HttpServlet {
 		temp = (Subscriber) session.getAttribute("newSub");
 		
 		temp.getPaymentInfo().setFirstName(request.getParameter("m_firstName"));
-		temp.getPaymentInfo().setLastName("m_lastName");
-		temp.getPaymentInfo().setCCNumber(request.getParameter("m_ccType"));
+		temp.getPaymentInfo().setLastName(request.getParameter("m_lastName"));
+		temp.getPaymentInfo().setCCNumber(request.getParameter("m_ccNumber"));
+		temp.getPaymentInfo().setCCType(request.getParameter("m_ccType"));
 		temp.getPaymentInfo().setExpMonth(Integer.parseInt(request.getParameter("m_expMonth")));
 		temp.getPaymentInfo().setExpYear(Integer.parseInt(request.getParameter("m_expYear")));
 		temp.getPaymentInfo().setCCV(Integer.parseInt(request.getParameter("m_ccv")));
