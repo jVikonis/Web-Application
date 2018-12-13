@@ -117,7 +117,7 @@
 		</ul>
 	</div>
 </nav>
-		
+<center><span style="color:#000000;"><span style="font-size:24px;"><span style="font-family:lucida sans unicode,lucida grande,sans-serif;"><q><%=quotesDB.getQuote()[0] %></q></span></span></span></center>
 <div class="container">	
 	<div class="row">
 			<div><h2>Display Your 3 Favorite Movies<br><br></h2></div>

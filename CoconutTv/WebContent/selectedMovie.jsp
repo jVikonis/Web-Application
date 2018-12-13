@@ -94,8 +94,8 @@
 </nav>
 	
 	
-	
-	
+	<br><br><br>
+	<center><span style="color:#000000;"><span style="font-size:24px;"><span style="font-family:lucida sans unicode,lucida grande,sans-serif;"><q><%=quotesDB.getQuote()[0] %></q></span></span></span></center>
 	
 	
 	

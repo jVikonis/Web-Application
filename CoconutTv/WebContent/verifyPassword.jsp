@@ -24,9 +24,11 @@
 <!-- Delete this line of code -->
 
 <body>
+
 	<div class="header">
 	<div class="row">
  		<div class="col-sm-4">
+ 		
  		<h3><center>Enter Password</center><br><br>
  		<% if(request.getAttribute("verifyFail") == "true") {
  			//TODO: Can we change this font, color and size to match
@@ -48,7 +50,7 @@
   			</form>
 	</div>
 
-
+<center><span style="color:#000000;"><span style="font-size:24px;"><span style="font-family:lucida sans unicode,lucida grande,sans-serif;"><q><%=quotesDB.getQuote()[0] %></q></span></span></span></center>
 
 </body>
 </html>
