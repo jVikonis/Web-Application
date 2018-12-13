@@ -135,45 +135,45 @@
 </div>	
 </center>
 
-		<div class="row">
-			<table align="center" width="50%">
-				<tr>
-					<td bgcolor="green">
-						<br>
-						<form action="./movieBrowser.jsp" style="color: white;">
-							<label>Advanced Search:</label><br>
-							Keywords: <input type="text" name="search" placeholder="Search..." style="color: white; background-color:green;">
-				  			Genre: <select name="genre" style="background-color:green">
-				    			<option value="">Any</option>
-				    			<option value="action">Action</option>
-				    			<option value="comedy">Comedy</option>
-				    			<option value="drama">Drama</option>
-				    			<option value="horror">Horror</option>
-				    			<option value="sci-fi">Sci-Fi</option>
-				  			</select>
-				  			MPAA Rating: <select name="rating" style="background-color:green">
-				    			<option value="">Any</option>
-				    			<option value="r">R</option>
-				    			<option value="pg-13">PG-13</option>
-				    			<option value="pg">PG</option>
-				  			</select>
-				  			Minimum User Rating: <select name="urating" style="background-color:green">
-				    			<option value="">Any</option>
-				    			<option value="5">5</option>
-				    			<option value="4">4</option>
-				    			<option value="3">3</option>
-				    			<option value="2">2</option>
-				    			<option value="1">1</option>
-				    			<option value="0">0</option>
-				  			</select>
-				  			<br>
-				  			<input type="submit" value="Search" style="background-color:green">
-						</form>
-						<br>
-					</td>
-				</tr>
-			</table>
-		</div>
+<!-- 		<div class="row"> -->
+<!-- 			<table align="center" width="50%"> -->
+<!-- 				<tr> -->
+<!-- 					<td bgcolor="green"> -->
+<!-- 						<br> -->
+<!-- 						<form action="./movieBrowser.jsp" style="color: white;"> -->
+<!-- 							<label>Advanced Search:</label><br> -->
+<!-- 							Keywords: <input type="text" name="search" placeholder="Search..." style="color: white; background-color:green;"> -->
+<!-- 				  			Genre: <select name="genre" style="background-color:green"> -->
+<!-- 				    			<option value="">Any</option> -->
+<!-- 				    			<option value="action">Action</option> -->
+<!-- 				    			<option value="comedy">Comedy</option> -->
+<!-- 				    			<option value="drama">Drama</option> -->
+<!-- 				    			<option value="horror">Horror</option> -->
+<!-- 				    			<option value="sci-fi">Sci-Fi</option> -->
+<!-- 				  			</select> -->
+<!-- 				  			MPAA Rating: <select name="rating" style="background-color:green"> -->
+<!-- 				    			<option value="">Any</option> -->
+<!-- 				    			<option value="r">R</option> -->
+<!-- 				    			<option value="pg-13">PG-13</option> -->
+<!-- 				    			<option value="pg">PG</option> -->
+<!-- 				  			</select> -->
+<!-- 				  			Minimum User Rating: <select name="urating" style="background-color:green"> -->
+<!-- 				    			<option value="">Any</option> -->
+<!-- 				    			<option value="5">5</option> -->
+<!-- 				    			<option value="4">4</option> -->
+<!-- 				    			<option value="3">3</option> -->
+<!-- 				    			<option value="2">2</option> -->
+<!-- 				    			<option value="1">1</option> -->
+<!-- 				    			<option value="0">0</option> -->
+<!-- 				  			</select> -->
+<!-- 				  			<br> -->
+<!-- 				  			<input type="submit" value="Search" style="background-color:green"> -->
+<!-- 						</form> -->
+<!-- 						<br> -->
+<!-- 					</td> -->
+<!-- 				</tr> -->
+<!-- 			</table> -->
+<!-- 		</div> -->
 		<div class="row">
   			<div class="col-sm-4">
   			</div>
