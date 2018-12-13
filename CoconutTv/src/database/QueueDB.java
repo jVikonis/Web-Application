@@ -1,6 +1,10 @@
 package database;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import classes.Movie;
 
 public class QueueDB {
 	private static Connection con;
@@ -81,6 +85,22 @@ public class QueueDB {
 		dbQuery.setInt(2, movieID);
 		dbQuery.executeUpdate();
 
+	}
+	
+	public static List<Movie> listOfMovies(int accountID) throws SQLException{
+		List<Movie> tempList = new ArrayList<Movie>();
+		PreparedStatement dbQuery;
+		String returnMovieIDs = "select movieID from queue where accountID = ?";
+		dbQuery = con.prepareStatement(returnMovieIDs);
+		dbQuery.setInt(1,  accountID);
+		ResultSet rset = dbQuery.executeQuery();
+		while(rset.next()) {
+			tempList.add(movieDB.getMovie(rset.getInt(1)));
+		}
+		if (tempList.isEmpty()) {
+			return null;
+		}
+		return tempList;
 	}
 
 }

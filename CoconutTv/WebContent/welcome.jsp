@@ -32,7 +32,10 @@
  		<% if(request.getAttribute("loginCheckFail") == "true") {
  			//TODO: Can we change this font, color and size to match
  			out.println("Invalid Username or Password");
- 		}%>
+ 		}else if (request.getAttribute("loginCheckFail") == "cancel") {
+ 			out.println("Canceled Account Please Sign Up Again");
+ 		}
+ 		%>
  		</h2>
  		
  		

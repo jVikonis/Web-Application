@@ -62,11 +62,16 @@ public class Login extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
 			HttpSession session = request.getSession();
-			session.setAttribute("newSub", newSub);
-			request.setAttribute("loginCheckFail", "false");
-			response.sendRedirect("selectProfile.jsp");
+			if (newSub.getAccountStatus().equals("active")) {
+				session.setAttribute("newSub", newSub);
+				request.setAttribute("loginCheckFail", "false");
+				response.sendRedirect("selectProfile.jsp");
+			}
+			else {
+				request.setAttribute("loginCheckFail", "cancel");
+				request.getRequestDispatcher("welcome.jsp").forward(request, response);
+			}
 		}
 		
 		
