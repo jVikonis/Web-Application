@@ -27,14 +27,14 @@
 <body>
 <!-- can we make this look prettier -->
 	<div class="page-header">
-		<h1><center><% if (session.getAttribute("DownloadStatus").equals("complete")) {
+		<h1><center> <% if (session.getAttribute("DownloadStatus").equals("complete")) {
 			out.print("Your download will begin shortly");
 			}
 			else {
 			out.print("You already downloaded this movie");
-		}%></center></h1>
+		}%> </h1></center>
 	</div>
-<center>You will be redirected in <div id="counter">3</center></div>
+<center><h3>You will be redirected in <div id="counter">3</div></h3></center>
     <script>
         setInterval(function() {
             var div = document.querySelector("#counter");

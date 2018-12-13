@@ -29,7 +29,7 @@
 	<div class="page-header">
 		<h1><center>Reached your download limit. You will be redirected in...</center></h1>
 	</div>
-<center>You will be redirected in <div id="counter">3</center></div>
+<center><h3>You will be redirected in <div id="counter">3</div></h3></center>
     <script>
         setInterval(function() {
             var div = document.querySelector("#counter");

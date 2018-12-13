@@ -28,7 +28,7 @@
 		<h1><center>Thank you for Signing Up <%=newSub.getFirstName() %>!</center></h1>
 		<h2><center>You are now a <%=newSub.getLevelName() %> member!</center></h2>
 	</div>
-<center>You will be redirected in <div id="counter">3</center></div>
+<center><h3>You will be redirected in <div id="counter">3</div></h3></center>
     <script>
         setInterval(function() {
             var div = document.querySelector("#counter");
