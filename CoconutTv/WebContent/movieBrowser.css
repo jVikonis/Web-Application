@@ -119,6 +119,9 @@ body {
 .form-control:focus {
 	border: solid 1px white;
 }
+.form-control:hover {
+	border: solid 1px white;
+}
 .col-sm-4 {
 	text-align:center; 
 }
