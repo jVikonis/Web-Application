@@ -346,8 +346,7 @@ if (newSub == null || newSub.getAccountID() == 0) {
   							
 				<a href="./profileManagement.jsp" class="upperbtn">Profile Management</a>
 				<br><br><br><br><br><br>
-				<br><br><br><br><br><br>	
-				<br><br><br><br><br><br>			
+				<br><br><br><br><br><br>		
 				<a href="./verifyPassword.jsp?checkCancel=cancel" class="lowerbtn">Cancel Plan</a>  <br><br> 
 				<a href="<%if((selectedProfile.getUserID() == 0) || (selectedProfile == null)) {out.print("./selectProfile.jsp");} else { out.print("./startPage.jsp?value=" + selectedProfile.getUserID());}%>" class="lowerbtn">Go back</a>
 				
