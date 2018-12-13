@@ -90,10 +90,38 @@ body {
 	color: white; 
 	text-decoration: none; 
 }
-
-
-
-
+.searchbtn {
+	color: white;
+	background-color: green; 
+	font-weight: 200; 
+	font-size: 15px; 
+	text-align: center; 	
+	border: solid 2px white; 
+	border-radius: 10px;
+	padding: 5px 10px; 
+	padding-left: 13px; 
+	text-decoration: none;
+}
+.searchbtn:hover {
+	color: green;
+	background-color: white; 
+	 
+	transition: .5s background-color;
+   -webkit-transition: .5s background-color;
+   -moz-transition: .5s background-color;
+   -o-transition: .5s background-color;
+    transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+}
+.form-control {
+	border: none; 
+}
+.form-control:focus {
+	border: solid 1px white;
+}
+.col-sm-4 {
+	text-align:center; 
+}
 
 
 

@@ -27,7 +27,7 @@
 
 
 
-<body>	
+<body>
 	
 <nav class="navbar navbar-inverse">
   	<div class="container-fluid">   
@@ -87,6 +87,54 @@
 		</ul>
 	</div>
 </nav>
+
+<center>
+<div class="row" align="center" style="width: 50%;">
+	<form action="./movieBrowser.jsp" style="color: white;">
+		<h3><label>Advanced Search:</label></h3>
+		<div class="form-group row">
+			<div class="col-xs-3">
+				<label for="keyword">Keywords:</label>
+				<input class="form-control" type="text" name="search" placeholder="Search..." id="keyword"style="background-color:green; color:white;">
+			</div>
+			<div class="col-xs-3">	
+				<label for="genre">Genre:</label>
+				<select class="form-control" id="genre" name="genre" style="background-color:green; color:white;">
+				    <option value="">Any</option>
+				    <option value="action">Action</option>
+				    <option value="comedy">Comedy</option>
+				    <option value="drama">Drama</option>
+				    <option value="horror">Horror</option>
+				    <option value="sci-fi">Sci-Fi</option>
+				 </select>
+			</div>
+			<div class="col-xs-3">
+				<label for="rating">MPAA Rating:</label>
+				<select class="form-control" id="rating" name="rating" style="background-color:green; color: white;">
+				    <option value="">Any</option>
+				    <option value="r">R</option>
+				    <option value="pg-13">PG-13</option>
+				    <option value="pg">PG</option>
+				 </select>
+			</div>	
+			<div class="col-xs-3">
+				<label for="urating">Minimum User Rating</label>
+				<select class="form-control" id="urating" name="urating" style="background-color:green; color: white; ">
+				    <option value="">Any</option>
+				    <option value="5">5</option>
+				    <option value="4">4</option>
+				    <option value="3">3</option>
+				    <option value="2">2</option>
+				    <option value="1">1</option>
+				    <option value="0">0</option>
+				 </select>
+			</div>
+		</div><br>
+		<button class="searchbtn" type="submit" value="Search">Search</button>
+	</form>
+</div>	
+</center>
+
 		<div class="row">
 			<table align="center" width="50%">
 				<tr>
@@ -94,7 +142,7 @@
 						<br>
 						<form action="./movieBrowser.jsp" style="color: white;">
 							<label>Advanced Search:</label><br>
-							Keywords: <input type="text" name="search" placeholder="Search..." style="color: white; background-color:green">
+							Keywords: <input type="text" name="search" placeholder="Search..." style="color: white; background-color:green;">
 				  			Genre: <select name="genre" style="background-color:green">
 				    			<option value="">Any</option>
 				    			<option value="action">Action</option>
@@ -131,7 +179,7 @@
   			</div>
   			
   			<div class="col-sm-4">
-  				<div>
+  				
   					<%
   					String search = null, genre = null, rating = null;
   					Integer urating = null;
@@ -159,10 +207,10 @@
   		  							<td style="width: 200px;">
   		  								<a style="color:white;" href=<% out.print("./selectedMovie.jsp?value=" + movieList.get(i).getMovieID()); %>><img src="./MoviePosters/<%=movieList.get(i).getMovieImage()%>" alt= "movieimage" id="movieImage" name="movieImage" style="width: 200px; height: 200px;"></a>
   		  							</td>
-  		  							<td style="width: 600px;" bgcolor="green" valign="top">
-  		  								<table style="color:white;" valign="top">
+  		  							<td style="width: 400px;" bgcolor="green" valign="top"  >
+  		  								<table style="color:white;" >
   		  									<tr>
-  		  										<td align="center">
+  		  										<td align="center" valign="top">
   		  											<a style="color:white;" href=<% out.print("./selectedMovie.jsp?value=" + movieList.get(i).getMovieID()); %>><font size=6><%=movieList.get(i).getTitle() %><br></font></a> 
   		  										</td>
   		  									</tr>
@@ -176,8 +224,8 @@
   		  											<%=movieList.get(i).getDescription() %>
   		  										</td>
   		  									</tr>
-  		  									<tr valign="bottom">
-  		  										<td>
+  		  									<tr>
+  		  										<td >
   		  											<a href=<% out.print("./Downloads?value=" + movieList.get(i).getMovieID()); %> style="color: white">Download</a>
   		  										</td>
   		  									</tr>
@@ -193,6 +241,8 @@
   					
   					%>
   				</div>
+  			
+  			<div class="col-sm-4">
   			</div>
 		</div>
 </body>
