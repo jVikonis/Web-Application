@@ -68,7 +68,7 @@
 <body>
 
 	<div class="container-fluid">
-		<div class="header">
+		<div class="page-header">
 			<h1 class="glow">
 				Sign Up Here!<br>
 				<br>
