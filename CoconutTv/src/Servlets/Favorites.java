@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import classes.Movie;
+import classes.Subscriber;
 import classes.Users;
 import database.favoritesDB;
 
@@ -41,9 +42,20 @@ public class Favorites extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		Users tempUser = (Users) session.getAttribute("selectedProfile");// get the user  
+		 // getNumberOfRentals requires an int param that takes in the account ID
+		Subscriber sub = (Subscriber) session.getAttribute("newSub");// gets the subscriber needed for gaining the users level
+		//Says the subscriber isnt being properly initialized
+		if(sub == null || sub.getAddress() == null)
+		{
+			response.sendRedirect("signUp.jsp");
+			return;
+		} 
+		else if(tempUser == null || tempUser.getUsername() == null){
+			response.sendRedirect("selectProfile.jsp");
+			return;
+		}
 		Movie temp = (Movie) session.getAttribute("selectedMovie");	
-		Users tempUser = (Users) session.getAttribute("selectedProfile");
-		//int check = tempUser.getFavorites().size();
 		if(tempUser.getFavorites().get(2) != 0)
 		{
 			boolean test = false;
@@ -77,7 +89,7 @@ public class Favorites extends HttpServlet {
 			
 		}
 		//redirect to start page
-		response.sendRedirect("selectedMovie.jsp?value" + temp.getMovieID()); 
+		response.sendRedirect("selectedMovie.jsp?value=" + temp.getMovieID()); 
 	}
 
 }
