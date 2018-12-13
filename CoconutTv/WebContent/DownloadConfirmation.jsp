@@ -27,7 +27,7 @@
 <body>
 <!-- can we make this look prettier -->
 	<div class="page-header">
-		<h1><center> <% if (session.getAttribute("DownloadStatus").equals("complete")) {
+		<h1 class="glow"><center> <% if (session.getAttribute("DownloadStatus").equals("complete")) {
 			out.print("Your download will begin shortly");
 			}
 			else {

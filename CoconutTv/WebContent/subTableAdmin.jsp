@@ -32,7 +32,7 @@
 	
 	ResultSet rsColumns = adminDB.getConnection().getMetaData().getColumns(null, null, tableName,null);
 	%>
-	<div class="page-header"> <h2> Current Table Name: <% out.println(tableName); %> </h2>  </div>
+	<div class="page-header"> <h2 class="glow"> Current Table Name: <% out.println(tableName); %> </h2>  </div>
 	
 	<div class="row">
 	

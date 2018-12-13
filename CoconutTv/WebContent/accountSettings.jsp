@@ -40,7 +40,7 @@ if (newSub == null || newSub.getAccountID() == 0) {
 	
 	<div class="container-fluid">
 		<div class="page-header">
-			<h1> Account Settings<br><br></h1>
+			<h1 class="glow"> Account Settings<br><br></h1>
 		</div>
 	<center><span style="color:#000000;"><span style="font-size:24px;"><span style="font-family:lucida sans unicode,lucida grande,sans-serif;"><q><%=quotesDB.getQuote()[0] %></q></span></span></span></center>
 		<div class="row">
@@ -346,7 +346,8 @@ if (newSub == null || newSub.getAccountID() == 0) {
   							
 				<a href="./profileManagement.jsp" class="upperbtn">Profile Management</a>
 				<br><br><br><br><br><br>
-				<br><br><br><br><br><br>		
+				<br><br><br><br><br><br>	
+							
 				<a href="./verifyPassword.jsp?checkCancel=cancel" class="lowerbtn">Cancel Plan</a>  <br><br> 
 				<a href="<%if((selectedProfile.getUserID() == 0) || (selectedProfile == null)) {out.print("./selectProfile.jsp");} else { out.print("./startPage.jsp?value=" + selectedProfile.getUserID());}%>" class="lowerbtn">Go back</a>
 				
@@ -363,7 +364,6 @@ if (newSub == null || newSub.getAccountID() == 0) {
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
-
 // Initialize popover component
 $(function () {
   $('[data-toggle="popover"]').popover()
