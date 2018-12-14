@@ -1,4 +1,5 @@
 
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -27,9 +28,9 @@
 <body>
 <!-- can we make this look prettier -->
 	<div class="page-header">
-		<h1><center>Subscriber/User has been removed</center></h1>
+		<h1 class="glow"><center>Subscriber/User has been removed</center></h1>
 	</div>
-<center>You will be redirected in <div id="counter">3</center></div>
+<center><h3>You will be redirected in <div id="counter">3</div></h3></center>
     <script>
         setInterval(function() {
             var div = document.querySelector("#counter");

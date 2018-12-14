@@ -27,16 +27,16 @@
 <body>
 <!-- can we make this look prettier -->
 	<div class="page-header">
-		<h1><center>Reached your download limit. You will be redirected in...</center></h1>
+		<h1 class="glow"><center>Reached your download limit. You will be redirected in...</center></h1>
 	</div>
-<center>You will be redirected in <div id="counter">3</center></div>
+<center><h3>You will be redirected in <div id="counter">3</div></h3></center>
     <script>
         setInterval(function() {
             var div = document.querySelector("#counter");
             var count = div.textContent * 1 - 1;
             div.textContent = count;
             if (count <= 0) {
-                window.location.replace("./selectedMovie.jsp?value=" + selectedMovie.getMovieID());
+                window.location.replace("./movieBrowser.jsp");
             }
         }, 1000);
     </script> </body>

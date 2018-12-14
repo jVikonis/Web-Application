@@ -40,9 +40,9 @@ if(newSub.getAccountID() == 0) {
 
 	<div class="container">
 		<div class="page-header">
-			<h1> Select Your Profile<br><br></h1>
+			<h1 class="glow"> Select Your Profile<br><br></h1>
 		</div>
-	
+	<center><span style="color:#000000;"><span style="font-size:24px;"><span style="font-family:lucida sans unicode,lucida grande,sans-serif;"><q><%=quotesDB.getQuote()[0] %></q></span></span></span></center>
 		<div class="row">
  			<div class="col-sm-4 col-md-4">
  			<%

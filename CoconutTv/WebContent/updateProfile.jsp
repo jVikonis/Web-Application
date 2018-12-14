@@ -43,9 +43,9 @@
 
 <div class="container-fluid">
 		<div class="page-header">
-			<h1> Profile Update<br><br></h1>
+			<h1 class="glow"> Profile Update<br><br></h1>
 		</div>
-	
+	<center><span style="color:#000000;"><span style="font-size:24px;"><span style="font-family:lucida sans unicode,lucida grande,sans-serif;"><q><%=quotesDB.getQuote()[0] %></q></span></span></span></center>
 		<div class="row">
  			<div class="col-sm-4">
  				
@@ -110,7 +110,6 @@
 				<a href="./profileManagement.jsp" class="btn">Back to Profile Management</a>
 				<br><br><br><br><br><br><br><br>		
 				<a href="./selectProfile.jsp" class="btn">Back to Select Profile</a><br><br>
-				<a href="./startPage.jsp" class="btn">Back to Home Page</a>
 				
 			</div>
   			<div class="col-sm-4">

@@ -112,8 +112,9 @@ body {
 	-webkit-transform: scale(1.2);
 }
 
-
-
+.form-control:hover {
+	border: solid 1px green; 
+}
 
 
 

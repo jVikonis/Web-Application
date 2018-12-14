@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import classes.Movie;
+import classes.Subscriber;
 import classes.Users;
 import database.favoritesDB;
 
@@ -41,21 +42,41 @@ public class Favorites extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		Users tempUser = (Users) session.getAttribute("selectedProfile");// get the user  
+		 // getNumberOfRentals requires an int param that takes in the account ID
+		Subscriber sub = (Subscriber) session.getAttribute("newSub");// gets the subscriber needed for gaining the users level
+		//Says the subscriber isnt being properly initialized
+		if(sub == null || sub.getAddress() == null)
+		{
+			response.sendRedirect("signUp.jsp");
+			return;
+		} 
+		else if(tempUser == null || tempUser.getUsername() == null){
+			response.sendRedirect("selectProfile.jsp");
+			return;
+		}
 		Movie temp = (Movie) session.getAttribute("selectedMovie");	
-		Users tempUser = (Users) session.getAttribute("selectedProfile");
-		//int check = tempUser.getFavorites().size();
 		if(tempUser.getFavorites().get(2) != 0)
 		{
 			boolean test = false;
+			int j = -1;
 			for(int i =0 ; i<3; i++) {
 				
 			if(tempUser.getFavorites().get(i) == temp.getMovieID()) {
+				j = i;
 				test = true;
 				}
 				
 			}	
 			if(test == true) {
-				response.sendRedirect("selectedMovie.jsp?value" + temp.getMovieID()); 
+				tempUser.getFavorites().set(j, 0);
+				try {
+					favoritesDB.updateFavorites(tempUser);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}				
+				response.sendRedirect("selectedMovie.jsp?value=" + temp.getMovieID()); 
 				return;
 			}
 			tempUser.addFavorite(temp.getMovieID()); //changed the addFavorite method in the user class, so that an added favorite will go into idex 0 of the list, with the other favorites shifted down as necessesary. 
@@ -77,7 +98,7 @@ public class Favorites extends HttpServlet {
 			
 		}
 		//redirect to start page
-		response.sendRedirect("selectedMovie.jsp?value" + temp.getMovieID()); 
+		response.sendRedirect("selectedMovie.jsp?value=" + temp.getMovieID()); 
 	}
 
 }

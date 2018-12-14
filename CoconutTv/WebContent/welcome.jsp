@@ -25,14 +25,17 @@
 		<h1 class="glow"> Welcome <br> to <br> Gilligan's CoconutTV!</h1>
 	</div>
 	<!-- The movie quote -->
-	<center><span style="color:#a9a9a9;"><span style="font-size:24px;"><span style="font-family:lucida sans unicode,lucida grande,sans-serif;"><q><%=quotesDB.getQuote()[0] %></q></span></span></span></center>
+	<center><span style="color:#000000;"><span style="font-size:24px;"><span style="font-family:lucida sans unicode,lucida grande,sans-serif;"><q><%=quotesDB.getQuote()[0] %></q></span></span></span></center>
 	<div class="row">
  		<div class="col-sm-4">
  		<h2>Log In / Sign Up<br><br>
  		<% if(request.getAttribute("loginCheckFail") == "true") {
  			//TODO: Can we change this font, color and size to match
  			out.println("Invalid Username or Password");
- 		}%>
+ 		}else if (request.getAttribute("loginCheckFail") == "cancel") {
+ 			out.println("Canceled Account Please Sign Up Again");
+ 		}
+ 		%>
  		</h2>
  		
  		

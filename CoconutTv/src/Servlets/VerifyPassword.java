@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import classes.Subscriber;
-import classes.Users;
 import database.*;
 /**
  * Servlet implementation class VerifyPassword
@@ -45,13 +44,14 @@ public class VerifyPassword extends HttpServlet {
 		Subscriber tempSub = (Subscriber) session.getAttribute("newSub");
 		String s1 = (String)request.getParameter("m_verify_password");
 		String s2 = tempSub.getLoginInfo().getPassword();
-		if (!request.getParameter("checkCancel").equals("cancel")) {
-			Users tempUser = (Users) session.getAttribute("selectedProfile");			
+		
+		if (!request.getParameter("checkCancel").equals("cancel")) {	
 			if(s1.equals(s2) ) {
 				try {
-					userDB.deleteUser( tempSub.getAccountID(), tempUser.getUserID());
-				} catch (NumberFormatException e) {
-					e.printStackTrace();
+					int tempUserNum = Integer.parseInt(request.getParameter("profileNum"));
+					tempSub.getUserProfiles().set(tempUserNum, null);
+					userDB.updateUser(tempSub.getUserProfiles(), tempSub.getAccountID());
+					session.setAttribute("newSub", tempSub);
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
@@ -65,7 +65,7 @@ public class VerifyPassword extends HttpServlet {
 		}
 		else {
 			if(s1.equals(s2) ) {
-				tempSub.setAccountStatus("canceled");
+				tempSub.setAccountStatus("cancel");
 				try {
 					subscriberDB.updateStatus(tempSub);
 				} catch (SQLException e) {

@@ -74,7 +74,8 @@ public class userDB {
 		}		
 		String updateUser = "update users set ? = 0 where accountID = ?";
 		dbQuery = con.prepareStatement(updateUser);
-		dbQuery.setString(1,  columnNames[userClmn]);
+		String temp = columnNames[userClmn];
+		dbQuery.setString(1, temp);
 		dbQuery.setInt(2, accountID);
 		dbQuery.executeUpdate();
 		

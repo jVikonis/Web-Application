@@ -10,20 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import classes.*;
-import database.subscriberDB;
+import classes.Subscriber;
+import database.QueueDB;
 
 /**
- * Servlet implementation class SaveCCInfo
+ * Servlet implementation class ReturnMovie
  */
-@WebServlet("/SaveCCInfo")
-public class SaveCCInfo extends HttpServlet {
+@WebServlet("/ReturnMovie")
+public class ReturnMovie extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SaveCCInfo() {
+    public ReturnMovie() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,36 +33,23 @@ public class SaveCCInfo extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getWriter().append("Served at: " + request.getParameter("movieID")).append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 		HttpSession session = request.getSession();
-		Subscriber temp = new Subscriber();
-		temp = (Subscriber) session.getAttribute("newSub");
-		
-		temp.getPaymentInfo().setFirstName(request.getParameter("m_firstName"));
-		temp.getPaymentInfo().setLastName(request.getParameter("m_lastName"));
-		temp.getPaymentInfo().setCCNumber(request.getParameter("m_ccNumber"));
-		temp.getPaymentInfo().setCCType(request.getParameter("m_ccType"));
-		temp.getPaymentInfo().setExpMonth(Integer.parseInt(request.getParameter("m_expMonth")));
-		temp.getPaymentInfo().setExpYear(Integer.parseInt(request.getParameter("m_expYear")));
-		temp.getPaymentInfo().setCCV(Integer.parseInt(request.getParameter("m_ccv")));
-		
+		Subscriber tempSub = (Subscriber) session.getAttribute("newSub");
+		int movieID = Integer.parseInt(request.getParameter("m_rentedMovie"));
 		try {
-			subscriberDB.updateSubscriber(temp);
+			QueueDB.returnMovie(tempSub.getAccountID(), movieID);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		session.setAttribute("newSub", temp);
-		response.sendRedirect("accountSettings.jsp");
+		response.sendRedirect("accountSettings.jsp");		
 	}
 
 }

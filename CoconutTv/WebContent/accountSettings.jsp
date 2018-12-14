@@ -6,6 +6,8 @@
 <jsp:useBean id="selectedProfile" class="classes.Users" scope="session"></jsp:useBean>
 <%@ page import = "database.*" %>
 <%@ page import = "classes.*" %>
+<%@ page import = "java.util.ArrayList" %>
+<%@ page import = "java.util.List" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -38,9 +40,9 @@ if (newSub == null || newSub.getAccountID() == 0) {
 	
 	<div class="container-fluid">
 		<div class="page-header">
-			<h1> Account Settings<br><br></h1>
+			<h1 class="glow"> Account Settings<br><br></h1>
 		</div>
-	
+	<center><span style="color:#000000;"><span style="font-size:24px;"><span style="font-family:lucida sans unicode,lucida grande,sans-serif;"><q><%=quotesDB.getQuote()[0] %></q></span></span></span></center>
 		<div class="row">
  			<div class="col-sm-4">
  				
@@ -51,6 +53,7 @@ if (newSub == null || newSub.getAccountID() == 0) {
 				<button type="button" class="upperbtn" data-toggle="modal" data-target="#updatePayment">Update Payment Info</button><br><br>
 				<button type="button" class="upperbtn" data-toggle="modal" data-target="#updateAccount">Update Account Info</button><br><br>
 				<button type="button" class="upperbtn" data-toggle="modal" data-target="#updatePlan">Change the Plan</button><br><br>
+				<button type="button" class="upperbtn" data-toggle="modal" data-target="#returnMovie">Return Download</button><br><br>
   				
   				
   				<!-- PAYMENT UPDATE MODAL -->
@@ -282,14 +285,71 @@ if (newSub == null || newSub.getAccountID() == 0) {
 		</div>
 	</div>
 </div>  <!-- END OF PLAN UPDATE MODAL  -->
+
+
+
+
+
+<div class="modal fade" id="returnMovie" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+				<h3 class="modal-title" id="modalLabel">Update Plan</h3>
+			</div>
+			<div class="modal-body">				
+				<form name="updateRentals" class="form-horizontal" action="ReturnMovie" method="post" onsubmit="" required>
+					
+					<div class="form-group">
+  					<label class="control-label col-sm-2" for="m_levelName">Rented Movies</label>
+  					<div class="col-sm-8">
+  					<select class="form-control" id="m_rentedMovie" name="m_rentedMovie">
+  						<option>Choose one..</option>
+  						
+  						<%
+  						List<Movie> rentals = QueueDB.listOfMovies(newSub.getAccountID());
+  						if (rentals != null) {
+  							for (int i = 0; i < rentals.size(); i++) { %>
+  								<option value="<% out.print(rentals.get(i).getMovieID()); %>" id="movieID" name="movieID"><%=rentals.get(i).getTitle() %></option>
+  							<%}
+  						}
+  						%>
+  					</select>
+  					</div>
+				</div>  
+  				
+  				<div class="form-group"> 
+    				<div class="col-sm-offset-2 col-sm-8">
+      				<button type="submit" value="returnMovie" class="modalbtn">Return</button>
+    				</div>
+  				</div>				
+				
+				</form>
+			</div>
+			<div class="modal-footer">
+				
+				<button type="button" class="modalbtn" data-dismiss="modal">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
   				
   							
 				<a href="./profileManagement.jsp" class="upperbtn">Profile Management</a>
 				<br><br><br><br><br><br>
 				<br><br><br><br><br><br>	
-				<br><br><br><br><br><br>			
+							
 				<a href="./verifyPassword.jsp?checkCancel=cancel" class="lowerbtn">Cancel Plan</a>  <br><br> 
-				<a href="<%if((selectedProfile.getUserID() == 0) || (selectedProfile == null)) {out.print("./selecteProfile.jsp");} else { out.print("./startPage.jsp?value=" + selectedProfile.getUserID());}%>" class="lowerbtn">Go back to Home Page</a>
+				<a href="<%if((selectedProfile.getUserID() == 0) || (selectedProfile == null)) {out.print("./selectProfile.jsp");} else { out.print("./startPage.jsp?value=" + selectedProfile.getUserID());}%>" class="lowerbtn">Go back</a>
 				
 			</div>
   			<div class="col-sm-4">
@@ -304,7 +364,6 @@ if (newSub == null || newSub.getAccountID() == 0) {
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
-
 // Initialize popover component
 $(function () {
   $('[data-toggle="popover"]').popover()

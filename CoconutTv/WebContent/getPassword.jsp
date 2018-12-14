@@ -30,7 +30,7 @@
 	<input type="hidden" name="resetSent" value="false">
 	<div class="container-fluid">
 		<div class="page-header">
-			<h1>
+			<h1 class="glow">
 				Welcome <br> to <br> Gilligan's CoconutTV!
 			</h1>
 		</div>
